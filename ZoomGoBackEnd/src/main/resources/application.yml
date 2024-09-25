@@ -1,0 +1,15 @@
+#spring.application.name=ZoomGoBackEnd
+
+spring:
+  datasource:
+    diverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/bootex
+    username: bootuser
+    password: Bootuser123!@#
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
