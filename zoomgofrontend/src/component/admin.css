@@ -1,0 +1,152 @@
+
+.main-content {
+    padding: 20px;
+}
+
+.member-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.member-list th, .member-list td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.ban-btn {
+    background-color: #5380f4;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination a {
+    margin: 0 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+    background-color: #5380f4;
+    color: white;
+    border-radius: 4px;
+}
+
+
+
+
+.divider {
+    width: 0.7px; /* 가로 비율 축소 */
+    height: 80px; /* 세로 크기 조정 */
+    background-color: #ccc;
+}
+
+.main-content {
+    padding: 10px;
+    max-width: 1200px;
+    margin: auto;
+    position: relative; /* ::before를 위해 position 설정 */
+    
+}
+
+.main-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -27.5%; /* 필요에 따라 조정 */
+    width: calc(100% + 670px); /* 필요에 따라 조정 */
+    border-top: 1px solid hwb(0 77% 23%);
+    z-index: -1; /* main-content 아래로 위치 */
+}
+
+.thin-text {
+    font-weight: 300; /* 또는 lighter */
+
+}
+
+.search-bar {
+    display: flex;
+    align-items: center; /* 세로 정렬을 중앙으로 맞춤 */
+    gap: 20px; /* 제목과 입력창 사이의 간격 조정 */
+}
+
+.search-bar h2 {
+    margin: 0; /* 제목의 기본 여백 제거 */
+}
+
+.search-bar input {
+    flex: 1; /* 입력창이 가능한 공간을 차지하도록 함 */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.menu-container {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    margin-top: 20px; /* 회원관리 글씨와 버튼 사이의 공백 추가 */
+
+    margin-bottom: 20px; /* 메뉴와 회원 리스트 사이에 공백 추가 */
+}
+
+
+.menu-item {
+    padding: 10px 20px;
+    background-color: #f5f5f5; /* 기본 배경색 */
+    border-right: 1px solid #ccc; /* 항목 사이 구분선 */
+    cursor: pointer;
+
+}
+
+.menu-item:last-child {
+    border-right: none; /* 마지막 항목은 오른쪽 경계선 제거 */
+}
+
+.menu-item.active {
+    background-color: #eaeaea; /* 선택된 항목 배경색 */
+    font-weight: bold; /* 선택된 항목 글씨를 굵게 */
+}
+
+.menu-item:hover {
+    background-color: #ddd; /* 호버 시 배경색 변경 */
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    background-color: #ffffff; /* 기본 회색 */
+    color: #000000;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.pagination button.active {
+    background-color: #5380f4; /* 활성화된 페이지 파란색 */
+    cursor: default;
+    color: #ffffff;
+
+}
+
+.pagination button.disabled {
+    background-color: #ffffff; /* 비활성화된 페이지 흰색 */
+    cursor: not-allowed;
+}
+
+.pagination button:hover:not(.active):not(.disabled) {
+    background-color: #5380f4; /* 마우스 오버 시 파란색으로 변경 (활성/비활성 제외) */
+    color: #ffffff;
+
+}
