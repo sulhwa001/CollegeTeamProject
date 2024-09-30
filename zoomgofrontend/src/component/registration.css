@@ -6,8 +6,8 @@
 .input-group {
     width: 80%;
     margin-bottom: 15px;
-    padding: 10px; /* 추가적인 내부 여백 */
-    margin-left: 7%; /* 자동으로 오른쪽으로 정렬 */
+    padding: 10px; 
+    margin-left: 7%;
 
 
 }
@@ -36,7 +36,7 @@
     border: none;
     border-radius: 20px;
     cursor: pointer;
-    margin-left: 8%; /* 자동으로 오른쪽으로 정렬 */
+    margin-left: 8%; 
     
 
 }
@@ -51,7 +51,7 @@
     position: relative;
     font-family: Arial, sans-serif;
     padding: 10px;
-    margin-left: 7%; /* 자동으로 오른쪽으로 정렬 */
+    margin-left: 7%; 
 
 
 }

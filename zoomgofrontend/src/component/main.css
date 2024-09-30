@@ -67,7 +67,7 @@ header {
     .nav {
         justify-content: center;
         margin-left: 100%;
-        margin-top: -40px; /* nav를 위로 올림 */
+        margin-top: -40px; 
     }
 
     #category {
@@ -174,8 +174,8 @@ header {
     content: "";
     position: absolute;
     top: 0;
-    left: -27.5%; /* 필요에 따라 조정 */
-    width: calc(100% + 670px); /* 필요에 따라 조정 */
+    left: -27.5%; 
+    width: calc(100% + 670px); 
     border-top: 1px solid hwb(0 77% 23%);
     z-index: -1; /* main-content 아래로 위치 */
 }
@@ -251,5 +251,5 @@ header {
     font-weight: 400; /* 글씨체를 얇게 만듦 */
     padding-bottom: 30px; /* 텍스트와 선 사이에 공백 추가 */
     border-bottom: 1px solid black; /* 검은색 하단 선 추가 */
-    width: 100%; /* h2 요소가 부모 요소의 100% 너비를 차지하게 함 */
+    width: 100%; 
 }
