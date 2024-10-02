@@ -1,0 +1,273 @@
+.profile_section1 {
+    width:100%;
+    height:1;
+    padding:0;
+}
+input:focus {
+    outline:none;
+}
+.section_profile_input {
+    width:100%;
+    height:100px;
+}
+.profiles {
+    padding:100px;
+    width:900px;
+    height:100px;
+    margin:0 auto;
+    display:flex;
+}
+
+.gosu_profile_picture {
+    width:110px;
+    height:110px;
+    border-radius:110px;
+    border:0;
+    background:#D9D9D9;
+}
+.gosuInfo {
+    width:600px;
+    margin-top:20px;
+    margin-left:30px;
+    font-size:20px;
+    font-weight:bold;
+}
+.name_picture {
+    display:flex;
+}
+
+.gosu_name {
+    font-size:20px;
+    font-weight:bold;
+}
+
+.gosu_review_score, .review_count {
+    font-size:16px;
+}
+
+.gosu_preview {
+    float:right;
+    background:#ffffff;
+    width:77px;
+    height:35px;
+    border:1px solid #eaeaea;
+    font-weight:bold;
+}
+.gosu_profile_detail {
+    width:850px;
+    height:600xp;
+    margin:0 auto;
+}
+.gosu_profile_detail h3 {
+    font-size:20px;
+}
+.gosu_active_name {
+    display:flex;
+    width:100%;
+}
+.update {
+    border:0;
+    color:#6788FF;
+    background:none;
+    margin-left:570px;
+}
+
+.gosu_active_name::placeholder {
+    color:black;
+}
+.gosu_input {
+    width:700px;
+    border-bottom:1px solid #eaeaea;
+    margin-top:20px;
+}
+.gosu_input input {
+    padding:10px;
+    width:700px;
+    border:0;
+    font-size:16px;
+}
+
+.gosu_picture_upload {
+    width:800px;
+    margin-top:30px;
+    display:flex;
+}
+input[type="file"] {  /* 파일 필드 숨기기 */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip:rect(0,0,0,0);
+    border: 0;
+}
+.upload_btn {
+    margin-left:500px;
+    cursor:pointer;
+    font-size:15px;
+    color:#6788FF;
+}
+.image_name {
+    padding:10px;
+    width:680px;
+    border-bottom:1px solid #eaeaea;
+    margin-top:10px;
+}
+.image_file_name {
+    font-size:20px;
+}
+
+.gosu_active_area {
+    display:flex;
+    margin-top:30px;
+}
+
+.gosu_active_area_name {
+    width:680px;
+    padding:10px;
+    margin-top:20px;
+    border:0;
+}
+.gosu_active_area_name::placeholder{
+    color:black;
+}
+.area_insert {
+    width:700px;
+    border-bottom:1px solid #eaeaea;
+}
+.update1 {
+    border:0;
+    background:#ffffff;
+    color:#6788FF;
+    margin-left:550px;
+}
+.update2 {
+    border:0;
+    background:#ffffff;
+    color:#6788FF;
+}
+.update3 {
+    border:0;
+    background:#ffffff;
+    color:#6788FF;
+    margin-left:545px;
+}
+.service_category {
+    width:720px;
+    margin-top:30px;
+    display:flex;
+}
+
+.service_category button {
+    margin-left:475px;
+}
+
+.search_category {
+    border:1px solid #eaeaea;
+    padding:10px;
+    width:300px;
+    height:20px;
+    margin-top:10px;
+    cursor:pointer;
+    margin-bottom:10px;
+}
+.input_category {
+    width:700px;
+    border-bottom:1px solid #eaeaea;
+}
+.area_insert select {
+    border:1px solid #eaeaea;
+    width:130px;
+    height:50px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+.price {
+    border:1px solid #eaeaea;
+    margin-top:10px;
+    width:300px;
+    height:20px;
+    padding:10px;
+    margin-bottom:10px;
+}
+.price_label {
+    font-size:13px;
+    margin-top:4px;
+    margin-left:560px;
+}
+
+.gosu_price {
+    display:flex;
+    margin-top:20px;
+}  
+.gosu_price button {
+    border:0;
+    background:#ffffff;
+    color:#6788FF;
+    font-size:13px;
+}
+
+.gosu_price_update {
+    margin-left:635px;
+}
+
+.gosu_question {
+    width:730px;
+    margin-top:20px;
+    display:flex;
+}
+.question_update {
+    border:0;
+    background:#ffffff;
+    color:#6788FF;
+    margin-left:593px;
+}
+.question_list {
+    border-bottom:1px solid #eaeaea;
+    width:700px;
+    height:550px;
+    margin-top:30px;   
+}
+.question_list p {
+    margin-top:10px;
+}
+.question_input {
+    border:1px solid #eaeaea;
+    width:700px;
+    height:50px;
+    margin-top:10px;
+}
+.portfolio_move {
+    width:720px;
+    height:300px;
+    margin-top:100px;
+}
+
+.portfolio_explain_move {
+    border:0;
+    background:#D9D9D9;
+    margin-top:30px;
+    width:650px;
+    height:100px;
+    padding:25px;
+    border-radius:8px;
+}
+.portfolio_explain_move h3 {
+    font-size:18px;
+    margin-top:10px;
+    margin-left:20px;
+}
+.portfolio_explain_move .detail_explain {
+    color:gray;
+}
+.portfolio_explain_move button {
+    float:right;
+    margin-top:-35px;
+    border:0;
+    font-weight:bold;
+    font-size:18px;
+    background:#6788FF;
+    color:white;
+    padding:10px;
+}

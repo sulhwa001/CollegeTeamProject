@@ -3,10 +3,13 @@
     height:200px;
     padding:0;
     display: flex;
+    align-items:center;
     text-align: center;
     margin:0 auto;
     margin-top:50px;
+    
 }
+
 .footer_title {
     width:20%;
     text-align: center;
@@ -42,4 +45,6 @@ hr {
 .detail {
     height:300px;
 }
+
+
 
