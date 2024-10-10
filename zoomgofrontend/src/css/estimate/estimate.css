@@ -1,0 +1,110 @@
+.estimate_page_configuration {
+  display: flex;
+}
+.estimate_aside {
+  width: 400px;
+  height: 110vh;
+  background: #d9d9d9;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+.estimate_profile {
+  padding: 20px;
+  width: 340px;
+  height: 220px;
+  background: #ffffff;
+}
+
+.estimate_profile_info {
+  display: flex;
+  height: 150px;
+  margin-top: 20px;
+  width:390px;
+
+}
+
+.estimate_profile_img {
+  width: 85px;
+  height: 85px;
+  border-radius: 10px;
+  border: 0;
+  background: #d9d9d9;
+}
+
+.estimate_profile_indiinfo {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.detail_profile_info {
+  width: 340px;
+  height: 50px;
+  background: none;
+  border: 1px solid #eaeaea;
+}
+
+.profile_label {
+  padding: 10px;
+}
+.estimate_detail_profile_info {
+  width: 340px;
+  height: 710px;
+  background: #ffffff;
+  padding: 20px;
+}
+.gosu_detail_info_explain {
+  color: gray;
+}
+
+.page_Interval {
+  width: 400px;
+}
+
+.estimate_price {
+  width: 600px;
+  padding: 10px;
+  border: 1px solid #eaeaea;
+  margin-top: 10px;
+}
+.estimate_explain {
+  width: 600px;
+  height: 300px;
+  padding: 10px;
+  border: 1px solid #eaeaea;
+}
+.estimate_file {
+  width: 100px;
+  height: 100px;
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+}
+
+.estimate_click {
+  display: block;
+  width: 400px;
+  margin: 0 auto;
+  background: #B5B5B5;
+  height:50px;
+  border:1px solid #eaeaea;
+  color:white;
+  padding: 10px;
+  border-radius:8px;
+}
+.ask_estimate_calendar {
+    width:200px;
+    margin-top:10px;
+    border:1px solid #eaeaea;
+}
+.area_choice_input {
+    width:590px;
+    padding:10px;
+    border:0;
+    border-bottom:1px solid black;
+}
+.area_search {
+    border:0;
+    background:none;
+    margin-left:-50px;
+
+}

@@ -1,6 +1,12 @@
 import "./css/portfolio/portfolio_input.css";
 import Header from "./header";
 function InputPortfolio() {
+  const years = [];
+
+  for (let i = 2000; i < 2025; i++) {
+    years.push(i);
+  }
+
   return (
     <div className="App">
       <Header />
@@ -79,8 +85,58 @@ function InputPortfolio() {
         <br />
         <br />
         <h4>최종 금액</h4>
-        <input type="text" placeholder="최종금액을 입력해주세요." className="final_price" />
+        <input
+          type="text"
+          placeholder="최종금액을 입력해주세요."
+          className="final_price"
+        />
         <span className="won">원</span>
+        <br />
+        <div
+          style={{
+            width: "450px",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <h4>작업 연도</h4>
+          <h4>작업 소요시간</h4>
+        </div>
+        <div style={{ display: "flex", width: "730px" }}>
+          <select className="workYears">
+            {years.map((year) => (
+              <option key={year} value={year}>
+                {year}
+              </option>
+            ))}
+          </select>
+          <div style={{ marginLeft: "50px", display: "flex" }}>
+            <input
+              type="text"
+              placeholder="소요 시간"
+              name="portfolio_time"
+              className="portfolio_time"
+            />
+            <select className="choice_month_day_hour">
+              <option>시간</option>
+              <option>일</option>
+              <option>월</option>
+            </select>
+          </div>
+        </div>
+        <br />
+        <h4>작업 내용</h4>
+        <textarea
+          className="work_article"
+          placeholder="제공한 서비스의 상세한 설명을 작성해주세요.
+         ex)전/후 결과, 작업 과정 등"
+        ></textarea>
+        <label for="textarea_count" className="textarea_count">
+          {0}/30자
+        </label>
+        <br />
+        <br />
+        <button className="portfolio_button">등록하기</button>
       </div>
     </div>
   );
