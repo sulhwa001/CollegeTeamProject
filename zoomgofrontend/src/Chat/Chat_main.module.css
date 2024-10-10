@@ -2,7 +2,7 @@
     display: flex;
     height: 100vh;
     width: 100%;
-    background-color: #6788ff;
+    background-image: url("../image/bg.PNG");
     background-size: cover;
     justify-content: center;
     align-items: center;
@@ -14,7 +14,7 @@
     height: 90%;
     width: 90%;
     background-color: rgba(17,25,30,0.75);
-    backdrop-filter: blur(19px) saturate(180%);
+    backdrop-filter: blur(10px) saturate(180%);
     border-radius: 12px;
     border: 1px solid rgba(255,255,255,0.125);
 }

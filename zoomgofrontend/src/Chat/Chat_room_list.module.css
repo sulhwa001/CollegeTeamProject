@@ -71,6 +71,13 @@
     object-fit: cover;
 }
 
+.user_type {
+    font-size: 12px;
+    font-weight: normal;
+    margin-bottom: auto;
+    margin-left: auto;
+}
+
 .texts {
     display: flex;
     flex-direction: column;
@@ -86,3 +93,4 @@
     font-size: 14px;
     font-weight: 300;
 }
+

@@ -26,6 +26,7 @@ const Chat_room_list = () => {
                         <span>조 은준</span>
                         <p>일찍 좀 다녀라</p>
                     </div>
+                    <span className={style.user_type}>중고 거래</span>
                 </div>
                 <div className={style.items}>
                     <img src={avatar} alt=""/>
@@ -33,6 +34,7 @@ const Chat_room_list = () => {
                         <span>조 은준</span>
                         <p>일찍 좀 다녀라</p>
                     </div>
+                    <span className={style.user_type}>숨고</span>
                 </div>
                 <div className={style.items}>
                     <img src={avatar} alt=""/>
@@ -40,6 +42,7 @@ const Chat_room_list = () => {
                         <span>조 은준</span>
                         <p>일찍 좀 다녀라</p>
                     </div>
+                    <span className={style.user_type}>중고 거래</span>
                 </div>
                 <div className={style.items}>
                     <img src={avatar} alt=""/>
@@ -47,6 +50,7 @@ const Chat_room_list = () => {
                         <span>조 은준</span>
                         <p>일찍 좀 다녀라</p>
                     </div>
+                    <span className={style.user_type}>숨고</span>
                 </div>
                 <div className={style.items}>
                     <img src={avatar} alt=""/>
@@ -54,6 +58,7 @@ const Chat_room_list = () => {
                         <span>조 은준</span>
                         <p>일찍 좀 다녀라</p>
                     </div>
+                    <span className={style.user_type}>중고 거래</span>
                 </div>
                 <div className={style.items}>
                     <img src={avatar} alt=""/>
@@ -61,6 +66,7 @@ const Chat_room_list = () => {
                         <span>조 은준</span>
                         <p>일찍 좀 다녀라</p>
                     </div>
+                    <span className={style.user_type}>숨고</span>
                 </div>
         </div>
     )
