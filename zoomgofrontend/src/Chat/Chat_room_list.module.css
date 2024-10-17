@@ -22,6 +22,7 @@
     align-items: center;
     gap: 20px;
     padding: 20px;
+    border-bottom: 1px solid #dddddd35;
 }
 
 .search_bar {
@@ -44,15 +45,6 @@
 .search_bar img {
     width: 20px;
     height: 20px;
-}
-
-.add {
-    width: 16px;
-    height: 16px;
-    background-color: rgba(17,25,40,0.5);
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
 }
 
 .items {

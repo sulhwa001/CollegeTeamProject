@@ -3,6 +3,7 @@ import avater from "../image/avatar.png"
 import arrowUp from "../image/arrowUp.png"
 import arrowDown from "../image/arrowDown.png"
 import download from "../image/download.png"
+import keyboardImg from "../image/keyboard.jpeg" 
 
 const Chat_detail = () => {
     return(
@@ -10,12 +11,12 @@ const Chat_detail = () => {
             <div className={style.user}>
                 <img src={avater}/>
                 <h2>박 재찬</h2>
-                <p>빨리 좀 다녀라</p>
+                <p>중고 거래</p>
             </div>
             <div className={style.info}>
                 <div className={style.show_items}>
                     <div className={style.items}>
-                        <img src={avater} alt=""/>
+                        <img src={keyboardImg} alt=""/>
                         <span>기계식 키보드</span>
                     </div>
                 </div>
@@ -28,31 +29,27 @@ const Chat_detail = () => {
                 <div className={style.photos}>
                     <div className={style.photoItem}>
                         <div className={style.photoDetail}>
-                            <img src={avater} alt=""/>
+                            <img src={keyboardImg} alt=""/>
                             <span>사진_2024_10.png</span>
                         </div>
-                        <img src={download} alt="" className={style.icons}/>
                     </div>
                     <div className={style.photoItem}>
                         <div className={style.photoDetail}>
-                            <img src={avater} alt=""/>
+                            <img src={keyboardImg} alt=""/>
                             <span>사진_2024_10.png</span>
                         </div>
-                        <img src={download} alt="" className={style.icons}/>
                     </div>
                     <div className={style.photoItem}>
                         <div className={style.photoDetail}>
-                            <img src={avater} alt=""/>
+                            <img src={keyboardImg} alt=""/>
                             <span>사진_2024_10.png</span>
                         </div>
-                        <img src={download} alt="" className={style.icons}/>
                     </div>
                     <div className={style.photoItem}>
                         <div className={style.photoDetail}>
-                            <img src={avater} alt=""/>
+                            <img src={keyboardImg} alt=""/>
                             <span>사진_2024_10.png</span>
                         </div>
-                        <img src={download} alt="" className={style.icons}/>
                     </div>
                     
                 </div>

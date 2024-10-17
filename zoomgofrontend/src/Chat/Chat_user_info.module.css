@@ -1,8 +1,9 @@
 .user_info {
-    padding: 20px;
+    padding: 23px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid #dddddd35;
 }
 
 .user {
@@ -16,15 +17,4 @@
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
-}
-
-.icons {
-    display: flex;
-    gap: 20px;
-}
-
-.icons img {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
 }

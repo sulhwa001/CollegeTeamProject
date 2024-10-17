@@ -1,5 +1,6 @@
 import style from "./Chat_input.module.css"
 import avatar from "../image/avatar.png"
+import keyboadrdImg from "../image/keyboard.jpeg"
 import info from "../image/info.png"
 import emoji from "../image/emoji.png"
 import img from "../image/img.png"
@@ -14,7 +15,7 @@ const Chat_input = () => {
     const endRef = useRef(null);
 
     useEffect(() => {
-        endRef.currnt?.scrollIntoview({behavior:"smooth"})
+        endRef.curent?.scrollIntoview({behavior:"smooth"})
     })
 
     const handleEmoji = e => {
@@ -28,12 +29,9 @@ const Chat_input = () => {
                 <div className={style.user}>
                     <img src={avatar} alt=""/>
                     <div className={style.texts}>
-                        <span>조 은준</span>
-                        <p>재찬아, 빨리 빨리 좀 다녀라!!!!</p>
+                        <span>박 재찬</span>
+                        <p>좋네요, 거래 하면 될 것 같아요</p>
                     </div>
-                </div>
-                <div className={style.icons}>
-                    <img src={info} alt=""/>
                 </div>
             </div>
             <div className={style.center}>
@@ -65,15 +63,15 @@ const Chat_input = () => {
                 </div>
                 <div className={style.messege_own}>
                      <div className={style.texts}>
-                        <img src={avatar} alt=""/>
-                        <p>제발 빨리 빨리 좀 다녀라!!!!!</p>
+                        <img src={keyboadrdImg} alt=""/>
+                        <p>키보드 상태 입니다.</p>
                         <span>1 분 전</span>
                     </div>
                 </div>
                 <div className={style.messege}>
                     <img src={avatar} alt=""/>
                     <div className={style.texts}>
-                        <p>제발 빨리 빨리 좀 다녀라!!!!!</p>
+                        <p>좋네요, 거래 하면 될 것 같아요</p>
                         <span>1 분 전</span>
                     </div>
                 </div>

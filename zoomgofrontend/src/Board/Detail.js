@@ -1,5 +1,6 @@
 import style from "./Detail.module.css";
 import { Link } from "react-router-dom";
+import trade from "../image/trade.jpg"
 
 const Datail = () => {
   return (
@@ -11,7 +12,7 @@ const Datail = () => {
       <hr className={style.divider}/>
 
       <div className={style.post_detail}>
-        <div className={style.post_title}>게시판 테스트</div>
+        <div className={style.post_title}>거래 좋았습니다</div>
         <div className={style.views}>조회수 : 1,469</div>
         <div className={style.post_details}>
           <div className={style.writer}>조은준</div>
@@ -24,8 +25,8 @@ const Datail = () => {
         <button className={style.delete_button}><span>삭제</span></button>
       </div>
 
-      <div className={style.image_placeholder}/>
-      <div className={style.post_content}>게시판 테스트 입니다!!!</div>
+      <img src={trade} alt="" className={style.image}/>
+      <div className={style.post_content}>거래 잘 했습니다.</div>
 
       <div className={style.recommend_button_container}>
         <button className={style.recommend_button}>

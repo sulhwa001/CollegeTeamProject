@@ -6,6 +6,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin: 50px;
   }
 
 .modal {
@@ -65,7 +66,6 @@
 .profile_placeholder {
     width: 150px; 
     height: 150px; 
-    background-color: #553737;
     border-radius: 50%;
     margin-top: 25px; 
     margin-left: 50px;
@@ -160,16 +160,28 @@
     display: flex;
     margin-right: 50px;
     width: 600px;
-    height: 100px;
+    height: 110px;
     background-color: rgba(156, 156, 156, 0.21);
 }
 
 .file_preview {
     width: 100px;
     height: 75px;
-    background: linear-gradient(0deg, #403e81 0%, #403e81 100%);
     margin: 10px;
     margin-right: none;
+}
+
+.img_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.img_container img {
+    margin-block-end: 0%;
+}
+
+.img_container span {
+    font-size: 12px;
 }
 
 .gosu_recommand_button_container {

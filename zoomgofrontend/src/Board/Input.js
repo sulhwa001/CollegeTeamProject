@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import style from "./Input.module.css"
+import trade from "../image/trade.jpg"
 
 const InputText = () => {
   return (
@@ -41,8 +42,8 @@ const InputText = () => {
       {/* 파일 첨부 */}
       <div className={style.file_preview_section}>
         <div className={style.file_preview_container}>
-          <div className={style.file_preview}/>
-          <div className={style.file_preview}/>
+          <img className={style.file_preview} src={trade}/>
+          <img className={style.file_preview} src={trade}/>
         </div>
       </div>
 

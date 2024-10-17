@@ -223,11 +223,6 @@
     color: inherit;
   }
 
-  .image_placeholder {
-    width: 1150px;
-    height: 500px;
-    background-color: #e0e0e0;
-    border-radius: 8px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
+  .image {
+    padding: 20px;
+  }

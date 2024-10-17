@@ -7,10 +7,7 @@ const Chat_user_info = () => {
         <div className={style.user_info}>
             <div className={style.user}>
                 <img src={avatar} alt=""/>
-                <h2>박 재찬</h2>
-            </div>
-            <div className={style.icons}>
-                <img src={more} alt=""/>
+                <h2>조 은준</h2>
             </div>
         </div>
     )

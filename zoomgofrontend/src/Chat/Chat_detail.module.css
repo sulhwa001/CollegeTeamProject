@@ -97,15 +97,6 @@
     font-weight: 300;
 }
 
-.icons {
-    width: 15px;
-    height: 15px;
-    background-color: rgba(17, 25, 40, 0.3);
-    padding: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
 .user_block {
     border-top: 1px solid #dddddd35;
     margin-top: auto;

@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import style from './Gosu_review.module.css'; // CSS 파일을 가져옵니다.
+import avatar from "../image/avatar.png"
+import logo1 from "../image/logo_design.jpg"
+import logo2 from "../image/logo_design2.jpg"
 
 const GosuReview = () => {
   const [isOpen, setIsOpen] = useState(false); // 모달 상태 관리
@@ -17,7 +20,7 @@ const GosuReview = () => {
             <button className={style.modal_close} onClick={closeModal}>X</button>
             <div className={style.modal_body}>
               <div className={style.gosu_header}>
-                <div className={style.profile_placeholder}></div>
+                <img src={avatar} className={style.profile_placeholder}/>
                 <div className={style.gosu_title}>
                   <div className={style.gosu_subtitle}>
                     <span className={style.font_bold}>박재찬 </span>
@@ -40,16 +43,22 @@ const GosuReview = () => {
               </div>
               <div className={style.file_preview_section}>
                 <div className={style.file_preview_container}>
-                  <div className={style.file_preview}/>
-                  <div className={style.file_preview}/>
+                  <div className={style.img_container}>
+                    <img src={logo1} className={style.file_preview}/>
+                    <span>logo.jpg</span>
+                  </div>
+                  <div className={style.img_container}>
+                    <img src={logo2} className={style.file_preview}/>
+                    <span>logo2.jpg</span>
+                  </div>
                 </div>
               </div>
               <div className={style.gosu_recommand_button_container}>
                 <button className={style.gosu_recommand_button}># 사장님이 친절해요</button>
-                <button className={style.gosu_recommand_button}># 음식이 친절해요</button>
-                <button className={style.gosu_recommand_button}># 사장님이 맛있어요</button>
+                <button className={style.gosu_recommand_button}># 시간을 잘 맞춰줘요</button>
+                <button className={style.gosu_recommand_button}># 잘 가르쳐주세요</button>
                 <button className={style.gosu_recommand_button}># 가격이 싸요</button>
-                <button className={style.gosu_recommand_button}># 시간이 잘 맞아요</button>
+                <button className={style.gosu_recommand_button}># 만족할때까지 해줘요</button>
                 <button className={style.gosu_recommand_button}># 강사님이 친절해요</button>
               </div>
               <div className={style.button_container}>
