@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Header from './header/Header.js';
+import Registpage from './registpage/Registpage.js';
+import Loginpage from './loginpage/Loginpage.js';
+import Forgotpassword from './forgotpassword/forgotpassword.js';
+import Userinfo from './userinfo';
+import Agreement from './agreement/agreement.js';
+import Mypagemain from './mypagemain/Mypagemain.js';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+      <Header />
+        <Routes>
+          <Route path="/" element={<Loginpage />} />
+          <Route path="/regist" element={<Registpage />} />
+          <Route path="/forgotpassword" element={<Forgotpassword />} />
+          <Route path="/userinfo" element={<Userinfo />} />
+          <Route path="/agreement" element={<Agreement/>} />
+          <Route path="/mypagemain" element={<Mypagemain/>} />
+          
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
