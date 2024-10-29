@@ -1,3 +1,12 @@
+import './App.css';
+import './index.css';
+import BoardList from './Board/Board_List.js';
+import InputText from './Board/Input.js';
+import { BrowserRouter, Routes } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import Detail from './Board/Detail.js';
+import Recommand from './review/Recommand_modal.js';
+import GosuReview from './review/Gosu_review.js';
 import Login from './login';
 import Main from './main';
 import Profile from './profile';
@@ -16,8 +25,14 @@ import InputPortfolio from './portfolio_input';
 function App() {
 
   return (
-    <BrowserRouter>
-      <Routes>
+    <div className="App">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/boardlist" element={<BoardList/>}/>
+          <Route path='/write' element={<InputText/>}/>
+          <Route path='/detail' element={<Detail/>}/>
+          <Route path='/recommand' element={<Recommand/>}/>
+          <Route path='/gosu_review' element={<GosuReview/>}/>
         <Route path="/" element={<Main />} />
         <Route path='/Login' element={<Login />} />
         <Route path='/regist' element={<Regist />} />
@@ -32,6 +47,7 @@ function App() {
         <Route path="/receiveAsk" element={<ReceiveAsk />} />
       </Routes>
     </BrowserRouter>
+    </div>
   );
 }
 

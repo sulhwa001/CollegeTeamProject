@@ -1,0 +1,221 @@
+.open_modal_button {
+    padding: 10px 20px;
+    background-color: #6788ff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 50px;
+  }
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.font_bold {
+    font-weight: 600;
+}
+
+.modal_content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 900px; 
+    height: 900px;
+    max-width: 90%; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.modal_close {
+    margin-left: 820px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.modal_body {
+    display: flex;
+    width: 100%;
+    height: 90%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.gosu_header {
+    width: 100%;
+    height: 25%; 
+    background-color: #f0f0f0; 
+    border-radius: 10px 10px 0 0; 
+    display: flex;
+    flex-direction: row;
+}
+
+.profile_placeholder {
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%;
+    margin-top: 25px; 
+    margin-left: 50px;
+}
+
+.gosu_title {
+    display: flex;
+    flex-direction: column;
+    font-size: 24px; 
+    color: #000;
+    margin-left: 150px;
+    margin-top: 80px; 
+}
+
+.gosu_subtitle {
+    display: flex;
+    font-size: 24px; 
+    color: #000;
+    margin-bottom: 30px;
+}
+
+.role {
+    font-size: 18px; 
+    color: #4b4b4b; 
+    margin-left: -140px;
+}
+
+.review_prompt {
+    font-size: 20px; 
+    color: #000;
+    margin-top: 40px;
+    margin-left: 20px;
+    margin-bottom: 20px; 
+}
+
+.gosu_recommand {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 30px
+}
+
+.input_content {
+    width: calc(100% - 60px); 
+    height: 100px; 
+    border: 1px solid #585858;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px; 
+    margin: 10px 20px; 
+}
+
+.attachment_contaier {
+    display: flex;
+}
+
+
+.gosu_img_title {
+    border: 1px solid;
+    height: 20px;
+    width: 700px;
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+.attachment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #585858;
+    border-radius: 10px;
+    margin: 10px 20px; 
+}
+
+.attachment_label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #464646;
+}
+
+.file_preview_section {
+    display: flex;
+    width: 900px;
+    margin-top: 5px;
+    margin-left: 20px;
+  }
+  
+.file_preview_container {
+    display: flex;
+    margin-right: 50px;
+    width: 600px;
+    height: 110px;
+    background-color: rgba(156, 156, 156, 0.21);
+}
+
+.file_preview {
+    width: 100px;
+    height: 75px;
+    margin: 10px;
+    margin-right: none;
+}
+
+.img_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.img_container img {
+    margin-block-end: 0%;
+}
+
+.img_container span {
+    font-size: 12px;
+}
+
+.gosu_recommand_button_container {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 5px;
+    margin-top: 20px;
+    margin-left: 30px
+}
+
+.gosu_recommand_button {
+    border: none;
+    height: 25px;
+    width: 200px;
+    margin-left: 10px
+}
+
+.button_container {
+    display: flex;
+    justify-content: flex-end; 
+    gap: 10px; 
+    margin-top: 20px;
+    margin-left: 650px 
+}
+
+.submit_button, .cancel_button {
+    background-color: #6788ff;
+    color: white;
+    font-size: 16px; 
+    font-weight: 600;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px; 
+    cursor: pointer;
+    width: 100px; 
+}
+

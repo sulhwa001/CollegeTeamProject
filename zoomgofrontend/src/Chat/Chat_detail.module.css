@@ -1,0 +1,118 @@
+.detail {
+    flex: 1;
+}
+
+.user {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #dddddd35;
+}
+
+.user h2 {
+    margin-block-start: 0;
+}
+
+.user p {
+    margin-block-start: 0;
+}
+
+.user img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.info {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.items {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.items img {
+    width: 180px;
+    height: 180px;
+}
+
+.items span {
+    margin-top: 10px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title img {
+    width: 15px;
+    height: 15px;
+    background-color: rgba(17, 25, 40, 0.3);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.photos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 150px;
+    overflow: scroll;
+}
+
+.photoItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.photoDetail {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.photoDetail img {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.photoDetail span {
+    font-size: 14px;
+    color: lightgrey;
+    font-weight: 300;
+}
+
+.user_block {
+    border-top: 1px solid #dddddd35;
+    margin-top: auto;
+}
+
+.user_block button {
+    width: 95%;
+    padding: 10px 20px;
+    background-color: rgba(230, 74, 105, 0.553);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.user_block button:hover {
+    background-color: rgba(220, 20, 60, 0.796);
+}
