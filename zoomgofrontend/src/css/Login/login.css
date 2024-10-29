@@ -1,0 +1,64 @@
+.section {
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    padding: 0;
+    margin: 0;
+}
+
+.loginForm {
+    position: absolute;
+    top:150px;
+    left:38%;
+    width: 500px;
+    height: 300px;
+
+}
+
+.loginForm h1 {
+    color:#6788FF;
+    margin-left:-50px;
+    font-size:60px;
+    font-weight:bold;
+    text-align: center;
+}
+
+.userId, .userPw {
+    padding:15px;
+    width:440px;
+    height:40px;
+    background: #EFEFDD;
+    border:0;
+    font-size:22px;
+    color:rgba(0, 0, 0, 0.5);
+}
+
+.userId::placeholder {
+    font-size:22px;
+}
+.loginForm .findPw { 
+    width:470px;
+    text-align: right;
+    color:#3fa3ff;
+}
+
+.loginSubmit {
+    width:290px;
+    height:90px;
+    font-size:32px;
+    color:white;
+    border:0;
+    border-radius:20px;
+    background:#6788FF;
+    margin-left:70px;
+    cursor: pointer;
+    margin-top:70px;
+}
+.loginForm .signup { 
+    color:#9F9F9F;
+    text-align: center;
+    width:440px;
+}
+.signup span {
+    color:#3fa3ff;
+}
