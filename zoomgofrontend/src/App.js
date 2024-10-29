@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import Login from './login';
+import Main from './main';
+import Profile from './profile';
+import ProfileInput from './profile.input';
+import Regist from './regist';
+// import findInfo from './findInfo'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AskEstimate from './ask_estimate';
+import CategoryPortfolio from './category_portfolio';
+import ExportEstimate from './exportEstimate';
+import ReceiveAsk from './gosu_receive_ask';
+import Portfolio from './portfolio';
+import InputPortfolio from './portfolio_input';
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path='/Login' element={<Login />} />
+        <Route path='/regist' element={<Regist />} />
+        <Route path='/Login' element={<Login />} />
+        <Route path='/ExportEstimate' element={<ExportEstimate />} />
+        <Route path="/ProfileInput" element={<ProfileInput />} />
+        <Route path="/Profile" element={<Profile />} />
+        <Route path="/Portfolio" element={<Portfolio />} />
+        <Route path="/PortfolioInput" element={<InputPortfolio />} />
+        <Route path="/categoryPorfolio" element={<CategoryPortfolio />} />
+        <Route path="/askEstimate" element={<AskEstimate />} />
+        <Route path="/receiveAsk" element={<ReceiveAsk />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

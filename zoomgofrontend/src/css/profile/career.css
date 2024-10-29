@@ -1,0 +1,113 @@
+
+.careerOpenBackground {
+    position:fixed;
+    background:rgba(0, 0, 0, 0.5);
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+}
+.careerOpen {
+    padding:10px;
+    overflow:auto;
+    margin:0 auto;
+    background:#ffffff;
+    width:400px;
+    height:952px;
+}
+
+.careerBox {
+    width:100%;
+    height:70%;
+}
+
+.closeButton {
+    border:0;
+    background:none;
+    width:50px;
+    height:50px;
+    font-size:30px;
+    color:gray;
+    margin-left:350px;
+}
+
+.careerBox p {
+    font-size:25px;
+}
+.input_explain {
+    font-size:12px;
+    color:gray;
+}
+
+.career_scroll {
+    overflow-y:scroll;
+    margin:0 auto;
+    height:70vh;
+}
+.career_info {
+    width:350px;
+    margin:0 auto;
+}
+.guide {
+    display:flex;
+    width:360px;
+    margin-top:10px;
+    height:90px;
+    padding:12px 0 0;
+    background:#f4f4f4;
+    border-radius:5px;
+}
+.guide_wide {
+    /* width:400px; */
+}
+.guide_icon {
+    color:black;
+    margin-left:10px;
+    margin-top:10px;
+    font-size:16px;
+}
+.guide_span_article {
+    font-size:14px;
+    margin-top:10px;
+    margin-left:10px;
+    color:#323232;
+}
+.career_info h4 {
+    color:#323232;
+    font-weight:none;
+}
+.career_company_name {
+    margin-top:10px;
+    padding:11px 16px;
+    width:316px;
+    height:28px;
+    border:1px solid #eaeaea;
+    font-size:14px;
+}
+.career_company_name::placeholder {
+    font-size:14px;
+}
+.letter_count {
+    float:right;
+    font-size:13px;
+    color:gray;
+}
+.counts {
+    color:blue;
+}
+.year_select {
+    margin-top:10px;
+    border:1px solid #f4f4f4;
+    color:#f4f4f4;
+    width:170px;
+    height:50px;
+}
+
+.month_select {
+    margin-top:10px;
+    border:1px solid #f4f4f4;
+    color:#f4f4f4;
+    width:170px;
+    height:50px;
+    margin-left:10px;
+}
