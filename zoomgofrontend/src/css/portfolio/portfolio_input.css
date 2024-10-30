@@ -1,0 +1,154 @@
+.portfolio_input_section {
+  width: 700px;
+  height: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.portfolio_input_h2 {
+  font-size: 28px;
+}
+
+.portfolio_input_section h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+.portfolio_input_section h4 {
+  font-size: 16px;
+  font-weight: bold;
+}
+.portfolio_title {
+  width: 670px;
+  height: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #eaeaea;
+}
+.portfolio_title::placeholder {
+  font-size: 16px;
+}
+
+.portfolio_title_count {
+  float: right;
+}
+
+.image_guide {
+  width: 670px;
+  height: 25px;
+  padding: 10px;
+  border-radius: 7px;
+  background: #f4f4f4;
+  font-size: 14px;
+}
+.portfolio_main_image {
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  width: 108px;
+  height: 108px;
+  border: 1px solid #eaeaea;
+  cursor: pointer;
+}
+
+.click1 {
+  margin-left: 40px;
+  font-weight: bold;
+}
+.click2 {
+  margin-left: 25px;
+  font-weight: bold;
+}
+.image_guide2 {
+  width: 670px;
+  height: 45px;
+  padding: 20px;
+  border-radius: 7px;
+  background: #f4f4f4;
+  font-size: 14px;
+}
+.portfolio_detail_image {
+  margin-right: 20px;
+  border-radius: 7px;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  margin-top: 20px;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #eaeaea;
+  cursor: pointer;
+}
+.final_price {
+  border: 1px solid #eaeaea;
+  margin-top: 20px;
+  padding: 10px;
+  width: 700px;
+  height: 35px;
+}
+.final_price::placeholder {
+  font-weight: bold;
+  font-size: 16px;
+  color: #737373;
+}
+.won {
+  margin-top: -35px;
+  position: absolute;
+  right: 32%;
+}
+
+.workYears {
+  width: 300px;
+  margin-top: 10px;
+  border: 1px solid #eaeaea;
+  padding: 15px;
+  height: 50px;
+}
+option {
+  font-size: 16px;
+}
+.portfolio_time::placeholder {
+  font-size: 16px;
+}
+.portfolio_time {
+  margin-top: 10px;
+  width: 150px;
+  height: 30px;
+  padding: 10px;
+  margin-right: 20px;
+}
+
+.choice_month_day_hour {
+  padding: 10px;
+  margin-top: 10px;
+  width: 180px;
+  height: 55px;
+}
+.work_article {
+  margin-top: 10px;
+  width: 680px;
+  height: 130px;
+  padding: 20px;
+  border: 1px solid #eaeaea;
+}
+textarea::focus {
+  color: none;
+}
+.work_article::placeholder {
+  font-size: 16px;
+}
+.textarea_count {
+  float: right;
+}
+.portfolio_button {
+  width: 340px;
+  height: 45px;
+  display: block;
+  font-size: 16px;
+  margin: 0 auto;
+  color: white;
+  border: 0;
+  border-radius: 7px;
+  background: #6788ff;
+}
+

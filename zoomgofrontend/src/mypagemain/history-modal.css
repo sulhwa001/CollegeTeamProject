@@ -1,0 +1,65 @@
+/* 모달을 위한 CSS */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 배경을 반투명하게 */
+    display: flex;
+   justify-content: end;
+    align-items: center;
+    z-index: 999; 
+  }
+  
+  .modal-content {
+    width: 35%;
+    height: 100%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+ 
+  
+  .modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: black;
+  }
+  
+  .modal-content label {
+    font-size: 60px;
+    float: left;
+  }
+
+.legend-joeunjun {
+    margin-top: 100px;
+    margin-left: 60px;
+}
+
+.legend-joeunjun h2 {
+    text-align: left;
+    font-size: 30px;
+}
+
+  .history-1 {
+    width: 200px;
+    height: 200px;
+    background-color: #d9d9d9;
+  }
+
+  .modal-overlay h4 {
+    text-align: left;
+    font-size: 15px;
+    margin-left: 60px;
+  }
+
+  .review-link {
+    float: left;
+    margin-left: 60px;
+  }

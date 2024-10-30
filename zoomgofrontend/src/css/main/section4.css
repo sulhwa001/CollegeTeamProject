@@ -1,0 +1,60 @@
+.section4 {
+    width:100%;
+    height:400px;
+    padding:0;
+    font-weight:bold;
+}
+
+.title4 h1{
+    margin-top:100px;
+    margin-left:400px;
+    font-size:24px;
+}
+.area_content {
+    margin-top:40px;
+    margin-left:380px;
+    width:1080px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.area_content > li {
+    width:220px;
+    height:220px;
+    padding:15px;
+    background: #F2F2F2;
+}
+.content_user_profile {
+    width:55px;
+    height:55px;
+    background: red;
+    border-radius: 55px 55px 55px 55px;
+}
+.article_box {
+    margin-top:20px;
+}
+.people_count {
+    color:blue;
+    font-size:16px;
+}
+.area_button {
+    /* border:0; */
+    background:#F2F2F2;
+    cursor:pointer;
+    border:0;
+}
+.review_info {
+    text-align: right;
+    margin-top:-10px;
+}
+.review_score {
+    font-size:14px;
+}
+.review_info img {
+    width:14px;
+    height:14px;
+}
+.review_profile_name {
+    margin-top:70px;
+    margin-left:10px;
+}
