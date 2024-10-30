@@ -107,6 +107,7 @@ header {
     justify-content: flex-start;
     gap: 10px; /* 버튼 간격 추가 */
 }
+
 .switch-page {
     text-decoration: none;
     color: white; /* 버튼 텍스트 색상 */

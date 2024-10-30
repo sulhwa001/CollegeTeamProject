@@ -1,9 +1,8 @@
-import React, { useState } from 'react'; // React와 useState를 함께 import
+import React, { useState } from 'react'; 
 import { useNavigate } from 'react-router-dom';
 import icon1 from './icon/icon1.png';
 import list from './icon/listicon.png';
-import './Header.css'; // 헤더 스타일은 따로 관리
-
+import './Header.css'; 
 function Header() {
     const navigate = useNavigate();
     const [showCategories, setShowCategories] = useState(false);
