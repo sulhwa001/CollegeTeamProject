@@ -1,0 +1,70 @@
+.gosu_receive_ask_section {
+  width: 1200px;
+  height: 1000px;
+  margin: 0 auto;
+  padding: 0;
+}
+.receiveBox {
+  margin-top: 200px;
+}
+.receiveList {
+  display: flex;
+  margin-top: 50px;
+  align-items:center;
+}
+.askBox {
+  justify-content: space-between;
+  margin-right: 100px;
+  width: 260px;
+  padding: 20px;
+  height: 260px;
+  border: 1px solid #eaeaea;
+}
+.progress_bar {
+  border-radius: 15px;
+  width: 265px;
+  height: 10px;
+  border:0;
+  background: #00ec7b;
+}
+.progress_state {
+  width: 270px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  color: #b6b1b1;
+}
+.progress_point {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: #6788ff;
+  margin-top: -15px;
+  margin-left: 250px;
+}
+
+.progress_state_article {
+  margin-top: 50px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.chatting {
+  border: 1px solid #eaeaea;
+  background: none;
+  width: 120px;
+  height: 45px;
+}
+.buttonList {
+  margin-top: 20px;
+}
+.move_write_review {
+  border: 0;
+  margin-left: 10px;
+  width: 120px;
+  height: 45px;
+  color: white;
+  background: #6788ff;
+}

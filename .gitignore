@@ -326,4 +326,19 @@ gradle-app.setting
 # Java heap dump
 *.hprof
 
+# Created by https://www.toptal.com/developers/gitignore/api/firebase
+# Edit at https://www.toptal.com/developers/gitignore?templates=firebase
+
+### Firebase ###
+.idea
+**/node_modules/*
+**/.firebaserc
+.env
+
+### Firebase Patch ###
+.runtimeconfig.json
+.firebase/
+
+# End of https://www.toptal.com/developers/gitignore/api/firebase
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,java,gradle,eclipse,intellij,visualstudiocode,react
