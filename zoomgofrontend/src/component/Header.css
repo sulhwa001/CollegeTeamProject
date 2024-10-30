@@ -1,0 +1,193 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff; /* 배경색을 흰색으로 변경 */
+    margin: 0;
+    padding: 0;
+}
+
+
+header {
+    background-color: #ffffff;
+    padding: 10px 10px;
+    margin-top: 45px;
+    display: flex;
+    justify-content: space-between; /* 로고와 카테고리 사이에 공간을 배분 */
+    align-items: center;
+}
+
+
+.logo {
+    font-size: 35px;
+    font-weight: bold;
+    color: #5380f4; 
+    position: relative;
+    left: 16.5% /* 값을 조정하여 로고를 오른쪽으로 이동 */;
+    cursor: pointer;
+
+}
+.nav {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* 로고 오른쪽에 메뉴를 배치하기 위한 설정 */
+}
+.nav a {
+    margin: 0 10px;
+    color: #333333;
+    text-decoration: none;
+}
+
+
+.nav input {
+    margin: 0 10px;
+    padding: 5px;
+}
+
+
+
+
+#search {
+    width: 500px; 
+    height: 30px; 
+    position: absolute; 
+    left:38%; 
+    top: 55px; 
+    border-radius: 15px;
+    text-align: center;
+    background: #f3efef;
+    border: 1px solid #eaeaea; /* 얇은 회색 선 추가 */
+}
+
+@media (max-width: 1600px) {
+    .header {
+        flex-direction: column; /* 로고와 카테고리를 세로로 배치 */
+        align-items: flex-start;
+    }
+    
+    .logo {
+        margin-bottom: 20px;
+        text-align: center;
+        margin-left: 0%; /* 로고를 오른쪽으로 이동 */
+    }
+
+    .nav {
+        justify-content: center;
+        margin-left: 100%;
+        margin-top: -40px; /* nav를 위로 올림 */
+    }
+
+    #category {
+        margin-left: 2%; 
+    }
+}
+
+
+#category {
+    width: 1150px; 
+    height: 25px; 
+    position: absolute; 
+    left:27%;
+}
+
+
+
+.button {
+    width: 500px; 
+    height: 40px; 
+    position: absolute; 
+    left:65%; 
+    margin-left: 8%; /* 전체 버튼 컨테이너를 오른쪽으로 이동 */
+
+}
+
+.top-menu {
+    position: absolute;
+    top: 25px; /* ZOOMGO logo 바로 위에 위치 */
+    left: 17.5%; /* 로고와 같은 위치로 맞춤 */
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px; /* 버튼 간격 추가 */
+}
+
+.switch-page {
+    text-decoration: none;
+    color: white; /* 버튼 텍스트 색상 */
+    font-size: 10px;
+    background-color: #5380f4; /* 활성화된 버튼의 파란색 배경 */    
+    padding: 7px 25px;
+    border-radius: 30px; /* 버튼의 둥근 모양 */
+    border: none;
+}
+
+.switch-page.inactive {
+    background-color: #E1E4EC; /* 비활성화된 버튼의 회색 배경 */
+    color: #C3C8D0; /* 비활성화된 버튼의 텍스트 색상 */
+}
+
+.switch-page:hover {
+    cursor: pointer;
+    background-color: #527ACC; /* 마우스 오버 시 파란색 버튼 색상 변경 */
+}
+
+
+.button img {
+    width: 35px;  /* 이미지의 너비를 35px로 설정 */
+    height: 35px; /* 이미지의 높이를 35px로 설정 */
+    margin-left: 0.5%; /* 각 이미지 간의 간격 */
+}
+
+/* 첫 번째 링크의 텍스트(채팅)를 위로 이동 */
+.button a:first-child {
+    position: relative;
+    top: -10px;
+    font-size: 16px;
+}
+
+/* 알림 배지 스타일 */
+.badge {
+    position: absolute;
+    top: -10px; /* 배지의 수직 위치를 텍스트 위로 */
+    right: 435px; /* 배지의 수평 위치를 텍스트 옆으로 */
+    background-color: red;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* 채팅 텍스트와 배지 컨테이너 */
+.chat-container {
+    display: inline-block;
+    position: relative;
+}
+
+.divider {
+    width: 0.7px; /* 가로 비율 축소 */
+    height: 80px; /* 세로 크기 조정 */
+    background-color: #ccc;
+}
+
+/* CategoryMenu.css */
+.category-dropdown {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.category-dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.category-dropdown ul li {
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.category-dropdown ul li:hover {
+    background-color: #f0f0f0;
+}

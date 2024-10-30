@@ -1,3 +1,9 @@
+import MainPage from './component/main.js'; // MainPage 컴포넌트 임포트
+import RegistrationPage from './component/registration.js'; // RegistrationPage 컴포넌트 임포트
+import Categorie from './component/categorie.js';
+import Header from './component/Header.js'; 
+import ProductPage from './component/detailpage.js'
+import AdminPage from './component/admin.js';
 import Header from './header/Header.js';
 import Registpage from './registpage/Registpage.js';
 import Loginpage from './loginpage/Loginpage.js';
@@ -9,8 +15,6 @@ import './App.css';
 import './index.css';
 import BoardList from './Board/Board_List.js';
 import InputText from './Board/Input.js';
-import { BrowserRouter, Routes } from 'react-router-dom';
-import { Route } from 'react-router-dom';
 import Detail from './Board/Detail.js';
 import Recommand from './review/Recommand_modal.js';
 import GosuReview from './review/Gosu_review.js';
@@ -47,6 +51,11 @@ function App() {
           <Route path='/detail' element={<Detail/>}/>
           <Route path='/recommand' element={<Recommand/>}/>
           <Route path='/gosu_review' element={<GosuReview/>}/>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/registration" element={<RegistrationPage />} />
+          <Route path="/categorie" element={<Categorie />} />
+          <Route path="/detailpage" element={<ProductPage />} />
+          <Route path="/admin" element={<AdminPage />} />
         <Route path="/" element={<Main />} />
         <Route path='/Login' element={<Login />} />
         <Route path='/regist' element={<Regist />} />
