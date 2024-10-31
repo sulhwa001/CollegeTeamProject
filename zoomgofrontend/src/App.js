@@ -1,9 +1,10 @@
-// import Header from './header/Header.js';
+// import Header from './header.js';
 import Registpage from './registpage/Registpage.js';
 import Loginpage from './loginpage/Loginpage.js';
 import Forgotpassword from './forgotpassword/forgotpassword.js';
 import Agreement from './agreement/agreement.js';
 import Mypagemain from './mypagemain/Mypagemain.js';
+import Userinfo from './userinfo/userinfo.js';
 import './App.css';
 import './index.css';
 import BoardList from './Board/Board_List.js';
@@ -35,7 +36,7 @@ function App() {
           {/* <Route path="/" element={<Loginpage />} /> */}
           <Route path="/regist" element={<Registpage />} />
           <Route path="/forgotpassword" element={<Forgotpassword />} />
-          {/* <Route path="/userinfo" element={<Userinfo />} /> */}
+          <Route path="/userinfo" element={<Userinfo />} />
           <Route path="/agreement" element={<Agreement/>} />
           <Route path="/mypagemain" element={<Mypagemain/>} />
           <Route path="/boardlist" element={<BoardList/>}/>
@@ -56,6 +57,7 @@ function App() {
         <Route path="/askEstimate" element={<AskEstimate />} />
         <Route path="/receiveAsk" element={<ReceiveAsk />} />
       </Routes>
+  
     </BrowserRouter>
     </div>
   );
