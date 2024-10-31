@@ -22,7 +22,7 @@ function MainPage() {
                 {/* 첫 번째 상품 섹션 */}
                 <section className="mainproduct">
                     <div className="section-header">
-                        <h2>최근 올라온 상품</h2>
+                    <h2>최근 올라온 상품</h2>
                     </div>
                     <div className="mainproduct-list" onClick={() => navigate('/detailpage')}>
                         {createProductItem("상품1", "10,000원")}

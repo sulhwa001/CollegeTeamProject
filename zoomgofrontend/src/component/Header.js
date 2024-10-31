@@ -1,8 +1,9 @@
-import React, { useState } from 'react'; 
+import React, { useState } from 'react'; // React와 useState를 함께 import
 import { useNavigate } from 'react-router-dom';
 import icon1 from './icon/icon1.png';
 import list from './icon/listicon.png';
 import './Header.css'; 
+
 function Header() {
     const navigate = useNavigate();
     const [showCategories, setShowCategories] = useState(false);
@@ -18,7 +19,7 @@ function Header() {
     };
 
     return (
-        <header className="header">
+        <header className="zoomheader">
             {/* 상단 메뉴 */}
             <div className="top-menu">
                 <a href="#" className="switch-page active">중고</a>
@@ -26,7 +27,7 @@ function Header() {
             </div>
 
             {/* 로고 */}
-            <div className="logo" onClick={() => navigate('/')}>
+            <div className="zoomlogo" onClick={() => navigate('/')}>
                 ZOOMGO
             </div>
 
@@ -50,7 +51,7 @@ function Header() {
                     )}
                 </div>
                 <input type="text" id="search" placeholder="어떤 상품이 필요하신가요?" />
-                <div className="button">
+                <div className="zoombutton">
                     <a href="#">채팅</a>
                     <span className="badge">14</span>
                     <a href="#"><img src={icon1} alt="mypage" onClick={() => navigate('/admin')}/></a>
