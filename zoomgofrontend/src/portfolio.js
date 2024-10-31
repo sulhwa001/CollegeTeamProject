@@ -1,7 +1,7 @@
 import { FaAngleLeft, FaAngleRight, FaStar } from "react-icons/fa";
 import { FaRegShareFromSquare } from "react-icons/fa6";
 import "./css/portfolio/portfolio.css";
-import Header from "./header";
+import Header from "./gosu_header";
 import dogs from "./img/dog.png";
 function Portfolio() {
   return (

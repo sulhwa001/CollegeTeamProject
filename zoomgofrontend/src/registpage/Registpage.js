@@ -35,7 +35,7 @@ function RegistPage() {
             id="verification"
             placeholder="인증번호를 입력하세요" />
             <div className='gogodeta'>
-          <button type="button">인증</button>
+          <button className="authorization_button" type="button">인증</button>
           </div>
         </div>
         <label>메일로 전송한 인증번호를 입력해주세요</label>

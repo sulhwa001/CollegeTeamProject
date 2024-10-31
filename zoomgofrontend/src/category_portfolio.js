@@ -1,5 +1,5 @@
 import "./css/portfolio/portfolio_category.css";
-import Header from "./header";
+import Header from "./gosu_header";
 function CategoryPortfolio() {
   const categoryList = ["가", "나", "다", "라", "마", "바"];
   const areaList = [

@@ -1,12 +1,11 @@
-
 import './App.css';
 import './css/main/footer.css';
-import './css/main/header.css';
+import './css/main/gosu_header.css';
 import './css/main/section.css';
 import './css/main/section2.css';
 import './css/main/section3.css';
 import './css/main/section4.css';
-import Header from './header';
+import Header from './gosu_header';
 
 import stars from "./img/review_stars.png";
 function Main() {

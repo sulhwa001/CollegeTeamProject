@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './css/regist/regist.css';
-import Header from './header';
+import Header from './gosu_header';
 function Regist() {
 
     const [userFirstName, setUserFirstName] = useState("")
@@ -78,7 +78,7 @@ function Regist() {
                     </ul>
                     <div className='sex'>
                         성별:<br />
-                        <select  selected>
+                        <select className="select_sex"  selected>
                             <option>male</option>
                             <option>Female</option>
                         </select>

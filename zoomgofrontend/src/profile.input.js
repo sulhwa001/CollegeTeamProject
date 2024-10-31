@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./css/profile/career.css";
 import "./css/profile/profileInput.css";
-import Header from "./header";
+import Header from "./gosu_header";
 function ProfileInput() {
   const [fileName, setFileName] = useState("");
 

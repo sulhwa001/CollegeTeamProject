@@ -166,7 +166,7 @@
     text-align: left;
     border-radius: 10px;
 }
-select {
+.select_sex {
     width:100px;
     padding:10px;
     height:40px;
