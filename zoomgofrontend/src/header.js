@@ -22,7 +22,7 @@ function Header() {
                 <ul className="profileList">
                     <li><a href="#">받은 견적</a></li>
                     <li><a href="#">채팅</a></li>
-                    <Link to="/Login"><li><button>로그인</button></li></Link>
+                    <Link to="/Loginpage"><li><button>로그인</button></li></Link>
                     <li><button>고수 전환</button></li>
                 </ul>
             </div>

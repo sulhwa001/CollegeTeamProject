@@ -6,7 +6,7 @@ function RegistPage() {
   const navigate = useNavigate(); // useNavigate 훅 사용
 
   const handleNextClick = () => {
-    navigate('/userinfo'); // '/userinfo' 경로로 이동
+    navigate('./registpage.js '); // '/userinfo' 경로로 이동
   };
 
   return (
