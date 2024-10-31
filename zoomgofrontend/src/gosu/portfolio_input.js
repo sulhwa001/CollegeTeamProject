@@ -1,4 +1,4 @@
-import "./css/portfolio/portfolio_input.css";
+import "../css/portfolio/portfolio_input.css";
 import Header from "./gosu_header";
 function InputPortfolio() {
   const years = [];

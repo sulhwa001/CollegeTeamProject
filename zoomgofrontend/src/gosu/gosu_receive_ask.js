@@ -1,4 +1,4 @@
-import "./css/gosu_receive_ask/gosu_receive_ask.css";
+import "../css/gosu_receive_ask/gosu_receive_ask.css";
 import Header from "./gosu_header";
 
 function ReceiveAsk() {

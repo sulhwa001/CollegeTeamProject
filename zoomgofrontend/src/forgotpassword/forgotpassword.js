@@ -3,7 +3,6 @@ import './forgotpassword.css';
 
 function forgotpassword() {
   return (
-    
     <div className='forgotpassword1'>
       <h1 className='mainlogo'>ZOOMGO</h1>
       <h2 className='forgotpassword'>비밀번호 변경</h2>

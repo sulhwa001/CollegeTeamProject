@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './css/regist/regist.css';
+import '../css/regist/regist.css';
 import Header from './gosu_header';
 function Regist() {
 

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./css/main/gosu_header.css";
+import "../css/main/gosu_header.css";
 
 function Header() {
   return (

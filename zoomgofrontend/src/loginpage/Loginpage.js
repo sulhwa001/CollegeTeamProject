@@ -12,7 +12,7 @@ function loginpage() {
             className='login-main-email'
             type="text"
             id="email"
-            placeholder="zoomgo@gamil.com"/>
+            placeholder="zoomgo@gmail.com"/>
         </div>
       </form>
       <form className="loginpage-form">

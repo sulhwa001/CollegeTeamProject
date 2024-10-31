@@ -1,13 +1,13 @@
-import './App.css';
-import './css/main/footer.css';
-import './css/main/gosu_header.css';
-import './css/main/section.css';
-import './css/main/section2.css';
-import './css/main/section3.css';
-import './css/main/section4.css';
+import '../App.css';
+import '../css/main/footer.css';
+import '../css/main/gosu_header.css';
+import '../css/main/section.css';
+import '../css/main/section2.css';
+import '../css/main/section3.css';
+import '../css/main/section4.css';
 import Header from './gosu_header';
 
-import stars from "./img/review_stars.png";
+import stars from "../img/review_stars.png";
 function Main() {
     return (
         <div className='App'>
@@ -73,7 +73,7 @@ function Main() {
                         <div className="content_user_profile"></div>
                         <div className="article_box">
                             <span className="people_count">0명</span>의
-                            <br />숨은 고수 찾아보기<br /><br /><br /><button>▷</button>
+                            <br />숨은 고수 찾아보기<br /><br /><br /><button className="move_gosuporfolio_list">▷</button>
                         </div>
                     </li>
                     <li>
@@ -83,7 +83,7 @@ function Main() {
                         <div className="review_profile">
                             <div className="profile_picture"></div>
                             <div className="review_profile_name">이재한</div>
-                            <div className="experience">경력 5년 · 평균 5분 이내 응답</div>
+                            <div className="gosu_experience">경력 5년 · 평균 5분 이내 응답</div>
                         </div>
                     </li>
                     <li>
@@ -93,7 +93,7 @@ function Main() {
                         <div className="review_profile">
                             <div className="profile_picture"></div>
                             <div className="review_profile_name">이재한</div>
-                            <div className="experience">경력 5년 · 평균 5분 이내 응답</div>
+                            <div className="gosu_experience">경력 5년 · 평균 5분 이내 응답</div>
                         </div>
                     </li>
                     <li>
@@ -103,7 +103,7 @@ function Main() {
                         <div className="review_profile">
                             <div className="profile_picture"></div>
                             <div className="review_profile_name">이재한</div>
-                            <div className="experience">경력 5년 · 평균 5분 이내 응답</div>
+                            <div className="gosu_experience">경력 5년 · 평균 5분 이내 응답</div>
                         </div>
                     </li>
                 </ul>

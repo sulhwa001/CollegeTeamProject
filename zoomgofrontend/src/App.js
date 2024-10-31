@@ -9,26 +9,26 @@ import ProductPage from "./component/detailpage.js";
 import MainPage from "./component/main.js"; // MainPage 컴포넌트 임포트
 import RegistrationPage from "./component/registration.js"; // RegistrationPage 컴포넌트 임포트
 import Forgotpassword from "./forgotpassword/forgotpassword.js";
+import Login from "./gosu/login.js";
+import Main from "./gosu/main.js";
+import ProfileInput from "./gosu/profile.input.js";
+import Profile from "./gosu/profile.js";
+import Regist from "./gosu/regist.js";
 import "./index.css";
-import Login from "./login";
 import Loginpage from "./loginpage/Loginpage.js";
-import Main from "./main";
 import Mypagemain from "./mypagemain/Mypagemain.js";
-import Profile from "./profile";
-import ProfileInput from "./profile.input";
-import Regist from "./regist";
 import Registpage from "./registpage/Registpage.js";
 import GosuReview from "./review/Gosu_review.js";
 import Recommand from "./review/Recommand_modal.js";
 // import Userinfo from "./userinfo";
 // import findInfo from './findInfo'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import AskEstimate from "./ask_estimate";
-import CategoryPortfolio from "./category_portfolio";
-import ExportEstimate from "./exportEstimate";
-import ReceiveAsk from "./gosu_receive_ask";
-import Portfolio from "./portfolio";
-import InputPortfolio from "./portfolio_input";
+import AskEstimate from "./gosu/ask_estimate.js";
+import CategoryPortfolio from "./gosu/category_portfolio.js";
+import ExportEstimate from "./gosu/exportEstimate.js";
+import ReceiveAsk from "./gosu/gosu_receive_ask.js";
+import Portfolio from "./gosu/portfolio.js";
+import InputPortfolio from "./gosu/portfolio_input.js";
 
 function App() {
   return (

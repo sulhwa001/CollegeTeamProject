@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import './css/Login/login.css';
+import '../css/Login/login.css';
 import Header from './gosu_header';
 function Login() {
     return (
