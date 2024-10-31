@@ -2,7 +2,6 @@
 import Registpage from './registpage/Registpage.js';
 import Loginpage from './loginpage/Loginpage.js';
 import Forgotpassword from './forgotpassword/forgotpassword.js';
-import Regist from './registpage/Registpage.js';
 import Agreement from './agreement/agreement.js';
 import Mypagemain from './mypagemain/Mypagemain.js';
 import './App.css';
