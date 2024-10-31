@@ -1,0 +1,179 @@
+/* body {
+    background-color: #ffffff;
+    display: flex; 
+    justify-content: space-around; 
+    align-items: center; 
+}
+   */
+.userinfo-form {
+    margin-top: 100px;
+    width: 919px;
+    height: 1050px;
+    border-color: #808080;
+    border-style: solid;
+    background-color: transparent;
+    border-width: 1px;
+    border-radius: 10px;
+    margin-bottom: 100px;
+    margin-left: 500px;
+}
+
+.userinfo-logo {
+    color: #7d8ff0;
+    font-size: 48px; 
+    margin-bottom: 80px; 
+    text-align: center;
+}
+
+.password-info {
+    margin-left: 90px;
+}
+
+.passwordcss {
+    margin-left: 90px;
+    width: 300px;
+    height: 40px;
+    background-color: #f0f0f0; 
+    border: none; 
+    border-radius: 5px; 
+    float: left;
+}
+
+.inputerror {
+    margin-left: 90px;
+    color: red;
+}
+.input-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 40px; /* 입력 필드 간 간격을 설정 */
+    margin-top: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.input-group5 {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .gender-label {
+    margin-left: 90px;
+    margin-bottom: 8px;
+  }
+  
+  .gender-select {
+    width: 100px;
+    height: 40px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    margin-left: 90px;
+    padding: 8px;
+  }
+
+.gogotsugi_button {
+    margin-left: 370px;
+}
+.gogotsugi {
+    width: 180px;
+    border-radius: 20px; 
+    padding: 12px 16px; 
+    margin-left: 5px; 
+    background-color: #7d8ff0;
+    color: white;
+    border: none;
+    font-size: 16px; 
+    cursor: pointer;
+}
+
+.input-group3 {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.namecss {
+    width: 150px;
+    height: 40px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+}
+
+.password-info, .firstname-info, .lastname-info {
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+.namecss2 {
+    width: 300px;
+    height: 40px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+}
+
+.inputerror2 {
+    margin-left: 90px;
+    color: red;
+}
+
+.address-input {
+    padding: 8px;
+    border: none;
+    color: white;
+    border-radius: 7px;
+    background-color: #7d8ff0;
+    margin-top: -40px;
+    margin-left: 410px; /* input 필드와 버튼 사이 간격 */
+    cursor: pointer;
+}
+
+.address-input-add {
+    margin-left: 90px;
+    width: 550px;
+    height: 40px;
+    background-color: #f0f0f0; 
+    border: none; 
+    border-radius: 5px; 
+    float: left;
+}
+
+.birth-date {
+    margin-right: 680px;
+}
+
+.birth-date-input {
+    border: none; 
+    margin-left: 90px;
+    width: 150px;
+    height: 30px;
+    background-color: #f0f0f0; 
+    padding: 8px;
+    margin-top: 10px;
+  }
+
+  .input-group4 {
+    margin-top: 0px;
+  }
+
+  .phone_number_info {
+    font-size: 25px;
+    width: 470px;
+    height: 30px;
+    padding: 12px; 
+    background-color: #f0f0f0; 
+    border: none; 
+    border-radius: 5px; 
+}
