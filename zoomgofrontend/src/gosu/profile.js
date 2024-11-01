@@ -1,6 +1,6 @@
-import Header from './header'
-import './css/profile/top.css'
-import './css/profile/middle.css'
+import '../css/profile/middle.css';
+import '../css/profile/top.css';
+import Header from './gosu_header';
 
 import { FaStar } from "react-icons/fa";
 function Portfolio() {

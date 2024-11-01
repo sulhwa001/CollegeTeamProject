@@ -31,18 +31,22 @@
     margin-bottom: 80px;
 }
 
-.loginopage-button {
-    width: 180px;
-    padding: 17px;
-    border-radius: 20px; 
-}
 
 .loginpage-button {
     width: 180px;
     padding: 17px;
     border-radius: 20px; 
-    
+    border:0;   
+    background:#6788FF;
+    color:white;
+    font-size:16px;
 }
+.loginpage-button:hover {
+    color:black;
+    background:#f0f0f0;
+}
+
+
 
 .loginpage-button-form {
     justify-content: center;

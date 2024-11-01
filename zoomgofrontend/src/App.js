@@ -52,7 +52,6 @@ import Regist from './regist';
 
 
 function App() {
-
   return (
       <div className="App">
         <BrowserRouter>

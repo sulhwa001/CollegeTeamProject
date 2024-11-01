@@ -6,12 +6,12 @@ body {
 }
 
 
-header {
+.zoongo_header {
     background-color: #ffffff;
     padding: 10px 10px;
-    margin-top: 45px;
+    margin-top: 1px;
     display: flex;
-    justify-content: space-between; /* 로고와 카테고리 사이에 공간을 배분 */
+    justify-content: space-between;
     align-items: center;
 }
 
