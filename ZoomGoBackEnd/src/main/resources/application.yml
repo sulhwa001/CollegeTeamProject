@@ -1,29 +1,14 @@
-#spring.application.name=ZoomGoBackEnd
-
+#spring.application.name=zoomgobackend
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/test01
-    username: root
-    password: 1234
-<<<<<<< HEAD
-    driverClassName: com.mysql.cj.jdbc.Driver
-=======
-    driver-class-name: com.mysql.cj.jdbc.Driver
->>>>>>> 8dcee189db7af903d7df46b9e1c987499489a4d0
+    diverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/bootex
+    username: bootuser
+    password: Bootuser123!@#
   jpa:
     hibernate:
       ddl-auto: update
-      properties:
-        hibernate:
-          format_sql: true
     properties:
       hibernate:
-        show_sql: true
         format_sql: true
-
-    logging:
-      level:
-        org:
-          hibernate:
-            SQL: debug
-            type: trace
+    show-sql: true
