@@ -1,9 +1,9 @@
-import MainPage from './component/main.js'; // MainPage 컴포넌트 임포트
-import RegistrationPage from './component/registration.js'; // RegistrationPage 컴포넌트 임포트
-import Categorie from './component/categorie.js';
+import MainPage from './zoom/main.js'; // MainPage 컴포넌트 임포트
+import RegistrationPage from './zoom/registration.js'; // RegistrationPage 컴포넌트 임포트
+import Categorie from './zoom/categorie.js';
 // import Header from './component/Header.js'; 
-import ProductPage from './component/detailpage.js'
-import AdminPage from './component/admin.js';
+import ProductPage from './zoom/detailpage.js'
+import AdminPage from './zoom/admin.js';
 //import Header from './header/Header.js';
 import Registpage from './registpage/Registpage.js';
 import Loginpage from './loginpage/Loginpage.js';

@@ -1,5 +1,5 @@
 import React from 'react';
-import './detailpage.css'; // CSS 파일을 불러옴
+import './css/detailpage.css'; // CSS 파일을 불러옴
 import dibs from './icon/dibs.png';
 import Header from './Header';
 

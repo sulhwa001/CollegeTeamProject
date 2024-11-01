@@ -1,5 +1,5 @@
 import React from 'react';
-import './categorie.css'; 
+import './css/categorie.css'; 
 import Header from './Header'; 
 import { useNavigate } from 'react-router-dom';
 

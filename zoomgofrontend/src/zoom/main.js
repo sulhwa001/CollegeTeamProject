@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import icon1 from './icon/icon1.png';
 import list from './icon/listicon.png';
 import Header from './Header'; 
-import './main.css';
+import './css/main.css';
 function MainPage() {
     const navigate = useNavigate();
 

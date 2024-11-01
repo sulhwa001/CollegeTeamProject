@@ -1,5 +1,5 @@
 import React from 'react';
-import './registration.css';
+import './css/registration.css';
 import { useNavigate } from 'react-router-dom';
 import icon1 from './icon/icon1.png';
 import list from './icon/listicon.png';

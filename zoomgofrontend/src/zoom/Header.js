@@ -2,7 +2,7 @@ import React, { useState } from 'react'; // React와 useState를 함께 import
 import { useNavigate } from 'react-router-dom';
 import icon1 from './icon/icon1.png';
 import list from './icon/listicon.png';
-import './Header.css'; 
+import './css/Header.css'; 
 
 function Header() {
     const navigate = useNavigate();
