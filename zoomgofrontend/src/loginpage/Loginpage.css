@@ -31,15 +31,27 @@
     margin-bottom: 80px;
 }
 
-
-.loginpage-button {
+.loginopage-button {
     width: 180px;
     padding: 17px;
     border-radius: 20px; 
-    border:0;   
-    background:#6788FF;
-    color:white;
-    font-size:16px;
+    
+}
+
+.loginpage-button {
+    width: 180px;
+    height: 60px;
+    padding: 17px;
+    border-radius: 20px; 
+    padding: 12px 16px; 
+    margin-left: 5px; 
+    background-color: #7d8ff0;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px; 
+    cursor: pointer;
+    
 }
 .loginpage-button:hover {
     color:black;

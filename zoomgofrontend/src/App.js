@@ -30,6 +30,14 @@ import Detail from './Board/Detail.js';
 //리뷰 임포트
 import Recommand from './review/Recommand_modal.js';
 import GosuReview from './review/Gosu_review.js';
+<<<<<<< HEAD
+// import Login from './login';
+import Main from './main';
+import Profile from './profile';
+import ProfileInput from './profile.input';
+// import Regist from './regist';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+=======
 
 //채팅 임포트
 import Chat from './Chat/Chat_main.js'
@@ -39,6 +47,7 @@ import GosuMain from './main';
 import Profile from './profile';
 import ProfileInput from './profile.input';
 // import findInfo from './findInfo'
+>>>>>>> 1b3325f9a05b3b16e41837841c7cf4766ff7585f
 import AskEstimate from './ask_estimate';
 import CategoryPortfolio from './category_portfolio';
 import ExportEstimate from './exportEstimate';

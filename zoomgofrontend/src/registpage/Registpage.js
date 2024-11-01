@@ -6,7 +6,7 @@ function RegistPage() {
   const navigate = useNavigate(); // useNavigate 훅 사용
 
   const handleNextClick = () => {
-    navigate('/userinfo'); // '/userinfo' 경로로 이동
+    navigate('/userinfo '); // '/userinfo' 경로로 이동
   };
 
   return (
@@ -21,7 +21,7 @@ function RegistPage() {
             id="email"
             placeholder="zoomgo.gmail.com" />
             <div className='gogodeta'>
-          <button type="button">전송</button>
+          <button type="button" className='send_button'>전송</button>
           </div>
         </div>
       </form>
@@ -35,7 +35,7 @@ function RegistPage() {
             id="verification"
             placeholder="인증번호를 입력하세요" />
             <div className='gogodeta'>
-          <button className="authorization_button" type="button">인증</button>
+          <button type="button" className='number_button'>인증</button>
           </div>
         </div>
         <label>메일로 전송한 인증번호를 입력해주세요</label>
