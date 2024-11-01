@@ -1,8 +1,8 @@
 import { FaAngleLeft, FaAngleRight, FaStar } from "react-icons/fa";
 import { FaRegShareFromSquare } from "react-icons/fa6";
-import "./css/portfolio/portfolio.css";
-import Header from "./header";
-import dogs from "./img/dog.png";
+import "../css/portfolio/portfolio.css";
+import dogs from "../img/dog.png";
+import Header from "./gosu_header";
 function Portfolio() {
   return (
     <div className="App">

@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+*:focus {
+  outline: 0;
+}
+.gosu_header {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  border-bottom: 0.1px solid #c7c7c7;
+  font-family: "Inter", sans-serif;
+  background: white;
+}
+.banner_button {
+  /* padding:0 0 0 20px; */
+  border: 0;
+  background: #6788ff;
+  color: white;
+  font-weight: bold;
+  border-radius:10px;
+  font-size: 16px;
+  margin-left:20px;
+  width:80px;
+  height:30px;
+  background:#9ea4bc;
+}
+
+.gosu_header .gosu_banner {
+  background: white;
+  font-size: 10px;
+  width: 300px;
+  height: 50px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  color: white;
+  margin-left: 80px;
+}
+.banner_button:hover {
+  cursor: pointer;
+  background-color: #6788ff;
+}
+
+.gosu_Logo .logo_button {
+  font-weight: bold;
+  font-size: 32px;
+  text-decoration: none;
+  color: #6788ff;
+  background: #ffffff;
+  width: 150px;
+  border: 0;
+}
+
+.gosu_Category {
+  width: 500px;
+  height: 70px;
+  display: flex;
+}
+.gosu_CategoryList {
+  display: flex;
+  align-items: center;
+}
+.gosu_CategoryList li > a {
+  color: black;
+  font-weight: bold;
+  margin-left: 30px;
+  font-size: 16px;
+}
+.gosu_profile {
+  width: 500px;
+  height: 70px;
+  display: flex;
+}
+.gosu_profileList {
+  display: flex;
+  align-items: center;
+}
+.gosu_profileList li a {
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 30px;
+  color: black;
+}
+.gosu_profileList button {
+  width: 90px;
+  border-radius: 10px;
+  height: 45px;
+  margin-left: 20px;
+  background: #6788ff;
+  font-weight: bold;
+  color: white;
+  font-size: 16px;
+  border: 0;
+}
+
+.gosu_profileList button:hover {
+  background: #00000073;
+}
