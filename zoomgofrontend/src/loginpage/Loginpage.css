@@ -53,6 +53,12 @@
     cursor: pointer;
     
 }
+.loginpage-button:hover {
+    color:black;
+    background:#f0f0f0;
+}
+
+
 
 .loginpage-button-form {
     justify-content: center;
