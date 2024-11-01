@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import icon1 from './icon/icon1.png';
 import list from './icon/listicon.png';
 import Header from './Header'; 
-import './main.css';
+import './css/main.css';
 function MainPage() {
     const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ function MainPage() {
                 {/* 첫 번째 상품 섹션 */}
                 <section className="mainproduct">
                     <div className="section-header">
-                        <h2>최근 올라온 상품</h2>
+                    <h2>최근 올라온 상품</h2>
                     </div>
                     <div className="mainproduct-list" onClick={() => navigate('/detailpage')}>
                         {createProductItem("상품1", "10,000원")}

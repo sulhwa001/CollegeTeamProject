@@ -4,19 +4,16 @@ body {
     margin: 0;
     padding: 0;
 }
-
-
-.zoongo_header {
+.zoomheader {
     background-color: #ffffff;
-    padding: 10px 10px;
-    margin-top: 1px;
+    padding: 30px 30px;
+    margin-top: 30px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     align-items: center;
 }
 
-
-.logo {
+.zoomlogo {
     font-size: 35px;
     font-weight: bold;
     color: #5380f4; 
@@ -25,10 +22,13 @@ body {
     cursor: pointer;
 
 }
+
+
 .nav {
     display: flex;
     align-items: center;
     margin-left: auto; /* 로고 오른쪽에 메뉴를 배치하기 위한 설정 */
+
 }
 .nav a {
     margin: 0 10px;
@@ -49,8 +49,8 @@ body {
     width: 500px; 
     height: 30px; 
     position: absolute; 
-    left:38%; 
-    top: 55px; 
+    left:37%; 
+    top: 60px; 
     border-radius: 15px;
     text-align: center;
     background: #f3efef;
@@ -58,12 +58,8 @@ body {
 }
 
 @media (max-width: 1600px) {
-    .header {
-        flex-direction: column; /* 로고와 카테고리를 세로로 배치 */
-        align-items: flex-start;
-    }
-    
-    .logo {
+
+    .zoomlogo {
         margin-bottom: 20px;
         text-align: center;
         margin-left: 0%; /* 로고를 오른쪽으로 이동 */
@@ -76,7 +72,7 @@ body {
     }
 
     #category {
-        margin-left: 2%; 
+        margin-left: 1%; 
     }
 }
 
@@ -85,19 +81,35 @@ body {
     width: 1150px; 
     height: 25px; 
     position: absolute; 
-    left:27%;
+    left:28.5%;
+    top: 70px;
 }
 
 
 
-.button {
+.zoombutton {
     width: 500px; 
     height: 40px; 
     position: absolute; 
     left:65%; 
     margin-left: 8%; /* 전체 버튼 컨테이너를 오른쪽으로 이동 */
+    top:65px;
 
 }
+
+.zoombutton img {
+    width: 35px;  /* 이미지의 너비를 35px로 설정 */
+    height: 35px; /* 이미지의 높이를 35px로 설정 */
+    margin-left: 0.5%; /* 각 이미지 간의 간격 */
+}
+
+/* 첫 번째 링크의 텍스트(채팅)를 위로 이동 */
+.zoombutton a:first-child {
+    position: relative;
+    top: -10px;
+    font-size: 16px;
+}
+
 
 .top-menu {
     position: absolute;
@@ -107,7 +119,6 @@ body {
     justify-content: flex-start;
     gap: 10px; /* 버튼 간격 추가 */
 }
-
 .switch-page {
     text-decoration: none;
     color: white; /* 버튼 텍스트 색상 */
@@ -129,18 +140,6 @@ body {
 }
 
 
-.button img {
-    width: 35px;  /* 이미지의 너비를 35px로 설정 */
-    height: 35px; /* 이미지의 높이를 35px로 설정 */
-    margin-left: 0.5%; /* 각 이미지 간의 간격 */
-}
-
-/* 첫 번째 링크의 텍스트(채팅)를 위로 이동 */
-.button a:first-child {
-    position: relative;
-    top: -10px;
-    font-size: 16px;
-}
 
 /* 알림 배지 스타일 */
 .badge {
