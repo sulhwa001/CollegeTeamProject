@@ -2,9 +2,9 @@
 spring:
   datasource:
     diverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/bootex
-    username: bootuser
-    password: Bootuser123!@#
+    url: jdbc:mysql://localhost:3306/test01
+    username: root
+    password: 1234
   jpa:
     hibernate:
       ddl-auto: update
