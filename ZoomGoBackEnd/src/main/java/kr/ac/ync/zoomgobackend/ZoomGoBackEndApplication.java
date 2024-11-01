@@ -1,4 +1,4 @@
-package kr.ac.ync.ZoomGoBackEnd;
+package kr.ac.ync.zoomgobackend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
