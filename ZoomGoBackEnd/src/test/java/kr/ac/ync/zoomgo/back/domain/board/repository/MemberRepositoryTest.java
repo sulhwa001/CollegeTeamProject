@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MemberRepositoryTest {
     @Autowired
     private MemberRepository memberRepository;
-    
+
     @Test
     void insertMembers(){
         IntStream.rangeClosed(1,100).forEach(i-> {

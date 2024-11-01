@@ -5,18 +5,18 @@ import list from './icon/listicon.png';
 import './css/Header.css'; 
 
 function Header() {
-    const navigate = useNavigate();
-    const [showCategories, setShowCategories] = useState(false);
+  const navigate = useNavigate();
+  const [showCategories, setShowCategories] = useState(false);
 
-    // 마우스가 들어왔을 때 카테고리를 표시
-    const handleMouseEnter = () => {
-        setShowCategories(true);
-    };
+  // 마우스가 들어왔을 때 카테고리를 표시
+  const handleMouseEnter = () => {
+    setShowCategories(true);
+  };
 
-    // 마우스가 나갔을 때 카테고리를 숨김
-    const handleMouseLeave = () => {
-        setShowCategories(false);
-    };
+  // 마우스가 나갔을 때 카테고리를 숨김
+  const handleMouseLeave = () => {
+    setShowCategories(false);
+  };
 
     return (
         <header className="zoomheader">

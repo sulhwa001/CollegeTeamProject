@@ -1,22 +1,7 @@
 import { MdOutlineNotificationsActive } from "react-icons/md";
-import "./css/estimate/estimate.css";
-import Header from "./header";
-function AskEstimate() {
-  const calendar = [];
-  const today = new Date();
-  const timestamp = today.getTime();
-
-  for (let i = 0; i < 10; i++) {
-    const dateFromTimestamp = new Date(timestamp + i * 24 * 60 * 60 * 1000); // 하루씩 더하기
-    calendar.push(
-      dateFromTimestamp.toLocaleDateString("ko-KR", {
-        year: "2-digit",
-        month: "2-digit",
-        day: "2-digit",
-      })
-    );
-  }
-
+import "../css/estimate/estimate.css";
+import Header from "./gosu_header";
+function ExportEstimate() {
   return (
     <div className="App">
       <Header />
@@ -26,7 +11,7 @@ function AskEstimate() {
             <div className="estimate_profile_info">
               <div className="estimate_profile_img"></div>
               <div className="estimate_profile_indiinfo">
-                <h3>김고수</h3>
+                <h3>박재찬</h3>
                 <p>정신 건강</p>
                 <p>중국 베이징시 텐진</p>
               </div>
@@ -42,9 +27,30 @@ function AskEstimate() {
             </div>
             <button className="detail_profile_info">상세 정보 보기</button>
           </div>
-          <p className="profile_label" style={{height:"15px"}}></p>
+          <p className="profile_label">견적을 빨리 보낼수록 고용에 유리해요!</p>
           <div className="estimate_detail_profile_info">
-          <p style ={{textAlign:"center"}}>견적을 빨리 보낼수록 고용에 유리해요!</p>
+            <br />
+            <br />
+            <p className="gosu_detail_info_explain">
+              희망 서비스일을 선택해주세요.
+            </p>
+            <b>협의 가능해요.</b>
+            <br />
+            <br />
+            <br />
+            <p className="gosu_detail_info_explain">지역을 선택해주세요.</p>
+            <b>중국 베이징시 텐진</b>
+            <br />
+            <br />
+            <br />
+            <p className="gosu_detail_info_explain">
+              관련 문의사항을 알려주세요.
+            </p>
+            <b>고수와 상담 시 논의할게요.</b>
+            <br />
+            <br />
+            <br />
+            <p className="gosu_detail_info_explain">파일 첨부</p>
           </div>
         </aside>
         <div className="page_Interval"></div>
@@ -52,31 +58,25 @@ function AskEstimate() {
           <br />
           <br />
           <br />
-          <h1>견적 요청 보내기</h1>
+          <h1>견적보내기</h1>
           <br />
           <br />
-          <h3>지역 선택</h3>
+          <h3>금액 설정</h3>
           <br />
-          <input type = "text" className="area_choice_input" />
-          <button className="area_search">검색</button>
+          <input type="radio" /> 총 비용 &emsp;&emsp;
+          <input type="radio" /> 시간 당
           <br />
           <br />
-          <br />
-          <h3>희망 날짜</h3>
-          <select className="ask_estimate_calendar">
-            {calendar.map((cal) => (
-              <option>{cal}</option>
-            ))}
-          </select>
+          <h3>금액</h3>
+          <input type="text" className="estimate_price" name="price" />
           <br />
           <br />
           <br />
-          <h3>관련 문의 사항</h3>
+          <h3>견적 설정</h3>
           <br />
           <textarea
             className="estimate_explain"
-            placeholder=" 고수에게 요청 사항을 적어주세요. 
-            고수에게 배우고 싶은 것을 입력하세요."
+            placeholder="요청사항에 대한 답변, 서비스 진행방식, 고수님만의 강점이나 특징 등을 작성하세요."
           ></textarea>
           <br />
           <label for="estimate_explain_count" style={{ float: "right" }}>
@@ -86,22 +86,21 @@ function AskEstimate() {
           <br />
           <h3>파일 첨부</h3>
           <br />
-          <label style={{ cursor: "pointer", width: "100px", float: "left" }}>
+          <label style={{cursor:"pointer", width:"100px", float:"left"}}>
             <div className="estimate_file">
               <input type="file" accept="image/*" />
             </div>
-          </label>
-          <div style={{ marginTop:"120px"}}>
+                  </label>
+                  <div style={{ marginTop:"120px"}}>
             <button onClick={""} className="estimate_click">
               등록하기
             </button>
           </div>
-          <br />
-          <br />
-        </div>
+        <br />
+              </div>
       </div>
     </div>
   );
 }
 
-export default AskEstimate;
+export default ExportEstimate;
