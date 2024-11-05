@@ -30,34 +30,22 @@ import Detail from './Board/Detail.js';
 //리뷰 임포트
 import Recommand from './review/Recommand_modal.js';
 import GosuReview from './review/Gosu_review.js';
-<<<<<<< HEAD
-// import Login from './login';
-import Main from './main';
-import Profile from './profile';
-import ProfileInput from './profile.input';
-// import Regist from './regist';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-=======
 
 //채팅 임포트
 import Chat from './Chat/Chat_main.js'
 
 //고수 기능 임포트
-import GosuMain from './main';
-import Profile from './profile';
-import ProfileInput from './profile.input';
+import GosuMain from './gosu/main';
+import Profile from './gosu/profile';
+import ProfileInput from './gosu/profile.input';
 // import findInfo from './findInfo'
->>>>>>> 1b3325f9a05b3b16e41837841c7cf4766ff7585f
-import AskEstimate from './ask_estimate';
-import CategoryPortfolio from './category_portfolio';
-import ExportEstimate from './exportEstimate';
-import ReceiveAsk from './gosu_receive_ask';
-import Portfolio from './portfolio';
-import InputPortfolio from './portfolio_input';
+import AskEstimate from './gosu/ask_estimate';
+import CategoryPortfolio from './gosu/category_portfolio';
+import ExportEstimate from './gosu/exportEstimate';
+import ReceiveAsk from './gosu/gosu_receive_ask';
+import Portfolio from './gosu/portfolio';
+import InputPortfolio from './gosu/portfolio_input';
 
-//막아놓은 은준씨 기능 임포트
-import Login from './login';
-import Regist from './regist';
 
 
 function App() {
