@@ -4,12 +4,12 @@ import './App.css';
 import './index.css';
 
 //중고 거래 임포트
-import MainPage from './component/main.js'; // MainPage 컴포넌트 임포트
-import RegistrationPage from './component/registration.js'; // RegistrationPage 컴포넌트 임포트
-import Categorie from './component/categorie.js';
+import MainPage from './zoom/main.js'; // MainPage 컴포넌트 임포트
+import RegistrationPage from './zoom/registration.js'; // RegistrationPage 컴포넌트 임포트
+import Categorie from './zoom/categorie.js';
 // import Header from './component/Header.js'; 
-import ProductPage from './component/detailpage.js'
-import AdminPage from './component/admin.js';
+import ProductPage from './zoom/detailpage.js'
+import AdminPage from './zoom/admin.js';
 
 //로그인 & 회원 가입 임프토
 // import Header from './header/Header.js';
@@ -35,21 +35,16 @@ import GosuReview from './review/Gosu_review.js';
 import Chat from './Chat/Chat_main.js'
 
 //고수 기능 임포트
-import GosuMain from './main';
-import Profile from './profile';
-import ProfileInput from './profile.input';
+import GosuMain from './gosu/main.js';
+import Profile from './gosu/profile.js';
+import ProfileInput from './gosu/profile.input.js';
 // import findInfo from './findInfo'
-import AskEstimate from './ask_estimate';
-import CategoryPortfolio from './category_portfolio';
-import ExportEstimate from './exportEstimate';
-import ReceiveAsk from './gosu_receive_ask';
-import Portfolio from './portfolio';
-import InputPortfolio from './portfolio_input';
-
-//막아놓은 은준씨 기능 임포트
-import Login from './login';
-import Regist from './regist';
-
+import AskEstimate from './gosu/ask_estimate.js';
+import CategoryPortfolio from './gosu/category_portfolio.js';
+import ExportEstimate from './gosu/exportEstimate.js';
+import ReceiveAsk from './gosu/gosu_receive_ask.js';
+import Portfolio from './gosu/portfolio.js';
+import InputPortfolio from './gosu/portfolio_input.js';
 
 function App() {
   return (
