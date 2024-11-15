@@ -8,17 +8,20 @@ import ync.zoomgobackend.global.common.dto.PageResultDTO;
 
 public interface BoardService {
 
-    void findById(Long postNo);
+    void register(BoardDTO dto);    //게시글 등록
 
-    void register(BoardDTO dto);
+    BoardDTO get(Long postNo);      //postNo에 맞는 게시물 가져오기
 
-    PageResultDTO<BoardDTO, Object[]> getList(PageRequestDTO pageRequestDTO);
+    void removeWithReplies(Long postNo);    //postNo에 맞는 게시글 댓글과 같이 삭제하기
 
-    default BoardDTO entityToDTO(BoardEntity boardEntity, MemberEntity memberEntity, Long commentCount){
+    PageResultDTO<BoardDTO, Object[]> getList(String communityType,PageRequestDTO pageRequestDTO);  //게시판 타입에 맞는 게시물 리스트 가져오기
+
+    default BoardDTO entityToDTO(BoardEntity boardEntity, MemberEntity memberEntity, Long commentCount){    //Entity를 DTO로 바꾸기
         return BoardDTO.builder()
                 .postNo(boardEntity.getPostNo())
                 .communityType(boardEntity.getCommunityType())
                 .title(boardEntity.getTitle())
+                .memberNo(memberEntity.getUserNo())
                 .memberNickname(memberEntity.getNickName())
                 .post(boardEntity.getPost())
                 .photoURL(boardEntity.getPhotoURL())
@@ -28,7 +31,7 @@ public interface BoardService {
                 .build();
     }
 
-    default BoardEntity dtoToEntity(BoardDTO dto){
+    default BoardEntity dtoToEntity(BoardDTO dto){  //DTO를 Entity로 바꾸기
         MemberEntity memberEntity = MemberEntity.builder()
                 .nickName(dto.getMemberNickname())
                 .userNo(dto.getMemberNo())

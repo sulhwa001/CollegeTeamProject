@@ -2,6 +2,7 @@ package ync.zoomgobackend.domain.board.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ync.zoomgobackend.domain.board.dto.BoardDTO;
 import ync.zoomgobackend.domain.board.service.BoardService;
@@ -22,10 +23,25 @@ public class BoardController {
     }
 
     @GetMapping("/list")       //게시글 전체 목록 가져오기
-    public PageResultDTO<BoardDTO,Object[]> list(PageRequestDTO pageRequestDTO){
+    public PageResultDTO<BoardDTO,Object[]> list(@RequestParam("communityType")String communityType ,PageRequestDTO pageRequestDTO){
         System.out.println(pageRequestDTO.getType());
-        return boardService.getList(pageRequestDTO);
+        return boardService.getList(communityType,pageRequestDTO);
     }
 
+    @GetMapping("/detail")  //게시글 상세
+    public ResponseEntity findBoardById(@RequestParam("postNo")Long postNo){
+        BoardDTO boardDTO = boardService.get(postNo);
+        return ResponseEntity.ok(boardDTO);
+    }
+
+    @DeleteMapping("/detail")   //게시글 삭제
+    public void remove(@RequestParam("postNo")Long postNo){
+        boardService.removeWithReplies(postNo);
+    }
+
+    @PutMapping("/detail")
+    public void modify(@RequestParam("postNo")Long postNo){
+
+    }
 
 }

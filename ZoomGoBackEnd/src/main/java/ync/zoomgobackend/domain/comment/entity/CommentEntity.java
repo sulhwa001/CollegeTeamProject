@@ -23,10 +23,7 @@ public class CommentEntity extends BaseEntity {
     private Long commentNo;
 
     @Column(length = 500, nullable = false)
-    private String pComment;
-
-    @Column(length = 500)
-    private String cComment;
+    private String commentText;
 
     @Column(nullable = false)
     private Long commentDept;
