@@ -1,8 +1,9 @@
-#spring.application.name=ZoomGoBackEnd
-
+#spring.application.name=zooomgobackend
+server:
+  port: 8080
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/test01
+    url: jdbc:mysql://localhost:3306/gosu
     username: root
     password: as1230
     driver-class-name: com.mysql.cj.jdbc.Driver

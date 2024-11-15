@@ -1,4 +1,4 @@
-package kr.ac.ync.zoomgobackend.domain.gosu.entity;
+package kr.ac.ync.zoomgobackend.domain.category.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,7 +13,7 @@ import lombok.*;
 @ToString
 public class CategoryEntity {
     @Id
-    private int categoryId;
+    private Long categoryId;
     @Column(nullable = false)
     private String categoryName;
 }

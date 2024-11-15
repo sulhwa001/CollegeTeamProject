@@ -1,6 +1,11 @@
+import { useState } from "react";
 import "../css/portfolio/portfolio_input.css";
 import Header from "./gosu_header";
 function InputPortfolio() {
+  const [textCount, setTextCount] = useState("");
+  const gosuInputPortfolio = {
+    categoryName: "도어 시공",
+  };
   const years = [];
 
   for (let i = 2000; i < 2025; i++) {
@@ -23,7 +28,7 @@ function InputPortfolio() {
         <br />
         <h4>서비스 종류</h4>
         <br />
-        <p>도어 시공</p>
+        <p>{gosuInputPortfolio.categoryName}</p>
         <br />
         <br />
         <br />
@@ -35,8 +40,15 @@ function InputPortfolio() {
             placeholder="포트폴리오 제목을 입력해주세요"
             name="portfolio_title"
             className="portfolio_title"
+            minLength={1}
+            maxLength={30}
+            onChange={(e) => {
+              setTextCount(e.target.value);
+            }}
           />
-          <label className="portfolio_title_count">{0}/30자</label>
+          <label className="portfolio_title_count">
+            {textCount.length}/30자
+          </label>
         </div>
         <br />
         <br />
@@ -89,6 +101,8 @@ function InputPortfolio() {
           type="text"
           placeholder="최종금액을 입력해주세요."
           className="final_price"
+          minLength={1}
+          maxLength={10}
         />
         <span className="won">원</span>
         <br />
@@ -116,6 +130,8 @@ function InputPortfolio() {
               placeholder="소요 시간"
               name="portfolio_time"
               className="portfolio_time"
+              minLength={1}
+              maxLength={3}
             />
             <select className="choice_month_day_hour">
               <option>시간</option>
@@ -130,10 +146,18 @@ function InputPortfolio() {
           className="work_article"
           placeholder="제공한 서비스의 상세한 설명을 작성해주세요.
          ex)전/후 결과, 작업 과정 등"
+          minLength={1}
+          maxLength={200}
+          onChange={(e) => {
+            setTextCount(e.target.value);
+          }}
+
         ></textarea>
-        <label for="textarea_count" className="textarea_count">
-          {0}/30자
-        </label>
+        <div className="count">
+          <label for="textarea_count" className="textarea_count">
+            {textCount.length}/200자
+          </label>
+        </div>
         <br />
         <br />
         <button className="portfolio_button">등록하기</button>

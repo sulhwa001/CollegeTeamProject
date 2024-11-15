@@ -29,8 +29,8 @@ import ExportEstimate from "./gosu/exportEstimate.js";
 import ReceiveAsk from "./gosu/gosu_receive_ask.js";
 import Portfolio from "./gosu/portfolio.js";
 import InputPortfolio from "./gosu/portfolio_input.js";
-
 function App() {
+ 
   return (
     <div className="App">
       <BrowserRouter>
@@ -40,8 +40,8 @@ function App() {
           <Route path="/login" element={<Loginpage />} />
           <Route path="/registEmail" element={<Registpage />} />
           <Route path="/forgotpassword" element={<Forgotpassword />} />
-          {/* <Route path="/userinfo" element={<Userinfo />} /> */}
-          <Route path="/agreement" element={<Agreement />} />
+          
+        <Route path="/agreement" element={<Agreement />} />
           <Route path="/mypagemain" element={<Mypagemain />} />
           <Route path="/boardlist" element={<BoardList />} />
           <Route path="/write" element={<InputText />} />
@@ -57,8 +57,8 @@ function App() {
           <Route path="/regist" element={<Regist />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/ExportEstimate" element={<ExportEstimate />} />
-          <Route path="/ProfileInput" element={<ProfileInput />} />
-          <Route path="/Profile" element={<Profile />} />
+          <Route path="/ProfileInput/:userNo" element={<ProfileInput />} />
+          <Route path="/Profile/:gosuId" element={<Profile />} />
           <Route path="/Portfolio" element={<Portfolio />} />
           <Route path="/PortfolioInput" element={<InputPortfolio />} />
           <Route path="/categoryPorfolio" element={<CategoryPortfolio />} />

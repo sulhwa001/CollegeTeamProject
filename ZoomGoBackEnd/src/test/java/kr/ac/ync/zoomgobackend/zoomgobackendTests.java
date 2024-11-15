@@ -1,4 +1,4 @@
-package kr.ac.ync.ZoomGoBackEnd;
+package kr.ac.ync.zoomgobackend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

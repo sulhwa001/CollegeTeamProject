@@ -2,6 +2,8 @@ import "../css/gosu_receive_ask/gosu_receive_ask.css";
 import Header from "./gosu_header";
 
 function ReceiveAsk() {
+
+  
   const infoList = [
     { name: "조은준", calendar: "2014.07.23" },
     { name: "김철수", calendar: "2015.08.12" },

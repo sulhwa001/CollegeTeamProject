@@ -1,7 +1,9 @@
-package kr.ac.ync.zoomgobackend.domain.gosu.entity;
+package kr.ac.ync.zoomgobackend.domain.gosuportfolio;
 
 import jakarta.persistence.*;
 import kr.ac.ync.zoomgobackend.domain.category.entity.CategoryEntity;
+import kr.ac.ync.zoomgobackend.domain.gosu.entity.GosuEntity;
+import kr.ac.ync.zoomgobackend.domain.member.entity.MemberEntity;
 import lombok.*;
 
 @Entity
