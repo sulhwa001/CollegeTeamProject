@@ -51,6 +51,7 @@ public class GosuQueryRepositoryImpl implements GosuQueryRepository {
                gosuEntity.graduation,
                gosuEntity.price,
                gosuEntity.serviceDetail,
+               gosuEntity.possibleTime,
                gosuEntity.user
        );
     }

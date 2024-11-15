@@ -26,7 +26,7 @@ public class GosuController {
     public ResponseEntity<GosuEntity> selectProfile(@PathVariable("gosuId") Long gosuId) {
         return gosuService.getGosuByGosuId(gosuId).map(ResponseEntity::ok).orElseThrow();
     }
-
+    
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)

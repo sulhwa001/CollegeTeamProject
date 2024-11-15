@@ -29,6 +29,28 @@ function ProfileInput() {
   const { userNo } = useParams();
   const [member, setMember] = useState(null);
   const [error, setError] = useState(null);
+  const [careerYear, setCareerYear] = useState("");
+  const [schoolCareer, setSchoolCareer] = useState("");
+  const [DetailExplain, setDetailExplain] = useState("");
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [area, setArea] = useState("");
+  const [possible, setPossibleTime] = useState("");
+
+  const [possibleFromTime, setPossibleFromTime] = useState("");
+  const [possibleUntilTime, setPossibleUntilTime] = useState("");
+  const [possibleAmPm1, setPossibleAmPm1] = useState("");
+  const [possibleAmPm2, setPossibleAmPm2] = useState("");
+  const [fileName, setFileName] = useState("");
+  const [profilePicture, setProfilePicture] = useState("");
+  const [questions, setQuestions] = useState({
+    question1: "",
+    question2: "",
+    question3: "",
+    question4: "",
+    question5: "",
+  });
+
   useEffect(() => {
     const fetchMember = async () => {
       try {
@@ -44,27 +66,6 @@ function ProfileInput() {
     };
     fetchMember();
   }, [userNo]);
-
-  const [careerYear, setCareerYear] = useState("");
-  const [schoolCareer, setSchoolCareer] = useState("");
-  const [DetailExplain, setDetailExplain] = useState("");
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [area, setArea] = useState("");
-  const [possible, setPossibleTime] = useState("");
-
-  const [possibleFromTime, setPossibleFromTime] = useState("");
-  const [possibleUntilTime, setPossibleUntilTime] = useState("");
-
-  const [fileName, setFileName] = useState("");
-  const [profilePicture, setProfilePicture] = useState("");
-  const [questions, setQuestions] = useState({
-    question1: "",
-    question2: "",
-    question3: "",
-    question4: "",
-    question5: "",
-  });
   const portfolioSubmit = async (e) => {
     e.preventDefault();
     const data = {
@@ -78,11 +79,12 @@ function ProfileInput() {
       profilePicture: profilePicture,
       userNo: userNo,
     };
+
+    setPossibleTime(
+      possibleAmPm1 + possibleFromTime + possibleAmPm2 + possibleUntilTime
+    );
     try {
-      const response = await axios.post(
-        `http://localhost:8080/gosu`,
-        data
-      );
+      const response = await axios.post(`http://localhost:8080/gosu`, data);
 
       if (response.status === 200 || response.status === 303) {
         alert("데이터 삽입 완료");
@@ -98,7 +100,14 @@ function ProfileInput() {
     setPossibleFromTime(e.target.value);
   };
   const handlePossibleUntilChange = (e) => {
-    setPossibleFromTime(e.target.value);
+    setPossibleUntilTime(e.target.value);
+  };
+
+  const handleAmPmChoiceChange1 = (e) => {
+    setPossibleAmPm1(e.target.value);
+  };
+  const handleAmPmChoiceChange2 = (e) => {
+    setPossibleAmPm2(e.target.value);
   };
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -144,7 +153,6 @@ function ProfileInput() {
       alert(error);
     }
   };
-
   return (
     <div className="App">
       <Header />
@@ -228,29 +236,11 @@ function ProfileInput() {
               <select>
                 <OptionField
                   value={"오후"}
-                  onChange={handlePossibleFromChange}
+                  onChange={handleAmPmChoiceChange1}
                 ></OptionField>
                 <OptionField
                   value={"오전"}
-                  onChange={handlePossibleFromChange}
-                ></OptionField>
-              </select>
-              <select>
-                {possibleHourOptions.map((time) => (
-                  <option key={time} value={time}>
-                    {time}:00
-                  </option>
-                ))}
-              </select>
-              부터&nbsp;&nbsp;&nbsp;
-              <select>
-                <OptionField
-                  value={"오후"}
-                  onChange={handlePossibleUntilChange}
-                ></OptionField>
-                <OptionField
-                  value={"오전"}
-                  onChange={handlePossibleUntilChange}
+                  onChange={handleAmPmChoiceChange1}
                 ></OptionField>
               </select>
               <select>
@@ -259,6 +249,28 @@ function ProfileInput() {
                     key={time}
                     value={time}
                     onChange={handlePossibleFromChange}
+                  >
+                    {time}:00
+                  </option>
+                ))}
+              </select>
+              부터&nbsp;&nbsp;&nbsp;
+              <select>
+                <OptionField
+                  value={"오후"}
+                  onChange={handleAmPmChoiceChange2}
+                ></OptionField>
+                <OptionField
+                  value={"오전"}
+                  onChange={handleAmPmChoiceChange2}
+                ></OptionField>
+              </select>
+              <select>
+                {possibleHourOptions.map((time) => (
+                  <option
+                    key={time}
+                    value={time}
+                    onChange={handlePossibleUntilChange}
                   >
                     {time}:00
                   </option>
