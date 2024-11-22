@@ -39,9 +39,9 @@ public class BoardController {
         boardService.removeWithReplies(postNo);
     }
 
-    @PutMapping("/detail")
-    public void modify(@RequestParam("postNo")Long postNo){
-
+    @PutMapping("/detail")      //게시글 수정
+    public void modify(@RequestBody BoardDTO boardDTO){
+        boardService.modify(boardDTO);
     }
 
 }

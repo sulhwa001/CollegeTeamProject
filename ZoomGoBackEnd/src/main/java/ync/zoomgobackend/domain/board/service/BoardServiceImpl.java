@@ -30,6 +30,12 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
+    public void modify(BoardDTO dto) {
+        BoardEntity boardEntity = dtoToEntity(dto);
+        boardRepository.save(boardEntity);
+    }
+
+    @Override
     public BoardDTO get(Long postNo) {  //postNo에 맞는 게시글 가져오기
         Object result = boardRepository.getBoardByPostNo(postNo);
         Object[] arr = (Object[]) result;

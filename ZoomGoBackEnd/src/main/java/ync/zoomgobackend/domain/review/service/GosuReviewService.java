@@ -7,6 +7,10 @@ import ync.zoomgobackend.domain.review.entity.GosuReviewEntity;
 
 public interface GosuReviewService {
 
+    void register(GosuReviewDTO dto);
+
+    GosuReviewDTO get(Long estimateId);
+
     default GosuReviewDTO entityToDTO(GosuReviewEntity gosuReviewEntity, MemberEntity memberEntity, GosuEntity gosuEntity){
         return GosuReviewDTO.builder()
                 .userNo(memberEntity.getUserNo())

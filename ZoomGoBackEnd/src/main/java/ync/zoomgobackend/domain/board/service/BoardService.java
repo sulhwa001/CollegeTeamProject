@@ -8,7 +8,9 @@ import ync.zoomgobackend.global.common.dto.PageResultDTO;
 
 public interface BoardService {
 
-    void register(BoardDTO dto);    //게시글 등록
+    void register(BoardDTO dto);    //게시글 작성
+    
+    void modify(BoardDTO dto);      //게시글 수정
 
     BoardDTO get(Long postNo);      //postNo에 맞는 게시물 가져오기
 
