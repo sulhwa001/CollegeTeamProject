@@ -2,13 +2,26 @@
 spring:
   datasource:
     diverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test01
+    url: jdbc:mysql://localhost:3306/zoomgo1
     username: root
     password: 1234
-  jpa:
+
+jpa:
+  hibernate:
+    ddl-auto: update
+  properties:
     hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        format_sql: true
-    show-sql: true
+      format_sql: true
+  show-sql: true
+
+
+servlet:
+  multipart:
+    enabled: true #파일 업로드 가능여부
+    locationg: C://upload #업로드 파일 임시 저장 경로
+    max-file-size: 10MB # 파일 최대사이즈
+    max-request-size: 30MB #전체 파일 사이즈
+
+upload:
+  path: C://upload
+
