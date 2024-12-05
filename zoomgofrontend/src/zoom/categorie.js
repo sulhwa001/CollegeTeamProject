@@ -1,5 +1,5 @@
 import React from 'react';
-import './categorie.css'; 
+import './css/categorie.css'; 
 import Header from './Header'; 
 import { useNavigate } from 'react-router-dom';
 
@@ -10,7 +10,7 @@ const ProductRegistration = () => {
 
     return (
         <div>
-         <Header />
+         <Header className="zoomheader"/>
             <main className="main-content">
                 <section className="search-results">
                     <h2>검색결과</h2>

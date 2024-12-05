@@ -1,10 +1,10 @@
-package kr.ac.ync.zoomgobackend;
+package ync.zoomgobackend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ZoomGoBackEndApplicationTests {
+class ZoomgobackendApplicationTests {
 
 	@Test
 	void contextLoads() {

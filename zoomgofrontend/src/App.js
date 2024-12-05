@@ -1,15 +1,15 @@
 //기본 임포트
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
 import './index.css';
 
 //중고 거래 임포트
-import MainPage from './component/main.js'; // MainPage 컴포넌트 임포트
-import RegistrationPage from './component/registration.js'; // RegistrationPage 컴포넌트 임포트
-import Categorie from './component/categorie.js';
+import MainPage from './zoom/main.js'; // MainPage 컴포넌트 임포트
+import RegistrationPage from './zoom/registration.js'; // RegistrationPage 컴포넌트 임포트
+import Categorie from './zoom/categorie.js';
 // import Header from './component/Header.js'; 
-import ProductPage from './component/detailpage.js'
-import AdminPage from './component/admin.js';
+import ProductPage from './zoom/detailpage.js'
+import AdminPage from './zoom/admin.js';
 
 //로그인 & 회원 가입 임프토
 // import Header from './header/Header.js';
@@ -18,7 +18,7 @@ import Loginpage from './loginpage/Loginpage.js';
 import Forgotpassword from './forgotpassword/forgotpassword.js';
 
 //마이페이지 임포트
-// import Userinfo from './userinfo';
+import Userinfo from './userinfo/userinfo.js';
 import Agreement from './agreement/agreement.js';
 import Mypagemain from './mypagemain/Mypagemain.js';
 
@@ -45,10 +45,13 @@ import ExportEstimate from './gosu/exportEstimate';
 import ReceiveAsk from './gosu/gosu_receive_ask';
 import Portfolio from './gosu/portfolio';
 import InputPortfolio from './gosu/portfolio_input';
+import { useState } from 'react';
 
 
 
 function App() {
+  const [isAuthorized, setIsVerified] = useState(false);
+
   return (
       <div className="App">
         <BrowserRouter>
@@ -66,7 +69,7 @@ function App() {
             <Route path="/forgotpassword" element={<Forgotpassword />} />
 
             {/*마이페이지 기능*/}
-            {/* <Route path="/userinfo" element={<Userinfo />} /> */}
+            <Route path="/userinfo" element={<Userinfo />} />
             <Route path="/agreement" element={<Agreement/>} />
             <Route path="/mypagemain" element={<Mypagemain/>} />
 

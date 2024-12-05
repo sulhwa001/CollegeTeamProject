@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './admin.css';
+import './css/admin.css';
 import Header from './Header';
 const AdminPage = () => {
     const [searchTerm, setSearchTerm] = useState('');

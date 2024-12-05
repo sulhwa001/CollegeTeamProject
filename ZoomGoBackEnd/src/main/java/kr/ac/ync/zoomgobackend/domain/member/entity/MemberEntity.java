@@ -13,7 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder
-@Table(name = "User")
+@Table(name = "user")
 public class MemberEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +37,7 @@ public class MemberEntity {
     @Column(length = 100, nullable = false)
     private String address;
 
-    @Column(nullable = false)
+    @Column()
     private double manner;
 
     @Column(nullable = false)

@@ -7,7 +7,7 @@ function LoginPage() {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('/auth', {
+      const response = await fetch('http://localhost:8080/auth', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -17,13 +17,14 @@ function LoginPage() {
 
       if (response.ok) {
         // 로그인 성공 시 추가 작업 (예: 페이지 이동)
-        console.log("Login successful!");
+        alert("로그인완료!!");
+        window.location.href="/"
       } else {
         // 로그인 실패 시 추가 작업
-        console.error("Login failed!");
+        alert("Login failed!");
       }
     } catch (error) {
-      console.error("Error:", error);
+      alert("Error:", error);
     }
   };
 

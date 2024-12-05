@@ -1,12 +1,7 @@
 package kr.ac.ync.zoomgobackend.domain.member.dto;
 
-import jakarta.persistence.*;
 import kr.ac.ync.zoomgobackend.domain.member.entity.enums.MemberRole;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
+import lombok.*;
 import java.util.Date;
 
 @Builder
