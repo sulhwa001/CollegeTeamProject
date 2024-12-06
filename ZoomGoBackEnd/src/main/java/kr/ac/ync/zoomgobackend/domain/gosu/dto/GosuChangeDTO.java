@@ -10,6 +10,5 @@ import lombok.*;
 @NoArgsConstructor
 public class GosuChangeDTO {
     private Long userNo;
-    private Long gosuId;
     private String name;
 }

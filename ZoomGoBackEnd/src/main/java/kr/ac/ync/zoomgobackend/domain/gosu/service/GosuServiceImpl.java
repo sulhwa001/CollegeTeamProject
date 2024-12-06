@@ -5,10 +5,14 @@ import jakarta.transaction.Transactional;
 import kr.ac.ync.zoomgobackend.domain.gosu.dto.GosuChangeDTO;
 import kr.ac.ync.zoomgobackend.domain.gosu.dto.GosuDTO;
 import kr.ac.ync.zoomgobackend.domain.gosu.entity.GosuEntity;
+import kr.ac.ync.zoomgobackend.domain.gosu.entity.GosuQuestionEntity;
+import kr.ac.ync.zoomgobackend.domain.gosu.mapper.GosuMapper;
+import kr.ac.ync.zoomgobackend.domain.gosu.repository.GosuQuestionRepository;
 import kr.ac.ync.zoomgobackend.domain.gosu.repository.GosuRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
@@ -17,18 +21,32 @@ import java.util.Optional;
 public class GosuServiceImpl implements GosuService {
 
     private final GosuRepository gosuRepository;
+    private final GosuQuestionRepository gosuQuestionRepository;
 
     @Override
     public Long insertGosu(GosuDTO gosuDTO) {
         GosuEntity gosuEntity = updateDtoToEntity(gosuDTO);
-        return gosuRepository.save(gosuEntity).getGosuId();
+        GosuEntity saveGosuEntity = gosuRepository.save(gosuEntity);
+        GosuQuestionEntity gosuQuestionEntity = questionDtoToEntity(gosuDTO);
+        if(gosuQuestionEntity != null) {
+            gosuQuestionEntity.setGosuId(gosuEntity);
+            gosuQuestionRepository.save(gosuQuestionEntity);
+        }
+        else {
+            return null;
+        }
+        return saveGosuEntity.getGosuId();
     }
 
     @Override
     public String updateUserName(GosuChangeDTO gosuChangeDTO) {
-        GosuEntity gosuEntity = gosuRepository.findById(gosuChangeDTO.getGosuId()).orElse(null);
-        gosuChangeDTO.setName(gosuEntity.getName());
-        return gosuRepository.save(gosuEntity).getName();
+        Optional<GosuEntity> results = gosuRepository.getGosuByGosuId(gosuChangeDTO.getUserNo());
+        GosuEntity gosuEntity = results.get();
+        gosuEntity.setName(gosuChangeDTO.getName());
+        GosuEntity gosu = GosuMapper.createGosuEntity(gosuChangeDTO);
+        gosuRepository.save(gosu);
+        return gosuEntity.getName();
+
     }
 
     @Override
@@ -36,11 +54,4 @@ public class GosuServiceImpl implements GosuService {
         return gosuRepository.getGosuByGosuId(id);
     }
 
-
-    @Override
-    public Long updateUserImage(GosuChangeDTO gosuChangeDTO) {
-        GosuEntity userImage = pictureToEntity(gosuChangeDTO);
-        gosuRepository.save(userImage);
-        return gosuChangeDTO.getGosuId();
-    }
 }

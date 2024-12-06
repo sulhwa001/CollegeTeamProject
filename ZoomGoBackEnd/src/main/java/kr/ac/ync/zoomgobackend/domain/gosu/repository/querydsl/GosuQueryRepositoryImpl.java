@@ -24,7 +24,8 @@ public class GosuQueryRepositoryImpl implements GosuQueryRepository {
     public ConstructorExpression<GosuChangeDTO> gosuChangeNameProjection() {
         return Projections.constructor(
                 GosuChangeDTO.class,
-                memberEntity.userNo,
+                gosuEntity.user,
+                gosuEntity.gosuId,
                 gosuEntity.name
         );
     }
@@ -50,6 +51,7 @@ public class GosuQueryRepositoryImpl implements GosuQueryRepository {
                gosuEntity.career,
                gosuEntity.graduation,
                gosuEntity.price,
+               gosuEntity.possibleTime,
                gosuEntity.serviceDetail,
                gosuEntity.user
        );

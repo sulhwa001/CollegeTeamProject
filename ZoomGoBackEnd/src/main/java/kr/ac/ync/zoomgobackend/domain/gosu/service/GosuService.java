@@ -4,6 +4,7 @@ import kr.ac.ync.zoomgobackend.domain.category.entity.CategoryEntity;
 import kr.ac.ync.zoomgobackend.domain.gosu.dto.GosuChangeDTO;
 import kr.ac.ync.zoomgobackend.domain.gosu.dto.GosuDTO;
 import kr.ac.ync.zoomgobackend.domain.gosu.entity.GosuEntity;
+import kr.ac.ync.zoomgobackend.domain.gosu.entity.GosuQuestionEntity;
 import kr.ac.ync.zoomgobackend.domain.member.entity.MemberEntity;
 import org.springframework.stereotype.Service;
 
@@ -11,18 +12,15 @@ import java.util.Optional;
 
 @Service
 public interface GosuService {
+
     Long insertGosu(GosuDTO gosuDTO);
     String updateUserName(GosuChangeDTO gosuChangeDTO);
     Optional<GosuEntity> getGosuByGosuId(Long id);
-    Long updateUserImage(GosuChangeDTO gosuChangeDTO);
-    default GosuEntity nameToEntity(GosuChangeDTO gosuChangeDTO) {
-        return GosuEntity.builder()
-                .name(gosuChangeDTO.getName())
-                .build();
-    }
+
     default GosuEntity pictureToEntity(GosuChangeDTO gosuChangeDTO) {
+        MemberEntity user = MemberEntity.builder().userNo(gosuChangeDTO.getUserNo()).build();
         return GosuEntity.builder()
-                .gosuId(gosuChangeDTO.getGosuId())
+                .user(user)
                 .build();
     }
 
@@ -40,4 +38,14 @@ public interface GosuService {
                 .build();
     }
 
+    default GosuQuestionEntity questionDtoToEntity(GosuDTO gosuDTO) {
+        return GosuQuestionEntity.builder()
+                .gosuId(gosuDTO.getGosuQuestion().getGosuId())
+                .question1(gosuDTO.getGosuQuestion().getQuestion1())
+                .question2(gosuDTO.getGosuQuestion().getQuestion2())
+                .question3(gosuDTO.getGosuQuestion().getQuestion3())
+                .question4(gosuDTO.getGosuQuestion().getQuestion4())
+                .question5(gosuDTO.getGosuQuestion().getQuestion5())
+                .build();
+    }
 }

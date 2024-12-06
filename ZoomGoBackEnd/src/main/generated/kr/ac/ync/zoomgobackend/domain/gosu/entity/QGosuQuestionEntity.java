@@ -34,6 +34,8 @@ public class QGosuQuestionEntity extends EntityPathBase<GosuQuestionEntity> {
 
     public final StringPath question5 = createString("question5");
 
+    public final NumberPath<Long> questionId = createNumber("questionId", Long.class);
+
     public QGosuQuestionEntity(String variable) {
         this(GosuQuestionEntity.class, forVariable(variable), INITS);
     }

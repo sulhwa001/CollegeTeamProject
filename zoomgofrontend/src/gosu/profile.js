@@ -72,7 +72,7 @@ function Profile() {
           <div className="review_right">
             <span style={{ color: "gray" }}>총 경력</span>
             <br></br>
-            <span style={{ fontWeight: "bold" }}>9년</span>
+            <span style={{ fontWeight: "bold" }}>{gosu ? (<span>{gosu.career}</span>) : (<span></span>)}년</span>
           </div>
         </div>
       </section>
@@ -97,7 +97,7 @@ function Profile() {
             <h3>고수 정보</h3>
             <br />
             <br />
-            <p>&emsp;연락 가능 시간 : 오전 12시 - 오후 11시</p>
+            <p>&emsp;연락 가능 시간 : {gosu ? (<span>{gosu.possibleTime}</span>):(<span></span>)}</p>
             <br />
             <p>&emsp;계좌이체, 현금결제 가능</p>
             <br />
@@ -111,7 +111,7 @@ function Profile() {
             <h3>경력</h3>
             <br />
             <h4 style={{ color: "#6788FF", fontSize: "20px" }}>
-              &emsp;총 경력 2년
+              &emsp;총 경력 {gosu ? (<span>{gosu.career}</span>):(<span></span>)}년
             </h4>
             <span>&emsp;온라인 광고 및 교육</span>
             <br />

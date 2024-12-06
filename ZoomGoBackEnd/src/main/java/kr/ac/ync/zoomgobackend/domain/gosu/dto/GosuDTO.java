@@ -1,9 +1,12 @@
 package kr.ac.ync.zoomgobackend.domain.gosu.dto;
 
+import kr.ac.ync.zoomgobackend.domain.gosu.entity.GosuQuestionEntity;
 import kr.ac.ync.zoomgobackend.domain.member.entity.MemberEntity;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.util.ArrayList;
 
 @Builder
 @AllArgsConstructor
@@ -20,4 +23,5 @@ public class GosuDTO {
     private String area;
     private String graduation;
     private String profilePicture;
+    private GosuQuestionEntity gosuQuestion;
 }

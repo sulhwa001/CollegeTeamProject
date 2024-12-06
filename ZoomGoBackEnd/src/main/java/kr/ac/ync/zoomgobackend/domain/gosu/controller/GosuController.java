@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Optional;
 
@@ -17,10 +18,6 @@ import java.util.Optional;
 public class GosuController {
     private final GosuService gosuService;
 
-    @GetMapping("/test")
-    public void test() {
-        System.out.println("test");
-    }
     @GetMapping("/gosuProfile/{gosuId}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<GosuEntity> selectProfile(@PathVariable("gosuId") Long gosuId) {
@@ -35,16 +32,12 @@ public class GosuController {
         return ResponseEntity.ok(gosuId);
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @PutMapping("/updateName/{gosuId}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @PutMapping("/updateName/{userNo}")
     public ResponseEntity<String> udpateName(@RequestBody GosuChangeDTO gosuChangeDTO) {
-        return ResponseEntity.ok(gosuService.updateUserName(gosuChangeDTO) + "변경 완료");
+
+        return ResponseEntity.ok(gosuService.updateUserName(gosuChangeDTO));
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @PutMapping("/updateImage/{gosuId}")
-    public void udpateImage(GosuDTO gosuDTO) {
-        System.out.println("");
-    }
 
 }

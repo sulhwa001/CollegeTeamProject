@@ -29,6 +29,7 @@ function ProfileInput() {
   const { userNo } = useParams();
   const [member, setMember] = useState(null);
   const [error, setError] = useState(null);
+  const [gosu, setGosu] = useState(null);
   useEffect(() => {
     const fetchMember = async () => {
       try {
@@ -38,26 +39,42 @@ function ProfileInput() {
         console.log(response.data);
         setMember(response.data);
       } catch (err) {
-        console.log(err);
+        setError(err);
+        console.log(error);
+      }
+    };
+
+    const fetchGosu = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/gosu/gosuProfile/${userNo}`
+        );
+        setGosu(response.data);
+      } catch (err) {
         setError(err);
       }
     };
+
     fetchMember();
+    fetchGosu();
   }, [userNo]);
 
-  const [careerYear, setCareerYear] = useState("");
-  const [schoolCareer, setSchoolCareer] = useState("");
+  const gosuId = gosu ? gosu.id : null;
+
+  const [careerYear, setCareerYear] = useState("1년 이하");
+  const [schoolCareer, setSchoolCareer] = useState("고졸");
   const [DetailExplain, setDetailExplain] = useState("");
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [area, setArea] = useState("");
-  const [possible, setPossibleTime] = useState("");
-
-  const [possibleFromTime, setPossibleFromTime] = useState("");
-  const [possibleUntilTime, setPossibleUntilTime] = useState("");
-
+  const [firstPossible, setFirstPossibleTime] = useState("0");
+  const [possibleFromTime, setPossibleFromTime] = useState("오전");
+  const [possibleUntilTime, setPossibleUntilTime] = useState("오후");
+  const [possibleLastTime, setPossibleLastTime] = useState("0");
   const [fileName, setFileName] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
+  const [schoolName, setSchoolName] = useState("");
+  const [schoolTime, setSchoolTime] = useState("");
   const [questions, setQuestions] = useState({
     question1: "",
     question2: "",
@@ -65,24 +82,27 @@ function ProfileInput() {
     question4: "",
     question5: "",
   });
-  const portfolioSubmit = async (e) => {
+
+  const profileSubmit = async (e) => {
     e.preventDefault();
+
+    const possibleTimeString = `${possibleFromTime} ${firstPossible}시부터 ~ ${possibleUntilTime} ${possibleLastTime}시까지`;
+    const career = `${careerYear}`;
+    const school = `${schoolCareer}/${schoolName}/${schoolTime}`;
     const data = {
       name: name,
-      graduation: schoolCareer,
-      career: careerYear,
+      graduation: school,
+      career: career,
       serviceDetail: DetailExplain,
       price: price,
       area: area,
-      posssibleTime: possible,
+      possibleTime: possibleTimeString,
       profilePicture: profilePicture,
       userNo: userNo,
+      gosuQuestion: questions
     };
     try {
-      const response = await axios.post(
-        `http://localhost:8080/gosu`,
-        data
-      );
+      const response = await axios.post(`http://localhost:8080/gosu`, data);
 
       if (response.status === 200 || response.status === 303) {
         alert("데이터 삽입 완료");
@@ -91,14 +111,15 @@ function ProfileInput() {
       alert(error);
     }
   };
-  const handleOptionChange = (e) => {
+
+  const handleSchoolCareerChange = (e) => {
     setSchoolCareer(e.target.value);
   };
   const handlePossibleFromChange = (e) => {
     setPossibleFromTime(e.target.value);
   };
   const handlePossibleUntilChange = (e) => {
-    setPossibleFromTime(e.target.value);
+    setPossibleUntilTime(e.target.value);
   };
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -120,6 +141,8 @@ function ProfileInput() {
       [`question${index}`]: e.target.value,
     }));
   };
+  
+  
 
   const handleCareerChange = (e) => {
     setCareerYear(e.target.value);
@@ -130,18 +153,19 @@ function ProfileInput() {
   const updateName = async (e) => {
     e.preventDefault();
     const data = {
+      userNo: userNo,
       name: name,
     };
     try {
-      const response = await axios.post(
+      const response = await axios.put(
         `http://localhost:8080/gosu/updateName/${userNo}`,
         data
       );
       if (response.status === 201 || response.status === 303) {
-        alert("성공");
+        window.alert("성공");
       }
     } catch (error) {
-      alert(error);
+      window.alert(error);
     }
   };
 
@@ -180,7 +204,7 @@ function ProfileInput() {
                 type="text"
                 name="gosu_name"
                 className="gosu_active_name"
-                placeholder="활동명"
+                placeholder={gosu ? gosu.name : ""}
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
@@ -225,17 +249,19 @@ function ProfileInput() {
               <h3>연락 가능 시간</h3>
             </div>
             <div className="area_insert">
-              <select>
-                <OptionField
-                  value={"오후"}
-                  onChange={handlePossibleFromChange}
-                ></OptionField>
-                <OptionField
-                  value={"오전"}
-                  onChange={handlePossibleFromChange}
-                ></OptionField>
+              <select
+                value={possibleFromTime}
+                onChange={handlePossibleFromChange}
+              >
+                <OptionField value="오전"></OptionField>
+                <OptionField value="오후"></OptionField>
               </select>
-              <select>
+              <select
+                value={firstPossible}
+                onChange={(e) => {
+                  setFirstPossibleTime(e.target.value);
+                }}
+              >
                 {possibleHourOptions.map((time) => (
                   <option key={time} value={time}>
                     {time}:00
@@ -243,23 +269,21 @@ function ProfileInput() {
                 ))}
               </select>
               부터&nbsp;&nbsp;&nbsp;
-              <select>
-                <OptionField
-                  value={"오후"}
-                  onChange={handlePossibleUntilChange}
-                ></OptionField>
-                <OptionField
-                  value={"오전"}
-                  onChange={handlePossibleUntilChange}
-                ></OptionField>
+              <select
+                value={possibleUntilTime}
+                onChange={handlePossibleUntilChange}
+              >
+                <OptionField value="오전"></OptionField>
+                <OptionField value="오후"></OptionField>
               </select>
-              <select>
+              <select
+                value={possibleLastTime}
+                onChange={(e) => {
+                  setPossibleLastTime(e.target.value);
+                }}
+              >
                 {possibleHourOptions.map((time) => (
-                  <option
-                    key={time}
-                    value={time}
-                    onChange={handlePossibleFromChange}
-                  >
+                  <option key={time} value={time}>
                     {time}:00
                   </option>
                 ))}
@@ -288,16 +312,14 @@ function ProfileInput() {
               <div className="gosu_price">
                 <h3>경력</h3>
               </div>
-              <select className="input_category">
-                <OptionField
-                  value={"1년 이하"}
-                  onChange={handleCareerChange}
-                ></OptionField>
+              <select
+                value={careerYear}
+                onChange={handleCareerChange}
+                className="input_category"
+              >
+                <OptionField value="1년 이하"></OptionField>
                 {careerYearOptions.map((year) => (
-                  <OptionField
-                    value={year + "년 이상"}
-                    onChange={handleCareerChange}
-                  ></OptionField>
+                  <OptionField value={year + "년 이상"}></OptionField>
                 ))}
               </select>
             </div>
@@ -317,14 +339,37 @@ function ProfileInput() {
               <div>
                 <h3>학력</h3>
                 <div className="schoolCareer_area">
-                  <select style={{ width: "300px" }}>
-                    {schoolCareerList.map((school) => (
-                      <OptionField
-                        value={school}
-                        onChange={handleOptionChange}
-                      ></OptionField>
-                    ))}
-                  </select>
+                  <div className="school_graduation">
+                    <select
+                      value={schoolCareer}
+                      style={{ width: "300px" }}
+                      onChange={handleSchoolCareerChange}
+                    >
+                      {schoolCareerList.map((school) => (
+                        <OptionField value={school}></OptionField>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="schoolInfo">
+                    <InputField
+                      type="text"
+                      name="schoolName"
+                      className="schoolName"
+                      placeholder={"ex) 줌고 대학교"}
+                      onChange={(e) => {
+                        setSchoolName(e.target.value);
+                      }}
+                    />
+                    <InputField
+                      type="text"
+                      name="schoolTime"
+                      className="schoolTime"
+                      placeholder={"ex) 2013년 3월 - 2017년 2월"}
+                      onChange={(e) => {
+                        setSchoolTime(e.target.value);
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -370,10 +415,7 @@ function ProfileInput() {
               </div>
             </div>
             <footer className="portfolio_footer">
-              <button
-                onClick={portfolioSubmit}
-                className="profile_update_Button"
-              >
+              <button onClick={profileSubmit} className="profile_update_Button">
                 수정하기
               </button>
               <button

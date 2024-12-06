@@ -35,6 +35,8 @@ public class GosuEntity {
     @Column
     private String possibleTime;
     @Column
+    private String profilePicture;
+    @Column
     private String area;
     @Column
     private String graduation;

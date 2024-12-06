@@ -17,6 +17,22 @@ input:focus {
     margin:0 auto;
     display:flex;
 }
+.schoolInfo {
+    margin-left:20px;
+}
+.schoolName {
+    border:1px solid #eaeaea;
+    margin-bottom:10px;
+    padding:10px;
+    height:20px;
+    font-size:20px;
+}
+.schoolTime {
+    border:1px solid #eaeaea;
+    height:20px;
+    padding:10px;
+    font-size:20px;
+}
 
 .gosu_profile_picture {
     width:110px;
@@ -289,20 +305,31 @@ input[type="file"] {  /* 파일 필드 숨기기 */
     margin-top:30px;
     width:650px;
     height:100px;
+    
     padding:25px;
     border-radius:8px;
 }
+.school_graduation{
+    width:320px;
+    height:300px;
+}
 .school_choice {
     width:300px;
-    
 }
 .schoolCareer_area {
     width:500px;
     height:200px;
+    display:flex;
 }
 .detail_textArea::placeholder {
+
+    width: 300px; /* 고정 너비 */
+    height: 150px; /* 고정 높이 */
+    resize: none; /* 크기 조절 비활성화 */
+    overflow: auto; /* 내용이 넘칠 경우 스크롤바 표시 */
     font-size:13px;
 }
+
 .portfolio_footer {
     width:600px;
     margin:0 auto;

@@ -13,6 +13,9 @@ import lombok.*;
 @Table(name ="gosu_question")
 public class GosuQuestionEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long questionId;
+
     @JoinColumn(name = "gosuId")
     @OneToOne
     private GosuEntity gosuId;

@@ -38,6 +38,8 @@ public class QGosuEntity extends EntityPathBase<GosuEntity> {
 
     public final NumberPath<Integer> price = createNumber("price", Integer.class);
 
+    public final StringPath profilePicture = createString("profilePicture");
+
     public final StringPath serviceDetail = createString("serviceDetail");
 
     public final kr.ac.ync.zoomgobackend.domain.member.entity.QMemberEntity user;
