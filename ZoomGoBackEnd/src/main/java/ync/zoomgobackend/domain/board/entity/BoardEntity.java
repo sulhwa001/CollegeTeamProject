@@ -2,7 +2,11 @@ package ync.zoomgobackend.domain.board.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import ync.zoomgobackend.domain.member.entity.MemberEntity;
+import ync.zoomgobackend.global.common.BaseEntity;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -12,7 +16,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @ToString(exclude = "member")
-public class BoardEntity {
+public class BoardEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,8 +34,8 @@ public class BoardEntity {
     private MemberEntity member; // 사용자 고유 ID, USER 테이블 참조
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Category_id")
-    private CategoryEntity category; // 카테고리 고유 ID, USED_Categories 테이블 참조
+    @JoinColumn(name = "category_id")  // 외래 키 컬럼 이름 확인
+    private CategoryEntity category;  // CategoryEntity와의 관계 설정
 
     @Column(name = "Address", nullable = false, length = 255)
     private String address; // 거래 주소
@@ -54,4 +58,5 @@ public class BoardEntity {
 
     @Column(name = "Price", nullable = false)
     private int price; // 상품 판매 가격
+
 }

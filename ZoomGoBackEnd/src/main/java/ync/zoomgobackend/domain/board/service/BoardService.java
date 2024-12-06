@@ -14,6 +14,10 @@ public interface BoardService {
 
     Long register(BoardDTO dto);
 
+    void delete(Long postId);
+
+//    BoardDTO get(Long id);
+
     //dto를 Entity로 변환하는 로직 코드의 재사용을 위해 디폴트로 구현
 
     // DTO -> Entity 변환
@@ -43,4 +47,32 @@ public interface BoardService {
                 .build();
     }
 
+    default BoardDTO entityToDTO(BoardEntity board) {
+        if (board == null) {
+            throw new IllegalArgumentException("BoardEntity가 null입니다.");
+        }
+
+        // 카테고리 정보 생성
+        CategoryDTO categoryDTO = CategoryDTO.builder()
+                .categoryId(board.getCategory().getCategoryId())
+                .categoryName(board.getCategory().getCategoryName())
+                .build();
+
+        // BoardDTO 생성
+        return BoardDTO.builder()
+                .postId(board.getPostId())
+                .title(board.getTitle())
+                .contents(board.getContents())
+                .memberId(board.getMember().getUserNo()) // MemberEntity에서 사용자 ID 추출
+                .category(categoryDTO) // 카테고리 DTO 매핑
+                .address(board.getAddress())
+                .file(board.getFile())
+                .transStatus(board.getTransStatus())
+                .transType(board.getTransType())
+                .view(board.getView())
+                .cost(board.getCost())
+                .price(board.getPrice())
+                .build();
+    }
 }
+

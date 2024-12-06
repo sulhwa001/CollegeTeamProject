@@ -244,3 +244,17 @@
     font-weight: 400;
     font-size: 24px;
 }
+
+.file-upload-label {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.file-upload-input {
+    display: none; /* 기본 파일 input은 숨기고 */
+}

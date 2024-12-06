@@ -22,6 +22,8 @@ public class QBoardEntity extends EntityPathBase<BoardEntity> {
 
     public static final QBoardEntity boardEntity = new QBoardEntity("boardEntity");
 
+    public final ync.zoomgobackend.global.common.QBaseEntity _super = new ync.zoomgobackend.global.common.QBaseEntity(this);
+
     public final StringPath address = createString("address");
 
     public final QCategoryEntity category;
@@ -29,6 +31,9 @@ public class QBoardEntity extends EntityPathBase<BoardEntity> {
     public final StringPath contents = createString("contents");
 
     public final NumberPath<Integer> cost = createNumber("cost", Integer.class);
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> createdDate = _super.createdDate;
 
     public final ArrayPath<byte[], Byte> file = createArray("file", byte[].class);
 
