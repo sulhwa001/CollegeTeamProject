@@ -78,5 +78,6 @@ public interface BoardService {
                 .build();
     }
 
+    void update(Long postId, BoardDTO dto);
 }
 

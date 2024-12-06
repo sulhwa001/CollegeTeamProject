@@ -66,4 +66,32 @@ public class BoardController {
         BoardDTO boardDTO = boardService.get(id);
         return ResponseEntity.ok(boardDTO);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateBoard(
+            @PathVariable("id") Long id,
+            @RequestPart(value = "boardDTO", required = false) String boardDTOJson,
+            @RequestPart(value = "image", required = false) MultipartFile imageFile
+    ) {
+        try {
+            // JSON 데이터를 DTO로 변환
+            ObjectMapper objectMapper = new ObjectMapper();
+            BoardDTO boardDTO = objectMapper.readValue(boardDTOJson, BoardDTO.class);
+
+            // 파일이 있는 경우 처리
+            if (imageFile != null && !imageFile.isEmpty()) {
+                boardDTO.setFile(imageFile.getBytes());
+            }
+
+            // 서비스 호출
+            boardService.update(id, boardDTO);
+
+            return ResponseEntity.ok("게시글이 성공적으로 수정되었습니다.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("수정 중 오류가 발생했습니다.");
+        }
+    }
+
 }

@@ -15,6 +15,7 @@ import java.util.Date;
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor
 @Getter
+@Setter
 @ToString(exclude = "member")
 public class BoardEntity extends BaseEntity {
 

@@ -23,5 +23,4 @@ public class BoardDTO {
     private int cost; // 배송비
     private Date createdAt; // 등록 시간
     private int price; // 판매 가격
-    private String conditions;
 }
