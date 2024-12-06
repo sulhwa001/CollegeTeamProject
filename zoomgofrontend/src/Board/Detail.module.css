@@ -40,16 +40,18 @@
     display: flex;
     width: 1200px;
     height: 40px;
+    justify-content: space-between;
     font-size: 18px;
     margin-top: 2rem;
   }
   
   .writer {
-    margin-left: 30px;
+    display: inline-block;
+    flex-direction: row;
   }
   
   .date {
-    margin-left: 1000px;
+    margin-left: 0px;
   }
   
   .views {
@@ -125,8 +127,12 @@
   
   .comments {
     margin-bottom: 20px;
-    text-align: left; /* Ensure text aligns to the left */
-    display: block; /* Ensure no flex or alignment issues */
+    text-align: left;
+    }
+
+    .comment_box{
+        display: flex;
+        justify-content: space-between;
     }
 
     .comments h3 {
@@ -225,4 +231,8 @@
 
   .image {
     padding: 20px;
+  }
+
+  .disabled{
+    display: none;
   }

@@ -1,7 +1,32 @@
+import { useEffect, useState } from 'react';
 import style from './Board_List.module.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Test = () => {
+
+  const [data, setData] = useState({dtoList:[]})
+
+  let page = 1
+
+  useEffect(() => {
+    axios.get("http://localhost:8080/zoomgo/board/list",{
+      params: {communityType: "자유",
+                page: page
+      }
+    })
+    .then(res => {
+      setData(res.data);
+      })
+    .catch(err => console.log(err))
+  },[]);
+
+  let count = data.dtoList.length
+
+  let resultPage = data.totalPage
+
+  console.log(data)
+
   return (
     <div className={style.container}>
       <Link to="/" className={style.link}>
@@ -25,48 +50,26 @@ const Test = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              {/* <Link to="/detail" className="link"> */}
-              <td>4</td>
-              <td className={style.board_community_title}>게시글 테스트 [4]</td>
-              <td>조은준</td>
-              <td>2024-05-14</td>
-              <td>1,469</td>
-              <td>20</td>
-              {/* </Link> */}
-            </tr>
-            <tr>
-              {/* <Link to="/detail" className="link"> */}
-              <td>3</td>
-              <td className={style.board_community_title}>게시글 테스트 [4]</td>
-              <td>조은준</td>
-              <td>2024-05-14</td>
-              <td>1,469</td>
-              <td>20</td>
-              {/* </Link> */}
-            </tr>
-            <tr>
-              {/* <Link to="/detail" className="link"> */}
-              <td>2</td>
-              <td className={style.board_community_title}>게시글 테스트 [4]</td>
-              <td>조은준</td>
-              <td>2024-05-14</td>
-              <td>1,469</td>
-              <td>20</td>
-              {/* </Link> */}
-            </tr>
-            <tr>
-              
-              <td>1</td>
-              <Link to="/detail" className={style.link}>
-              <td className={style.board_community_title}>게시글 테스트 [4]</td>
-              </Link>
-              <td>조은준</td>
-              <td>2024-05-14</td>
-              <td>1,469</td>
-              <td>20</td>
-              
-            </tr>
+            {data.dtoList && data.dtoList.length > 0 ? (
+              data.dtoList.map((post) => (
+                <tr key={post.postNo}>
+                  <td>{count--}</td>
+                  <Link to={`/detail/?postNo=${post.postNo}`} className={style.link}>
+                    <td className={style.board_community_title}>
+                      {post.title} [{post.replyCnt}]
+                    </td>
+                  </Link>
+                  <td>{post.memberNickname}</td>
+                  <td>{new Date(post.createdDate).toLocaleDateString()}</td>
+                  <td>{post.views}</td>
+                  <td>{post.recommands}</td>
+                </tr>
+              ))
+            ):(
+              <tr>
+                  <td colSpan="6">게시글이 없습니다.</td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
@@ -74,6 +77,7 @@ const Test = () => {
       <hr className={style.divider} />
 
       <div className={style.page}>
+        <span className={`${style.page_button} ${!data.prev && style.disabled}`}> 이전 </span>
         <span>1  2  3  4  5</span>
         <span className={style.page_button}> 다음 </span>
       </div>
