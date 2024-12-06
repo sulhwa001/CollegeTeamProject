@@ -16,6 +16,9 @@ public interface BoardService {
 
     void delete(Long postId);
 
+    BoardDTO get(Long postId);
+
+
 //    BoardDTO get(Long id);
 
     //dto를 Entity로 변환하는 로직 코드의 재사용을 위해 디폴트로 구현
@@ -74,5 +77,6 @@ public interface BoardService {
                 .price(board.getPrice())
                 .build();
     }
+
 }
 

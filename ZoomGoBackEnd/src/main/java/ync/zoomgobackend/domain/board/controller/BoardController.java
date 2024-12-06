@@ -61,11 +61,9 @@ public class BoardController {
         return ResponseEntity.noContent().build(); // 성공 시 204 No Content 반환
     }
 
-//    @GetMapping("/{id}") //조회
-//    public ResponseEntity findBoardById(@PathVariable("id") Long id){
-//        BoardDTO boardDTO = boardService.get(id);
-//        return ResponseEntity.ok(boardDTO);
-//        //상태코드 + 결과데이터
-//
-//    }
+    @GetMapping("/{id}") //검색
+    public ResponseEntity<BoardDTO> getBoard(@PathVariable("id") Long id) {
+        BoardDTO boardDTO = boardService.get(id);
+        return ResponseEntity.ok(boardDTO);
+    }
 }
