@@ -125,16 +125,6 @@ function Userinfo() {
         />
         <button className="address-input">주소검색</button>
       </div>
-      <div className="input-group3">
-        <label htmlFor="detailAddress" className='password-info'>상세주소:</label>
-        <input
-          className='address-input-add'
-          type="text"
-          id="detailAddress"
-          value={formData.detailAddress}
-          onChange={handleInputChange}
-        />
-      </div>
       <div className='input-container'>
         <div className="input-group10">
           <label htmlFor="birthDate" className='password-info'>생년월일:</label>
