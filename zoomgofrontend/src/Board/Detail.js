@@ -169,7 +169,9 @@ const Datail = () => {
       </div>
 
       <div className={style.button_group}>
-        <button className={style.update_button}><span>수정</span></button>
+        <Link to={`/modify/?postNo=${detail}`} className={style.link}>
+          <button className={style.update_button}><span>수정</span></button>
+        </Link>
         <button className={style.delete_button} onClick={() => hadleDetailDelete(detail)}><span>삭제</span></button>
       </div>
 
