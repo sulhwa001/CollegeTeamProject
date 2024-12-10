@@ -1,6 +1,7 @@
 package ync.zoomgobackend.domain.board.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +23,10 @@ public class BoardController {
 
     private final BoardService boardService;
 
+    @Value("${upload.path}") // 파일 저장 경로
+    private String uploadDir;
 
-    @PostMapping
+    @PostMapping //글쓰기
     public ResponseEntity<ResponseDTO<?>> register(
             @RequestPart("boardDTO") String boardDTOJson,
             @RequestPart("image") MultipartFile imageFile
@@ -33,11 +36,22 @@ public class BoardController {
             ObjectMapper objectMapper = new ObjectMapper();
             BoardDTO boardDTO = objectMapper.readValue(boardDTOJson, BoardDTO.class);
 
-            // DTO가 제대로 생성되었는지 확인
-            System.out.println(boardDTO);
+            // 파일 이름과 저장 경로 설정
+            String fileName = imageFile.getOriginalFilename();
+            String filePath = uploadDir + fileName;
+
+            // 디렉토리 생성 및 파일 저장
+            File file = new File(filePath);
+            file.getParentFile().mkdirs(); // 디렉토리가 없으면 생성
+            imageFile.transferTo(file);
+
+            // 클라이언트가 접근 가능한 URL 설정
+            String fileUrl = "http://localhost:8080/files/" + fileName; // HTTP URL로 반환
+            boardDTO.setFile(fileUrl);
 
             // 게시글 등록 후 게시글 ID 반환
             Long postId = boardService.register(boardDTO);
+
 
             // 성공 응답
             ResponseDTO<Long> response = ResponseDTO.<Long>builder()
@@ -54,23 +68,32 @@ public class BoardController {
         }
     }
 
-
     @DeleteMapping("/{id}") //삭제
     public ResponseEntity<String> delete(@PathVariable("id") Long id) { //@pathvariable 쓸때 id를 명시 해줘야함
         boardService.delete(id); // 게시글 삭제 처리
         return ResponseEntity.noContent().build(); // 성공 시 204 No Content 반환
     }
 
-    @GetMapping("/{id}") //검색
-    public ResponseEntity<BoardDTO> getBoard(@PathVariable("id") Long id) {
-        BoardDTO boardDTO = boardService.get(id);
-        return ResponseEntity.ok(boardDTO);
+    @GetMapping("/{id}")// 검색
+    public ResponseEntity<BoardDTO> getBoardWithImage(@PathVariable("id") Long id) {
+        try {
+            // 게시글 정보 가져오기
+            BoardDTO boardDTO = boardService.get(id);
+
+            // 파일 URL이 포함된 DTO 반환
+            return ResponseEntity.ok(boardDTO);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(null); // 에러 발생 시 null 반환 (실제 서비스에서는 적절한 에러 메시지 반환 필요)
+        }
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<String> updateBoard(
-            @PathVariable("id") Long id,
-            @RequestPart(value = "boardDTO", required = false) String boardDTOJson,
+    @PutMapping("/{id}") // 글 수정
+    public ResponseEntity<ResponseDTO<?>> update(
+            @PathVariable("id") Long postId,
+            @RequestPart("boardDTO") String boardDTOJson,
             @RequestPart(value = "image", required = false) MultipartFile imageFile
     ) {
         try {
@@ -78,20 +101,48 @@ public class BoardController {
             ObjectMapper objectMapper = new ObjectMapper();
             BoardDTO boardDTO = objectMapper.readValue(boardDTOJson, BoardDTO.class);
 
-            // 파일이 있는 경우 처리
+            // 파일 업데이트 로직
             if (imageFile != null && !imageFile.isEmpty()) {
-                boardDTO.setFile(imageFile.getBytes());
+                // 기존 파일 삭제
+                BoardDTO existingBoard = boardService.get(postId);
+                if (existingBoard.getFile() != null) {
+                    String existingFilePath = existingBoard.getFile().replace("http://localhost:8080/files/", uploadDir);
+                    File oldFile = new File(existingFilePath);
+                    if (oldFile.exists()) {
+                        oldFile.delete();
+                    }
+                }
+
+                // 새 파일 저장
+                String fileName = System.currentTimeMillis() + "_" + imageFile.getOriginalFilename(); // 중복 방지
+                String filePath = uploadDir + fileName;
+
+                File file = new File(filePath);
+                file.getParentFile().mkdirs(); // 디렉토리 생성
+                imageFile.transferTo(file);
+
+                // URL 설정
+                String fileUrl = "http://localhost:8080/files/" + fileName;
+                boardDTO.setFile(fileUrl);
             }
 
-            // 서비스 호출
-            boardService.update(id, boardDTO);
+            // 게시글 수정
+            boardService.update(postId, boardDTO);
 
-            return ResponseEntity.ok("게시글이 성공적으로 수정되었습니다.");
+            // 성공 응답
+            ResponseDTO<Long> response = ResponseDTO.<Long>builder()
+                    .status("success")
+                    .message("게시글이 성공적으로 수정되었습니다.")
+                    .postid(postId)
+                    .build();
+
+            return ResponseEntity.ok(response);
+
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("수정 중 오류가 발생했습니다.");
+            throw new RuntimeException("수정 중 오류가 발생했습니다.", e);
         }
     }
 
 }
+

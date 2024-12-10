@@ -50,47 +50,40 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public BoardDTO get(Long postId) {
-        return boardRepository.findById(postId)
-                .map(boardEntity -> entityToDTO(boardEntity)) // 명확히 메서드 호출
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "존재하지 않는 게시글입니다."));
+        // 게시글 조회
+        BoardEntity entity = boardRepository.findById(postId)
+                .orElseThrow(() -> new RuntimeException("게시글을 찾을 수 없습니다."));
+
+        // Entity -> DTO 변환 (이미지 URL 포함)
+        BoardDTO boardDTO = entityToDTO(entity);
+
+        return boardDTO;
     }
 
     @Override
     public void update(Long postId, BoardDTO dto) {
-        // 게시글 존재 여부 확인
-        BoardEntity boardEntity = boardRepository.findById(postId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "존재하지 않는 게시글입니다."));
+        BoardEntity existingEntity = boardRepository.findById(postId)
+                .orElseThrow(() -> new IllegalArgumentException("게시글을 찾을 수 없습니다."));
 
-        // 작성자인지 확인
-        if (!boardEntity.getMember().getUserNo().equals(getCurrentUserId())) {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "수정 권한이 없습니다.");
-        }
-
-        // 수정 내용 반영
-        boardEntity.setTitle(dto.getTitle());
-        boardEntity.setContents(dto.getContents());
-        boardEntity.setAddress(dto.getAddress());
-        boardEntity.setPrice(dto.getPrice());
-        boardEntity.setCost(dto.getCost());
-        boardEntity.setTransStatus(dto.getTransStatus());
-        boardEntity.setTransType(dto.getTransType());
-
-        // 카테고리 변경 처리
+        if (dto.getView() != 0) existingEntity.setView(dto.getView());
+        if (dto.getTitle() != null) existingEntity.setTitle(dto.getTitle());
+        if (dto.getContents() != null) existingEntity.setContents(dto.getContents());
+        if (dto.getFile() != null) existingEntity.setFile(dto.getFile());
+        if (dto.getAddress() != null) existingEntity.setAddress(dto.getAddress());
+        if (dto.getCost() != 0) existingEntity.setCost(dto.getCost());
+        if (dto.getPrice() != 0) existingEntity.setPrice(dto.getPrice());
+        if (dto.getTransStatus() != null) existingEntity.setTransStatus(dto.getTransStatus());
+        if (dto.getTransType() != null) existingEntity.setTransType(dto.getTransType());
+        // 카테고리 정보 업데이트
         if (dto.getCategory() != null && dto.getCategory().getCategoryId() != null) {
-            CategoryEntity categoryEntity = categoryRepository.findById(dto.getCategory().getCategoryId())
-                    .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 카테고리입니다."));
-            boardEntity.setCategory(categoryEntity);
-        }
-
-        // 이미지 파일 수정 처리
-        if (dto.getFile() != null) {
-            boardEntity.setFile(dto.getFile());
+            CategoryEntity category = categoryRepository.findById(dto.getCategory().getCategoryId())
+                    .orElseThrow(() -> new IllegalArgumentException("카테고리를 찾을 수 없습니다."));
+            existingEntity.setCategory(category);
         }
 
         // 저장
-        boardRepository.save(boardEntity);
+        boardRepository.save(existingEntity);
     }
-
 
 
 }

@@ -286,4 +286,9 @@
     height: 30px;
     object-fit: contain; 
 }
+.product-image img {
+    width: 500px; /* 고정된 너비 */
+    height: 500px; /* 고정된 높이 (정사각형) */
+    object-fit: cover; /* 이미지 비율 유지하며 잘림 */
 
+}

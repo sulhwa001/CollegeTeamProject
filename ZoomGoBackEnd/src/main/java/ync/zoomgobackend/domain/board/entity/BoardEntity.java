@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
-@Table(name = "USED_TRADEPOST")
+@Table(name = "used_tradepost")
 @Builder
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor
@@ -41,10 +41,6 @@ public class BoardEntity extends BaseEntity {
     @Column(name = "Address", nullable = false, length = 255)
     private String address; // 거래 주소
 
-    @Lob
-    @Column(name = "File", nullable = true)
-    private byte[] file; // 상품 이미지
-
     @Column(name = "TransStatus", nullable = false, length = 50)
     private String transStatus; // 거래 상태
 
@@ -59,5 +55,8 @@ public class BoardEntity extends BaseEntity {
 
     @Column(name = "Price", nullable = false)
     private int price; // 상품 판매 가격
+
+    @Column(name = "file", nullable = true, length = 255)
+    private String file;
 
 }

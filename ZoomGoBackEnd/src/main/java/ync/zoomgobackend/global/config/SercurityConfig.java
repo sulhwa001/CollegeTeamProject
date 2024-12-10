@@ -23,10 +23,14 @@ public class SercurityConfig {
                     .csrf(AbstractHttpConfigurer::disable) // CSRF 비활성화
                     .authorizeHttpRequests(auth -> auth
                             .anyRequest().permitAll() // 모든 요청 허용
-                    );
+                    )
+                    .formLogin(AbstractHttpConfigurer::disable) // 기본 폼 로그인 비활성화
+                    .httpBasic(AbstractHttpConfigurer::disable); // 기본 HTTP Basic 인증 비활성화
+
 
             return http.build();
         }
+
     }
 
 

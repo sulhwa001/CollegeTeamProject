@@ -1,45 +1,70 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './css/registration.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Header from './Header';
 import axios from 'axios';
 
-function RegistrationPage() {
-    const [title, setTitle] = useState(''); // 상품명
-    const [categoryId, setCategoryId] = useState(''); // 카테고리 ID
-    const [address, setAddress] = useState(''); // 거래 장소
-    const [price, setPrice] = useState(''); // 가격
-    const [contents, setContents] = useState(''); // 상품 설명
-    const [transStatus, setTransStatus] = useState(''); // 거래 상태
-    const [transType, setTransType] = useState(''); // 거래 유형
-    const [view, setView] = useState(0); // 조회수 (기본값 0)
-    const [cost, setCost] = useState(''); // 비용
-    const [file, setFile] = useState(null); // 파일 (이미지 등)
+function UpdatePage() {
+    const { id } = useParams(); // URL에서 상품 ID 가져오기
+    const [title, setTitle] = useState('');
+    const [categoryId, setCategoryId] = useState('');
+    const [address, setAddress] = useState('');
+    const [price, setPrice] = useState('');
+    const [contents, setContents] = useState('');
+    const [transStatus, setTransStatus] = useState('');
+    const [transType, setTransType] = useState('');
+    const [view, setView] = useState(0);
+    const [cost, setCost] = useState('');
+    const [file, setFile] = useState(null);
     const navigate = useNavigate();
 
-    // 카테고리 선택 핸들러
+    // 기존 데이터 로드
+    useEffect(() => {
+        const fetchProduct = async () => {
+            try {
+                const response = await axios.get(`http://localhost:8080/api/products/${id}`);
+                const product = response.data;
+
+                // 초기값 설정
+                setTitle(product.title);
+                setCategoryId(product.category?.categoryId || '');
+                setAddress(product.address);
+                setPrice(product.price);
+                setContents(product.contents);
+                setTransStatus(product.transStatus);
+                setTransType(product.transType);
+                setView(product.view);
+                setCost(product.cost);
+            } catch (error) {
+                console.error('Failed to fetch product data:', error);
+                alert('상품 정보를 불러오지 못했습니다.');
+            }
+        };
+
+        fetchProduct();
+    }, [id]);
+
     const handleCategorySelect = (categoryId) => {
-        setCategoryId(categoryId); // 선택된 카테고리 ID 업데이트
+        setCategoryId(categoryId);
     };
 
-    // 파일 선택 핸들러
     const handleFileChange = (e) => {
-        setFile(e.target.files[0]); // 선택된 파일
+        setFile(e.target.files[0]);
     };
 
-    // 폼 제출 핸들러
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         if (!title || !categoryId || !address || !price || !contents || !transStatus || !transType) {
-            alert("모든 필드를 입력해주세요.");
+            alert('모든 필드를 입력해주세요.');
             return;
         }
-    
+
         const productData = {
-            postId: 1,  // 실제로는 서버에서 받아오는 값 사용
+            postId: id, // 수정할 상품 ID
             title,
             contents,
-            memberId: 2,
+            memberId: 2, // 예시로 하드코딩된 사용자 ID
             category: { categoryId, categoryName: categoryId === 1 ? '전자제품' : '' },
             address,
             transStatus,
@@ -48,34 +73,31 @@ function RegistrationPage() {
             cost: cost || 0,
             price,
         };
-    
+
         const formData = new FormData();
         formData.append('boardDTO', JSON.stringify(productData));
-    
         if (file) formData.append('image', file);
-    
+
         try {
-            const response = await axios.post('http://localhost:8080/api/products', formData, {
+            const response = await axios.put(`http://localhost:8080/api/products/${id}`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
             });
-    
-            if (response.status === 201) {
-                alert('상품이 등록되었습니다.');
-                navigate('/');
+
+            if (response.status === 200) {
+                alert('상품이 수정되었습니다.');
+                navigate(`/detailpage`); // 수정 후 상세 페이지로 이동
             }
         } catch (error) {
-            console.error('상품 등록 실패:', error);
-            alert('상품 등록에 실패했습니다. 다시 시도해주세요.');
+            console.error('상품 수정 실패:', error);
+            alert('상품 수정에 실패했습니다. 다시 시도해주세요.');
         }
     };
-    
-    
+
     return (
         <div>
             <Header />
             <main className="main-content">
                 <form onSubmit={handleSubmit}>
-                    {/* 상품명 입력 */}
                     <div className="input-group">
                         <input
                             type="text"
@@ -85,18 +107,14 @@ function RegistrationPage() {
                             onChange={(e) => setTitle(e.target.value)}
                         />
                     </div>
-
-                    {/* 상품 카테고리 선택 */}
                     <div className="custom-select">
-                        <div 
-                            className="selected" 
-                            onClick={() => handleCategorySelect(1)}  // 예시로 '전자제품' 카테고리 선택
+                        <div
+                            className="selected"
+                            onClick={() => handleCategorySelect(1)} // 카테고리 선택 예제
                         >
                             {categoryId === 1 ? '전자제품' : '카테고리 선택'}
                         </div>
                     </div>
-
-                    {/* 거래 장소 입력 */}
                     <div className="input-group">
                         <input
                             type="text"
@@ -106,8 +124,6 @@ function RegistrationPage() {
                             onChange={(e) => setAddress(e.target.value)}
                         />
                     </div>
-
-                    {/* 가격 입력 */}
                     <div className="input-group">
                         <input
                             type="text"
@@ -117,8 +133,6 @@ function RegistrationPage() {
                             onChange={(e) => setPrice(e.target.value)}
                         />
                     </div>
-
-                    {/* 비용 입력 */}
                     <div className="input-group">
                         <input
                             type="text"
@@ -128,8 +142,6 @@ function RegistrationPage() {
                             onChange={(e) => setCost(e.target.value)}
                         />
                     </div>
-
-                    {/* 상품 설명 입력 */}
                     <div className="input-group">
                         <textarea
                             id="contents"
@@ -139,8 +151,6 @@ function RegistrationPage() {
                             onChange={(e) => setContents(e.target.value)}
                         />
                     </div>
-
-                    {/* 거래 상태 입력 */}
                     <div className="input-group">
                         <input
                             type="text"
@@ -150,8 +160,6 @@ function RegistrationPage() {
                             onChange={(e) => setTransStatus(e.target.value)}
                         />
                     </div>
-
-                    {/* 거래 유형 입력 */}
                     <div className="input-group">
                         <input
                             type="text"
@@ -161,10 +169,8 @@ function RegistrationPage() {
                             onChange={(e) => setTransType(e.target.value)}
                         />
                     </div>
-
-                    {/* 파일 업로드 입력 */}
                     <div className="input-group">
-                    <label htmlFor="file" className="file-upload-label">
+                        <label htmlFor="file" className="file-upload-label">
                             파일 업로드
                         </label>
                         <input
@@ -174,13 +180,11 @@ function RegistrationPage() {
                             className="file-upload-input"
                         />
                     </div>
-
-                    {/* 제출 버튼 */}
-                    <button type="submit" className="submit-btn">등록하기</button>
+                    <button type="submit" className="submit-btn">수정하기</button>
                 </form>
             </main>
         </div>
     );
 }
 
-export default RegistrationPage;
+export default UpdatePage;

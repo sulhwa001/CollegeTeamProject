@@ -15,7 +15,7 @@ const ProductPage = () => {
         // 백엔드 API 호출
         const fetchProduct = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/api/products/28'); // 실제 ID로 수정
+                const response = await axios.get('http://localhost:8080/api/products/47'); // 실제 ID로 수정
                 setProduct(response.data); // API에서 받은 데이터 저장
                 setLoading(false); // 로딩 상태 해제
             } catch (error) {
@@ -58,10 +58,13 @@ const ProductPage = () => {
                     <div className="product-image">
                         {/* 상품 이미지 표시 */}
                         {product.file ? (
-                            <img
-                                src={`data:image/jpeg;base64,${product.file}`}
-                                alt={product.title}
-                            />
+                          <img
+                          src={product.file}
+                          alt={product.title}
+                          className="product-image"
+
+                                />
+                      
                         ) : (
                             <p>No Image</p>
                         )}
@@ -141,7 +144,7 @@ const ProductPage = () => {
                 <section className="info">
                     <div className="info-block">
                         <h3>상품 정보</h3>
-                        <p>대명동 전동민 앞에서 직거래 가능<br />입금 후 택배 발송합니다.</p>
+                        <p>{product.contents}</p>
                     </div>
                     <div className="info-block">
                         <h3>가게 정보</h3>

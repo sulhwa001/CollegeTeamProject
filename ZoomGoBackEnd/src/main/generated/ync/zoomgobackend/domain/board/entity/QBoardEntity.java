@@ -35,7 +35,7 @@ public class QBoardEntity extends EntityPathBase<BoardEntity> {
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdDate = _super.createdDate;
 
-    public final ArrayPath<byte[], Byte> file = createArray("file", byte[].class);
+    public final StringPath file = createString("file");
 
     public final ync.zoomgobackend.domain.member.entity.QMemberEntity member;
 

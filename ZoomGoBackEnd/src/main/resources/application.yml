@@ -23,5 +23,5 @@ servlet:
     max-request-size: 30MB #전체 파일 사이즈
 
 upload:
-  path: C://upload
+  path: C:/upload/
 

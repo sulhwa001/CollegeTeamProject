@@ -10,6 +10,8 @@ import Categorie from './zoom/categorie.js';
 // import Header from './component/Header.js'; 
 import ProductPage from './zoom/detailpage.js'
 import AdminPage from './zoom/admin.js';
+import UpdatePage from './zoom/updatepage.js';
+
 
 //로그인 & 회원 가입 임프토
 // import Header from './header/Header.js';
@@ -62,6 +64,7 @@ function App() {
             <Route path="/registration" element={<RegistrationPage />} />
             <Route path="/categorie" element={<Categorie />} />
             <Route path="/detailpage" element={<ProductPage />} />
+            <Route path="/updatepage/:id" element={<UpdatePage />} />
 
             {/*로그인 & 회원 가입*/}
             <Route path="/login" element={<Loginpage />} />
