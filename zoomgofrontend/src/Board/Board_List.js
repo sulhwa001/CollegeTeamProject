@@ -5,25 +5,59 @@ import axios from 'axios';
 
 const Test = () => {
 
+  //게시글 목록 출력을 위한 준비
   const [data, setData] = useState({dtoList:[]})
 
-  let page = 1
+  //페이지 번호 기본 번호는 1번으로 출력
+  const [currentPage, setCurrentPage] = useState(1);
 
+  //Page번호를 Param으로 한 게시글 목록 출력
   useEffect(() => {
     axios.get("http://localhost:8080/zoomgo/board/list",{
-      params: {communityType: "자유",
-                page: page
+      params: {
+        communityType: "자유",
+        page: currentPage
       }
     })
     .then(res => {
       setData(res.data);
       })
     .catch(err => console.log(err))
-  },[]);
+  },[currentPage]);
 
+  //게시글 사이즈 저장
   let count = data.dtoList.length
 
-  let resultPage = data.totalPage
+  const [pageGroup, setPageGroup] = useState(1);
+
+  const maxPage = 5;
+  const totalPage = data.totalPage; // totalPage는 데이터에서 가져온 총 페이지 수
+
+  const totalPageNumber = Array.from({ length: totalPage }, (_, i) => i + 1);
+  const pageNumber = totalPageNumber.slice((pageGroup - 1) * maxPage, pageGroup * maxPage);
+
+  const handlePageClick = (page) => {
+    setCurrentPage(page);
+    setPageGroup(Math.ceil(page / maxPage));  // 클릭한 페이지에 맞는 페이지 그룹 계산
+  };
+  
+  // 이전 그룹 버튼 클릭
+  const handlePrevGroup = () => {
+    if (pageGroup > 1) {
+      const prevGroup = pageGroup - 1;
+      setPageGroup(prevGroup); // 페이지 그룹 감소
+      setCurrentPage((prevGroup - 1) * maxPage + 1); // 그룹의 첫 번째 페이지로 이동
+    }
+  };
+  
+  // 다음 그룹 버튼 클릭
+  const handleNextGroup = () => {
+    if (pageGroup * maxPage < totalPage) {
+      const nextGroup = pageGroup + 1;
+      setPageGroup(nextGroup); // 페이지 그룹 증가
+      setCurrentPage(nextGroup * maxPage - (maxPage - 1)); // 다음 그룹의 첫 번째 페이지로 이동
+    }
+  };
 
   console.log(data)
 
@@ -77,9 +111,15 @@ const Test = () => {
       <hr className={style.divider} />
 
       <div className={style.page}>
-        <span className={`${style.page_button} ${!data.prev && style.disabled}`}> 이전 </span>
-        <span>1  2  3  4  5</span>
-        <span className={style.page_button}> 다음 </span>
+        <span className={`${style.page_button} ${pageGroup === 1 && style.disabled}`} onClick={handlePrevGroup}>이전</span>
+        <span>
+          {pageNumber.map((page) => (
+            <span key={page} className={`${style.page_number} ${currentPage === page && style.active}`} onClick={() => handlePageClick(page)}>
+              {page}
+            </span>
+          ))}
+        </span>
+        <span className={`${style.page_button} ${pageGroup * maxPage >= totalPage && style.disabled}`} onClick={handleNextGroup}>다음</span>
       </div>
 
       <div className={style.actions}>

@@ -73,12 +73,25 @@
   .page {
     margin-top: 1rem;
     display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .page_button {
-    width: 70px;
+    padding: 5px 10px;
+    cursor: pointer;
   }
   
+  .page_number {
+    margin: 0 5px;
+    cursor: pointer;
+  }
+
+  .page_number.active {
+    font-weight: bold;
+    color: #6788ff;
+  }
+
   .actions {
     display: flex;
     margin-top: 4rem;

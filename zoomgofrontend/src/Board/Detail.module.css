@@ -165,6 +165,10 @@
         padding: 10px;
         border-radius: 5px;
     }
+
+  .replyButton {
+    align-items: end;
+  }
   
   .comment_input {
     margin-top: 1.25rem;
