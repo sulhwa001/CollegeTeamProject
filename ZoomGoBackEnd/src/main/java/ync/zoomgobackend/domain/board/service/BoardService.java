@@ -18,6 +18,10 @@ public interface BoardService {
 
     PageResultDTO<BoardDTO, Object[]> getList(String communityType,PageRequestDTO pageRequestDTO);  //게시판 타입에 맞는 게시물 리스트 가져오기
 
+    PageResultDTO<BoardDTO, Object[]> getListWithKeyword(String keyword, String communityType,PageRequestDTO pageRequestDTO);
+
+    void updateViews(Long postNo);
+
     default BoardDTO entityToDTO(BoardEntity boardEntity, MemberEntity memberEntity, Long commentCount){    //Entity를 DTO로 바꾸기
         return BoardDTO.builder()
                 .postNo(boardEntity.getPostNo())

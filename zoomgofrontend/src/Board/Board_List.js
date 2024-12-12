@@ -11,6 +11,12 @@ const Test = () => {
   //페이지 번호 기본 번호는 1번으로 출력
   const [currentPage, setCurrentPage] = useState(1);
 
+  const [search, setSearch] = useState(false);
+
+  const [searchPage, setSearchPage] = useState(1);
+
+  const [keyword, setKeyword] = useState("");
+
   //Page번호를 Param으로 한 게시글 목록 출력
   useEffect(() => {
     axios.get("http://localhost:8080/zoomgo/board/list",{
@@ -24,6 +30,26 @@ const Test = () => {
       })
     .catch(err => console.log(err))
   },[currentPage]);
+
+  const handleSearchChange = (e) => {
+    setKeyword(e.target.value);
+  }
+
+  const handleSearchClick = () => {
+    console.log("히힛 작동")
+    setSearch(!search)
+    axios.get("http://localhost:8080/zoomgo/board/list/keyword",{
+      params: {
+        communityType: "자유",
+        page: searchPage,
+        keyword: keyword
+      }
+    })
+    .then(res => {
+      setData(res.data);
+      })
+    .catch(err => console.log(err))
+  }
 
   //게시글 사이즈 저장
   let count = data.dtoList.length
@@ -90,7 +116,7 @@ const Test = () => {
                   <td>{count--}</td>
                   <Link to={`/detail/?postNo=${post.postNo}`} className={style.link}>
                     <td className={style.board_community_title}>
-                      {post.title} [{post.replyCnt}]
+                      {post.title}
                     </td>
                   </Link>
                   <td>{post.memberNickname}</td>
@@ -129,13 +155,8 @@ const Test = () => {
           </button>
         </Link>
         <div className={style.board_search}>
-          <select className={style.board_search_select}>
-            <option selected>제목</option>
-            <option>내용</option>
-            <option>작성자</option>
-          </select>
-          <input className={style.board_search_input} />
-          <button className={style.board_search_button}>검색</button>
+          <input className={style.board_search_input} onChange={handleSearchChange}/>
+          <button className={style.board_search_button} onClick={handleSearchClick}>검색</button>
         </div>
       </div>
     </div>

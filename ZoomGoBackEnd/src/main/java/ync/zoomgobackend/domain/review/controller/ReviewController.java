@@ -19,9 +19,9 @@ public class ReviewController {
     private final GosuReviewService gosuReviewService;
     private final UserReviewService userReviewService;
 
-    @GetMapping("/gosu")
-    public ResponseEntity findReviewById(@RequestParam("estimateId")Long estimateId){
-        GosuReviewDTO gosuReviewDTO = gosuReviewService.get(estimateId);
-        return ResponseEntity.ok(gosuReviewDTO);
-    }
+//    @GetMapping("/gosu")
+//    public ResponseEntity findReviewById(@RequestParam("estimateId")Long estimateId){
+//        GosuReviewDTO gosuReviewDTO = gosuReviewService.get(estimateId);
+//        return ResponseEntity.ok(gosuReviewDTO);
+//    }
 }

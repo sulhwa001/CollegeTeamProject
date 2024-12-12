@@ -24,6 +24,6 @@ public interface CommentRepository extends JpaRepository<CommentEntity,Long> {
             "LEFT JOIN r.memberEntity m " +
             "LEFT JOIN BoardEntity b ON b = r.boardEntity " +
             "WHERE r.boardEntity.postNo =:postNo " +
-            "GROUP BY r")
+            "ORDER BY r.commentNo ASC, r.commentDept ASC ")
     List<Object[]> getCommentByPostNo(@Param("postNo")Long postNo);
 }

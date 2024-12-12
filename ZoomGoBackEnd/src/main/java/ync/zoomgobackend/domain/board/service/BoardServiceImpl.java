@@ -54,5 +54,16 @@ public class BoardServiceImpl implements BoardService{
         return new PageResultDTO<>(result,(en -> entityToDTO((BoardEntity) en[0], (MemberEntity) en[1], (Long)en[2])));
     }
 
+    @Override
+    public PageResultDTO<BoardDTO, Object[]> getListWithKeyword(String keyword, String communityType, PageRequestDTO pageRequestDTO) {
+        Page<Object[]> result = boardRepository.getBoardContaining(keyword,communityType,pageRequestDTO.getPageable(Sort.by("postNo").descending()));
+        return new PageResultDTO<>(result,(en -> entityToDTO((BoardEntity) en[0], (MemberEntity) en[1], (Long)en[2])));
+    }
+
+    @Override
+    public void updateViews(Long postNo) {
+        boardRepository.updateViews(postNo);
+    }
+
 
 }

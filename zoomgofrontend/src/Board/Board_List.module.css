@@ -121,14 +121,6 @@
     display: flex;
     align-items: center;
   }
-
-  .board_search_select {
-    font-size: 16px;
-    height: 30px;
-    font-family: 'Inter';
-    color: #000;
-    border: 1px solid #9f9f9f;
-  }
   
   .board_search_input {
     height: 26px;

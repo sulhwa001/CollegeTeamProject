@@ -24,12 +24,21 @@ public class BoardController {
 
     @GetMapping("/list")       //게시글 전체 목록 가져오기
     public PageResultDTO<BoardDTO,Object[]> list(@RequestParam("communityType")String communityType ,PageRequestDTO pageRequestDTO){
+        System.out.println(communityType);
         System.out.println(pageRequestDTO.getType());
         return boardService.getList(communityType,pageRequestDTO);
     }
 
+    @GetMapping("/list/keyword")
+    public PageResultDTO<BoardDTO, Object[]> keywordList(@RequestParam("keyword")String keyword, @RequestParam("communityType")String communityType ,PageRequestDTO pageRequestDTO){
+        System.out.println(communityType);
+        System.out.println(pageRequestDTO.getType());
+        return boardService.getListWithKeyword(keyword,communityType,pageRequestDTO);
+    }
+
     @GetMapping("/detail")  //게시글 상세
     public ResponseEntity findBoardById(@RequestParam("postNo")Long postNo){
+        boardService.updateViews(postNo);
         BoardDTO boardDTO = boardService.get(postNo);
         return ResponseEntity.ok(boardDTO);
     }

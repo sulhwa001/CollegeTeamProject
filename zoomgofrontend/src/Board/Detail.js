@@ -57,6 +57,7 @@ const Datail = () => {
     })
     .then(res => {
       setData(res.data);
+      console.log("get작동")
       })
     .catch(err => console.log(err))
   },[]);
@@ -69,12 +70,30 @@ const Datail = () => {
       }
     })
     .then(res => {
-      console.log(res)
+      // console.log(res)
       setCommentData(res.data);
       setCommentNo(res.data.length);
       })
     .catch(err => console.log(err))
-  },[]);
+  },[data]);
+
+  const handleRecommandUp = () => {
+    console.log(data.communityType)
+    axios.put("http://localhost:8080/zoomgo/board/detail",{
+      postNo: detail,
+      views: data.views,
+      memberNo: data.memberNo,
+      communityType: data.communityType,
+      title: data.title,
+      post: data.post,
+      recommands: data.recommands + 1
+    })
+    .then((res) => {
+      console.log("추천 성공");
+    })
+    .catch(err => console.log(err))
+    window.location.reload();
+  }
 
   //본인이 작성한 댓글만 삭제 버튼이 보이며 클릭시 댓글 삭제
   //삭제후 화면 새로 고침으로 삭제된 것을 확인
@@ -133,7 +152,8 @@ const Datail = () => {
   }
 
   console.log(data)
-  console.log(commentData)
+  console.log(data.recommands)
+  // console.log(commentData)
 
   //데이터가 로딩 되지않았을 경우 보여주는 화면
   if (!data) {
@@ -182,7 +202,7 @@ const Datail = () => {
       <div className={style.post_content}>{data.post}</div>
 
       <div className={style.recommend_button_container}>
-        <button className={style.recommend_button}>
+        <button className={style.recommend_button} onClick={handleRecommandUp}>
           <span className={style.recommend_text}>추천</span>
           <span className={style.recommend_count}>{data.recommands}</span>
         </button>
