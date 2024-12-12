@@ -14,7 +14,9 @@ public class WebConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedOrigins("http://localhost:3000") // 프론트엔드 도메인
-                        .allowedMethods("GET", "POST","PUT","DELETE");
+                        .allowedMethods("GET", "POST","PUT","DELETE")
+                        .allowedHeaders("*") // 모든 헤더 허용
+                        .allowCredentials(true); // 인증 정보 포함 허용
             }
         };
     }

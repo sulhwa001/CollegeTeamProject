@@ -14,13 +14,16 @@ function LoginPage() {
         },
         body: JSON.stringify({ email, password }),
       });
+  
 
       if (response.ok) {
-        // 로그인 성공 시 추가 작업 (예: 페이지 이동)
+        const data = await response.json();
+        window.localStorage.setItem('zoomgo-token', data.accessToken);
         alert("로그인완료!!");
+
         window.location.href="/"
+        
       } else {
-        // 로그인 실패 시 추가 작업
         alert("Login failed!");
       }
     } catch (error) {

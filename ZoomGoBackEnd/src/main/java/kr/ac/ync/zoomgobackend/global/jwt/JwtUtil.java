@@ -60,11 +60,11 @@ public class JwtUtil {
         } catch (ExpiredJwtException e){
             throw new JwtException("Expired JWT");
         } catch (UnsupportedJwtException e){
-            throw new JwtException("Unsupporeted JWT");
+            throw new JwtException("Unsupported JWT");
         }catch (MalformedJwtException e){
             throw new JwtException("Invalid JWT"); //서명예외
         }catch (SignatureException e){
-            throw new JwtException("Unsupporeted JWT");
+            throw new JwtException("Unsupported JWT");
         } catch (IllegalArgumentException e){
             throw new JwtException("JWT claims string is empty");
         }
