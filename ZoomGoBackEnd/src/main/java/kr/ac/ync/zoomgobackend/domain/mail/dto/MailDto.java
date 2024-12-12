@@ -11,4 +11,5 @@ public class MailDto {
     private String email;
     private String number;
     private String numbercode;
+    private String newpassword;
 }

@@ -17,20 +17,22 @@ import java.io.UnsupportedEncodingException;
 public class MailController {
 
     private final MailService mailService;
-    private ResponseEntity<Object> emailCheck;
-    private ResponseEntity<Object> numberCheck;
 
     @ResponseBody
     @PostMapping("/emailCheck")
     public ResponseEntity<String> emailCheck(@RequestBody MailDto mailDTO) throws MessagingException, UnsupportedEncodingException {
-       return emailCheck.ok(mailService.sendSimpleMessage(mailDTO.getEmail()));
+        mailService.sendSimpleMessage(mailDTO.getEmail());
+        return ResponseEntity.ok("인증 코드가 전송되었습니다.");
     }
-
-
 
     @ResponseBody
     @PostMapping("/numberCheck")
-    public ResponseEntity numberCheck(@RequestBody MailDto mailDto) {
-        return mailService.numberCheck(mailDto.getNumbercode());
+    public ResponseEntity<String> numberCheck(@RequestBody MailDto mailDto) {
+        boolean isValid = mailService.numberCheck(mailDto.getNumbercode()).hasBody();
+        if (isValid) {
+            return ResponseEntity.ok("인증 코드가 확인되었습니다.");
+        } else {
+            return ResponseEntity.badRequest().body("인증 코드가 유효하지 않습니다.");
+        }
     }
 }

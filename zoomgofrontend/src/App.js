@@ -16,6 +16,7 @@ import AdminPage from './zoom/admin.js';
 import Registpage from './registpage/Registpage.js';
 import Loginpage from './loginpage/Loginpage.js';
 import Forgotpassword from './forgotpassword/forgotpassword.js';
+import ForgotPasswordPage from './forgotpasswordpage/forgotpasswordpage.js';
 
 //마이페이지 임포트
 import Userinfo from './userinfo/userinfo.js';
@@ -67,6 +68,7 @@ function App() {
             <Route path="/login" element={<Loginpage />} />
             <Route path="/regist" element={<Registpage />} />
             <Route path="/forgotpassword" element={<Forgotpassword />} />
+            <Route path="/forgotpasswordpage" element={<ForgotPasswordPage />} />
 
             {/*마이페이지 기능*/}
             <Route path="/userinfo" element={<Userinfo />} />

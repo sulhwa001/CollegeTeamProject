@@ -9,12 +9,12 @@ function RegistPage() {
   const [numbercode, setNumberCode] = useState('');
 
   const handleNextClick = () => {
-    if (!isVerified) {
-      alert("인증을 받아주세요");
-    } else {
-      navigate('/userinfo', { state: { email } }); // email을 state로 전달
-    }
-  };
+  if (!isVerified) {
+    alert("인증을 받아주세요");
+  } else {
+    navigate('/userinfo', { state: { email } }); // email을 state로 전달
+  }
+};
 
   const emailCheck = async () => {
     try {
