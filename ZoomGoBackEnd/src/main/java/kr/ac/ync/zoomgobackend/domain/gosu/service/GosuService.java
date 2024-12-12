@@ -3,6 +3,7 @@ package kr.ac.ync.zoomgobackend.domain.gosu.service;
 import kr.ac.ync.zoomgobackend.domain.category.entity.CategoryEntity;
 import kr.ac.ync.zoomgobackend.domain.gosu.dto.GosuChangeDTO;
 import kr.ac.ync.zoomgobackend.domain.gosu.dto.GosuDTO;
+import kr.ac.ync.zoomgobackend.domain.gosu.dto.GosuUpdateDTO;
 import kr.ac.ync.zoomgobackend.domain.gosu.entity.GosuEntity;
 import kr.ac.ync.zoomgobackend.domain.gosu.entity.GosuQuestionEntity;
 import kr.ac.ync.zoomgobackend.domain.member.entity.MemberEntity;
@@ -14,9 +15,10 @@ import java.util.Optional;
 public interface GosuService {
 
     Long insertGosu(GosuDTO gosuDTO);
-    String updateUserName(GosuChangeDTO gosuChangeDTO);
-    Optional<GosuEntity> getGosuByGosuId(Long id);
+    Long updateUserName(Long gosuId, GosuChangeDTO gosuChangeDTO);
+    Optional<GosuEntity> getProfileByGosuId(Long id);
 
+    Long updateGosu(Long gosuId, GosuUpdateDTO gosuUpdateDTO);
     default GosuEntity pictureToEntity(GosuChangeDTO gosuChangeDTO) {
         MemberEntity user = MemberEntity.builder().userNo(gosuChangeDTO.getUserNo()).build();
         return GosuEntity.builder()
@@ -24,7 +26,7 @@ public interface GosuService {
                 .build();
     }
 
-    default GosuEntity updateDtoToEntity(GosuDTO gosuDTO) {
+    default GosuEntity insertDtoToEntity(GosuDTO gosuDTO) {
         MemberEntity user = MemberEntity.builder().userNo(gosuDTO.getUserNo()).build();
         return GosuEntity.builder()
                 .price(gosuDTO.getPrice())
@@ -46,6 +48,20 @@ public interface GosuService {
                 .question3(gosuDTO.getGosuQuestion().getQuestion3())
                 .question4(gosuDTO.getGosuQuestion().getQuestion4())
                 .question5(gosuDTO.getGosuQuestion().getQuestion5())
+                .build();
+    }
+
+    default GosuEntity updateDtoToEntity(GosuUpdateDTO gosuDTO) {
+        MemberEntity user = MemberEntity.builder().userNo(gosuDTO.getUser().getUserNo()).build();
+        return GosuEntity.builder()
+                .price(gosuDTO.getPrice())
+                .area(gosuDTO.getArea())
+                .serviceDetail(gosuDTO.getServiceDetail())
+                .career(gosuDTO.getCareer())
+                .user(user)
+                .name(gosuDTO.getName())
+                .possibleTime(gosuDTO.getPossibleTime())
+                .graduation(gosuDTO.getGraduation())
                 .build();
     }
 }

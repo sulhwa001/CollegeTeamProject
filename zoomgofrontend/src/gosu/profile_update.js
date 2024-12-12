@@ -4,13 +4,21 @@ import { useParams } from "react-router-dom";
 import "../css/profile/career.css";
 import "../css/profile/profileInput.css";
 import Header from "./gosu_header";
-const InputField = ({ type, name, className, placeholder, onChange }) => (
+const InputField = ({
+  value,
+  type,
+  name,
+  className,
+  placeholder,
+  onChange,
+}) => (
   <input
     type={type}
     name={name}
     className={className}
     placeholder={placeholder}
     onChange={onChange}
+    value={value}
   />
 );
 const OptionField = ({ value, onChange }) => (
@@ -25,30 +33,15 @@ const QuestionInput = ({ question, onChange }) => (
   </div>
 );
 
-function ProfileInput() {
-  const { userNo } = useParams();
-  const [isRegisted, setIsRegisted] = useState(false);
-  const [member, setMember] = useState(null);
+function ProfileUpdate() {
+  const { gosuId } = useParams();
   const [error, setError] = useState(null);
   const [gosu, setGosu] = useState(null);
   useEffect(() => {
-    const fetchMember = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:8080/api/members/profile/${userNo}`
-        );
-        console.log(response.data);
-        setMember(response.data);
-      } catch (err) {
-        setError(err);
-        console.log(error);
-      }
-    };
-
     const fetchGosu = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/gosu/gosuProfile/${userNo}`
+          `http://localhost:8080/gosu/gosuProfile/${gosuId}`
         );
         setGosu(response.data);
       } catch (err) {
@@ -56,15 +49,15 @@ function ProfileInput() {
       }
     };
 
-    fetchMember();
     fetchGosu();
-  }, [userNo]);
+    console.log(error);
+  }, [gosuId]);
 
   const [careerYear, setCareerYear] = useState("1년 이하");
   const [schoolCareer, setSchoolCareer] = useState("고졸");
   const [DetailExplain, setDetailExplain] = useState("");
   const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState();
   const [area, setArea] = useState("");
   const [firstPossible, setFirstPossibleTime] = useState("0");
   const [possibleFromTime, setPossibleFromTime] = useState("오전");
@@ -89,6 +82,7 @@ function ProfileInput() {
     const career = `${careerYear}`;
     const school = `${schoolCareer}/${schoolName}/${schoolTime}`;
     const data = {
+      gosuId: gosuId,
       name: name,
       graduation: school,
       career: career,
@@ -97,14 +91,15 @@ function ProfileInput() {
       area: area,
       possibleTime: possibleTimeString,
       profilePicture: profilePicture,
-      userNo: userNo,
       gosuQuestion: questions,
     };
     try {
-      const response = await axios.post(`http://localhost:8080/gosu`, data);
+      const response = await axios.put(
+        `http://localhost:8080/gosu/update/${gosuId}`,
+        data
+      );
       if (response.status === 200 || response.status === 303) {
-        alert("데이터 삽입 완료");
-        setIsRegisted(true);
+        alert("수정 완료");
       }
     } catch (error) {
       alert(error);
@@ -145,21 +140,23 @@ function ProfileInput() {
     setCareerYear(e.target.value);
   };
   const careerYearOptions = Array.from({ length: 5 }, (_, i) => i + 1);
-  const possibleHourOptions = Array.from({ length: 13 }, (_, i) => i+":00");
+  const possibleHourOptions = Array.from({ length: 13 }, (_, i) => i + ":00");
   const schoolCareerList = ["고졸", "초대졸", "대졸", "석사/박사"];
+  const amPm = ["오전", "오후"];
   const updateName = async (e) => {
     e.preventDefault();
     const data = {
-      userNo: userNo,
+      gosuId: gosuId,
       name: name,
     };
     try {
       const response = await axios.put(
-        `http://localhost:8080/gosu/updateName/${userNo}`,
+        `http://localhost:8080/gosu/updateName/${gosuId}`,
         data
       );
-      if (response.status === 200 || response.status === 303) {
-        window.alert("성공");
+      if (response.status === 202 || response.status === 303) {
+        window.alert("활동명 수정 완료했습니다!");
+        console.log("활동명 변경 완료");
       }
     } catch (error) {
       window.alert(error);
@@ -175,8 +172,8 @@ function ProfileInput() {
             <div className="name_picture">
               <div className="gosu_profile_picture"></div>
               <div className="gosuInfo">
-                {member ? (
-                  <span className="gosu_name">{member.name}</span>
+                {gosu ? (
+                  <span className="gosu_name">{gosu.user.name}</span>
                 ) : (
                   <span></span>
                 )}
@@ -201,10 +198,10 @@ function ProfileInput() {
                 type="text"
                 name="gosu_name"
                 className="gosu_active_name"
-                placeholder={gosu ? gosu.name : ""}
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
+                defaultValue={gosu ? gosu.name : ""}
               />
             </div>
             <div className="gosu_picture_upload">
@@ -230,7 +227,7 @@ function ProfileInput() {
                 type="text"
                 name="update"
                 className="gosu_active_area_name"
-                placeholder="광주광역시 북구 중흥동"
+                defaultValue={gosu ? gosu.area : ""}
                 onChange={(e) => {
                   setArea(e.target.value);
                 }}
@@ -247,11 +244,10 @@ function ProfileInput() {
             </div>
             <div className="area_insert">
               <select
-                value={possibleFromTime}
+                defaultValue={possibleFromTime}
                 onChange={handlePossibleFromChange}
               >
-                <OptionField value="오전"></OptionField>
-                <OptionField value="오후"></OptionField>
+                <OptionField value={amPm}></OptionField>
               </select>
               <select
                 value={firstPossible}
@@ -259,19 +255,24 @@ function ProfileInput() {
                   setFirstPossibleTime(e.target.value);
                 }}
               >
-                {possibleHourOptions.map((time) => (
+                {gosu ? (<option value={gosu.possibleTime}></option>) :(possibleHourOptions.map((time) => (
                   <option key={time} value={time}>
                     {time}
                   </option>
-                ))}
+                )))}
               </select>
               부터&nbsp;&nbsp;&nbsp;
               <select
                 value={possibleUntilTime}
                 onChange={handlePossibleUntilChange}
               >
-                <OptionField value="오전"></OptionField>
-                <OptionField value="오후"></OptionField>
+                {gosu ? (
+                  <OptionField
+                    value={gosu.possibleTime.slice(0, 2)}
+                  ></OptionField>
+                ) : (
+                  <OptionField value={amPm}></OptionField>
+                )}
               </select>
               <select
                 value={possibleLastTime}
@@ -279,11 +280,15 @@ function ProfileInput() {
                   setPossibleLastTime(e.target.value);
                 }}
               >
-                {possibleHourOptions.map((time) => (
-                  <option key={time} value={time}>
-                    {time}
-                  </option>
-                ))}
+                {gosu ? (
+                  <option>{gosu.possibleTime.slice(16, 20)}</option>
+                ) : (
+                  possibleHourOptions.map((time) => (
+                    <option key={time} value={time}>
+                      {time}
+                    </option>
+                  ))
+                )}
               </select>
               까지
             </div>
@@ -299,7 +304,7 @@ function ProfileInput() {
                 type="text"
                 name="price"
                 className="price"
-                placeholder="가격을 입력해주세요."
+                defaultValue={gosu ? gosu.price : ""}
                 onChange={(e) => {
                   setPrice(e.target.value);
                 }}
@@ -328,7 +333,7 @@ function ProfileInput() {
                   onChange={(e) => {
                     setDetailExplain(e.target.value);
                   }}
-                  placeholder="고수에 대해 상세히 설명해주세요."
+                  defaultValue={gosu ? gosu.serviceDetail : ""}
                 ></textarea>
               </div>
             </div>
@@ -352,7 +357,7 @@ function ProfileInput() {
                       type="text"
                       name="schoolName"
                       className="schoolName"
-                      placeholder={"ex) 줌고 대학교"}
+                      defaultValue={gosu ? gosu.graduation : ""}
                       onChange={(e) => {
                         setSchoolName(e.target.value);
                       }}
@@ -361,7 +366,7 @@ function ProfileInput() {
                       type="text"
                       name="schoolTime"
                       className="schoolTime"
-                      placeholder={"ex) 2013년 3월 - 2017년 2월"}
+                      defaultValue={"ex) 2013년 3월 - 2017년 2월"}
                       onChange={(e) => {
                         setSchoolTime(e.target.value);
                       }}
@@ -413,7 +418,7 @@ function ProfileInput() {
             </div>
             <footer className="portfolio_footer">
               <button onClick={profileSubmit} className="profile_update_Button">
-                {isRegisted ? "수정" : "등록"}
+                수정
               </button>
               <button
                 className="profile_move_main_button"
@@ -431,4 +436,4 @@ function ProfileInput() {
   );
 }
 
-export default ProfileInput;
+export default ProfileUpdate;

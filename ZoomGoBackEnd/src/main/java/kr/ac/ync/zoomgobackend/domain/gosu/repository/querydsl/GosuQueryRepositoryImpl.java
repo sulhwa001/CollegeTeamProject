@@ -9,6 +9,8 @@ import kr.ac.ync.zoomgobackend.domain.gosu.entity.GosuEntity;
 import kr.ac.ync.zoomgobackend.domain.member.dto.MemberListDTO;
 import kr.ac.ync.zoomgobackend.domain.member.exception.NotFoundMemberException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -16,6 +18,7 @@ import java.util.Optional;
 import static kr.ac.ync.zoomgobackend.domain.gosu.entity.QGosuEntity.gosuEntity;
 import static kr.ac.ync.zoomgobackend.domain.member.entity.QMemberEntity.memberEntity;
 @RequiredArgsConstructor
+@Repository
 public class GosuQueryRepositoryImpl implements GosuQueryRepository {
 
     private final JPAQueryFactory jpaQueryFactory;
@@ -24,9 +27,15 @@ public class GosuQueryRepositoryImpl implements GosuQueryRepository {
     public ConstructorExpression<GosuChangeDTO> gosuChangeNameProjection() {
         return Projections.constructor(
                 GosuChangeDTO.class,
-                gosuEntity.user,
                 gosuEntity.gosuId,
-                gosuEntity.name
+                gosuEntity.name,
+                gosuEntity.area,
+                gosuEntity.career,
+                gosuEntity.graduation,
+                gosuEntity.price,
+                gosuEntity.possibleTime,
+                gosuEntity.serviceDetail,
+                gosuEntity.user
         );
     }
     @Override
@@ -34,7 +43,7 @@ public class GosuQueryRepositoryImpl implements GosuQueryRepository {
         return Optional.ofNullable(
                 jpaQueryFactory.select(gosuChangeNameProjection())
                         .from(gosuEntity)
-                        .where(memberEntity.userNo.eq(id))
+                        .where(gosuEntity.gosuId.eq(id))
                         .fetchOne()
         )
                 .orElseThrow(
@@ -56,13 +65,11 @@ public class GosuQueryRepositoryImpl implements GosuQueryRepository {
                gosuEntity.user
        );
     }
-
     public GosuDTO findGosuProfileByGosuId(Long gosuId) {
         return Optional.ofNullable(
                 jpaQueryFactory.select(selectProfileProjection())
                         .from(gosuEntity)
                         .where(gosuEntity.gosuId.eq(gosuId))
-                        .groupBy(gosuEntity)
                         .fetchOne()
         )
                 .orElseThrow(

@@ -29,6 +29,7 @@ import ExportEstimate from "./gosu/exportEstimate.js";
 import ReceiveAsk from "./gosu/gosu_receive_ask.js";
 import Portfolio from "./gosu/portfolio.js";
 import InputPortfolio from "./gosu/portfolio_input.js";
+import ProfileUpdate from "./gosu/profile_update.js";
 function App() {
  
   return (
@@ -59,6 +60,7 @@ function App() {
           <Route path="/ExportEstimate" element={<ExportEstimate />} />
           <Route path="/ProfileInput/:userNo" element={<ProfileInput />} />
           <Route path="/Profile/:gosuId" element={<Profile />} />
+          <Route path="/ProfileUpdate/:gosuId" element={<ProfileUpdate />} />
           <Route path="/Portfolio" element={<Portfolio />} />
           <Route path="/PortfolioInput" element={<InputPortfolio />} />
           <Route path="/categoryPorfolio" element={<CategoryPortfolio />} />

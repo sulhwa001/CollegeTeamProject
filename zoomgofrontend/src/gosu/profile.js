@@ -111,7 +111,7 @@ function Profile() {
             <h3>경력</h3>
             <br />
             <h4 style={{ color: "#6788FF", fontSize: "20px" }}>
-              &emsp;총 경력 {gosu ? (<span>{gosu.career}</span>):(<span></span>)}년
+              &emsp;총 경력 {gosu ? (<span>{gosu.career}</span>):(<span></span>)}
             </h4>
             <span>&emsp;온라인 광고 및 교육</span>
             <br />
@@ -126,7 +126,7 @@ function Profile() {
             <br />
             <h3>학력</h3>
             <br />
-            <p style={{ color: "black" }}>&emsp;대졸</p>
+            <p style={{ color: "black" }}>&emsp; {gosu ? (<span>{gosu.graduation}</span>):(<span></span>)}</p>
             <span style={{ color: "gray" }}>&emsp;2003년 3월 ~ 2011년 2월</span>
             <br />
             <span style={{ color: "#EAEAEA" }}>&emsp;학력 입력</span>
