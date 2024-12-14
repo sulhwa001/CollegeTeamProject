@@ -1,14 +1,10 @@
-/* * {
-  margin: 0;
-  list-style-type: none;
-  text-decoration: none;
-} */
-
 button {
   cursor: pointer;
 }
 *:focus {
   outline: 0;
+}
+* {
 }
 .gosu_header {
   width: 100%;
@@ -36,7 +32,7 @@ button {
 .gosu_header .gosu_banner {
   background: white;
   font-size: 10px;
-  width: 300px;
+  width: 350px;
   height: 50px;
   display: flex;
   text-align: center;
@@ -63,16 +59,22 @@ button {
   width: 500px;
   height: 70px;
   display: flex;
+  text-decoration:none;
 }
 .gosu_CategoryList {
   display: flex;
+  justify-content:space-between;
   align-items: center;
 }
-.gosu_CategoryList li > a {
-  color: black;
+.gosu_CategoryList li {
+  list-style:none;
   font-weight: bold;
   margin-left: 30px;
   font-size: 16px;
+}
+.gosu_CategoryList li a {
+  color:black;
+  text-decoration:none;
 }
 .gosu_profile {
   width: 500px;
@@ -83,7 +85,11 @@ button {
   display: flex;
   align-items: center;
 }
+.gosu_profileList li {
+  list-style:none;
+}
 .gosu_profileList li a {
+  text-decoration:none;
   font-size: 16px;
   font-weight: bold;
   margin-left: 30px;

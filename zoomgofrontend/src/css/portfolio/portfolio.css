@@ -102,8 +102,9 @@
 .portfolio_info_list {
     width:300px;
     margin-left:30px;
-    margin-top:20px;
+    margin-top:0px;
     display:flex;
+    align-items:center;
 }
 .portfolio_info_list p {
     width:120px;

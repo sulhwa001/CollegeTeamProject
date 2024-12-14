@@ -92,7 +92,7 @@
   color: #737373;
 }
 .won {
-  margin-top: -35px;
+  margin-top: -37px;
   position: absolute;
   right: 32%;
 }
@@ -111,6 +111,7 @@ option {
   font-size: 16px;
 }
 .portfolio_time {
+  border:1px solid #eaeaea;
   margin-top: 10px;
   width: 150px;
   height: 30px;
@@ -123,6 +124,7 @@ option {
   margin-top: 10px;
   width: 180px;
   height: 55px;
+  border:1px solid #eaeaea;
 }
 .work_article {
   margin-top: 10px;
@@ -137,8 +139,9 @@ textarea::focus {
 .work_article::placeholder {
   font-size: 16px;
 }
-.textarea_count {
-  float: right;
+.count {
+  width:720px;
+  text-align:right;
 }
 .portfolio_button {
   width: 340px;

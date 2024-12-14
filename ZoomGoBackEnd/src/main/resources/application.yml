@@ -1,37 +1,26 @@
-#spring.application.name=zoomgobackend
-spring:
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: "qhdrhaos258@gmail.com"
-    password: "xiey umph zcuq akia"
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
-            required: true
-          connectiontimeout: 5000
-          timeout: 5000
-          writetimeout: 5000
-    auth-code-expiration-millis: 1800000  # 30 * 60 * 1000 == 30?
+#spring.application.name=ZoomGoBackEnd
 
+server:
+  port: 8080
+spring:
   datasource:
-    diverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test01
+    url: jdbc:mysql://localhost:3306/gosu
     username: root
     password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
+      properties:
+        hibernate:
+          format_sql: true
     properties:
       hibernate:
+        show_sql: true
         format_sql: true
-    show-sql: true
-
-application:
-  jwt:
-    secretKey: d1e7de6c6976969fb2ff10df6ac9d782a897fa9893af8da675be368d9e2b3561
-    expiration: 864000000 # 15분 access token
-    refreshExpiration: 864000000 # 1일 refresh token
+    logging:
+      level:
+        org:
+          hibernate:
+            SQL: debug
+            type: trace
