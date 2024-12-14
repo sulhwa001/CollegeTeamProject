@@ -1,0 +1,114 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+.transaction-status {
+    margin-left: 1%; 
+    color: #3867d6; 
+    padding: 5px 10px; 
+    border-radius: 5px; 
+    font-size: 20px; 
+    font-weight: bold;
+}
+
+.info-item {
+    text-align: center;
+    width: 20%; 
+    margin: 0 auto; 
+}
+
+.main-content {
+    padding: 10px;
+    max-width: 1200px;
+    margin: auto;
+    position: relative; 
+}
+
+.main-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -27.5%; 
+    width: calc(100% + 670px); 
+    border-top: 1px solid hwb(0 77% 23%);
+    z-index: -1; 
+}
+
+.search-results h2 {
+    margin-bottom: 10px;
+    padding-bottom: 30px; 
+    border-bottom: 1px solid black; 
+    font-weight: 400; 
+}
+
+.breadcrumb {
+    margin-bottom: 20px;
+}
+
+.categorieproducts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.categorieproduct {
+    background-color: white;
+    border-radius: 5px;
+    width: 22%;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 10px;
+}
+
+.image-placeholder {
+    background-color: #e0e0e0;
+    width: 100%;
+    padding-bottom: 100%; 
+    margin-bottom: 10px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    background-color: #ffffff; 
+    color: #000000;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.pagination button.active {
+    background-color: #5380f4; 
+    cursor: default;
+    color: #ffffff;
+}
+
+.pagination button.disabled {
+    background-color: #ffffff; 
+    cursor: not-allowed;
+}
+
+.pagination button:hover:not(.active):not(.disabled) {
+    background-color: #5380f4; 
+    color: #ffffff;
+}
+
+.more-btn {
+    background-color: #ffffff;
+}
+
+.pagination button:hover {
+    background-color: #0056b3;
+}
