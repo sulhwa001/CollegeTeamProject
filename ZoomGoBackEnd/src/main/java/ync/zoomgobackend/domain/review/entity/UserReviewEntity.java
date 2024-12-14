@@ -26,6 +26,6 @@ public class UserReviewEntity extends BaseEntity {
     private MemberEntity user;    //리뷰를 받는 유저의 번호
 
     @Column(nullable = false)
-    private double recommand;
+    private double recommend;
 
 }

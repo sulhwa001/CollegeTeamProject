@@ -22,10 +22,4 @@ public class GosuReviewServiceImpl implements GosuReviewService{
         gosuReviewRepository.save(gosuReviewEntity);
     }
 
-//    @Override
-//    public GosuReviewDTO get(Long estimateId) {
-//        Object result = gosuReviewRepository.getGosuReviewById(estimateId);
-//        Object[] arr = (Object[]) result;
-//        return entityToDTO((GosuReviewEntity) arr[0],(MemberEntity) arr[1],(GosuEntity) arr[2]);
-//    }
 }

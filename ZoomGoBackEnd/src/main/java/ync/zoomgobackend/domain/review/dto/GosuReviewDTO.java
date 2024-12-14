@@ -16,7 +16,7 @@ public class GosuReviewDTO {
     private Long gosuId;
     private String name;
     private String review;
-    private double recommand;
+    private double recommend;
     private String photoURL;
     private String tag;
     private LocalDateTime createdDate;

@@ -21,5 +21,5 @@ public class BoardDTO {
     private int replyCnt;
     private LocalDateTime createdDate, modifiedDate;
     private int views;
-    private int recommands;
+    private int recommends;
 }

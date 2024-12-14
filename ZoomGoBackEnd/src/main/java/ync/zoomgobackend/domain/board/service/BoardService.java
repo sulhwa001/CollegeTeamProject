@@ -33,7 +33,7 @@ public interface BoardService {
                 .photoURL(boardEntity.getPhotoURL())
                 .createdDate(boardEntity.getCreatedDate())
                 .views(boardEntity.getViews())
-                .recommands(boardEntity.getRecommand())
+                .recommends(boardEntity.getRecommend())
                 .build();
     }
 
@@ -49,7 +49,7 @@ public interface BoardService {
                 .post(dto.getPost())
                 .photoURL(dto.getPhotoURL())
                 .views(dto.getViews())
-                .recommand(dto.getRecommands())
+                .recommend(dto.getRecommends())
                 .member(memberEntity)
                 .build();
     }

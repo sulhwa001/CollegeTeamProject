@@ -42,25 +42,20 @@ const InputText = () => {
   return (
     <div className={style.container}>
 
-      {/* 홈 > 자유게시판 */}
       <Link to="/boardlist" className={style.link}>
         <div className={style.board_type}>
           홈 &gt; 자유게시판
         </div>
       </Link>
 
-      {/* 구분선 */}
       <hr className={style.divider}/>
 
-      {/* 제목 입력 */}
       <div className={style.input_group}>
         <input className={style.input_title} placeholder="제목을 입력해주세요." onChange={handleTitleChange}/>
       </div>
 
-      {/* 작성자 정보 */}
       <div className={style.author_info}>작성자: 조은준</div>
 
-      {/* 내용 입력 */}
       <div className={style.input_group}>
         <textarea
           className={style.input_content}
@@ -76,7 +71,6 @@ const InputText = () => {
         </button>
       </div>
 
-      {/* 파일 첨부 */}
       <div className={style.file_preview_section}>
         <div className={style.file_preview_container}>
           <img className={style.file_preview} src={trade}/>
@@ -84,7 +78,6 @@ const InputText = () => {
         </div>
       </div>
 
-      {/* 버튼들 */}
       <div className={style.action_buttons}>
         <button className={style.submit_button} onClick={() => handlePostWrite(title, post)}>
           <span>작성</span>

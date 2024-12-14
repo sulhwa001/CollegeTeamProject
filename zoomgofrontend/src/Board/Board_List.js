@@ -89,7 +89,7 @@ const Test = () => {
 
   return (
     <div className={style.container}>
-      <Link to="/" className={style.link}>
+      <Link to="/boardlist" className={style.link}>
         <div className={style.board_type}>
           홈 &gt; 자유게시판
         </div>
@@ -122,7 +122,7 @@ const Test = () => {
                   <td>{post.memberNickname}</td>
                   <td>{new Date(post.createdDate).toLocaleDateString()}</td>
                   <td>{post.views}</td>
-                  <td>{post.recommands}</td>
+                  <td>{post.recommends}</td>
                 </tr>
               ))
             ):(

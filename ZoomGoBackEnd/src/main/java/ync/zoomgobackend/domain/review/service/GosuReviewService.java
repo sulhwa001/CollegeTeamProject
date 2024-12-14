@@ -9,7 +9,6 @@ public interface GosuReviewService {
 
     void register(GosuReviewDTO dto);
 
-//    GosuReviewDTO get(Long estimateId);
 
     default GosuReviewDTO entityToDTO(GosuReviewEntity gosuReviewEntity, MemberEntity memberEntity, GosuEntity gosuEntity){
         return GosuReviewDTO.builder()
@@ -18,7 +17,7 @@ public interface GosuReviewService {
                 .gosuId(gosuEntity.getGosuId())
                 .name(gosuEntity.getName())
                 .review(gosuReviewEntity.getReview())
-                .recommand(gosuReviewEntity.getRecommand())
+                .recommend(gosuReviewEntity.getRecommend())
                 .photoURL(gosuReviewEntity.getPhotoURL())
                 .tag(gosuReviewEntity.getTag())
                 .createdDate(gosuReviewEntity.getCreatedDate())
@@ -38,7 +37,7 @@ public interface GosuReviewService {
                 .member(member)
                 .gosu(gosu)
                 .review(dto.getReview())
-                .recommand(dto.getRecommand())
+                .recommend(dto.getRecommend())
                 .photoURL(dto.getPhotoURL())
                 .tag(dto.getTag())
                 .build();

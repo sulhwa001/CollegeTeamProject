@@ -28,7 +28,7 @@ public class GosuReviewEntity extends BaseEntity {
     private String review;
 
     @Column(nullable = false)
-    private double recommand;
+    private double recommend;
 
     @Column
     private String photoURL;

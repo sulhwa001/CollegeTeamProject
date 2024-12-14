@@ -33,7 +33,7 @@ public class BoardEntity extends BaseEntity {
     private int views;
 
     @Column
-    private int recommand;
+    private int recommend;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private MemberEntity member;

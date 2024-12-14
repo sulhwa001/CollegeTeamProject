@@ -6,13 +6,15 @@ import ync.zoomgobackend.domain.review.entity.UserReviewEntity;
 
 public interface UserReviewService {
 
+    void register(UserReviewDTO userReviewDTO);
+
     default UserReviewDTO entityToDTO(UserReviewEntity userReviewEntity){
         return UserReviewDTO.builder()
                 .userNo(userReviewEntity.getUser().getUserNo())
                 .nickname(userReviewEntity.getUser().getNickName())
                 .reviewer(userReviewEntity.getReviewer().getUserNo())
                 .reviewerNickname(userReviewEntity.getReviewer().getNickName())
-                .recommand(userReviewEntity.getRecommand())
+                .recommend(userReviewEntity.getRecommend())
                 .createdDate(userReviewEntity.getCreatedDate())
                 .build();
     }
@@ -27,7 +29,7 @@ public interface UserReviewService {
         return UserReviewEntity.builder()
                 .reviewer(reviewer)
                 .user(user)
-                .recommand(dto.getRecommand())
+                .recommend(dto.getRecommend())
                 .build();
     }
 }

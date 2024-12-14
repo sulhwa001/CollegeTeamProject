@@ -86,7 +86,7 @@ const Datail = () => {
       communityType: data.communityType,
       title: data.title,
       post: data.post,
-      recommands: data.recommands + 1
+      recommends: data.recommends + 1
     })
     .then((res) => {
       console.log("추천 성공");
@@ -152,7 +152,7 @@ const Datail = () => {
   }
 
   console.log(data)
-  console.log(data.recommands)
+  console.log(data.recommends)
   // console.log(commentData)
 
   //데이터가 로딩 되지않았을 경우 보여주는 화면
@@ -204,7 +204,7 @@ const Datail = () => {
       <div className={style.recommend_button_container}>
         <button className={style.recommend_button} onClick={handleRecommandUp}>
           <span className={style.recommend_text}>추천</span>
-          <span className={style.recommend_count}>{data.recommands}</span>
+          <span className={style.recommend_count}>{data.recommends}</span>
         </button>
       </div>
 
