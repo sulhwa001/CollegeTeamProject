@@ -4,18 +4,18 @@ import './App.css';
 import './index.css';
 
 //중고 거래 임포트
+import Categorie from './component/categorie.js';
 import MainPage from './component/main.js'; // MainPage 컴포넌트 임포트
 import RegistrationPage from './component/registration.js'; // RegistrationPage 컴포넌트 임포트
-import Categorie from './component/categorie.js';
 // import Header from './component/Header.js'; 
-import ProductPage from './component/detailpage.js'
 import AdminPage from './component/admin.js';
+import ProductPage from './component/detailpage.js';
 
 //로그인 & 회원 가입 임프토
 // import Header from './header/Header.js';
-import Registpage from './registpage/Registpage.js';
-import Loginpage from './loginpage/Loginpage.js';
 import Forgotpassword from './forgotpassword/forgotpassword.js';
+import Loginpage from './loginpage/Loginpage.js';
+import Registpage from './registpage/Registpage.js';
 
 //마이페이지 임포트
 // import Userinfo from './userinfo';
@@ -24,34 +24,30 @@ import Mypagemain from './mypagemain/Mypagemain.js';
 
 //게시판 임포트
 import BoardList from './Board/Board_List.js';
-import InputText from './Board/Input.js';
 import Detail from './Board/Detail.js';
+import InputText from './Board/Input.js';
 
 //리뷰 임포트
-import Recommand from './review/Recommand_modal.js';
 import GosuReview from './review/Gosu_review.js';
+import Recommand from './review/Recommand_modal.js';
 
 //채팅 임포트
-import Chat from './Chat/Chat_main.js'
+import Chat from './Chat/Chat_main.js';
 
 //고수 기능 임포트
-import GosuMain from './main';
-import Profile from './profile';
-import ProfileInput from './profile.input';
+import GosuMain from './gosu/main.js';
+import ProfileInput from './gosu/profile.input.js';
+import Profile from './gosu/profile.js';
+import ProfileUpdate from './gosu/profile_update.js';
 // import findInfo from './findInfo'
-import AskEstimate from './ask_estimate';
-import CategoryPortfolio from './category_portfolio';
-import ExportEstimate from './exportEstimate';
-import ReceiveAsk from './gosu_receive_ask';
-import Portfolio from './portfolio';
-import InputPortfolio from './portfolio_input';
-
-//막아놓은 은준씨 기능 임포트
-import Login from './login';
-import Regist from './regist';
-
-
+import AskEstimate from "./gosu/ask_estimate.js";
+import CategoryPortfolio from "./gosu/category_portfolio.js";
+import ExportEstimate from "./gosu/exportEstimate.js";
+import ReceiveAsk from "./gosu/gosu_receive_ask.js";
+import Portfolio from "./gosu/portfolio.js";
+import InputPortfolio from "./gosu/portfolio_input.js";
 function App() {
+ 
   return (
       <div className="App">
         <BrowserRouter>
@@ -91,19 +87,14 @@ function App() {
             {/*전문가 매칭 기능*/}
             <Route path="/gosuMain" element={<GosuMain/>} />
             <Route path='/ExportEstimate' element={<ExportEstimate />} />
-            <Route path="/ProfileInput" element={<ProfileInput />} />
-            <Route path="/Profile" element={<Profile />} />
+            <Route path="/ProfileInput/:userNo" element={<ProfileInput />} />
+            <Route path="/Profile/:gosuId" element={<Profile />} />
+            <Route path="/ProfileUpdate/:gosuId" element={<ProfileUpdate />} />
             <Route path="/Portfolio" element={<Portfolio />} />
             <Route path="/PortfolioInput" element={<InputPortfolio />} />
             <Route path="/categoryPorfolio" element={<CategoryPortfolio />} />
             <Route path="/askEstimate" element={<AskEstimate />} />
             <Route path="/receiveAsk" element={<ReceiveAsk />} />
-
-            {/*은준씨 제작 로그인 & 회원 가입*/}
-            {/* <Route path='/Login' element={<Login />} />
-            <Route path='/regist' element={<Regist />} />
-            <Route path='/Login' element={<Login />} /> */}
-
         </Routes>
       </BrowserRouter>
     </div>

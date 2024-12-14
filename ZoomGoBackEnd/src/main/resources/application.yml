@@ -1,14 +1,26 @@
-#spring.application.name=zoomgobackend
+#spring.application.name=ZoomGoBackEnd
+
+server:
+  port: 8080
 spring:
   datasource:
-    diverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/bootex
-    username: bootuser
-    password: Bootuser123!@#
+    url: jdbc:mysql://localhost:3306/gosu
+    username: root
+    password: as1230
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
+      properties:
+        hibernate:
+          format_sql: true
     properties:
       hibernate:
+        show_sql: true
         format_sql: true
-    show-sql: true
+    logging:
+      level:
+        org:
+          hibernate:
+            SQL: debug
+            type: trace

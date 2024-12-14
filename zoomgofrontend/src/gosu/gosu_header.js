@@ -1,7 +1,21 @@
-import { Link } from "react-router-dom";
+import { Link, Route, useNavigate, useParams } from "react-router-dom";
 import "../css/main/gosu_header.css";
-
+import ProfileInput from "./profile.input";
 function Header() {
+  const { userNo } = useParams();
+  const navigate = useNavigate();
+  const gosuChange = async () => {
+    const data = {
+      userNo: userNo,
+    };
+    const check = window.confirm("고수로 전환하시겠습니까?");
+    if (check) {
+      <Route path="/ProfileInput/:userNo" element={<ProfileInput />} />
+      
+    }
+  };
+
+
   return (
     <header className="gosu_header">
       <div className="gosu_banner">
@@ -9,7 +23,7 @@ function Header() {
           <button className="banner_button">중고</button>
         </Link>
         <Link to="/gosupage">
-          <button className="banner_button">숨고</button>
+          <button className="banner_button">고수</button>
         </Link>
       </div>
       <div className="gosu_Logo">
@@ -20,20 +34,24 @@ function Header() {
       <div className="gosu_Category">
         <ul className="gosu_CategoryList">
           <li>
-            <a href="#">견적요청</a>
+            <Link to="">
+              <p>견적요청</p>
+            </Link>
           </li>
           <li>
-            <a href="#">고수찾기</a>
+            <Link to="/categoryPorfolio">
+              <p>고수찾기</p>
+            </Link>
           </li>
         </ul>
       </div>
       <div className="gosu_profile">
         <ul className="gosu_profileList">
           <li>
-            <a href="#">받은 견적</a>
+            <a>받은 견적</a>
           </li>
           <li>
-            <a href="#">채팅</a>
+            <a>채팅</a>
           </li>
           <Link to="/Login">
             <li>
@@ -41,7 +59,7 @@ function Header() {
             </li>
           </Link>
           <li>
-            <button>고수 전환</button>
+            <button onClick={gosuChange}>고수 전환</button>
           </li>
         </ul>
       </div>

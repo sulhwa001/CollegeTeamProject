@@ -4,6 +4,17 @@ import "../css/portfolio/portfolio.css";
 import dogs from "../img/dog.png";
 import Header from "./gosu_header";
 function Portfolio() {
+  const portfolio = {
+    title: "내가 작업한 포토샵 메이크 업 헤어 사진",
+    preview: 0,
+    name: "김강민",
+    category: "피부/미용",
+    area: "전남 장성군",
+    price: 100000,
+    workYear: 2024,
+    article: "메이크업헤어 + 모델 시간당 포토샵 포함시 10만원으로 진행 합니다 촬영 끝나고 5일 안에 보정본 보내드립니다 포토샵 as가능합니다",
+    pic:dogs,
+  }
   return (
     <div className="App">
       <Header />
@@ -22,7 +33,7 @@ function Portfolio() {
                 style={{ marginLeft: "1.8vh", marginTop: "1.8vh" }}
               />
             </div>
-            <img src={dogs} />
+            <img src={portfolio.pic} />
           </div>
         </div>
         <div className="portfolio_details">
@@ -32,15 +43,15 @@ function Portfolio() {
           </h3>
           <br />
           <br />
-          <p className="portfolio_view_count">조회 {0}</p>
+          <p className="portfolio_view_count" style={{marginTop:"-20px"}}>조회 {portfolio.preview}</p>
           <br />
           <div className="portfolio_line"></div>
           <br />
           <br />
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <div style={{ display: "flex", alignItems: "center" ,marginTop:"-50px" }}>
             <div className="portfolio_profile_picture"></div>
             <div className="portfolio_profile_info">
-              <h3>&emsp;이름</h3>
+              <h3>&emsp;{portfolio.name}</h3>
               &emsp;&nbsp;
               <FaStar color="orange" className="review_stars_img" />
               &nbsp;
@@ -66,24 +77,23 @@ function Portfolio() {
           <div className="portfolio_estimate_info">
             <div className="portfolio_info_list">
               <p>숨고 카테고리</p>
-              <span>피부/미용</span>
+              <span>{portfolio.category}</span>
             </div>
             <div className="portfolio_info_list">
               <p>지역 정보</p>
-              <span>전남 장성군</span>
+              <span>{portfolio.area}</span>
             </div>
             <div className="portfolio_info_list">
               <p>가격대</p>
-              <span>100,000원</span>
+              <span>{portfolio.price}원</span>
             </div>
             <div className="portfolio_info_list">
               <p>작업년도</p>
-              <span>2024</span>
+              <span>{portfolio.workYear}</span>
             </div>
             <div className="portfolio_explain">
               <p>
-                메이크업헤어 + 모델 시간당 포토샵 포함시 10만원으로 진행 합니다
-                촬영 끝나고 5일 안에 보정본 보내드립니다 포토샵 as가능합니다
+                {portfolio.article}
               </p>
               <button>목록</button>
             </div>
