@@ -8,10 +8,6 @@ import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
 import com.querydsl.core.types.dsl.PathInits;
-import kr.ac.ync.zoomgobackend.domain.gosuportfolio.GosuPortfolioImageEntity;
-import ync.zoomgobackend.domain.category.entity.QCategoryEntity;
-import ync.zoomgobackend.domain.gosu.entity.QGosuEntity;
-import ync.zoomgobackend.domain.member.entity.QMemberEntity;
 
 
 /**
@@ -20,13 +16,13 @@ import ync.zoomgobackend.domain.member.entity.QMemberEntity;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QGosuPortfolioImageEntity extends EntityPathBase<GosuPortfolioImageEntity> {
 
-    private static final long serialVersionUID = 3577728L;
+    private static final long serialVersionUID = -85700763L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
     public static final QGosuPortfolioImageEntity gosuPortfolioImageEntity = new QGosuPortfolioImageEntity("gosuPortfolioImageEntity");
 
-    public final QCategoryEntity categoryId;
+    public final ync.zoomgobackend.domain.category.entity.QCategoryEntity categoryId;
 
     public final ComparablePath<java.io.File> detail_image1 = createComparable("detail_image1", java.io.File.class);
 
@@ -36,13 +32,13 @@ public class QGosuPortfolioImageEntity extends EntityPathBase<GosuPortfolioImage
 
     public final ComparablePath<java.io.File> detail_image4 = createComparable("detail_image4", java.io.File.class);
 
-    public final QGosuEntity gosuId;
+    public final ync.zoomgobackend.domain.gosu.entity.QGosuEntity gosuId;
 
     public final QGosuPortfolioEntity gosuPortfolio;
 
     public final ComparablePath<java.io.File> image = createComparable("image", java.io.File.class);
 
-    public final QMemberEntity userNo;
+    public final ync.zoomgobackend.domain.member.entity.QMemberEntity userNo;
 
     public QGosuPortfolioImageEntity(String variable) {
         this(GosuPortfolioImageEntity.class, forVariable(variable), INITS);
@@ -62,10 +58,10 @@ public class QGosuPortfolioImageEntity extends EntityPathBase<GosuPortfolioImage
 
     public QGosuPortfolioImageEntity(Class<? extends GosuPortfolioImageEntity> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.categoryId = inits.isInitialized("categoryId") ? new QCategoryEntity(forProperty("categoryId")) : null;
-        this.gosuId = inits.isInitialized("gosuId") ? new QGosuEntity(forProperty("gosuId"), inits.get("gosuId")) : null;
+        this.categoryId = inits.isInitialized("categoryId") ? new ync.zoomgobackend.domain.category.entity.QCategoryEntity(forProperty("categoryId")) : null;
+        this.gosuId = inits.isInitialized("gosuId") ? new ync.zoomgobackend.domain.gosu.entity.QGosuEntity(forProperty("gosuId"), inits.get("gosuId")) : null;
         this.gosuPortfolio = inits.isInitialized("gosuPortfolio") ? new QGosuPortfolioEntity(forProperty("gosuPortfolio"), inits.get("gosuPortfolio")) : null;
-        this.userNo = inits.isInitialized("userNo") ? new QMemberEntity(forProperty("userNo")) : null;
+        this.userNo = inits.isInitialized("userNo") ? new ync.zoomgobackend.domain.member.entity.QMemberEntity(forProperty("userNo")) : null;
     }
 
 }

@@ -20,9 +20,7 @@ public interface GosuService {
 
     Long updateGosu(Long gosuId, GosuUpdateDTO gosuUpdateDTO);
     default GosuEntity pictureToEntity(GosuChangeDTO gosuChangeDTO) {
-        MemberEntity user = MemberEntity.builder().userNo(gosuChangeDTO.getUserNo()).build();
         return GosuEntity.builder()
-                .user(user)
                 .build();
     }
 
@@ -51,17 +49,4 @@ public interface GosuService {
                 .build();
     }
 
-    default GosuEntity updateDtoToEntity(GosuUpdateDTO gosuDTO) {
-        MemberEntity user = MemberEntity.builder().userNo(gosuDTO.getUser().getUserNo()).build();
-        return GosuEntity.builder()
-                .price(gosuDTO.getPrice())
-                .area(gosuDTO.getArea())
-                .serviceDetail(gosuDTO.getServiceDetail())
-                .career(gosuDTO.getCareer())
-                .user(user)
-                .name(gosuDTO.getName())
-                .possibleTime(gosuDTO.getPossibleTime())
-                .graduation(gosuDTO.getGraduation())
-                .build();
-    }
 }

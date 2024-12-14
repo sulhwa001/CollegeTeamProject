@@ -7,7 +7,6 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
-import kr.ac.ync.zoomgobackend.domain.category.entity.CategoryEntity;
 
 
 /**
@@ -16,7 +15,7 @@ import kr.ac.ync.zoomgobackend.domain.category.entity.CategoryEntity;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QCategoryEntity extends EntityPathBase<CategoryEntity> {
 
-    private static final long serialVersionUID = -384463188L;
+    private static final long serialVersionUID = 632814481L;
 
     public static final QCategoryEntity categoryEntity = new QCategoryEntity("categoryEntity");
 

@@ -8,9 +8,6 @@ import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
 import com.querydsl.core.types.dsl.PathInits;
-import kr.ac.ync.zoomgobackend.domain.gosu.entity.GosuEntity;
-import ync.zoomgobackend.domain.gosuportfolio.QGosuPortfolioEntity;
-import ync.zoomgobackend.domain.member.entity.QMemberEntity;
 
 
 /**
@@ -19,7 +16,7 @@ import ync.zoomgobackend.domain.member.entity.QMemberEntity;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QGosuEntity extends EntityPathBase<GosuEntity> {
 
-    private static final long serialVersionUID = -1154823996L;
+    private static final long serialVersionUID = 1615260329L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
@@ -35,7 +32,7 @@ public class QGosuEntity extends EntityPathBase<GosuEntity> {
 
     public final StringPath name = createString("name");
 
-    public final ListPath<kr.ac.ync.zoomgobackend.domain.gosuportfolio.GosuPortfolioEntity, QGosuPortfolioEntity> portfolios = this.<kr.ac.ync.zoomgobackend.domain.gosuportfolio.GosuPortfolioEntity, QGosuPortfolioEntity>createList("portfolios", kr.ac.ync.zoomgobackend.domain.gosuportfolio.GosuPortfolioEntity.class, QGosuPortfolioEntity.class, PathInits.DIRECT2);
+    public final ListPath<ync.zoomgobackend.domain.gosuportfolio.GosuPortfolioEntity, ync.zoomgobackend.domain.gosuportfolio.QGosuPortfolioEntity> portfolios = this.<ync.zoomgobackend.domain.gosuportfolio.GosuPortfolioEntity, ync.zoomgobackend.domain.gosuportfolio.QGosuPortfolioEntity>createList("portfolios", ync.zoomgobackend.domain.gosuportfolio.GosuPortfolioEntity.class, ync.zoomgobackend.domain.gosuportfolio.QGosuPortfolioEntity.class, PathInits.DIRECT2);
 
     public final StringPath possibleTime = createString("possibleTime");
 
@@ -45,7 +42,7 @@ public class QGosuEntity extends EntityPathBase<GosuEntity> {
 
     public final StringPath serviceDetail = createString("serviceDetail");
 
-    public final QMemberEntity user;
+    public final ync.zoomgobackend.domain.member.entity.QMemberEntity user;
 
     public QGosuEntity(String variable) {
         this(GosuEntity.class, forVariable(variable), INITS);
@@ -65,7 +62,7 @@ public class QGosuEntity extends EntityPathBase<GosuEntity> {
 
     public QGosuEntity(Class<? extends GosuEntity> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.user = inits.isInitialized("user") ? new QMemberEntity(forProperty("user")) : null;
+        this.user = inits.isInitialized("user") ? new ync.zoomgobackend.domain.member.entity.QMemberEntity(forProperty("user")) : null;
     }
 
 }

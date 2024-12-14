@@ -38,6 +38,7 @@ function ProfileUpdate() {
   const [error, setError] = useState(null);
   const [gosu, setGosu] = useState(null);
   useEffect(() => {
+
     const fetchGosu = async () => {
       try {
         const response = await axios.get(
@@ -56,7 +57,7 @@ function ProfileUpdate() {
   const [careerYear, setCareerYear] = useState("1년 이하");
   const [schoolCareer, setSchoolCareer] = useState("고졸");
   const [DetailExplain, setDetailExplain] = useState("");
-  const [name, setName] = useState("");
+  const [name, setName] = useState(gosu ? gosu.name : "");
   const [price, setPrice] = useState();
   const [area, setArea] = useState("");
   const [firstPossible, setFirstPossibleTime] = useState("0");
@@ -112,6 +113,7 @@ function ProfileUpdate() {
   const handlePossibleFromChange = (e) => {
     setPossibleFromTime(e.target.value);
   };
+
   const handlePossibleUntilChange = (e) => {
     setPossibleUntilTime(e.target.value);
   };
@@ -199,9 +201,10 @@ function ProfileUpdate() {
                 name="gosu_name"
                 className="gosu_active_name"
                 onChange={(e) => {
-                  setName(e.target.value);
+                  setGosu({ ...gosu, name: e.target.value })
+                  setName(e.target.value)
                 }}
-                defaultValue={gosu ? gosu.name : ""}
+                value={gosu ? gosu.name : ""}
               />
             </div>
             <div className="gosu_picture_upload">
@@ -227,10 +230,11 @@ function ProfileUpdate() {
                 type="text"
                 name="update"
                 className="gosu_active_area_name"
-                defaultValue={gosu ? gosu.area : ""}
                 onChange={(e) => {
-                  setArea(e.target.value);
+                  setGosu({...gosu, area:e.target.value})
+                  setArea(e.target.value)
                 }}
+                value={gosu ? gosu.area : ""}
               />
             </div>
             <div className="service_category">
@@ -244,10 +248,19 @@ function ProfileUpdate() {
             </div>
             <div className="area_insert">
               <select
-                defaultValue={possibleFromTime}
+                value={possibleFromTime}
                 onChange={handlePossibleFromChange}
               >
-                <OptionField value={amPm}></OptionField>
+                {gosu ? (
+                  <>
+                    <option>선택 - {gosu.possibleTime.slice(0, 2)}</option>
+                    {amPm.map((list) => (
+                      <OptionField key={list} value={list}></OptionField>
+                    ))}
+                  </>
+                ) : (
+                  <OptionField value={amPm}></OptionField>
+                )}
               </select>
               <select
                 value={firstPossible}
@@ -255,11 +268,25 @@ function ProfileUpdate() {
                   setFirstPossibleTime(e.target.value);
                 }}
               >
-                {gosu ? (<option value={gosu.possibleTime}></option>) :(possibleHourOptions.map((time) => (
-                  <option key={time} value={time}>
-                    {time}
-                  </option>
-                )))}
+                {gosu ? (
+                  <>
+                    <option>선택 - {gosu.possibleTime.slice(3, 7)}</option>
+                    {possibleHourOptions.map((time) => (
+                      <OptionField key={time} value={time}>
+                        {time === gosu.possibleTime.slice(3, 7)
+                          ? "선택 - "
+                          : ""}
+                        {time}
+                      </OptionField>
+                    ))}
+                  </>
+                ) : (
+                  possibleHourOptions.map((time) => (
+                    <option key={time} value={time}>
+                      {time}
+                    </option>
+                  ))
+                )}
               </select>
               부터&nbsp;&nbsp;&nbsp;
               <select
@@ -267,9 +294,12 @@ function ProfileUpdate() {
                 onChange={handlePossibleUntilChange}
               >
                 {gosu ? (
-                  <OptionField
-                    value={gosu.possibleTime.slice(0, 2)}
-                  ></OptionField>
+                  <>
+                    <option>선택 - {gosu.possibleTime.slice(13, 15)}</option>
+                    {amPm.map((list) => (
+                      <OptionField key={list} value={list}></OptionField>
+                    ))}
+                  </>
                 ) : (
                   <OptionField value={amPm}></OptionField>
                 )}
@@ -280,16 +310,26 @@ function ProfileUpdate() {
                   setPossibleLastTime(e.target.value);
                 }}
               >
-                {gosu ? (
-                  <option>{gosu.possibleTime.slice(16, 20)}</option>
-                ) : (
-                  possibleHourOptions.map((time) => (
-                    <option key={time} value={time}>
+              {gosu ? (
+                <>
+                  <option>선택 - {gosu.possibleTime.slice(16, 20)}</option>
+                  {possibleHourOptions.map((time) => (
+                    <OptionField key={time} value={time}>
+                      {time === gosu.possibleTime.slice(16, 20)
+                        ? "선택 - "
+                        : ""}
                       {time}
-                    </option>
-                  ))
-                )}
-              </select>
+                    </OptionField>
+                  ))}
+                </>
+              ) : (
+                possibleHourOptions.map((time) => (
+                  <option key={time} value={time}>
+                    {time}
+                  </option>
+                ))
+              )}
+            </select>
               까지
             </div>
             <div className="gosu_price">

@@ -1,4 +1,4 @@
-package kr.ac.ync.zoomgobackend.global.exception;
+package ync.zoomgobackend.global.exception;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

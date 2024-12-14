@@ -8,7 +8,6 @@ import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
 import com.querydsl.core.types.dsl.PathInits;
-import kr.ac.ync.zoomgobackend.domain.gosu.entity.GosuQuestionEntity;
 
 
 /**
@@ -17,7 +16,7 @@ import kr.ac.ync.zoomgobackend.domain.gosu.entity.GosuQuestionEntity;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QGosuQuestionEntity extends EntityPathBase<GosuQuestionEntity> {
 
-    private static final long serialVersionUID = 1662286666L;
+    private static final long serialVersionUID = -1615402961L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 

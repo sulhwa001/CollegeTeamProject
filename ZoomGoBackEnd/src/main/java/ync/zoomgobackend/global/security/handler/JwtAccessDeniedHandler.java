@@ -1,4 +1,4 @@
-package kr.ac.ync.zoomgobackend.global.security.handler;
+package ync.zoomgobackend.global.security.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletException;

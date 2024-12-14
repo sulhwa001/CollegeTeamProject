@@ -1,4 +1,4 @@
-package kr.ac.ync.zoomgobackend.global.config;
+package ync.zoomgobackend.global.config;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;

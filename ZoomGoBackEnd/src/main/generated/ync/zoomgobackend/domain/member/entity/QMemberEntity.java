@@ -7,7 +7,6 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
-import kr.ac.ync.zoomgobackend.domain.member.entity.MemberEntity;
 
 
 /**
@@ -16,13 +15,13 @@ import kr.ac.ync.zoomgobackend.domain.member.entity.MemberEntity;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QMemberEntity extends EntityPathBase<MemberEntity> {
 
-    private static final long serialVersionUID = 1217155492L;
+    private static final long serialVersionUID = -582289143L;
 
     public static final QMemberEntity memberEntity = new QMemberEntity("memberEntity");
 
     public final StringPath address = createString("address");
 
-    public final EnumPath<kr.ac.ync.zoomgobackend.domain.member.entity.enums.MemberRole> admin = createEnum("admin", kr.ac.ync.zoomgobackend.domain.member.entity.enums.MemberRole.class);
+    public final EnumPath<ync.zoomgobackend.domain.member.entity.enums.MemberRole> admin = createEnum("admin", ync.zoomgobackend.domain.member.entity.enums.MemberRole.class);
 
     public final DateTimePath<java.util.Date> birthDate = createDateTime("birthDate", java.util.Date.class);
 

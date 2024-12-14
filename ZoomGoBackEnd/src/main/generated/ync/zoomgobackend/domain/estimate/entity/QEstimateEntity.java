@@ -8,10 +8,6 @@ import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
 import com.querydsl.core.types.dsl.PathInits;
-import kr.ac.ync.zoomgobackend.domain.estimate.entity.EstimateEntity;
-import ync.zoomgobackend.domain.category.entity.QCategoryEntity;
-import ync.zoomgobackend.domain.gosu.entity.QGosuEntity;
-import ync.zoomgobackend.domain.member.entity.QMemberEntity;
 
 
 /**
@@ -20,13 +16,13 @@ import ync.zoomgobackend.domain.member.entity.QMemberEntity;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QEstimateEntity extends EntityPathBase<EstimateEntity> {
 
-    private static final long serialVersionUID = -601015296L;
+    private static final long serialVersionUID = 416262373L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
     public static final QEstimateEntity estimateEntity = new QEstimateEntity("estimateEntity");
 
-    public final QCategoryEntity categoryId;
+    public final ync.zoomgobackend.domain.category.entity.QCategoryEntity categoryId;
 
     public final StringPath estimateArticle = createString("estimateArticle");
 
@@ -38,9 +34,9 @@ public class QEstimateEntity extends EntityPathBase<EstimateEntity> {
 
     public final StringPath field = createString("field");
 
-    public final QGosuEntity gosuId;
+    public final ync.zoomgobackend.domain.gosu.entity.QGosuEntity gosuId;
 
-    public final QMemberEntity userNo;
+    public final ync.zoomgobackend.domain.member.entity.QMemberEntity userNo;
 
     public QEstimateEntity(String variable) {
         this(EstimateEntity.class, forVariable(variable), INITS);
@@ -60,9 +56,9 @@ public class QEstimateEntity extends EntityPathBase<EstimateEntity> {
 
     public QEstimateEntity(Class<? extends EstimateEntity> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.categoryId = inits.isInitialized("categoryId") ? new QCategoryEntity(forProperty("categoryId")) : null;
-        this.gosuId = inits.isInitialized("gosuId") ? new QGosuEntity(forProperty("gosuId"), inits.get("gosuId")) : null;
-        this.userNo = inits.isInitialized("userNo") ? new QMemberEntity(forProperty("userNo")) : null;
+        this.categoryId = inits.isInitialized("categoryId") ? new ync.zoomgobackend.domain.category.entity.QCategoryEntity(forProperty("categoryId")) : null;
+        this.gosuId = inits.isInitialized("gosuId") ? new ync.zoomgobackend.domain.gosu.entity.QGosuEntity(forProperty("gosuId"), inits.get("gosuId")) : null;
+        this.userNo = inits.isInitialized("userNo") ? new ync.zoomgobackend.domain.member.entity.QMemberEntity(forProperty("userNo")) : null;
     }
 
 }
