@@ -74,19 +74,24 @@ public class BoardController {
         return ResponseEntity.noContent().build(); // 성공 시 204 No Content 반환
     }
 
-    @GetMapping("/{id}")// 검색
-    public ResponseEntity<BoardDTO> getBoardWithImage(@PathVariable("id") Long id) {
+    @GetMapping("/{id}") // 단건 조회
+    public ResponseEntity<BoardDTO> getBoardWithImage(@PathVariable("id") Long id,
+                                                      @RequestParam(value = "incrementView", defaultValue = "true") boolean incrementView) {
         try {
+            // 조건적으로 조회수 증가
+            if (incrementView) {
+                boardService.incrementView(id); // 조회수 증가
+            }
+
             // 게시글 정보 가져오기
             BoardDTO boardDTO = boardService.get(id);
 
-            // 파일 URL이 포함된 DTO 반환
             return ResponseEntity.ok(boardDTO);
 
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(null); // 에러 발생 시 null 반환 (실제 서비스에서는 적절한 에러 메시지 반환 필요)
+                    .body(null); // 에러 발생 시 null 반환
         }
     }
 

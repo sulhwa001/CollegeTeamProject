@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import { useNavigate , useParams } from 'react-router-dom';
 import './css/detailpage.css'; // CSS 파일을 불러옴
 import dibs from './icon/dibs.png';
 import deleteIcon from './icon/delete.png';
@@ -6,32 +7,39 @@ import axios from 'axios';
 import Header from './Header'; 
 
 
+
 const ProductPage = () => {
     const [product, setProduct] = useState(null); // 상품 정보를 저장
     const [loading, setLoading] = useState(true); // 로딩 상태
-    const currentUserId = 1; // 하드코딩된 현재 사용자 ID
+    const currentUserId = 2; // 하드코딩된 현재 사용자 ID
+    const navigate = useNavigate(); // useNavigate 훅 사용
+    const { id } = useParams(); // URL에서 동적 매개변수 가져오기
+    const isFirstRender = useRef(true); // 첫 번째 렌더링 여부 추적
 
     useEffect(() => {
-        // 백엔드 API 호출
+    
         const fetchProduct = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/api/products/47'); // 실제 ID로 수정
+                const response = await axios.get(`http://localhost:8080/api/products/${id}?incrementView=true`);
                 setProduct(response.data); // API에서 받은 데이터 저장
-                setLoading(false); // 로딩 상태 해제
             } catch (error) {
                 console.error('Error fetching product data:', error);
+            } finally {
                 setLoading(false); // 로딩 상태 해제
             }
         };
-
-        fetchProduct();
-    }, []);
+    
+        if (isFirstRender.current) {
+            isFirstRender.current = false; // 첫 번째 실행 이후로는 false 설정
+            fetchProduct();
+        }
+    }, [id]); // id가 변경될 때만 호출
+    
 
     const handleDelete = async () => {
         try {
             await axios.delete(`http://localhost:8080/api/products/${product.postId}`);
             alert('게시글이 삭제되었습니다.');
-            // 추가 동작: 목록 페이지로 이동 등
         } catch (error) {
             console.error('Error deleting product:', error);
             alert('게시글 삭제에 실패했습니다.');
@@ -39,8 +47,9 @@ const ProductPage = () => {
     };
 
     const handleUpdate = () => {
-        alert('수정 페이지로 이동합니다.'); // 추후 실제 수정 페이지로 이동
+        navigate(`/updatepage/${product.postId}`); // 상대 경로를 사용
     };
+    
 
     if (loading) {
         return <div>Loading...</div>; // 로딩 중 표시
@@ -72,9 +81,7 @@ const ProductPage = () => {
                     <div className="product-details">
                         <div className="product-channel">
                             <p>홈 &gt; {product.category?.categoryName || '카테고리 없음'}</p>
-                            <div className="transaction-status">
-                                <div>{product.transStatus || '상태 없음'}</div>
-                            </div>
+
                         </div>
                         <div className="product-name">
                             <h1>{product.title || '상품명 없음'}</h1>
@@ -100,8 +107,8 @@ const ProductPage = () => {
 
                         <section className="product-details-info">
                             <div className="info-item">
-                                <p>제품상태</p>
-                                <p>{product.conditions || '상태 없음'}</p>
+                                <p>거래상태</p>
+                                <p>{product.transStatus || '상태 없음'}</p>
                             </div>
                             <div className="divider"></div>
                             <div className="info-item">

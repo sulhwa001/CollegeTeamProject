@@ -21,10 +21,12 @@ public class BoardServiceImpl implements BoardService {
     private final BoardRepository boardRepository;
     private final MemberRepository memberRepository;
     private final CategoryRepository categoryRepository;
+
     private Long getCurrentUserId() {
         //아직 로그인 기능 없어서 하드코딩
         return 1L; // 임시 사용자 ID
     }
+
     @Override
     public Long register(BoardDTO dto) {
         // MemberEntity 조회
@@ -50,21 +52,28 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public BoardDTO get(Long postId) {
-        // 게시글 조회
+        // 게시글 조회만 수행
         BoardEntity entity = boardRepository.findById(postId)
                 .orElseThrow(() -> new RuntimeException("게시글을 찾을 수 없습니다."));
-
-        // Entity -> DTO 변환 (이미지 URL 포함)
-        BoardDTO boardDTO = entityToDTO(entity);
-
-        return boardDTO;
+        return entityToDTO(entity);
     }
+
+    public void incrementView(Long postId) {
+        // 조회수 증가 로직
+        BoardEntity entity = boardRepository.findById(postId)
+                .orElseThrow(() -> new RuntimeException("게시글을 찾을 수 없습니다."));
+        entity.setView(entity.getView() + 1);
+        boardRepository.save(entity);
+    }
+
 
     @Override
     public void update(Long postId, BoardDTO dto) {
+        // 기존 게시글 조회
         BoardEntity existingEntity = boardRepository.findById(postId)
                 .orElseThrow(() -> new IllegalArgumentException("게시글을 찾을 수 없습니다."));
 
+        // 기존 필드 업데이트
         if (dto.getView() != 0) existingEntity.setView(dto.getView());
         if (dto.getTitle() != null) existingEntity.setTitle(dto.getTitle());
         if (dto.getContents() != null) existingEntity.setContents(dto.getContents());
@@ -74,8 +83,24 @@ public class BoardServiceImpl implements BoardService {
         if (dto.getPrice() != 0) existingEntity.setPrice(dto.getPrice());
         if (dto.getTransStatus() != null) existingEntity.setTransStatus(dto.getTransStatus());
         if (dto.getTransType() != null) existingEntity.setTransType(dto.getTransType());
+
         // 카테고리 정보 업데이트
-        if (dto.getCategory() != null && dto.getCategory().getCategoryId() != null) {
+        if (dto.getCategory() != null && dto.getCategory().getCategoryName() != null) {
+            String categoryName = dto.getCategory().getCategoryName();
+
+            // 카테고리 이름으로 조회 및 생성 (기본 JPA 사용)
+            CategoryEntity category = categoryRepository.findAll().stream()
+                    .filter(cat -> categoryName.equals(cat.getCategoryName()))
+                    .findFirst()
+                    .orElseGet(() -> {
+                        CategoryEntity newCategory = new CategoryEntity();
+                        newCategory.setCategoryName(categoryName);
+                        return categoryRepository.save(newCategory); // 새로운 카테고리 저장
+                    });
+
+            existingEntity.setCategory(category);
+        } else if (dto.getCategory() != null && dto.getCategory().getCategoryId() != null) {
+            // 카테고리 ID로 조회
             CategoryEntity category = categoryRepository.findById(dto.getCategory().getCategoryId())
                     .orElseThrow(() -> new IllegalArgumentException("카테고리를 찾을 수 없습니다."));
             existingEntity.setCategory(category);
@@ -84,7 +109,4 @@ public class BoardServiceImpl implements BoardService {
         // 저장
         boardRepository.save(existingEntity);
     }
-
-
 }
-

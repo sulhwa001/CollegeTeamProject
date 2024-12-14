@@ -245,19 +245,6 @@
     font-size: 24px;
 }
 
-.file-upload-label {
-    display: inline-block;
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-top: 10px;
-}
-
-.file-upload-input {
-    display: none; /* 기본 파일 input은 숨기고 */
-}
 
 .product-actions .delete-button {
     width: 40px; /* 너비와 높이를 동일하게 설정 */
@@ -292,3 +279,4 @@
     object-fit: cover; /* 이미지 비율 유지하며 잘림 */
 
 }
+

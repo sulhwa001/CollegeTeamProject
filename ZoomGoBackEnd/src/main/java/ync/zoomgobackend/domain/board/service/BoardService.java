@@ -17,6 +17,7 @@ public interface BoardService {
     void delete(Long postId);
 
     BoardDTO get(Long postId);
+    void incrementView(Long postId);
 
 
 //    BoardDTO get(Long id);
@@ -33,8 +34,12 @@ public interface BoardService {
         }
 
         CategoryEntity categoryEntity = categoryRepository.findById(dto.getCategory().getCategoryId())
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 카테고리입니다."));
-
+                .orElseGet(() -> {
+                    // 새 카테고리 생성
+                    CategoryEntity newCategory = new CategoryEntity();
+                    newCategory.setCategoryName(dto.getCategory().getCategoryName());
+                    return categoryRepository.save(newCategory); // 저장 후 반환
+                });
         return BoardEntity.builder()
                 .title(dto.getTitle())
                 .contents(dto.getContents())

@@ -63,7 +63,7 @@ function App() {
             <Route path="/" element={<MainPage />} />
             <Route path="/registration" element={<RegistrationPage />} />
             <Route path="/categorie" element={<Categorie />} />
-            <Route path="/detailpage" element={<ProductPage />} />
+            <Route path="/detailpage/:id" element={<ProductPage />} />
             <Route path="/updatepage/:id" element={<UpdatePage />} />
 
             {/*로그인 & 회원 가입*/}
