@@ -1,5 +1,4 @@
 package ync.zoomgobackend.domain.gosu.dto;
-
 import lombok.*;
 
 @Setter
@@ -8,6 +7,5 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GosuChangeDTO {
-    private Long userNo;
     private String name;
 }

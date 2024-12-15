@@ -27,7 +27,6 @@ const QuestionInput = ({ question, onChange }) => (
 
 function ProfileInput() {
   const { userNo } = useParams();
-  const [isRegisted, setIsRegisted] = useState(false);
   const [member, setMember] = useState(null);
   const [error, setError] = useState(null);
   const [gosu, setGosu] = useState(null);
@@ -104,7 +103,6 @@ function ProfileInput() {
       const response = await axios.post(`http://localhost:8080/gosu`, data);
       if (response.status === 200 || response.status === 303) {
         alert("데이터 삽입 완료");
-        setIsRegisted(true);
       }
     } catch (error) {
       alert(error);
@@ -147,24 +145,6 @@ function ProfileInput() {
   const careerYearOptions = Array.from({ length: 5 }, (_, i) => i + 1);
   const possibleHourOptions = Array.from({ length: 13 }, (_, i) => i+":00");
   const schoolCareerList = ["고졸", "초대졸", "대졸", "석사/박사"];
-  const updateName = async (e) => {
-    e.preventDefault();
-    const data = {
-      userNo: userNo,
-      name: name,
-    };
-    try {
-      const response = await axios.put(
-        `http://localhost:8080/gosu/updateName/${userNo}`,
-        data
-      );
-      if (response.status === 200 || response.status === 303) {
-        window.alert("성공");
-      }
-    } catch (error) {
-      window.alert(error);
-    }
-  };
 
   return (
     <div className="App">
@@ -192,16 +172,12 @@ function ProfileInput() {
           <div className="gosu_profile_detail">
             <div className="gosu_active_name">
               <h3>고수 활동명</h3>
-              <button className="update" onClick={updateName}>
-                수정
-              </button>
             </div>
             <div className="gosu_input">
               <InputField
                 type="text"
                 name="gosu_name"
                 className="gosu_active_name"
-                placeholder={gosu ? gosu.name : ""}
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
@@ -413,7 +389,7 @@ function ProfileInput() {
             </div>
             <footer className="portfolio_footer">
               <button onClick={profileSubmit} className="profile_update_Button">
-                {isRegisted ? "수정" : "등록"}
+                등록
               </button>
               <button
                 className="profile_move_main_button"

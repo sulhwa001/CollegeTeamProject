@@ -1,4 +1,4 @@
-package kr.ac.ync.zoomgobackend.domain.category.controller;
+package ync.zoomgobackend.domain.category.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

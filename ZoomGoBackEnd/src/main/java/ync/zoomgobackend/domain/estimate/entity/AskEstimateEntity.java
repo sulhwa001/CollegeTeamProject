@@ -1,9 +1,9 @@
-package kr.ac.ync.zoomgobackend.domain.estimate.entity;
+package ync.zoomgobackend.domain.estimate.entity;
 
 import jakarta.persistence.*;
-import kr.ac.ync.zoomgobackend.domain.category.entity.CategoryEntity;
-import kr.ac.ync.zoomgobackend.domain.gosu.entity.GosuEntity;
-import kr.ac.ync.zoomgobackend.domain.member.entity.MemberEntity;
+import ync.zoomgobackend.domain.category.entity.CategoryEntity;
+import ync.zoomgobackend.domain.gosu.entity.GosuEntity;
+import ync.zoomgobackend.domain.member.entity.MemberEntity;
 import lombok.*;
 
 import java.io.File;

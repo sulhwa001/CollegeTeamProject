@@ -1,13 +1,13 @@
-package kr.ac.ync.zoomgobackend.global.config;
+package ync.zoomgobackend.global.config;
 
 
 
 
-import kr.ac.ync.zoomgobackend.global.jwt.filter.JwtAuthenticationFilter;
-import kr.ac.ync.zoomgobackend.global.jwt.filter.JwtExceptionFilter;
-import kr.ac.ync.zoomgobackend.global.security.CustomUserDetailsService;
-import kr.ac.ync.zoomgobackend.global.security.handler.JwtAccessDeniedHandler;
-import kr.ac.ync.zoomgobackend.global.security.handler.JwtAuthenticationEntryPoint;
+import ync.zoomgobackend.global.jwt.filter.JwtAuthenticationFilter;
+import ync.zoomgobackend.global.jwt.filter.JwtExceptionFilter;
+import ync.zoomgobackend.global.security.CustomUserDetailsService;
+import ync.zoomgobackend.global.security.handler.JwtAccessDeniedHandler;
+import ync.zoomgobackend.global.security.handler.JwtAuthenticationEntryPoint;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,6 +1,6 @@
 package ync.zoomgobackend.domain.member.exception;
 
-import kr.ac.ync.zoomgobackend.global.exception.CustomException;
+import ync.zoomgobackend.global.exception.CustomException;
 import org.springframework.http.HttpStatus;
 
 public class NotFoundMemberException extends CustomException {
