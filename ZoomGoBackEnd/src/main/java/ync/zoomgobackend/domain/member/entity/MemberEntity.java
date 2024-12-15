@@ -1,8 +1,8 @@
 package ync.zoomgobackend.domain.member.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
 import ync.zoomgobackend.domain.member.entity.enums.MemberRole;
+import lombok.*;
 
 import java.util.Date;
 
@@ -15,7 +15,6 @@ import java.util.Date;
 @Builder
 @Table(name = "User")
 public class MemberEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userNo;

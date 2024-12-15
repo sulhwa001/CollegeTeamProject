@@ -1,56 +1,88 @@
 package ync.zoomgobackend.domain.board.service;
 
 import ync.zoomgobackend.domain.board.dto.BoardDTO;
+import ync.zoomgobackend.domain.board.dto.CategoryDTO;
 import ync.zoomgobackend.domain.board.entity.BoardEntity;
+import ync.zoomgobackend.domain.board.entity.CategoryEntity;
+import ync.zoomgobackend.domain.board.repository.CategoryRepository;
 import ync.zoomgobackend.domain.member.entity.MemberEntity;
-import ync.zoomgobackend.global.common.dto.PageRequestDTO;
-import ync.zoomgobackend.global.common.dto.PageResultDTO;
+import ync.zoomgobackend.domain.member.repository.MemberRepository;
+
+//import static ync.zoomgobackend.domain.board.entity.QCategoryEntity.categoryEntity;
 
 public interface BoardService {
 
-    void register(BoardDTO dto);    //게시글 작성
-    
-    void modify(BoardDTO dto);      //게시글 수정
+    Long register(BoardDTO dto);
 
-    BoardDTO get(Long postNo);      //postNo에 맞는 게시물 가져오기
+    void delete(Long postId);
 
-    void removeWithReplies(Long postNo);    //postNo에 맞는 게시글 댓글과 같이 삭제하기
+    BoardDTO get(Long postId);
+    void incrementView(Long postId);
 
-    PageResultDTO<BoardDTO, Object[]> getList(String communityType,PageRequestDTO pageRequestDTO);  //게시판 타입에 맞는 게시물 리스트 가져오기
 
-    PageResultDTO<BoardDTO, Object[]> getListWithKeyword(String keyword, String communityType,PageRequestDTO pageRequestDTO);
+//    BoardDTO get(Long id);
 
-    void updateViews(Long postNo);
+    //dto를 Entity로 변환하는 로직 코드의 재사용을 위해 디폴트로 구현
 
-    default BoardDTO entityToDTO(BoardEntity boardEntity, MemberEntity memberEntity, Long commentCount){    //Entity를 DTO로 바꾸기
-        return BoardDTO.builder()
-                .postNo(boardEntity.getPostNo())
-                .communityType(boardEntity.getCommunityType())
-                .title(boardEntity.getTitle())
-                .memberNo(memberEntity.getUserNo())
-                .memberNickname(memberEntity.getNickName())
-                .post(boardEntity.getPost())
-                .photoURL(boardEntity.getPhotoURL())
-                .createdDate(boardEntity.getCreatedDate())
-                .views(boardEntity.getViews())
-                .recommends(boardEntity.getRecommend())
-                .build();
-    }
+    // DTO -> Entity 변환
+    default BoardEntity dtoToEntity(BoardDTO dto, MemberEntity member, CategoryRepository categoryRepository) {
+        if (dto.getCategory() == null || dto.getCategory().getCategoryId() == null) {
+            throw new IllegalArgumentException("카테고리 정보가 누락되었습니다.");
+        }
+        if (dto.getMemberId() == null) {
+            throw new IllegalArgumentException("회원 ID가 누락되었습니다.");
+        }
 
-    default BoardEntity dtoToEntity(BoardDTO dto){  //DTO를 Entity로 바꾸기
-        MemberEntity memberEntity = MemberEntity.builder()
-                .nickName(dto.getMemberNickname())
-                .userNo(dto.getMemberNo())
-                .build();
+        CategoryEntity categoryEntity = categoryRepository.findById(dto.getCategory().getCategoryId())
+                .orElseGet(() -> {
+                    // 새 카테고리 생성
+                    CategoryEntity newCategory = new CategoryEntity();
+                    newCategory.setCategoryName(dto.getCategory().getCategoryName());
+                    return categoryRepository.save(newCategory); // 저장 후 반환
+                });
         return BoardEntity.builder()
-                .postNo(dto.getPostNo())
-                .communityType(dto.getCommunityType())
                 .title(dto.getTitle())
-                .post(dto.getPost())
-                .photoURL(dto.getPhotoURL())
-                .views(dto.getViews())
-                .recommend(dto.getRecommends())
-                .member(memberEntity)
+                .contents(dto.getContents())
+                .member(member)
+                .category(categoryEntity)
+                .address(dto.getAddress())
+                .file(dto.getFile())
+                .transStatus(dto.getTransStatus())
+                .transType(dto.getTransType())
+                .view(dto.getView())
+                .cost(dto.getCost())
+                .price(dto.getPrice())
                 .build();
     }
+
+    default BoardDTO entityToDTO(BoardEntity board) {
+        if (board == null) {
+            throw new IllegalArgumentException("BoardEntity가 null입니다.");
+        }
+
+        // 카테고리 정보 생성
+        CategoryDTO categoryDTO = CategoryDTO.builder()
+                .categoryId(board.getCategory().getCategoryId())
+                .categoryName(board.getCategory().getCategoryName())
+                .build();
+
+        // BoardDTO 생성
+        return BoardDTO.builder()
+                .postId(board.getPostId())
+                .title(board.getTitle())
+                .contents(board.getContents())
+                .memberId(board.getMember().getUserNo()) // MemberEntity에서 사용자 ID 추출
+                .category(categoryDTO) // 카테고리 DTO 매핑
+                .address(board.getAddress())
+                .file(board.getFile())
+                .transStatus(board.getTransStatus())
+                .transType(board.getTransType())
+                .view(board.getView())
+                .cost(board.getCost())
+                .price(board.getPrice())
+                .build();
+    }
+
+    void update(Long postId, BoardDTO dto);
 }
+

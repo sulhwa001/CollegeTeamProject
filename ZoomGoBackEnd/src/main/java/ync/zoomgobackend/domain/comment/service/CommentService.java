@@ -1,6 +1,6 @@
 package ync.zoomgobackend.domain.comment.service;
 
-import ync.zoomgobackend.domain.board.entity.BoardEntity;
+import ync.zoomgobackend.domain.community.entity.CommunityEntity;
 import ync.zoomgobackend.domain.comment.dto.CommentDTO;
 import ync.zoomgobackend.domain.comment.entity.CommentEntity;
 import ync.zoomgobackend.domain.member.entity.MemberEntity;
@@ -15,9 +15,9 @@ public interface CommentService {
 
     void removerReplies(Long commentNo);
 
-    default CommentDTO entitiyToDTO(CommentEntity commentEntity, BoardEntity boardEntity, MemberEntity memberEntity){
+    default CommentDTO entitiyToDTO(CommentEntity commentEntity, CommunityEntity communityEntity, MemberEntity memberEntity){
         return CommentDTO.builder()
-                .postNo(boardEntity.getPostNo())
+                .postNo(communityEntity.getPostNo())
                 .commentId(commentEntity.getCommentId())
                 .userNickname(memberEntity.getNickName())
                 .memberNo(memberEntity.getUserNo())
@@ -29,10 +29,10 @@ public interface CommentService {
     }
 
     default CommentEntity dtoToEntity(CommentDTO commentDTO){
-        BoardEntity boardEntity = BoardEntity.builder().postNo(commentDTO.getPostNo()).build();
+        CommunityEntity communityEntity = CommunityEntity.builder().postNo(commentDTO.getPostNo()).build();
         MemberEntity member = MemberEntity.builder().nickName(commentDTO.getUserNickname()).userNo(commentDTO.getMemberNo()).build();
         return CommentEntity.builder()
-                .boardEntity(boardEntity)
+                .communityEntity(communityEntity)
                 .memberEntity(member)
                 .commentNo(commentDTO.getCommentNo())
                 .commentText(commentDTO.getCommentText())

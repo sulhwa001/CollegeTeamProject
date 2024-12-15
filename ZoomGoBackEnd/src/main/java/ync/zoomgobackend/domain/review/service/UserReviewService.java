@@ -4,16 +4,18 @@ import ync.zoomgobackend.domain.member.entity.MemberEntity;
 import ync.zoomgobackend.domain.review.dto.UserReviewDTO;
 import ync.zoomgobackend.domain.review.entity.UserReviewEntity;
 
+import java.util.List;
+
 public interface UserReviewService {
 
     void register(UserReviewDTO userReviewDTO);
 
-    default UserReviewDTO entityToDTO(UserReviewEntity userReviewEntity){
+    List<UserReviewDTO> getAll(Long userNo);
+
+    default UserReviewDTO entityToDTO(UserReviewEntity userReviewEntity, MemberEntity memberEntity){
         return UserReviewDTO.builder()
-                .userNo(userReviewEntity.getUser().getUserNo())
-                .nickname(userReviewEntity.getUser().getNickName())
-                .reviewer(userReviewEntity.getReviewer().getUserNo())
-                .reviewerNickname(userReviewEntity.getReviewer().getNickName())
+                .userNo(memberEntity.getUserNo())
+                .nickname(memberEntity.getNickName())
                 .recommend(userReviewEntity.getRecommend())
                 .createdDate(userReviewEntity.getCreatedDate())
                 .build();

@@ -2,7 +2,7 @@ package ync.zoomgobackend.domain.comment.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import ync.zoomgobackend.domain.board.entity.BoardEntity;
+import ync.zoomgobackend.domain.community.entity.CommunityEntity;
 import ync.zoomgobackend.domain.member.entity.MemberEntity;
 import ync.zoomgobackend.global.common.entity.BaseEntity;
 
@@ -29,7 +29,7 @@ public class CommentEntity extends BaseEntity {
     private Long commentDept;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private BoardEntity boardEntity;
+    private CommunityEntity communityEntity;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private MemberEntity memberEntity;

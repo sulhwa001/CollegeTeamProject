@@ -12,7 +12,7 @@ import java.util.List;
 public interface CommentRepository extends JpaRepository<CommentEntity,Long> {
 
     @Modifying
-    @Query("DELETE FROM CommentEntity r WHERE r.boardEntity.postNo = :postNo")
+    @Query("DELETE FROM CommentEntity r WHERE r.communityEntity.postNo = :postNo")
     void deleteByBoardId(@Param("postNo")Long postNo);
 
     @Modifying
@@ -22,8 +22,8 @@ public interface CommentRepository extends JpaRepository<CommentEntity,Long> {
     @Query("SELECT r, m, b " +
             "FROM CommentEntity r " +
             "LEFT JOIN r.memberEntity m " +
-            "LEFT JOIN BoardEntity b ON b = r.boardEntity " +
-            "WHERE r.boardEntity.postNo =:postNo " +
+            "LEFT JOIN CommunityEntity b ON b = r.communityEntity " +
+            "WHERE r.communityEntity.postNo =:postNo " +
             "ORDER BY r.commentNo ASC, r.commentDept ASC ")
     List<Object[]> getCommentByPostNo(@Param("postNo")Long postNo);
 }

@@ -1,12 +1,10 @@
 package ync.zoomgobackend.domain.gosu.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
-import ync.zoomgobackend.domain.category.entity.CategoryEntity;
-import ync.zoomgobackend.domain.gosuportfolio.entity.GosuPortfolioEntity;
+import ync.zoomgobackend.domain.gosuportfolio.GosuPortfolioEntity;
 import ync.zoomgobackend.domain.member.entity.MemberEntity;
+import lombok.*;
 
-import java.io.File;
 import java.util.List;
 
 @Entity
@@ -21,35 +19,51 @@ public class GosuEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long gosuId;
 
-
-    @JoinColumn(name = "categoryId")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private CategoryEntity categoryId;
-
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_no") // 원하는 컬럼 이름 지정
-    private MemberEntity userNo;
+    private MemberEntity user; // userNo에서 user로 변경
 
     @Column
     private String name;
-
     @Column
     private int price;
-
     @Column
     private String career;
-
-    @Column
-    private File profilePicture;
-
     @Column
     private String serviceDetail;
-
+    @Column
+    private String possibleTime;
+    @Column
+    private String profilePicture;
     @Column
     private String area;
-
     @Column
     private String graduation;
+
+    public void updateName(String name) {
+        this.name = name;
+    }
+    public void updatePrice(int price) {
+        this.price = price;
+    }
+    public void updateCareer(String career) {
+        this.career = career;
+    }
+    public void updateServiceDetail(String serviceDetail) {
+        this.serviceDetail = serviceDetail;
+    }
+    public void updatePossibleTime(String possibleTime) {
+        this.possibleTime = possibleTime;
+    }
+    public void updateProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+    public void updateArea(String area) {
+        this.area = area;
+    }
+    public void updateGraduation(String graduation) {
+        this.graduation = graduation;
+    }
 
     @OneToMany(mappedBy = "gosuId", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<GosuPortfolioEntity> portfolios; // 일대다 관계 설정

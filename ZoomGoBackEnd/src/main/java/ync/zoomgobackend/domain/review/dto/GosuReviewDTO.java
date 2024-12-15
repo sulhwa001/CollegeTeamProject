@@ -15,6 +15,8 @@ public class GosuReviewDTO {
     private String nickname;
     private Long gosuId;
     private String name;
+    private String title;
+    private String workArticle;
     private String review;
     private double recommend;
     private String photoURL;

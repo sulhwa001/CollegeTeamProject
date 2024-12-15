@@ -2,7 +2,9 @@ package ync.zoomgobackend.domain.review.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import ync.zoomgobackend.domain.estimate.entity.EstimateEntity;
 import ync.zoomgobackend.domain.gosu.entity.GosuEntity;
+import ync.zoomgobackend.domain.gosuportfolio.GosuPortfolioEntity;
 import ync.zoomgobackend.domain.member.entity.MemberEntity;
 import ync.zoomgobackend.global.common.entity.BaseEntity;
 
@@ -23,6 +25,12 @@ public class GosuReviewEntity extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private GosuEntity gosu;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private EstimateEntity estimate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private GosuPortfolioEntity gosuPortfolio;
 
     @Column(length = 500, nullable = false)
     private String review;
