@@ -14,11 +14,11 @@ public class AuthController {
 
     private final AuthService authService;
 
-    // 백엔드 연결 테스트용 GetMapping
-    @GetMapping("")
-    public String test01() {
-        return "백엔드 연결 성공!!";
-    }
+//    // 백엔드 연결 테스트용 GetMapping
+//    @GetMapping("")
+//    public String test01() {
+//        return "백엔드 연결 성공!!";
+//    }
 
     // 인증 요청 처리용 PostMapping
     @PostMapping("")

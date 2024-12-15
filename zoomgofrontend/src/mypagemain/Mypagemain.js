@@ -1,15 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import './Mypagemain.css';
+import axios from 'axios';
 import Modal from './modal';
 function Mypagemain() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalContent, setModalContent] = useState('');
-
+    const [userName, setUserName] = useState('');
+    const [mannerScore, setMannerScore] = useState(0);
     const openModal = (content) => {
         setModalContent(content);
         setIsModalOpen(true);
     };
-    
+    useEffect(() => {
+      const token = localStorage.getItem('zoomgo-token'); // 저장된 JWT 가져오기
+      console.log("???1111 : "+token)
+      if (!token) {
+        console.log("??? : "+token)
+        alert('로그인이 필요합니다.');
+        window.location.href="/login"
+        return;
+      }
+      axios.get('http://localhost:8080/api/mypage', {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then(response => {
+        setUserName(response.data.name);
+        setMannerScore(response.data.manner);
+      })
+      .catch(error => {
+        console.error('Error fetching user data:', error);
+        alert('인증 실패: 다시 로그인해주세요.');
+      });
+    }, []);
+  
 
     const closeModal = () => {
         setIsModalOpen(false);
@@ -32,7 +55,7 @@ function Mypagemain() {
             <div className='gird-0'>
             <div className='circle-1'></div>
             <div className='legend-jaehan'>
-            <label>날강두</label>
+            <label>{userName}</label>
             </div>
             <label className='sogae'>프로필을 작성하고 자신을 소개해 주세요.</label>
             </div>
@@ -85,7 +108,7 @@ function Mypagemain() {
             <div className='manners-temperature'>
                 <label className='lezend-ondo'>매너온도</label>
                 <br />
-                <label>-518 ℃</label>
+                <label>{mannerScore}℃</label>
                 <br />
                 <input type='range' min= '0' max = '100' name='range' step={1}></input>
                 </div>
