@@ -1,0 +1,148 @@
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    width: 80%;
+    margin-bottom: 15px;
+    padding: 10px; 
+    margin-left: 7%;
+
+
+}
+
+
+.input-group input, 
+.input-group select, 
+.input-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+}
+
+.description {
+    resize: none;
+}
+
+.submit-btn {
+    width: 150px;
+    padding: 10px;
+    background-color: #5380f4;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 7%; 
+    
+
+}
+
+.submit-btn:hover {
+    background-color: #5380f4;
+}
+
+
+.custom-select {
+    position: relative;
+    display: inline-block;
+    width: 225px;
+    margin-bottom: 10px;
+}
+
+.selected {
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-left: 93px;
+    margin-bottom: 10px;
+}
+
+.dropdown {
+    display: none; /* 기본적으로 숨김 */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    width: 100%;
+    z-index: 10;
+    border-radius: 5px;
+    margin-left: 93px;
+    margin-bottom: 10px;
+}
+
+
+.custom-select:hover .dropdown {
+    display: block; /* 호버 시 표시 */
+}
+
+.dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+
+.selected.active {
+    background-color: #d3d3d3;  /* 선택된 항목 강조 */
+}
+
+.select-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: white;
+}
+
+.select-items li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.select-items li:hover {
+    background-color: #ddd;
+}
+
+
+/* 선택한 항목을 표시할 때 */
+.selected.active + .select-items {
+    display: block;
+}
+
+
+.file-upload-group {
+    display: flex;
+    align-items: center; /* 버튼과 파일명을 동일한 높이로 정렬 */
+    gap: 10px; /* 버튼과 파일명 사이 간격 */
+    margin-bottom: 20px; /* 아래 요소와 간격 추가 */
+}
+
+.file-upload-label {
+    padding: 5px 10px;
+    background-color: #5380f4; /* 파일 업로드 버튼 색 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+}
+
+.file-name-preview {
+    font-size: 14px;
+    color: #333;
+    word-break: break-word; /* 파일명이 길 경우 줄바꿈 처리 */
+}
+

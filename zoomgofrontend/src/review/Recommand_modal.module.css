@@ -1,0 +1,157 @@
+/*Recommand_modal.module.css*/
+.open_modal_button {
+    padding: 10px 20px;
+    background-color: #6788ff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 50px;
+  }
+
+
+  .modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+
+
+  .modal_content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    width: 900px; /* Modal 너비 설정 */
+    height: 700px; /* Modal 높이 설정 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+
+  .modal_close {
+    margin-left: 880px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  
+  .modal_body {
+    position: relative;
+    width: 100%;
+    height: 90%;
+    background-color: #fff;
+    overflow: hidden;
+  }
+
+  
+  .recommand_header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 289px;
+    background-color: #ecebeb;
+  }
+
+  .recommand {
+    position: absolute;
+    left: 85px;
+    top: 48px;
+    width: 210px;
+    height: 192px;
+  }
+
+  .top_note {
+    position: absolute;
+    left: 380px;
+    top: 82px;
+    width: 450px;
+    font-size: 28px;
+    font-weight: 600;
+    color: #000;
+  }
+
+  .title {
+    position: absolute;
+    left: 225px;
+    top: 345px;
+    width: 450px;
+    font-size: 28px;
+    color: #000;
+    text-align: center;
+  }
+
+  .recommand_nickname {
+    font-weight: 600;
+  }
+
+  .product_note {
+    position: absolute;
+    left: 380px;
+    top: 159px;
+    width: 450px;
+    font-size: 24px;
+    color: #000;
+  }
+
+  .button_container {
+    position: absolute;
+    left: 150px;
+    top: 504px;
+    display: flex;
+    justify-content: space-between;
+    width: 615px;
+  }
+
+  .button {
+    position: relative;
+    width: 217px;
+    height: 61px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: white;
+  }
+
+  .button_bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #6788ff;
+    border-radius: 20px;
+  }
+
+  .button_bg:active {
+    background-color: #9b9b9b;
+    
+  }
+
+  .button_text {
+    z-index: 1;
+    color: white;
+    font-size: 32px;
+    font-weight: 800;
+    text-align: center;
+  }
+
+  .note {
+    position: absolute;
+    left: 250px;
+    top: 406px;
+    width: 430px;
+    font-size: 16px;
+    text-align: center;
+    color: #000;
+  }

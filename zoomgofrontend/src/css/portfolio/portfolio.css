@@ -1,0 +1,125 @@
+.portfolio_section {
+  width: 1100px;
+  height: 800px;
+  margin:0 auto;
+  margin-top:50px;
+  padding: 0;
+  display: flex;
+}
+
+.portfolio_background {
+  float:left;
+  cursor: pointer;
+  width: 1000px;
+  height: 800px;
+  background-color: #f2f2f2;
+
+}
+.review_stars_img {
+  width: 12px;
+}
+.portfolio_pictures {
+  cursor: pointer;
+  background: white;
+  width:600px;
+  height:800px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+}
+.portfolio_profile_info h3 {
+  font-size: 16px;
+}
+.portfolio_background img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.portfolio_details {
+  width:300px;
+  float:right;
+  margin-left:100px;
+}
+
+.portfolio_view_count {
+  color: gray;
+  font-size: 14px;
+}
+.portfolio_line {
+  width: 260px;
+  border: 1px solid #eaeaea;
+}
+.portfolio_profile_picture {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: gray;
+}
+
+.left_button {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  border: 0;
+  background: #00000026;
+  left: 440px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.right_button {
+  cursor: pointer;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  border: 0;
+  background: #00000026;
+  right: 840px;
+  z-index: 1;
+}
+
+.portfolio_estimate {
+  height: 100px;
+  width: 300px;
+}
+.portfolio_estimate button {
+  width: 270px;
+  height: 50px;
+  border: 0;
+  color: white;
+  font-weight: bold;
+  background: #00cad7;
+  border-radius: 20px;
+  font-size: 16px;
+}
+.portfolio_estimate_info {
+    width:300px;
+    height:200px;
+    margin:0 auto;
+}
+.portfolio_info_list {
+    width:300px;
+    margin-left:30px;
+    margin-top:20px;
+    display:flex;
+}
+.portfolio_info_list p {
+    width:120px;
+    color:gray;
+}
+
+.portfolio_explain {
+    margin-top:40px;
+    text-align:left;
+    width:300px;
+}
+.portfolio_explain button {
+    text-align:center;
+    width:300px;
+    height:50px;
+    border:1px solid #eaeaea;
+    background:none;
+    margin-top:20px;
+}
