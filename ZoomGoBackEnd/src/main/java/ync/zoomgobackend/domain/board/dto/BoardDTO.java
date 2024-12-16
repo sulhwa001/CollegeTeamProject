@@ -1,6 +1,7 @@
 package ync.zoomgobackend.domain.board.dto;
 
 import lombok.*;
+import ync.zoomgobackend.domain.member.dto.MemberDTO;
 
 import java.time.LocalDateTime;
 import java.util.Date;

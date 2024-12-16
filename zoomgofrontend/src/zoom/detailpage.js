@@ -96,7 +96,7 @@ const ProductPage = () => {
                         <div className="product-info-extra">
                             <p>
                                 {product.createdAt
-                                    ? new Date(product.createdAt).toLocaleString()
+                                    ? new Date(product.creatㅊedAt).toLocaleString()
                                     : '등록 시간 없음'}
                             </p>
                             <p>조회수 {product.view || 0}</p>

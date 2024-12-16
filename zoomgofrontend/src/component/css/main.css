@@ -1,0 +1,108 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff; /* 배경색을 흰색으로 변경 */
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.divider {
+    width: 0.7px; /* 가로 비율 축소 */
+    height: 80px; /* 세로 크기 조정 */
+    background-color: #ccc;
+}
+
+.main-content {
+    padding: 10px;
+    max-width: 1200px;
+    margin: auto;
+    position: relative; /* ::before를 위해 position 설정 */
+    
+}
+
+.main-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -27.5%; /* 필요에 따라 조정 */
+    width: calc(100% + 670px); /* 필요에 따라 조정 */
+    border-top: 1px solid hwb(0 77% 23%);
+    z-index: -1; /* main-content 아래로 위치 */
+}
+
+
+
+
+.product-section {
+    margin-bottom: 50px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0px;
+}
+
+.section-header h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.write-btn {
+    background-color: #5380f4;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: -10px; /* 버튼을 더 위로 올리기 위한 설정 */
+    margin-left: 90%;
+}
+
+.write-btn:hover {
+    background-color: #3b62d9;
+}
+
+.mainproduct-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.mainproduct-item {
+    background-color: white;
+    border-radius: 5px;
+    width: 22%;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 10px;
+}
+
+.mainproduct-image {
+    background-color: #e0e0e0;
+    width: 100%;
+    padding-bottom: 100%; /* 정사각형 비율을 유지하기 위해 */
+    margin-bottom: 10px;
+}
+
+.mainproduct-name {
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+.mainproduct-price {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.section-header h2,
+.mainproduct-section h2 {
+    font-weight: 400; /* 글씨체를 얇게 만듦 */
+    padding-bottom: 30px; /* 텍스트와 선 사이에 공백 추가 */
+    border-bottom: 1px solid black; /* 검은색 하단 선 추가 */
+    width: 100%; /* h2 요소가 부모 요소의 100% 너비를 차지하게 함 */
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}

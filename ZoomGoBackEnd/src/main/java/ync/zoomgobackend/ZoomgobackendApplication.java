@@ -6,11 +6,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @EnableJpaAuditing
 @SpringBootApplication
-public class
-ZoomgobackendApplication {
-
+public class ZoomgobackendApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ZoomgobackendApplication.class, args);
 	}
-
 }

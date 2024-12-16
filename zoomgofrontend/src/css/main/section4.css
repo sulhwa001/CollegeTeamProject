@@ -15,20 +15,20 @@
     margin-left:380px;
     width:1080px;
     display: flex;
-    justify-content: space-between;
 }
 
 .area_content > li {
+    margin-right:50px;
     width:220px;
     height:220px;
     padding:15px;
+    list-style:none;
     background: #F2F2F2;
 }
 .content_user_profile {
     width:55px;
     height:55px;
-    background: red;
-    border-radius: 55px 55px 55px 55px;
+    background: gray;
 }
 .article_box {
     margin-top:20px;

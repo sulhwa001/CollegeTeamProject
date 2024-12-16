@@ -1,11 +1,10 @@
-import style from "./Chat_input.module.css"
 import avatar from "../image/avatar.png"
-import keyboadrdImg from "../image/keyboard.jpeg"
-import info from "../image/info.png"
 import emoji from "../image/emoji.png"
 import img from "../image/img.png"
-import EmojiPicker from "emoji-picker-react"
-import { useEffect, useState, useRef } from "react"
+import keyboadrdImg from "../image/keyboard.jpeg"
+import style from "./Chat_input.module.css"
+// import EmojiPicker from "emoji-picker-react"
+import { useEffect, useRef, useState } from "react"
 
 const Chat_input = () => {
     
@@ -85,7 +84,7 @@ const Chat_input = () => {
                 <div className={style.emoji}>
                     <img src={emoji} alt="" onClick={() => setOpen(prev => !prev)}/>
                     <div className={style.picker}>
-                      <EmojiPicker open={open} onEmojiClick={handleEmoji}/>
+                      {/* <EmojiPicker open={open} onEmojiClick={handleEmoji}/> */}
                     </div>
                 </div>
                 <button className={style.sendButton}>보내기</button>
