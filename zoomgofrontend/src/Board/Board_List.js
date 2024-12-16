@@ -5,6 +5,8 @@ import axios from 'axios';
 
 const Test = () => {
 
+  const token = localStorage.getItem('zoomgo-token');
+
   //게시글 목록 출력을 위한 준비
   const [data, setData] = useState({dtoList:[]})
 
@@ -36,7 +38,6 @@ const Test = () => {
   }
 
   const handleSearchClick = () => {
-    console.log("히힛 작동")
     setSearch(!search)
     axios.get("http://localhost:8080/zoomgo/board/list/keyword",{
       params: {
@@ -49,6 +50,15 @@ const Test = () => {
       setData(res.data);
       })
     .catch(err => console.log(err))
+  }
+
+  const handleWriteMove = () => {
+    if(!token){
+      alert("로그인이 필요한 기능입니다.");
+      window.location.href = "/login";
+    }else {
+      window.location.href = "/write";
+    }
   }
 
   //게시글 사이즈 저장
@@ -149,11 +159,9 @@ const Test = () => {
       </div>
 
       <div className={style.actions}>
-        <Link to="/write" className={style.link}>
-          <button className={style.board_write_button}>
+          <button className={style.board_write_button} onClick={handleWriteMove}>
             <span>글쓰기</span>
           </button>
-        </Link>
         <div className={style.board_search}>
           <input className={style.board_search_input} onChange={handleSearchChange}/>
           <button className={style.board_search_button} onClick={handleSearchClick}>검색</button>

@@ -18,7 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("/zoomgo/products")
 @RequiredArgsConstructor
 public class BoardController {
 

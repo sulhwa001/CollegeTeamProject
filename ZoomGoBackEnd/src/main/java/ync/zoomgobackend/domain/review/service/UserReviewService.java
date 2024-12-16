@@ -15,7 +15,6 @@ public interface UserReviewService {
     default UserReviewDTO entityToDTO(UserReviewEntity userReviewEntity, MemberEntity memberEntity){
         return UserReviewDTO.builder()
                 .userNo(memberEntity.getUserNo())
-                .nickname(memberEntity.getNickName())
                 .recommend(userReviewEntity.getRecommend())
                 .createdDate(userReviewEntity.getCreatedDate())
                 .build();

@@ -7,6 +7,8 @@ import axios from "axios";
 
 const Datail = () => {
 
+  const token = localStorage.getItem('zoomgo-token');
+
   const navigate = useNavigate();
 
   //Params값 가져오기 위한 준비
@@ -121,20 +123,25 @@ const Datail = () => {
   //댓글, 대댓글 작성
   //작성시 textArea태그 값 초기화 후 화면 새로 고침으로 작성된 댓글 보여주기
   const handleCommentWrite = (commentDept, commentNo) => {
-    axios.post("http://localhost:8080/zoomgo/comment",{
-      postNo: detail,
-      memberNo: 1,
-      commentNo: commentNo,
-      userNickname: "지각쟁이",
-      commentText: commentText,
-      commentDept: commentDept
-    })
-    .then((res) => {
-      console.log("등록 성공: ",res);
-    })
-    .catch(err => console.log("등록 실패: ",err))
-    setCommentText("")
-    window.location.reload();
+    if(!token){
+      alert("로그인이 필요한 기능입니다.");
+      window.location.href = "/login";
+    }else{
+      axios.post("http://localhost:8080/zoomgo/comment",{
+        postNo: detail,
+        memberNo: 1,
+        commentNo: commentNo,
+        userNickname: "지각쟁이",
+        commentText: commentText,
+        commentDept: commentDept
+      })
+      .then((res) => {
+        console.log("등록 성공: ",res);
+      })
+      .catch(err => console.log("등록 실패: ",err))
+      setCommentText("")
+      window.location.reload();
+    }
   }
 
   //postNo에 따른 게시글을 삭제

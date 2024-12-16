@@ -14,7 +14,6 @@ public class UserReviewDTO {
     private Long userNo;
     private String nickname;
     private Long reviewer;
-    private String reviewerNickname;
     private double recommend;
     private LocalDateTime createdDate;
 }
