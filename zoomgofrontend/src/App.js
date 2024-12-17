@@ -25,6 +25,7 @@ import Mypagemain from './mypagemain/Mypagemain.js';
 //게시판 임포트
 import BoardList from './Board/Board_List.js';
 import Detail from './Board/Detail.js';
+import Modify from './Board/Modify_Post.js';
 import InputText from './Board/Input.js';
 
 //리뷰 임포트
@@ -73,6 +74,7 @@ function App() {
             <Route path="/boardlist" element={<BoardList/>}/>
             <Route path='/write' element={<InputText/>}/>
             <Route path='/detail' element={<Detail/>}/>
+            <Route path='/modify' element={<Modify/>}/>
 
             {/*추천 기능*/}
             <Route path='/recommand' element={<Recommand/>}/>
