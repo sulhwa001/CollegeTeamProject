@@ -36,7 +36,7 @@ public class BoardEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")  // 외래 키 컬럼 이름 확인
-    private CategoryEntity category;  // CategoryEntity와의 관계 설정
+    private ZCategoryEntity category;  // CategoryEntity와의 관계 설정
 
     @Column(name = "Address", nullable = false, length = 255)
     private String address; // 거래 주소

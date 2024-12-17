@@ -26,7 +26,7 @@ public class QAskEstimateEntity extends EntityPathBase<AskEstimateEntity> {
 
     public final NumberPath<Long> askEstimateId = createNumber("askEstimateId", Long.class);
 
-    public final ync.zoomgobackend.domain.category.entity.QCategoryEntity categoryEntity;
+    public final ync.zoomgobackend.domain.board.entity.QCategoryEntity categoryEntity;
 
     public final DateTimePath<java.util.Date> date = createDateTime("date", java.util.Date.class);
 
@@ -58,7 +58,7 @@ public class QAskEstimateEntity extends EntityPathBase<AskEstimateEntity> {
 
     public QAskEstimateEntity(Class<? extends AskEstimateEntity> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.categoryEntity = inits.isInitialized("categoryEntity") ? new ync.zoomgobackend.domain.category.entity.QCategoryEntity(forProperty("categoryEntity")) : null;
+        this.categoryEntity = inits.isInitialized("categoryEntity") ? new ync.zoomgobackend.domain.board.entity.QCategoryEntity(forProperty("categoryEntity")) : null;
         this.estimateId = inits.isInitialized("estimateId") ? new QEstimateEntity(forProperty("estimateId"), inits.get("estimateId")) : null;
         this.gosuId = inits.isInitialized("gosuId") ? new ync.zoomgobackend.domain.gosu.entity.QGosuEntity(forProperty("gosuId"), inits.get("gosuId")) : null;
         this.userNo = inits.isInitialized("userNo") ? new ync.zoomgobackend.domain.member.entity.QMemberEntity(forProperty("userNo")) : null;

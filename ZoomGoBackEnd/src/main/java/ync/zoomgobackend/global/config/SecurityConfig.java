@@ -47,13 +47,19 @@ public class SecurityConfig {
                         authenticationEntryPoint(jwtAuthenticationEntryPoint)//401
                         .accessDeniedHandler(jwtAccessDeniedHandler) //403
                 )
-                .authorizeHttpRequests(
-                        authorize->
-                                authorize.requestMatchers("/api/members/**","/api/auth/**", "/api/upload", "/api/display", "/gosu/**").permitAll().
-                                        requestMatchers("/admin/**")
-                                        .hasAnyRole("ADMIN")
-                                        .anyRequest()
-                                        .authenticated())
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers(
+                                "/api/members/**",
+                                "/api/auth/**",
+                                "/api/upload",
+                                "/api/display",
+                                "/gosu/**",
+                                "/api/products/**",
+                                "/files/**"// `/api/products` 경로 추가
+                        ).permitAll() // 인증 없이 접근 허용
+                        .requestMatchers("/admin/**").hasAnyRole("ADMIN") // ADMIN 권한 필요
+                        .anyRequest().authenticated() // 다른 요청은 인증 필요
+                )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(jwtExceptionFilter, JwtAuthenticationFilter.class)
                 .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));

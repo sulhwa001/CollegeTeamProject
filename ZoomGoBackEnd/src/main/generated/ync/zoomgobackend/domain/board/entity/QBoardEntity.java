@@ -24,7 +24,7 @@ public class QBoardEntity extends EntityPathBase<BoardEntity> {
 
     public final StringPath address = createString("address");
 
-    public final QCategoryEntity category;
+    public final QZCategoryEntity category;
 
     public final StringPath contents = createString("contents");
 
@@ -66,7 +66,7 @@ public class QBoardEntity extends EntityPathBase<BoardEntity> {
 
     public QBoardEntity(Class<? extends BoardEntity> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.category = inits.isInitialized("category") ? new QCategoryEntity(forProperty("category")) : null;
+        this.category = inits.isInitialized("category") ? new QZCategoryEntity(forProperty("category")) : null;
         this.member = inits.isInitialized("member") ? new ync.zoomgobackend.domain.member.entity.QMemberEntity(forProperty("member")) : null;
     }
 

@@ -17,7 +17,7 @@ public class BoardDTO {
     private String title; // 제목
     private String contents; // 상세 설명
     private Long memberId; // 사용자 ID
-    private CategoryDTO category; // 카테고리 DTO
+    private ZCategoryDTO category; // 카테고리 DTO
     private String address; // 거래 주소
     private String transStatus; // 거래 상태
     private String transType; // 거래 유형
