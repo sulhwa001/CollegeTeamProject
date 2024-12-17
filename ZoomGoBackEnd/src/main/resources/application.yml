@@ -20,10 +20,10 @@ spring:
           writetimeout: 5000
     auth-code-expiration-millis: 1800000  # 30 * 60 * 1000 == 30?
   datasource:
-    url: jdbc:mysql://localhost:3306/test01
-    username: root
-    password: 1234
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/bootex
+    username: bootuser
+    password: Bootuser123!@#
+    diverClassName: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
