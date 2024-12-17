@@ -31,7 +31,7 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public Long register(BoardDTO dto) {
         // MemberEntity 조회
-        MemberEntity memberEntity = memberRepository.findById(String.valueOf(dto.getMemberId()))
+        MemberEntity memberEntity = memberRepository.findById(dto.getMemberId())
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 사용자입니다."));
 
         // CategoryRepository를 전달하여 BoardEntity 생성
