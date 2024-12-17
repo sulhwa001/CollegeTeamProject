@@ -19,22 +19,21 @@ public class AuthServiceImpl implements AuthService {
     private final JwtUtil jwtUtil;
     @Override
     public JsonWebTokenResponse auth(AuthenticationRequest request) {
-//        Authentication authenticate = authenticationManager.authenticate(
-//                new UsernamePasswordAuthenticationToken
-//                        (request.getEmail(),
-//                                request.getPassword()
-//                        )
-//        );
-//        MemberDTO memberDTO = ((CustomUserDetails) authenticate.getPrincipal()).getMemberDTO();
-//        //방금 로그인한 멤버의 DTO
-//
-//        return JsonWebTokenResponse.builder().
-//                accessToken(
-//                        jwtUtil.generateRefreshToken(memberDTO.getEmail())
-//                ).
-//                refreshToken(jwtUtil.generateRefreshToken(memberDTO.getEmail())).
-//                build();
-        return null;
+        Authentication authenticate = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken
+                        (request.getEmail(),
+                                request.getPassword()
+                        )
+        );
+        MemberDTO memberDTO = ((CustomUserDetails) authenticate.getPrincipal()).getMemberDTO();
+        //방금 로그인한 멤버의 DTO
+
+        return JsonWebTokenResponse.builder().
+                accessToken(
+                        jwtUtil.generateRefreshToken(memberDTO.getEmail())
+                ).
+                refreshToken(jwtUtil.generateRefreshToken(memberDTO.getEmail())).
+                build();
 
     }
 

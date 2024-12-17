@@ -37,9 +37,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter { //jwt를 인
 
 //            Authentication authentication=jwtUtil.getAuthentication(jwt);
             //Authentication 객체가 저장되는 보관소
-//            SecurityContextHolder.getContext().setAuthentication(
-//                    jwtUtil.getAuthentication(jwt)
-//            );
+            SecurityContextHolder.getContext().setAuthentication(
+                    jwtUtil.getAuthentication(jwt)
+            );
         }
             //전처리
         filterChain.doFilter(request,response);

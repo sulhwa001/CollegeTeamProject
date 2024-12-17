@@ -1,4 +1,4 @@
-package kr.ac.ync.zoomgobackend.domain.category.dto;
+package ync.zoomgobackend.domain.category.dto;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
