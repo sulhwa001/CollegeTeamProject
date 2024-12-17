@@ -10,29 +10,29 @@ import com.querydsl.core.types.Path;
 
 
 /**
- * QGCategoryEntity is a Querydsl query type for GCategoryEntity
+ * QCategoryEntity is a Querydsl query type for CategoryEntity
  */
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
-public class QGCategoryEntity extends EntityPathBase<GCategoryEntity> {
+public class QCategoryEntity extends EntityPathBase<CategoryEntity> {
 
-    private static final long serialVersionUID = 1490673592L;
+    private static final long serialVersionUID = 632814481L;
 
-    public static final QGCategoryEntity gCategoryEntity = new QGCategoryEntity("gCategoryEntity");
+    public static final QCategoryEntity categoryEntity = new QCategoryEntity("categoryEntity");
 
     public final NumberPath<Long> categoryId = createNumber("categoryId", Long.class);
 
     public final StringPath categoryName = createString("categoryName");
 
-    public QGCategoryEntity(String variable) {
-        super(GCategoryEntity.class, forVariable(variable));
+    public QCategoryEntity(String variable) {
+        super(CategoryEntity.class, forVariable(variable));
     }
 
-    public QGCategoryEntity(Path<? extends GCategoryEntity> path) {
+    public QCategoryEntity(Path<? extends CategoryEntity> path) {
         super(path.getType(), path.getMetadata());
     }
 
-    public QGCategoryEntity(PathMetadata metadata) {
-        super(GCategoryEntity.class, metadata);
+    public QCategoryEntity(PathMetadata metadata) {
+        super(CategoryEntity.class, metadata);
     }
 
 }

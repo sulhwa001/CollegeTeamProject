@@ -11,7 +11,7 @@ import lombok.*;
 @Setter
 @Table(name = "category")
 @ToString
-public class GCategoryEntity {
+public class CategoryEntity {
     @Id
     private Long categoryId;
     @Column(nullable = false)

@@ -1,4 +1,2 @@
-package ync.zoomgobackend.domain.reply.controller;
-
-public class replycontroller {
+package ync.zoomgobackend.domain.reply.controller;public class replycontroller {
 }

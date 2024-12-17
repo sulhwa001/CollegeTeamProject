@@ -1,5 +1,6 @@
 package ync.zoomgobackend.domain.gosu.service;
 
+import ync.zoomgobackend.domain.category.entity.CategoryEntity;
 import ync.zoomgobackend.domain.gosu.dto.GosuChangeDTO;
 import ync.zoomgobackend.domain.gosu.dto.GosuDTO;
 import ync.zoomgobackend.domain.gosu.dto.GosuUpdateDTO;

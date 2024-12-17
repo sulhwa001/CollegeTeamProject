@@ -24,7 +24,7 @@ public class QGosuPortfolioEntity extends EntityPathBase<GosuPortfolioEntity> {
 
     public final StringPath area = createString("area");
 
-    public final ync.zoomgobackend.domain.category.entity.QGCategoryEntity categoryId;
+    public final ync.zoomgobackend.domain.category.entity.QCategoryEntity categoryId;
 
     public final ync.zoomgobackend.domain.gosu.entity.QGosuEntity gosuId;
 
@@ -60,7 +60,7 @@ public class QGosuPortfolioEntity extends EntityPathBase<GosuPortfolioEntity> {
 
     public QGosuPortfolioEntity(Class<? extends GosuPortfolioEntity> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.categoryId = inits.isInitialized("categoryId") ? new ync.zoomgobackend.domain.category.entity.QGCategoryEntity(forProperty("categoryId")) : null;
+        this.categoryId = inits.isInitialized("categoryId") ? new ync.zoomgobackend.domain.category.entity.QCategoryEntity(forProperty("categoryId")) : null;
         this.gosuId = inits.isInitialized("gosuId") ? new ync.zoomgobackend.domain.gosu.entity.QGosuEntity(forProperty("gosuId"), inits.get("gosuId")) : null;
         this.userNo = inits.isInitialized("userNo") ? new ync.zoomgobackend.domain.member.entity.QMemberEntity(forProperty("userNo")) : null;
     }

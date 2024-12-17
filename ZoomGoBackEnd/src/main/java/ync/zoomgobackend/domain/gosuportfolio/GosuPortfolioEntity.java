@@ -1,7 +1,7 @@
 package ync.zoomgobackend.domain.gosuportfolio;
 
 import jakarta.persistence.*;
-import ync.zoomgobackend.domain.category.entity.GCategoryEntity;
+import ync.zoomgobackend.domain.category.entity.CategoryEntity;
 import ync.zoomgobackend.domain.gosu.entity.GosuEntity;
 import ync.zoomgobackend.domain.member.entity.MemberEntity;
 import lombok.*;
@@ -24,7 +24,7 @@ public class GosuPortfolioEntity {
 
     @ManyToOne
     @JoinColumn(name = "categoryId")
-    private GCategoryEntity categoryId;
+    private CategoryEntity categoryId;
 
     @ManyToOne
     @JoinColumn(name = "userNo")
