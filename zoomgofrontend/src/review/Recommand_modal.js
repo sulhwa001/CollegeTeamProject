@@ -14,7 +14,7 @@ const Recommand = () => {
   const [userName, setUserName] = useState("")
   const [userRecommend, setUserRecommend] = useState(null)
 
-  const [data, setData] = userState({
+  const [data, setData] = useState({
     title: null,
     contents: ""
   });
