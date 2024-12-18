@@ -3,8 +3,13 @@ package ync.zoomgobackend.domain.board.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+<<<<<<< HEAD
 import ync.zoomgobackend.domain.member.entity.MemberEntity;
 import ync.zoomgobackend.global.common.BaseEntity;
+=======
+import org.springframework.data.annotation.CreatedDate;
+import ync.zoomgobackend.domain.member.entity.MemberEntity;
+>>>>>>> main
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -17,7 +22,11 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString(exclude = "member")
+<<<<<<< HEAD
 public class BoardEntity extends BaseEntity {
+=======
+public class BoardEntity {
+>>>>>>> main
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,4 +68,12 @@ public class BoardEntity extends BaseEntity {
     @Column(name = "file", nullable = true, length = 255)
     private String file;
 
+<<<<<<< HEAD
+=======
+
+    @CreationTimestamp
+    @Column(name = "created_At", updatable = false)
+    private LocalDateTime createdDate;
+
+>>>>>>> main
 }

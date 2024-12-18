@@ -17,6 +17,22 @@ input:focus {
     margin:0 auto;
     display:flex;
 }
+.schoolInfo {
+    margin-left:20px;
+}
+.schoolName {
+    border:1px solid #eaeaea;
+    margin-bottom:10px;
+    padding:10px;
+    height:20px;
+    font-size:20px;
+}
+.schoolTime {
+    border:1px solid #eaeaea;
+    height:20px;
+    padding:10px;
+    font-size:20px;
+}
 
 .gosu_profile_picture {
     width:110px;
@@ -129,6 +145,16 @@ input[type="file"] {  /* 파일 필드 숨기기 */
     margin-top:20px;
     border:0;
 }
+.gosu_price h3 {
+    width:600px;
+}
+.priceDetail {
+    
+    float:right;
+    display:flex;
+    align-items:center;
+    
+}
 .gosu_active_area_name::placeholder{
     color:black;
 }
@@ -166,15 +192,19 @@ input[type="file"] {  /* 파일 필드 숨기기 */
 .search_category {
     border:1px solid #eaeaea;
     padding:10px;
-    width:300px;
+    width:200px;
     height:20px;
     margin-top:10px;
     cursor:pointer;
     margin-bottom:10px;
 }
 .input_category {
-    width:700px;
+    padding:15px;
+    width:600px;
     border-bottom:1px solid #eaeaea;
+}
+.area_insert {
+
 }
 .area_insert select {
     border:1px solid #eaeaea;
@@ -193,14 +223,13 @@ input[type="file"] {  /* 파일 필드 숨기기 */
 }
 .price_label {
     font-size:13px;
-    margin-top:4px;
-    margin-left:560px;
 }
 
 .gosu_price {
     display:flex;
     margin-top:20px;
 }  
+
 .gosu_price button {
     border:0;
     background:#ffffff;
@@ -243,15 +272,68 @@ input[type="file"] {  /* 파일 필드 숨기기 */
     height:300px;
     margin-top:100px;
 }
-
+.profile_update_Button{
+    width:200px;
+    padding:10px;
+    font-size:18px;
+    background:#6788FF;
+    font-weight:bold;
+    color:white;
+    border:0;
+}
+.profile_move_main_button{
+    width:200px;
+    padding:10px;
+    font-size:18px;
+    background:#ffffff;
+    color:black;
+    border:1px solid #eaeaea;
+    margin-left:20px;
+}
+.detail_textArea {
+    width:540px;
+    padding:10px;
+    height:200px;
+    font-size:15px;
+    resize: none;
+    border-color:#eaeaea;
+    margin-bottom:10px;
+}
 .portfolio_explain_move {
     border:0;
     background:#D9D9D9;
     margin-top:30px;
     width:650px;
     height:100px;
+    
     padding:25px;
     border-radius:8px;
+}
+.school_graduation{
+    width:320px;
+    height:300px;
+}
+.school_choice {
+    width:300px;
+}
+.schoolCareer_area {
+    width:500px;
+    height:200px;
+    display:flex;
+}
+.detail_textArea::placeholder {
+
+    width: 300px; /* 고정 너비 */
+    height: 150px; /* 고정 높이 */
+    resize: none; /* 크기 조절 비활성화 */
+    overflow: auto; /* 내용이 넘칠 경우 스크롤바 표시 */
+    font-size:13px;
+}
+
+.portfolio_footer {
+    width:600px;
+    margin:0 auto;
+    height:200px;
 }
 .portfolio_explain_move h3 {
     font-size:18px;

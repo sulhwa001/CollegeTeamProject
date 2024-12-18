@@ -1,5 +1,9 @@
 package ync.zoomgobackend.domain.board.service;
 
+<<<<<<< HEAD
+=======
+import org.springframework.dao.DataIntegrityViolationException;
+>>>>>>> main
 import ync.zoomgobackend.domain.board.dto.BoardDTO;
 import ync.zoomgobackend.domain.board.dto.CategoryDTO;
 import ync.zoomgobackend.domain.board.entity.BoardEntity;
@@ -26,13 +30,18 @@ public interface BoardService {
 
     // DTO -> Entity 변환
     default BoardEntity dtoToEntity(BoardDTO dto, MemberEntity member, CategoryRepository categoryRepository) {
+<<<<<<< HEAD
         if (dto.getCategory() == null || dto.getCategory().getCategoryId() == null) {
+=======
+        if (dto.getCategory() == null || dto.getCategory().getCategoryName() == null) {
+>>>>>>> main
             throw new IllegalArgumentException("카테고리 정보가 누락되었습니다.");
         }
         if (dto.getMemberId() == null) {
             throw new IllegalArgumentException("회원 ID가 누락되었습니다.");
         }
 
+<<<<<<< HEAD
         CategoryEntity categoryEntity = categoryRepository.findById(dto.getCategory().getCategoryId())
                 .orElseGet(() -> {
                     // 새 카테고리 생성
@@ -40,6 +49,29 @@ public interface BoardService {
                     newCategory.setCategoryName(dto.getCategory().getCategoryName());
                     return categoryRepository.save(newCategory); // 저장 후 반환
                 });
+=======
+        String categoryName = dto.getCategory().getCategoryName();
+
+        // 카테고리 이름으로 중복 확인 후 처리
+        CategoryEntity categoryEntity = categoryRepository.findAll().stream()
+                .filter(cat -> categoryName.equals(cat.getCategoryName()))
+                .findFirst()
+                .orElseGet(() -> {
+                    try {
+                        // 중복되지 않은 경우 새 카테고리 생성
+                        CategoryEntity newCategory = new CategoryEntity();
+                        newCategory.setCategoryName(categoryName);
+                        return categoryRepository.save(newCategory);
+                    } catch (DataIntegrityViolationException e) {
+                        // 중복 예외 발생 시 기존 카테고리 재조회
+                        return categoryRepository.findAll().stream()
+                                .filter(cat -> categoryName.equals(cat.getCategoryName()))
+                                .findFirst()
+                                .orElseThrow(() -> new RuntimeException("중복된 카테고리 처리 중 오류 발생"));
+                    }
+                });
+
+>>>>>>> main
         return BoardEntity.builder()
                 .title(dto.getTitle())
                 .contents(dto.getContents())
@@ -52,6 +84,10 @@ public interface BoardService {
                 .view(dto.getView())
                 .cost(dto.getCost())
                 .price(dto.getPrice())
+<<<<<<< HEAD
+=======
+                .createdDate(dto.getCreatedAt())
+>>>>>>> main
                 .build();
     }
 
@@ -79,6 +115,10 @@ public interface BoardService {
                 .transType(board.getTransType())
                 .view(board.getView())
                 .cost(board.getCost())
+<<<<<<< HEAD
+=======
+                .createdAt(board.getCreatedDate()) // 매핑 확인
+>>>>>>> main
                 .price(board.getPrice())
                 .build();
     }

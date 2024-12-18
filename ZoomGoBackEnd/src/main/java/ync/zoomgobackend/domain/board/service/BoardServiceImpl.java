@@ -1,6 +1,10 @@
 package ync.zoomgobackend.domain.board.service;
 
 import lombok.RequiredArgsConstructor;
+<<<<<<< HEAD
+=======
+import org.springframework.dao.DataIntegrityViolationException;
+>>>>>>> main
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,12 +32,21 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
+<<<<<<< HEAD
     public Long register(BoardDTO dto) {
         // MemberEntity 조회
         MemberEntity memberEntity = memberRepository.findById(dto.getMemberId())
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 사용자입니다."));
 
         // CategoryRepository를 전달하여 BoardEntity 생성
+=======
+    @Transactional
+    public Long register(BoardDTO dto) {
+        // MemberEntity 조회
+        MemberEntity memberEntity = memberRepository.findById(String.valueOf(dto.getMemberId()))
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 사용자입니다."));
+        // DTO를 BoardEntity로 변환 (중복된 카테고리는 dtoToEntity에서 처리)
+>>>>>>> main
         BoardEntity boardEntity = dtoToEntity(dto, memberEntity, categoryRepository);
 
         // BoardEntity 저장
@@ -42,6 +55,10 @@ public class BoardServiceImpl implements BoardService {
         return boardEntity.getPostId();
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
     @Override  // 게시글 삭제
     public void delete(Long postId) {
         BoardEntity boardEntity = boardRepository.findById(postId)
@@ -68,19 +85,32 @@ public class BoardServiceImpl implements BoardService {
 
 
     @Override
+<<<<<<< HEAD
+=======
+    @Transactional
+>>>>>>> main
     public void update(Long postId, BoardDTO dto) {
         // 기존 게시글 조회
         BoardEntity existingEntity = boardRepository.findById(postId)
                 .orElseThrow(() -> new IllegalArgumentException("게시글을 찾을 수 없습니다."));
 
         // 기존 필드 업데이트
+<<<<<<< HEAD
         if (dto.getView() != 0) existingEntity.setView(dto.getView());
+=======
+        if (dto.getView() > 0) existingEntity.setView(dto.getView());
+>>>>>>> main
         if (dto.getTitle() != null) existingEntity.setTitle(dto.getTitle());
         if (dto.getContents() != null) existingEntity.setContents(dto.getContents());
         if (dto.getFile() != null) existingEntity.setFile(dto.getFile());
         if (dto.getAddress() != null) existingEntity.setAddress(dto.getAddress());
+<<<<<<< HEAD
         if (dto.getCost() != 0) existingEntity.setCost(dto.getCost());
         if (dto.getPrice() != 0) existingEntity.setPrice(dto.getPrice());
+=======
+        if (dto.getCost() > 0) existingEntity.setCost(dto.getCost());
+        if (dto.getPrice() > 0) existingEntity.setPrice(dto.getPrice());
+>>>>>>> main
         if (dto.getTransStatus() != null) existingEntity.setTransStatus(dto.getTransStatus());
         if (dto.getTransType() != null) existingEntity.setTransType(dto.getTransType());
 
@@ -88,14 +118,33 @@ public class BoardServiceImpl implements BoardService {
         if (dto.getCategory() != null && dto.getCategory().getCategoryName() != null) {
             String categoryName = dto.getCategory().getCategoryName();
 
+<<<<<<< HEAD
             // 카테고리 이름으로 조회 및 생성 (기본 JPA 사용)
+=======
+            // 카테고리 이름으로 중복 확인
+>>>>>>> main
             CategoryEntity category = categoryRepository.findAll().stream()
                     .filter(cat -> categoryName.equals(cat.getCategoryName()))
                     .findFirst()
                     .orElseGet(() -> {
+<<<<<<< HEAD
                         CategoryEntity newCategory = new CategoryEntity();
                         newCategory.setCategoryName(categoryName);
                         return categoryRepository.save(newCategory); // 새로운 카테고리 저장
+=======
+                        try {
+                            // 중복된 값이 없을 경우 새 카테고리 생성
+                            CategoryEntity newCategory = new CategoryEntity();
+                            newCategory.setCategoryName(categoryName);
+                            return categoryRepository.save(newCategory);
+                        } catch (DataIntegrityViolationException e) {
+                            // 중복 예외 발생 시 기존 카테고리 재조회
+                            return categoryRepository.findAll().stream()
+                                    .filter(cat -> categoryName.equals(cat.getCategoryName()))
+                                    .findFirst()
+                                    .orElseThrow(() -> new RuntimeException("중복된 카테고리 처리 중 오류 발생"));
+                        }
+>>>>>>> main
                     });
 
             existingEntity.setCategory(category);
@@ -106,7 +155,14 @@ public class BoardServiceImpl implements BoardService {
             existingEntity.setCategory(category);
         }
 
+<<<<<<< HEAD
         // 저장
         boardRepository.save(existingEntity);
     }
+=======
+        // 변경 사항 저장
+        boardRepository.save(existingEntity);
+    }
+
+>>>>>>> main
 }

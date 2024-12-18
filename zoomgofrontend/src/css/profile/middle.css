@@ -8,10 +8,14 @@
 
 .gosu_info_list {
     display:flex;
-    justify-content:space-between;
     padding:20px;
     border-bottom:1px solid #eaeaea;
+    list-style:none;
 }
+
+.gosu_info_list li {
+    margin-right:20px;
+  }
 .gosu_info {
     float:left;
     width:670px;
@@ -20,6 +24,7 @@
 .gosu_info_list a {
     color:gray;
     font-size:19px;
+    text-decoration:none;
 }
 
 .gosu_information p {
@@ -95,6 +100,7 @@
 }
 
 .detail_review {
+    list-style:none;
     width:500px;
     margin-left:-70px;
     display:flex;

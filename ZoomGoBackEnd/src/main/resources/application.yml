@@ -9,6 +9,10 @@ spring:
 jpa:
   hibernate:
     ddl-auto: update
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
   properties:
     hibernate:
       format_sql: true
@@ -25,3 +29,10 @@ servlet:
 upload:
   path: C:/upload/
 
+<<<<<<< HEAD
+=======
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql: TRACE
+>>>>>>> main
