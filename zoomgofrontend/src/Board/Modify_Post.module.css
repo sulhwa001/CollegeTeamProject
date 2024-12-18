@@ -1,0 +1,144 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px;
+}
+  
+.board_type {
+  margin-top: 5rem; 
+  width: 1150px;
+  font-size: 20px;
+  font-family: 'Inter';
+  color: #000;
+  text-align: left;
+  font-weight: 600;
+}
+
+
+.divider {
+  margin: 10px;
+  border: 1px solid #d9d9d9;
+  width: 1200px;
+}
+
+
+.input_group {
+  width: 1200px;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.input_title {
+  width: 100%;
+  height: 36px;
+  background-color: #fff;
+  border: 1px solid #585858;
+  font-size: 20px;
+  font-family: 'Inter', sans-serif;
+  padding-left: 3px;
+}
+
+.author_info {
+  margin-top: 30px;
+  width: 1150px;
+  font-size: 17px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  text-align: left;
+}
+
+.input_content {
+  width: 100%;
+  height: 450px;
+  background-color: #fff;
+  border: 1px solid #585858;
+  font-size: 20px;
+  font-family: 'Inter', sans-serif;
+  padding-left: 3px;
+  margin-top: 1rem;
+}
+
+
+.file_preview_section {
+  display: flex;
+  width: 1200px;
+  margin-top: 1rem;
+}
+
+.file_preview_container {
+  display: flex;
+  margin-top: 1rem;
+  margin-right: 10px;
+  width: 600px;
+  height: 133px;
+  background-color: rgba(156, 156, 156, 0.21);
+}
+
+.file_preview {
+  width: 128px;
+  height: 95px;
+  margin: 10px;
+  margin-right: none;
+}
+
+.file_upload_container {
+  display: flex;
+  margin-top: 20px;
+  width: 1200px;
+}
+
+.file_upload_text{
+  width: 80%;
+  border: 1px solid;
+}
+
+.upload_button {
+  width: 97px;
+  height: 25px;
+  background-color: #fff;
+  border: 1px solid #585858;
+  border-radius: 10px;
+  margin-left: 30px
+}
+
+.upload-button span {
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: #464646;
+}
+
+.action_buttons {
+  display: flex;
+  margin-top: 1rem;
+  margin-left: 1000px;
+  margin-bottom: 2rem;
+}
+
+.submit_button, .cancel_button {
+  width: 92px;
+  height: 41px;
+  background-color: #6788ff;
+  border-radius: 15px;
+  margin-right: 1rem;
+  border: none;
+}
+
+.submit_button span, .cancel_button span {
+  font-size: 20px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: #fff;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none; 
+  outline: none;
+}
+
+.link:hover {
+  color: inherit;
+}

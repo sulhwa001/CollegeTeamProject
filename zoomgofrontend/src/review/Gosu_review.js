@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import style from './Gosu_review.module.css'; // CSS 파일을 가져옵니다.
 import avatar from "../image/avatar.png"
 import logo1 from "../image/logo_design.jpg"
 import logo2 from "../image/logo_design2.jpg"
+import axios from 'axios';
 
 const GosuReview = () => {
   const [isOpen, setIsOpen] = useState(false); // 모달 상태 관리

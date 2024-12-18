@@ -1,6 +1,9 @@
 package ync.zoomgobackend.domain.board.dto;
 
 import lombok.*;
+import ync.zoomgobackend.domain.member.dto.MemberDTO;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Builder
@@ -20,7 +23,7 @@ public class BoardDTO {
     private String transType; // 거래 유형
     private int view; // 조회수
     private int cost; // 배송비
-    private Date createdAt; // 등록 시간
+    private LocalDateTime createdAt; // 등록 시간
     private int price; // 판매 가격
     private String file; // 파일 경로 추가
 

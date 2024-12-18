@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class CategoryEntity {
+public class ZCategoryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

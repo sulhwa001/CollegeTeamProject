@@ -3,7 +3,8 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_API_KEY,
+  // apiKey: import.meta.env.VITE_API_KEY,
+  apiKey : "AIzaSyDZgwqzOO9qXjjCc-UMkyWZ9Qk4Ck92Fps",
   authDomain: "zoomgochat.firebaseapp.com",
   projectId: "zoomgochat",
   storageBucket: "zoomgochat.appspot.com",

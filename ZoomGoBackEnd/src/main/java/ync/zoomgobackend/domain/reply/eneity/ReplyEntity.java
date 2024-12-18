@@ -1,19 +1,18 @@
 package ync.zoomgobackend.domain.reply.eneity;
+
 import jakarta.persistence.*;
 import lombok.*;
 import ync.zoomgobackend.domain.board.entity.BoardEntity;
 import ync.zoomgobackend.domain.member.entity.MemberEntity;
 import ync.zoomgobackend.global.common.BaseEntity;
 
-@Entity
-@Table(name = "used_trade_reply")
+@Table(name = "USED_TRADE_REPLY")
 @Builder
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor
 @Getter
 @ToString(exclude = {"member", "board"})
-public class ReplyEntity {
-
+public class ReplyEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,8 +28,6 @@ public class ReplyEntity {
     private MemberEntity member; // 작성자 정보 참조
 
     @Column(name = "Contents", nullable = false)
-
     private String contents; // 댓글 내용
+
 }
-
-
