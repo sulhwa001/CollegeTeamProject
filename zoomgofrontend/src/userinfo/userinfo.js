@@ -11,7 +11,6 @@ function Userinfo() {
     name: '',
     nickName: '',
     address: '',
-    detailAddress: '',
     birthDate: '',
     phone: '',
     gender: '',

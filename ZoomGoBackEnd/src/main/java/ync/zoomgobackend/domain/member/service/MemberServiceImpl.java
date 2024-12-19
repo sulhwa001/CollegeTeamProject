@@ -37,6 +37,7 @@ public class MemberServiceImpl implements MemberService {
     // DTO를 Entity로 변환하는 메서드
     private MemberEntity dtoToEntity(MemberDTO memberDTO) {
         return MemberEntity.builder()
+                .userNo(memberDTO.getUserNo())
                 .email(memberDTO.getEmail())
                 .nickName(memberDTO.getNickName())
                 .name(memberDTO.getName())
@@ -50,4 +51,21 @@ public class MemberServiceImpl implements MemberService {
                 .admin(MemberRole.USER) // 기본 역할 설정
                 .build();
     }
+    public MemberDTO EntitytoDTO(MemberEntity member) {
+        return MemberDTO.builder()
+                .userNo(member.getUserNo())
+               .email(member.getEmail())
+               .nickName(member.getNickName())
+               .name(member.getName())
+               .phone(member.getPhone())
+               .password(member.getPassword())
+               .address(member.getAddress())
+               .manner(member.getManner())
+               .gender(member.getGender())
+               .birthDate(member.getBirthDate())
+               .profileImage(member.getProfileImage())
+               .build();
+    }
+
+
 }

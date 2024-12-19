@@ -9,4 +9,5 @@ public interface MemberService {
     void register(MemberDTO memberDTO); // MemberDTO 사용
     Optional<MemberEntity> getMemberByUserNo(Long userNo);
 
+
 }

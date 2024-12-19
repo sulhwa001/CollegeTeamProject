@@ -19,11 +19,12 @@ spring:
           timeout: 5000
           writetimeout: 5000
     auth-code-expiration-millis: 1800000  # 30 * 60 * 1000 == 30?
+
   datasource:
     url: jdbc:mysql://localhost:3306/test01
     username: root
     password: 1234
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driverClassName: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
@@ -40,3 +41,9 @@ spring:
           hibernate:
             SQL: debug
             type: trace
+
+application:
+  jwt:
+    secretKey: d1e7de6c6976969fb2ff10df6ac9d782a897fa9893af8da675be368d9e2b3561
+    expiration: 864000000 # 15분 access token
+    refreshExpiration: 864000000 # 1일 refresh token

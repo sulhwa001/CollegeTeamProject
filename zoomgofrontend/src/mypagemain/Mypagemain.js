@@ -5,40 +5,56 @@ import Modal from './modal';
 function Mypagemain() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalContent, setModalContent] = useState('');
-    const [userName, setUserName] = useState('');
-    const [mannerScore, setMannerScore] = useState(0);
+
+    const [member, setMember] = useState({});
+    // const [manner, setmanner] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [phone, setphone] = useState('');
+    // const [adress, setadress] = useState('');
+    // const [birthDate, setbirthDate] = useState('');
+    // const [profileImage, setprofileImage] = useState('');
+    // const [admin, setadmin] = useState('');
+    // const [name, setname] = useState('');
     const openModal = (content) => {
         setModalContent(content);
         setIsModalOpen(true);
-    };
+    }
+    
     useEffect(() => {
       const token = localStorage.getItem('zoomgo-token'); // 저장된 JWT 가져오기
-      console.log("???1111 : "+token)
       if (!token) {
-        console.log("??? : "+token)
         alert('로그인이 필요합니다.');
-        window.location.href="/login"
+        window.location.href = "/login";
         return;
       }
-      axios.get('http://localhost:8080/api/mypage', {
+    
+      axios.get('http://localhost:8080/api/members/getmember', {
         headers: { Authorization: `Bearer ${token}` }
       })
-      .then(response => {
-        setUserName(response.data.name);
-        setMannerScore(response.data.manner);
-      })
-      .catch(error => {
-        console.error('Error fetching user data:', error);
-        alert('인증 실패: 다시 로그인해주세요.');
-      });
+        .then(response => {
+          console.log('서버 응답 데이터:', response.data);
+          setMember(response.data);
+        })
+        .catch(error => {
+          console.error('Axios 요청 실패:', error); // 상세 에러 출력
+          if (error.response) {
+            console.log('서버 응답 상태 코드:', error.response.status);
+            console.log('서버 응답 데이터:', error.response.data);
+          }
+          if (error.response?.status === 401) {
+            alert('인증 실패: 다시 로그인해주세요.');
+            window.location.href = "/login";
+          } else {
+            alert('서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+          }
+        });
     }, []);
-  
 
     const closeModal = () => {
         setIsModalOpen(false);
     };
 
-    const name = "박재찬";
+    const name1 = "박재찬";
     const date = "2024.01.23";
     const progress = 50; // 진행률 50%로 설정
     const name2 = "조운준";
@@ -55,7 +71,7 @@ function Mypagemain() {
             <div className='gird-0'>
             <div className='circle-1'></div>
             <div className='legend-jaehan'>
-            <label>{userName}</label>
+            <label>{member.name}</label>
             </div>
             <label className='sogae'>프로필을 작성하고 자신을 소개해 주세요.</label>
             </div>
@@ -108,7 +124,7 @@ function Mypagemain() {
             <div className='manners-temperature'>
                 <label className='lezend-ondo'>매너온도</label>
                 <br />
-                <label>{mannerScore}℃</label>
+                <label>{member.manner}°C</label>
                 <br />
                 <input type='range' min= '0' max = '100' name='range' step={1}></input>
                 </div>
@@ -166,7 +182,7 @@ function Mypagemain() {
       </div>
       <div className="card">
         <div className="card-header">
-          <h3>{name}</h3>
+          <h3>{name1}</h3>
           <p>{date}</p>
         </div>
         <div className="progress-bar">
@@ -180,7 +196,7 @@ function Mypagemain() {
       </div>
       <div className="card">
         <div className="card-header">
-          <h3>{name}</h3>
+          <h3>{name2}</h3>
           <p>{date}</p>
         </div>
         <div className="progress-bar">

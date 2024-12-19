@@ -18,7 +18,7 @@ import Loginpage from './loginpage/Loginpage.js';
 import Registpage from './registpage/Registpage.js';
 
 //마이페이지 임포트
-// import Userinfo from './userinfo';
+import Userinfo from './userinfo/userinfo.js';
 import Agreement from './agreement/agreement.js';
 import Mypagemain from './mypagemain/Mypagemain.js';
 
@@ -65,7 +65,7 @@ function App() {
             <Route path="/forgotpassword" element={<Forgotpassword />} />
 
             {/*마이페이지 기능*/}
-            {/* <Route path="/userinfo" element={<Userinfo />} /> */}
+            <Route path="/userinfo" element={<Userinfo />} />
             <Route path="/agreement" element={<Agreement/>} />
             <Route path="/mypagemain" element={<Mypagemain/>} />
 
