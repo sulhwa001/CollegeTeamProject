@@ -22,6 +22,17 @@ const Chat = () =>{
 
     const [userNo, setUserNo] = useState("")
 
+    const [selectedRoom, setSelectedRoom] = useState(null);
+    const [otherUser, setOtherUser] = useState({})
+
+    const handleRoomSelect = (room,nickName,LastMessages) => {
+        setSelectedRoom(room);
+        setOtherUser({
+            nickName: nickName,
+            LastMessages: LastMessages,
+        });
+    }
+
     const getUserByUserNo = async (userNo) => {
         if(userNo == null){
             return;
@@ -77,9 +88,9 @@ const Chat = () =>{
     return(
         <div className={style.chat_container}>
             <div className={style.chat_content}>
-                <Chat_list user={user} userNo={userNo}/>
-                <Chat_input/>
-                <Chat_detail/>
+                <Chat_list user={user} userNo={userNo} onRoomSelect={handleRoomSelect}/>
+                <Chat_input selectedRoom={selectedRoom} userNo={userNo} otherUser={otherUser}/>
+                <Chat_detail selectedRoom={selectedRoom} userNo={userNo} otherUser={otherUser}/>
             </div>
         </div>
     )

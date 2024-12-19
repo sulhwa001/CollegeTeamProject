@@ -5,12 +5,12 @@ import arrowDown from "../image/arrowDown.png"
 import download from "../image/download.png"
 import keyboardImg from "../image/keyboard.jpeg" 
 
-const Chat_detail = () => {
+const Chat_detail = (selectedRoom, userNo, otherUser) => {
     return(
         <div className={style.detail}>
             <div className={style.user}>
                 <img src={avater}/>
-                <h2>박 재찬</h2>
+                <h2>{selectedRoom.otherUser.nickName}</h2>
                 <p>중고 거래</p>
             </div>
             <div className={style.info}>

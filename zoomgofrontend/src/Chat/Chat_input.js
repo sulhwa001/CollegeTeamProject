@@ -1,25 +1,101 @@
+import { collection, getDocs, orderBy, query, serverTimestamp, where, addDoc, onSnapshot, updateDoc, doc} from "firebase/firestore"
 import avatar from "../image/avatar.png"
 import emoji from "../image/emoji.png"
 import img from "../image/img.png"
 import keyboadrdImg from "../image/keyboard.jpeg"
 import style from "./Chat_input.module.css"
-// import EmojiPicker from "emoji-picker-react"
+import EmojiPicker from "emoji-picker-react"
 import { useEffect, useRef, useState } from "react"
+import { db } from "../lib/firebase"
 
-const Chat_input = () => {
+const Chat_input = (selectedRoom, userNo, otherUser) => {
     
     const [open,setOpen] = useState(false);
     const [text,setText] = useState("");
 
+    const [messages, setMessages] = useState([])
+
     const endRef = useRef(null);
 
+    const getMessagesByChatRoomsNo = (chatRoomId) => {
+        const q = query(
+            collection(db, "Messages"),
+            where("ChatRooms", "==", chatRoomId),
+            orderBy("SendTime", "asc")
+        );
+
+        // onSnapshot은 리스너를 반환하며, 이 리스너는 unsubscribe로 사용될 수 있음
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            const result = [];
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                const sendTime = data.SendTime ? formatTime(data.SendTime) : formatTime(new Date());
+                console.log(sendTime);
+                result.push({
+                    ...data,
+                    SendTime: sendTime,
+                });
+            });
+            setMessages(result); // 메시지를 상태에 저장
+        });
+
+        // unsubscribe는 리스너 해제 함수
+        return unsubscribe; 
+    };
+
     useEffect(() => {
-        endRef.curent?.scrollIntoview({behavior:"smooth"})
-    })
+        endRef.current?.scrollIntoView({ behavior: "smooth" });
+    },[messages])
+
+    useEffect(() => {
+        console.log(selectedRoom.selectedRoom);
+        console.log(selectedRoom.userNo);
+        console.log(selectedRoom.otherUser.nickName)
+        const unsubscribe = getMessagesByChatRoomsNo(selectedRoom.selectedRoom)
+
+        return () => {
+            if(unsubscribe){
+                unsubscribe();
+            }}
+    },[selectedRoom.selectedRoom])
 
     const handleEmoji = e => {
         setText(prev => prev + e.emoji);
         setOpen(false);
+    }
+
+    
+
+    const formatTime = (sendTime) => {
+        const timeDiff = Date.now() - sendTime.seconds * 1000;
+        const minutesAgo = Math.floor(timeDiff / 60000);
+
+        if(minutesAgo < 1){
+            return "방금 전";
+        }else if(minutesAgo < 60){
+            return `${minutesAgo} 분 전`
+        }else{
+            const date = new Date(sendTime.seconds * 1000);
+            return date.toLocaleTimeString();
+        }
+    } 
+
+    const handleSend = async () => {
+        if(text.trim() === ""){
+            return;
+        }
+        await addDoc(collection(db, "Messages"),{
+            ChatRooms: selectedRoom.selectedRoom,
+            SendTime: serverTimestamp(),
+            SendUsers: selectedRoom.userNo,
+            Text: text,
+        });
+        const refs = doc(db, "ChatRooms", selectedRoom.selectedRoom);
+        const updateData = {
+            LastMessages : text,
+        }
+        await updateDoc(refs,updateData);
+        setText("");
     }
 
     return(
@@ -28,52 +104,20 @@ const Chat_input = () => {
                 <div className={style.user}>
                     <img src={avatar} alt=""/>
                     <div className={style.texts}>
-                        <span>박 재찬</span>
-                        <p>좋네요, 거래 하면 될 것 같아요</p>
+                        <span>{selectedRoom.otherUser.nickName}</span>
+                        <p>{selectedRoom.otherUser.LastMessages}</p>
                     </div>
                 </div>
             </div>
             <div className={style.center}>
-                <div className={style.messege_own}>
+                {messages.map((message, index) => (
+                <div key={index} className={message.SendUsers === selectedRoom.userNo ? style.messege_own : style.messege}>
                     <div className={style.texts}>
-                        <p>제발 빨리 빨리 좀 다녀라!!!!!</p>
-                        <span>1 분 전</span>
+                        <p>{message.Text}</p>
+                        <span>{message.SendTime}</span>
                     </div>
                 </div>
-                <div className={style.messege}>
-                    <img src={avatar} alt=""/>
-                    <div className={style.texts}>
-                        <p>제발 빨리 빨리 좀 다녀라!!!!!</p>
-                        <span>1 분 전</span>
-                    </div>
-                </div>
-                <div className={style.messege_own}>
-                    <div className={style.texts}>
-                        <p>제발 빨리 빨리 좀 다녀라!!!!!</p>
-                        <span>1 분 전</span>
-                    </div>
-                </div>
-                <div className={style.messege}>
-                    <img src={avatar} alt=""/>
-                    <div className={style.texts}>
-                        <p>제발 빨리 빨리 좀 다녀라!!!!!</p>
-                        <span>1 분 전</span>
-                    </div>
-                </div>
-                <div className={style.messege_own}>
-                     <div className={style.texts}>
-                        <img src={keyboadrdImg} alt=""/>
-                        <p>키보드 상태 입니다.</p>
-                        <span>1 분 전</span>
-                    </div>
-                </div>
-                <div className={style.messege}>
-                    <img src={avatar} alt=""/>
-                    <div className={style.texts}>
-                        <p>좋네요, 거래 하면 될 것 같아요</p>
-                        <span>1 분 전</span>
-                    </div>
-                </div>
+                ))}
                 <div ref={endRef}></div>
             </div>
             <div className={style.bottom}>
@@ -84,10 +128,10 @@ const Chat_input = () => {
                 <div className={style.emoji}>
                     <img src={emoji} alt="" onClick={() => setOpen(prev => !prev)}/>
                     <div className={style.picker}>
-                      {/* <EmojiPicker open={open} onEmojiClick={handleEmoji}/> */}
+                      <EmojiPicker open={open} onEmojiClick={handleEmoji}/>
                     </div>
                 </div>
-                <button className={style.sendButton}>보내기</button>
+                <button className={style.sendButton} onClick={handleSend}>보내기</button>
             </div>
         </div>
     )
