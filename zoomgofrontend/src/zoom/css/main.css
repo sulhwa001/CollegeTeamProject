@@ -50,6 +50,13 @@ body {
     font-weight: bold;
 }
 
+.mainproduct-date, .mainproduct-views {
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 4px;
+}
+
+
 .write-btn {
     background-color: #5380f4;
     color: white;

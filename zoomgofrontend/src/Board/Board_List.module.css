@@ -73,12 +73,25 @@
   .page {
     margin-top: 1rem;
     display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .page_button {
-    width: 70px;
+    padding: 5px 10px;
+    cursor: pointer;
   }
   
+  .page_number {
+    margin: 0 5px;
+    cursor: pointer;
+  }
+
+  .page_number.active {
+    font-weight: bold;
+    color: #6788ff;
+  }
+
   .actions {
     display: flex;
     margin-top: 4rem;
@@ -108,14 +121,6 @@
     display: flex;
     align-items: center;
   }
-
-  .board_search_select {
-    font-size: 16px;
-    height: 30px;
-    font-family: 'Inter';
-    color: #000;
-    border: 1px solid #9f9f9f;
-  }
   
   .board_search_input {
     height: 26px;
@@ -128,6 +133,10 @@
     width: 50px;
     border: 1px solid #9f9f9f;
     font-weight: bold;
+  }
+
+  .disabled{
+    display: none;
   }
   
   

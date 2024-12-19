@@ -1,10 +1,10 @@
 package ync.zoomgobackend.domain.category.repository;
 
-import ync.zoomgobackend.domain.category.entity.CategoryEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import ync.zoomgobackend.domain.category.entity.CategoryEntity;
 
-@Repository
+@Repository("gcategoryRepository")
 public interface CategoryRepository extends JpaRepository<CategoryEntity, Long> {
 
 }
