@@ -22,8 +22,6 @@ public class QEstimateEntity extends EntityPathBase<EstimateEntity> {
 
     public static final QEstimateEntity estimateEntity = new QEstimateEntity("estimateEntity");
 
-    public final ync.zoomgobackend.domain.category.entity.QCategoryEntity categoryId;
-
     public final StringPath estimateArticle = createString("estimateArticle");
 
     public final NumberPath<Long> estimateId = createNumber("estimateId", Long.class);
@@ -37,6 +35,8 @@ public class QEstimateEntity extends EntityPathBase<EstimateEntity> {
     public final ync.zoomgobackend.domain.gosu.entity.QGosuEntity gosuId;
 
     public final ync.zoomgobackend.domain.member.entity.QMemberEntity userNo;
+
+    public final ync.zoomgobackend.domain.board.entity.QZCategoryEntity zcategoryId;
 
     public QEstimateEntity(String variable) {
         this(EstimateEntity.class, forVariable(variable), INITS);
@@ -56,9 +56,9 @@ public class QEstimateEntity extends EntityPathBase<EstimateEntity> {
 
     public QEstimateEntity(Class<? extends EstimateEntity> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.categoryId = inits.isInitialized("categoryId") ? new ync.zoomgobackend.domain.category.entity.QCategoryEntity(forProperty("categoryId")) : null;
         this.gosuId = inits.isInitialized("gosuId") ? new ync.zoomgobackend.domain.gosu.entity.QGosuEntity(forProperty("gosuId"), inits.get("gosuId")) : null;
         this.userNo = inits.isInitialized("userNo") ? new ync.zoomgobackend.domain.member.entity.QMemberEntity(forProperty("userNo")) : null;
+        this.zcategoryId = inits.isInitialized("zcategoryId") ? new ync.zoomgobackend.domain.board.entity.QZCategoryEntity(forProperty("zcategoryId")) : null;
     }
 
 }

@@ -1,7 +1,7 @@
 package ync.zoomgobackend.domain.estimate.entity;
 
 import jakarta.persistence.*;
-import ync.zoomgobackend.domain.category.entity.CategoryEntity;
+import ync.zoomgobackend.domain.board.entity.ZCategoryEntity;
 import ync.zoomgobackend.domain.gosu.entity.GosuEntity;
 import ync.zoomgobackend.domain.member.entity.MemberEntity;
 import lombok.*;
@@ -29,7 +29,7 @@ public class AskEstimateEntity {
     private GosuEntity gosuId;
 
     @OneToOne
-    private CategoryEntity categoryEntity;
+    private ZCategoryEntity zcategoryEntity;
 
     @OneToOne
     private MemberEntity userNo;

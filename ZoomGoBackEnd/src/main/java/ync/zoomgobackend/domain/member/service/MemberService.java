@@ -6,4 +6,5 @@ public interface MemberService {
     void register(MemberDTO memberDTO); // MemberDTO 사용
     MemberDTO getMemberByUserNo(String email);
 
+
 }

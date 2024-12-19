@@ -54,10 +54,14 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(
                         authorize->
+<<<<<<< HEAD
                                 authorize.requestMatchers("/portfolio/**","/api/members/**","/auth/**","/numberCheck","/resetpassword"
                                                 ,"/api/mypage","emailCheck",
                                                 "/api/upload", "/api/display",
                                                 "/gosu/**").permitAll().
+=======
+                                authorize.requestMatchers("/api/members/**","/auth/**","/emailCheck","/numberCheck", "/api/upload", "/api/display", "/gosu/**").permitAll().
+>>>>>>> 8fa1800e2d8abbf905e90485a6cddb1552ec7294
                                         requestMatchers("/admin/**")
                                         .hasAnyRole("ADMIN")
                                         .anyRequest()

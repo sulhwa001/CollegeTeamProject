@@ -21,5 +21,11 @@ public class ResetPasswordController {
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
+        }
+
+
+        @GetMapping("/")
+        public String hello() {
+            return "hello world!";
+        }
     }
-}

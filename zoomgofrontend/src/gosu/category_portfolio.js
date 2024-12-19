@@ -11,8 +11,8 @@ function CategoryPortfolio() {
     "전남",
     "충북",
     "충남",
-    "강원",
-    "경기",
+    "강원도",
+    "경기도",
     "인천",
   ];
 
@@ -60,7 +60,7 @@ function CategoryPortfolio() {
                 style={{ display: "flex", marginBottom: "20px" }}
               >
                 {group.map((gosu, idx) => (
-                  <div key={idx} style={{ marginRight: "20px", margin:"0 auto"}}>
+                  <div key={idx} style={{ marginRight: "20px" }}>
                     <div className="picture_box">
                       <span>{gosu.pic}</span>
                     </div>

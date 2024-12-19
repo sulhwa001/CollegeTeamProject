@@ -5,7 +5,7 @@ import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
+@Entity(name = "GosuCategoryEntity")
 @Builder
 @Getter
 @Setter

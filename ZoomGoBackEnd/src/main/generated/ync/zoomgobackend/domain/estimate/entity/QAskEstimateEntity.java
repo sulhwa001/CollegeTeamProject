@@ -26,9 +26,13 @@ public class QAskEstimateEntity extends EntityPathBase<AskEstimateEntity> {
 
     public final NumberPath<Long> askEstimateId = createNumber("askEstimateId", Long.class);
 
+<<<<<<< HEAD
     public final ync.zoomgobackend.domain.category.entity.QCategoryEntity categoryEntity;
 
     public final StringPath date = createString("date");
+=======
+    public final DateTimePath<java.util.Date> date = createDateTime("date", java.util.Date.class);
+>>>>>>> 8fa1800e2d8abbf905e90485a6cddb1552ec7294
 
     public final QEstimateEntity estimateId;
 
@@ -39,6 +43,8 @@ public class QAskEstimateEntity extends EntityPathBase<AskEstimateEntity> {
     public final StringPath question = createString("question");
 
     public final ync.zoomgobackend.domain.member.entity.QMemberEntity userNo;
+
+    public final ync.zoomgobackend.domain.board.entity.QZCategoryEntity zcategoryEntity;
 
     public QAskEstimateEntity(String variable) {
         this(AskEstimateEntity.class, forVariable(variable), INITS);
@@ -58,10 +64,10 @@ public class QAskEstimateEntity extends EntityPathBase<AskEstimateEntity> {
 
     public QAskEstimateEntity(Class<? extends AskEstimateEntity> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.categoryEntity = inits.isInitialized("categoryEntity") ? new ync.zoomgobackend.domain.category.entity.QCategoryEntity(forProperty("categoryEntity")) : null;
         this.estimateId = inits.isInitialized("estimateId") ? new QEstimateEntity(forProperty("estimateId"), inits.get("estimateId")) : null;
         this.gosuId = inits.isInitialized("gosuId") ? new ync.zoomgobackend.domain.gosu.entity.QGosuEntity(forProperty("gosuId"), inits.get("gosuId")) : null;
         this.userNo = inits.isInitialized("userNo") ? new ync.zoomgobackend.domain.member.entity.QMemberEntity(forProperty("userNo")) : null;
+        this.zcategoryEntity = inits.isInitialized("zcategoryEntity") ? new ync.zoomgobackend.domain.board.entity.QZCategoryEntity(forProperty("zcategoryEntity")) : null;
     }
 
 }

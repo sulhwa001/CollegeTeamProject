@@ -9,8 +9,13 @@ import java.util.Date;
 @Builder
 @Getter
 @Setter
+<<<<<<< HEAD
 @AllArgsConstructor
 @NoArgsConstructor
+=======
+@NoArgsConstructor
+@AllArgsConstructor
+>>>>>>> 8fa1800e2d8abbf905e90485a6cddb1552ec7294
 public class MemberDTO {
     private Long userNo;
     private String email;
