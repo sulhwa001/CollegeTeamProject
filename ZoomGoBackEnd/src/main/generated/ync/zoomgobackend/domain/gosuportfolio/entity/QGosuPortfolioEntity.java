@@ -1,4 +1,4 @@
-package ync.zoomgobackend.domain.gosuportfolio;
+package ync.zoomgobackend.domain.gosuportfolio.entity;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -16,7 +16,7 @@ import com.querydsl.core.types.dsl.PathInits;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QGosuPortfolioEntity extends EntityPathBase<GosuPortfolioEntity> {
 
-    private static final long serialVersionUID = 1503939900L;
+    private static final long serialVersionUID = -1737222949L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
@@ -24,9 +24,7 @@ public class QGosuPortfolioEntity extends EntityPathBase<GosuPortfolioEntity> {
 
     public final StringPath area = createString("area");
 
-    public final ync.zoomgobackend.domain.category.entity.QCategoryEntity categoryId;
-
-    public final ync.zoomgobackend.domain.gosu.entity.QGosuEntity gosuId;
+    public final ync.zoomgobackend.domain.gosu.entity.QGosuEntity gosu;
 
     public final NumberPath<Long> gosuPortfolioId = createNumber("gosuPortfolioId", Long.class);
 
@@ -38,7 +36,7 @@ public class QGosuPortfolioEntity extends EntityPathBase<GosuPortfolioEntity> {
 
     public final StringPath workArticle = createString("workArticle");
 
-    public final NumberPath<Integer> workTime = createNumber("workTime", Integer.class);
+    public final StringPath workTime = createString("workTime");
 
     public final NumberPath<Integer> workYear = createNumber("workYear", Integer.class);
 
@@ -60,8 +58,7 @@ public class QGosuPortfolioEntity extends EntityPathBase<GosuPortfolioEntity> {
 
     public QGosuPortfolioEntity(Class<? extends GosuPortfolioEntity> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.categoryId = inits.isInitialized("categoryId") ? new ync.zoomgobackend.domain.category.entity.QCategoryEntity(forProperty("categoryId")) : null;
-        this.gosuId = inits.isInitialized("gosuId") ? new ync.zoomgobackend.domain.gosu.entity.QGosuEntity(forProperty("gosuId"), inits.get("gosuId")) : null;
+        this.gosu = inits.isInitialized("gosu") ? new ync.zoomgobackend.domain.gosu.entity.QGosuEntity(forProperty("gosu"), inits.get("gosu")) : null;
         this.userNo = inits.isInitialized("userNo") ? new ync.zoomgobackend.domain.member.entity.QMemberEntity(forProperty("userNo")) : null;
     }
 

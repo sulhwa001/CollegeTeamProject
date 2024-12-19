@@ -1,4 +1,4 @@
-package ync.zoomgobackend.domain.gosuportfolio;
+package ync.zoomgobackend.domain.gosuportfolio.entity;
 
 import jakarta.persistence.*;
 import ync.zoomgobackend.domain.category.entity.CategoryEntity;
@@ -25,9 +25,9 @@ public class GosuPortfolioImageEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private GosuEntity gosuId;
 
-    @JoinColumn(name = "categoryId")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private CategoryEntity categoryId;
+//    @JoinColumn(name = "categoryId")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private CategoryEntity categoryId;
 
     @JoinColumn(name = "userNo")
     @ManyToOne(fetch = FetchType.LAZY)

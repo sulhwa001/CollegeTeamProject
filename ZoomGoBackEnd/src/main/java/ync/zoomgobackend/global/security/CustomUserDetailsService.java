@@ -24,6 +24,8 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .orElseThrow(()-> NotFoundMemberException.EXCEPTION);
         return CustomUserDetails.create(memberDTO);
     }
+
+
 }
 
 

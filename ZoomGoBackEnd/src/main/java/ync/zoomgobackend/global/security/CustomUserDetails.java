@@ -1,5 +1,7 @@
 package ync.zoomgobackend.global.security;
 
+import lombok.RequiredArgsConstructor;
+import ync.zoomgobackend.domain.gosu.dto.GosuDTO;
 import ync.zoomgobackend.domain.member.dto.MemberDTO;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,7 +20,7 @@ public class CustomUserDetails implements UserDetails {
 
     private CustomUserDetails(MemberDTO memberDTO, Collection<? extends  GrantedAuthority> authorities) {
         this.memberDTO = memberDTO;
-        this.authorities=authorities;
+        this.authorities = authorities;
     }
 
     public static CustomUserDetails create(MemberDTO memberDTO)
@@ -44,6 +46,11 @@ public class CustomUserDetails implements UserDetails {
     public String getUsername() {
         return memberDTO.getEmail();
     }
+
+    public Long getUserNo() {
+        return memberDTO.getUserNo();
+    }
+
 
     @Override
     public boolean isAccountNonExpired() {return true;

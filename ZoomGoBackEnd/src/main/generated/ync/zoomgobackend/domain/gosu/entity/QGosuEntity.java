@@ -32,8 +32,6 @@ public class QGosuEntity extends EntityPathBase<GosuEntity> {
 
     public final StringPath name = createString("name");
 
-    public final ListPath<ync.zoomgobackend.domain.gosuportfolio.GosuPortfolioEntity, ync.zoomgobackend.domain.gosuportfolio.QGosuPortfolioEntity> portfolios = this.<ync.zoomgobackend.domain.gosuportfolio.GosuPortfolioEntity, ync.zoomgobackend.domain.gosuportfolio.QGosuPortfolioEntity>createList("portfolios", ync.zoomgobackend.domain.gosuportfolio.GosuPortfolioEntity.class, ync.zoomgobackend.domain.gosuportfolio.QGosuPortfolioEntity.class, PathInits.DIRECT2);
-
     public final StringPath possibleTime = createString("possibleTime");
 
     public final NumberPath<Integer> price = createNumber("price", Integer.class);

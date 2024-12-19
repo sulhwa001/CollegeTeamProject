@@ -16,7 +16,7 @@ import ProductPage from './component/detailpage.js';
 import Forgotpassword from './forgotpassword/forgotpassword.js';
 import Loginpage from './loginpage/Loginpage.js';
 import Registpage from './registpage/Registpage.js';
-
+import Userinfo from './userinfo/userinfo.js';
 //마이페이지 임포트
 // import Userinfo from './userinfo';
 import Agreement from './agreement/agreement.js';
@@ -65,7 +65,7 @@ function App() {
             <Route path="/forgotpassword" element={<Forgotpassword />} />
 
             {/*마이페이지 기능*/}
-            {/* <Route path="/userinfo" element={<Userinfo />} /> */}
+            <Route path="/userinfo" element={<Userinfo />} />
             <Route path="/agreement" element={<Agreement/>} />
             <Route path="/mypagemain" element={<Mypagemain/>} />
 
@@ -87,9 +87,9 @@ function App() {
             {/*전문가 매칭 기능*/}
             <Route path="/gosuMain" element={<GosuMain/>} />
             <Route path='/ExportEstimate' element={<ExportEstimate />} />
-            <Route path="/ProfileInput/:userNo" element={<ProfileInput />} />
-            <Route path="/Profile/:gosuId" element={<Profile />} />
-            <Route path="/ProfileUpdate/:gosuId" element={<ProfileUpdate />} />
+            <Route path="/ProfileInput" element={<ProfileInput />} />
+            <Route path="/Profile" element={<Profile />} />
+            <Route path="/ProfileUpdate" element={<ProfileUpdate />} />
             <Route path="/Portfolio" element={<Portfolio />} />
             <Route path="/PortfolioInput" element={<InputPortfolio />} />
             <Route path="/categoryPorfolio" element={<CategoryPortfolio />} />

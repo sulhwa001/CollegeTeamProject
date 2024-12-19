@@ -38,7 +38,7 @@ public class AskEstimateEntity {
     private String address;
 
     @Column
-    private Date date;
+    private String date;
 
     @Column
     private String question;

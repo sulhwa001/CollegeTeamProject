@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import "../css/profile/career.css";
 import "../css/profile/profileInput.css";
 import Header from "./gosu_header";
@@ -26,38 +25,31 @@ const QuestionInput = ({ question, onChange }) => (
 );
 
 function ProfileInput() {
-  const { userNo } = useParams();
+  
   const [member, setMember] = useState(null);
   const [error, setError] = useState(null);
-  const [gosu, setGosu] = useState(null);
   useEffect(() => {
+    const token = localStorage.getItem('zoomgo-token'); // 저장된 JWT 가져오기
+    console.log(token)
     const fetchMember = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/members/profile/${userNo}`
-        );
+          `http://localhost:8080/api/members/profile`,{
+            headers: {Authorization: `Bearer ${token}`}
+        });
         console.log(response.data);
+        
         setMember(response.data);
-      } catch (err) {
-        setError(err);
+        
+      }
+       catch (err) {
+        setError(err);  
         console.log(error);
       }
     };
 
-    const fetchGosu = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:8080/gosu/gosuProfile/${userNo}`
-        );
-        setGosu(response.data);
-      } catch (err) {
-        setError(err);
-      }
-    };
-
     fetchMember();
-    fetchGosu();
-  }, [userNo]);
+  }, []);
 
   const [careerYear, setCareerYear] = useState("1년 이하");
   const [schoolCareer, setSchoolCareer] = useState("고졸");
@@ -96,7 +88,7 @@ function ProfileInput() {
       area: area,
       possibleTime: possibleTimeString,
       profilePicture: profilePicture,
-      userNo: userNo,
+      userNo: member.userNo,
       gosuQuestion: questions,
     };
     try {

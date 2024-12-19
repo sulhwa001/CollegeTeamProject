@@ -1,29 +1,55 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
-import { useParams } from "react-router-dom";
 import "../css/profile/middle.css";
 import "../css/profile/top.css";
 import Header from "./gosu_header";
 function Profile() {
-  const { gosuId } = useParams();
   const [gosu, setGosu] = useState(null);
+  const [question, setQuestion] = useState({
+    question1: "",
+    question2: "",
+    question3: "",
+    question4: "",
+    question5: "",
+    
+  });
   useEffect(() => {
+    const token = localStorage.getItem("zoomgo-token"); // 저장된 JWT 가져오기
+
     const fetchGosu = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/gosu/gosuProfile/${gosuId}`
+          `http://localhost:8080/gosu/gosuProfile`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
         );
+        if (response.status === 200 || response.status === 303) {
+          alert("성공")
+        }
         setGosu(response.data);
-        console.log(response.data);
+        fetchQuestion(response.data.userNo)
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    const fetchQuestion = async (userNo) => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/gosu/gosuQuestion/${userNo}`
+        );
+        setQuestion(response.data);
       } catch (err) {
         console.log(err);
       }
     };
     fetchGosu();
+    fetchQuestion();
     window.scrollTo(0, 0);
-  }, [gosuId]);
+  }, []);
 
+  console.log(gosu)
   return (
     <div className="App">
       <Header />
@@ -52,14 +78,15 @@ function Profile() {
           <div style={{ display: "flex", alignItems: "center" }}>
             <p>&nbsp;&nbsp;</p>
             {gosu ? (
-              <p style={{ color: "#d8d7d7", fontSize: "14px" }}>
-                &nbsp;&nbsp;
-              </p>
+              <p style={{ color: "#d8d7d7", fontSize: "14px" }}>&nbsp;&nbsp;</p>
             ) : (
               <p></p>
             )}
           </div>
-          <p>&nbsp;&nbsp;{gosu ? (<span>{gosu.name}</span>):(<span></span>)} 고수의 상페이지 제작 서비스</p>
+          <p>
+            &nbsp;&nbsp;{gosu ? <span>{gosu.name}</span> : <span></span>} 고수의
+            상페이지 제작 서비스
+          </p>
         </div>
         <div className="review_worktime">
           <div className="review_left">
@@ -72,7 +99,9 @@ function Profile() {
           <div className="review_right">
             <span style={{ color: "gray" }}>총 경력</span>
             <br></br>
-            <span style={{ fontWeight: "bold" }}>{gosu ? (<span>{gosu.career}</span>) : (<span></span>)}년</span>
+            <span style={{ fontWeight: "bold" }}>
+              {gosu ? <span>{gosu.career}</span> : <span></span>}년
+            </span>
           </div>
         </div>
       </section>
@@ -97,7 +126,10 @@ function Profile() {
             <h3>고수 정보</h3>
             <br />
             <br />
-            <p>&emsp;연락 가능 시간 : {gosu ? (<span>{gosu.possibleTime}</span>):(<span></span>)}</p>
+            <p>
+              &emsp;연락 가능 시간 :{" "}
+              {gosu ? <span>{gosu.possibleTime}</span> : <span></span>}
+            </p>
             <br />
             <p>&emsp;계좌이체, 현금결제 가능</p>
             <br />
@@ -111,7 +143,7 @@ function Profile() {
             <h3>경력</h3>
             <br />
             <h4 style={{ color: "#6788FF", fontSize: "20px" }}>
-              &emsp;총 경력 {gosu ? (<span>{gosu.career}</span>):(<span></span>)}
+              &emsp;총 경력 {gosu ? <span>{gosu.career}</span> : <span></span>}
             </h4>
             <span>&emsp;온라인 광고 및 교육</span>
             <br />
@@ -126,7 +158,9 @@ function Profile() {
             <br />
             <h3>학력</h3>
             <br />
-            <p style={{ color: "black" }}>&emsp; {gosu ? (<span>{gosu.graduation}</span>):(<span></span>)}</p>
+            <p style={{ color: "black" }}>
+              &emsp; {gosu ? <span>{gosu.graduation}</span> : <span></span>}
+            </p>
             <span style={{ color: "gray" }}>&emsp;2003년 3월 ~ 2011년 2월</span>
             <br />
             <span style={{ color: "#EAEAEA" }}>&emsp;학력 입력</span>
@@ -215,24 +249,47 @@ function Profile() {
                 <h3>질문답변</h3>
                 <br />
                 <br />
-                <span>Q. 서비스가 시작되기 어떤 절차로 진행하나요?</span>
-                <p>
-                  코치가 견적을 요청자에게 드린 후 상담을 거쳐 레슨을
-                  진행합니다.
-                </p>
-                <span>Q. 어떤 서비스를 전문적으로 제공하나요?</span>
-                <p>
-                  수영의 4가지 경영영법, 자유형 배영 평영 접영 레슨 , 스타트 턴
-                  응용영법 포함 및 군입대 자격시험 해병, 해병 수색대 해군 UDT
-                  해군 SSU 등 해양경찰 소방관 승무원 인명구조자격증 등 모든
-                  서비스 가능합니다.
-                </p>
-                <span>Q. A/S 또는 환불 규정은 어떻게 되나요?</span>
-                <p>
-                  횟수제 레슨이기 때문에 레슨시간은 매회 스케쥴 조정 후
-                  유동적으로 정할 수 있습니다. 환불규정은 별도로 문의 주시면
-                  상세히 안내해 드리겠습니다.
-                </p>
+
+                {gosu && question.question1 ? (
+                  <>
+                    <span>Q. 서비스가 시작되기 어떤 절차로 진행하나요?</span>
+                    <p>{question.question1}</p>
+                  </>
+                ) : (
+                  ""
+                )}
+                {gosu && question.question2 ? (
+                  <>
+                    <span>Q. 서비스가 시작되기 어떤 절차로 진행하나요?</span>
+                    <p>{question.question2}</p>
+                  </>
+                ) : (
+                  ""
+                )}
+                {gosu && question.question3 ? (
+                  <>
+                    <span>Q. 서비스가 시작되기 어떤 절차로 진행하나요?</span>
+                    <p>{question.question3}</p>
+                  </>
+                ) : (
+                  ""
+                )}
+                {gosu && question.question4 ? (
+                  <>
+                    <span>Q. 서비스가 시작되기 어떤 절차로 진행하나요?</span>
+                    <p>{question.question4}</p>
+                  </>
+                ) : (
+                  ""
+                )}
+                {gosu && question.question5 ? (
+                  <>
+                    <span>Q. 서비스가 시작되기 어떤 절차로 진행하나요?</span>
+                    <p>{question.question5}</p>
+                  </>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
             <div className="line2"></div>

@@ -22,7 +22,7 @@ public class QGosuQuestionEntity extends EntityPathBase<GosuQuestionEntity> {
 
     public static final QGosuQuestionEntity gosuQuestionEntity = new QGosuQuestionEntity("gosuQuestionEntity");
 
-    public final QGosuEntity gosuId;
+    public final QGosuEntity gosu;
 
     public final StringPath question1 = createString("question1");
 
@@ -54,7 +54,7 @@ public class QGosuQuestionEntity extends EntityPathBase<GosuQuestionEntity> {
 
     public QGosuQuestionEntity(Class<? extends GosuQuestionEntity> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.gosuId = inits.isInitialized("gosuId") ? new QGosuEntity(forProperty("gosuId"), inits.get("gosuId")) : null;
+        this.gosu = inits.isInitialized("gosu") ? new QGosuEntity(forProperty("gosu"), inits.get("gosu")) : null;
     }
 
 }

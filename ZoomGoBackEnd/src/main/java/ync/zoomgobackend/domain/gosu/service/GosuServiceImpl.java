@@ -1,5 +1,6 @@
 package ync.zoomgobackend.domain.gosu.service;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import ync.zoomgobackend.domain.gosu.dto.GosuChangeDTO;
 import ync.zoomgobackend.domain.gosu.dto.GosuDTO;
@@ -11,14 +12,18 @@ import ync.zoomgobackend.domain.gosu.repository.GosuRepository;
 import ync.zoomgobackend.domain.gosu.repository.querydsl.GosuQueryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ync.zoomgobackend.domain.member.entity.MemberEntity;
+import ync.zoomgobackend.domain.member.repository.MemberRepository;
 
+import java.lang.reflect.Member;
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
 public class GosuServiceImpl implements GosuService {
-
+    private final MemberRepository memberRepository;
     private final GosuRepository gosuRepository;
     private final GosuQuestionRepository gosuQuestionRepository;
     private final GosuQueryRepository gosuQueryRepository;
@@ -29,12 +34,18 @@ public class GosuServiceImpl implements GosuService {
         GosuEntity saveGosuEntity = gosuRepository.save(gosuEntity);
         GosuQuestionEntity gosuQuestionEntity = questionDtoToEntity(gosuDTO);
         if (gosuQuestionEntity != null) {
-            gosuQuestionEntity.setGosuId(gosuEntity);
+            gosuQuestionEntity.setGosu(gosuEntity);
             gosuQuestionRepository.save(gosuQuestionEntity);
         } else {
             return null;
         }
         return saveGosuEntity.getGosuId();
+    }
+
+    @Override
+    public Optional<GosuQuestionEntity> getQuestionByUserNo(Long userNo) {
+        return gosuQuestionRepository.findByGosuId(userNo);
+
     }
 
 
@@ -46,8 +57,10 @@ public class GosuServiceImpl implements GosuService {
     }
 
     @Override
-    public Optional<GosuEntity> getProfileByGosuId(Long id) {
-        return gosuRepository.findByGosuId(id);
+    public GosuDTO getProfileByUserNo(Long userNo) {
+        Optional<GosuEntity> user = gosuRepository.findByUser_UserNo(userNo);
+
+        return GosuEntityToDTO(user);
     }
 
     @Override

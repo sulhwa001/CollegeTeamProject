@@ -1,3 +1,5 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import "../App.css";
 import "../css/main/footer.css";
@@ -9,6 +11,21 @@ import "../css/main/section4.css";
 import stars from "../img/review_stars.png";
 import Header from "./gosu_header";
 function Main() {
+  
+  const [gosu, setGosu] = useState("")
+  useEffect(() => {
+    try {
+
+      const fetchPortfolio = () => {
+        const response = axios.get(`http://localhost:8080/portfolio/`)
+        setGosu(response.data)
+      }
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }, [gosu])
+
   const nameList = ["조은준", "박재찬", "김성근", "황도윤"];
   const picList = ["1", "2", "3", "4"];
   const portfolioList = [

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../css/profile/career.css";
 import "../css/profile/profileInput.css";
 import Header from "./gosu_header";
@@ -21,85 +21,132 @@ const InputField = ({
     value={value}
   />
 );
-const OptionField = ({ value, onChange }) => (
-  <option value={value} onChange={onChange}>
-    {value}
-  </option>
-);
-const QuestionInput = ({ question, onChange }) => (
+const OptionField = ({ value }) => <option value={value}>{value}</option>;
+const QuestionInput = ({ question, value, onChange }) => (
   <div>
     <p>{question}</p>
-    <InputField type="text" className="question_input" onChange={onChange} />
+    <InputField
+      className="question_input"
+      value={value || ""}
+      onChange={onChange}
+    />
   </div>
 );
 
 function ProfileUpdate() {
-  const { gosuId } = useParams();
+  const [schoolName, setSchoolName] = useState("");
+  const [schoolTime, setSchoolTime] = useState("");
+
+  const [schoolCareer, setSchoolCareer] = useState("");
   const [error, setError] = useState(null);
-  const [gosu, setGosu] = useState(null);
+  const [gosu, setGosu] = useState({
+    name: "",
+    graduation: "",
+    career: "",
+    serviceDetail: "",
+    price: 0,
+    area: "",
+    possibleTime: "",
+    profilePicture: "",
+    gosuQuestion: "",
+  });
+  const [user, getUser] = useState({});
+  const [gosuQuestion, setGosuQuestion] = useState({});
   useEffect(() => {
+    const token = localStorage.getItem("zoomgo-token"); // 저장된 JWT 가져오기
+
+    const fetchMember = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/api/members/profile`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        getUser(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
     const fetchGosu = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/gosu/gosuProfile/${gosuId}`
+          `http://localhost:8080/gosu/gosuProfile`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
         );
+
         setGosu(response.data);
+        fetchMember();
+        fetchGosuQuestion(response.data.userNo);
+      } catch (err) {
+        setError(err);
+      }
+    };
+    const fetchGosuQuestion = async (userNo) => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/gosu/gosuQuestion/${userNo}`
+        );
+
+        setGosuQuestion(response.data);
       } catch (err) {
         setError(err);
       }
     };
 
     fetchGosu();
+    fetchGosuQuestion();
     console.log(error);
-  }, [gosuId]);
+    if (gosu && gosu.graduation) {
+      const [career, name, time] = gosu.graduation.split("/");
+      setSchoolCareer(career || "");
+      setSchoolName(name || "");
+      setSchoolTime(time || "");
+    }
+  }, [gosu?.graduation]);
 
-  const [careerYear, setCareerYear] = useState("1년 이하");
-  const [schoolCareer, setSchoolCareer] = useState("고졸");
+  const [careerYear, setCareerYear] = useState("");
   const [DetailExplain, setDetailExplain] = useState("");
-  const [name, setName] = useState(gosu ? gosu.name : "");
-  const [price, setPrice] = useState();
-  const [area, setArea] = useState("");
-  const [firstPossible, setFirstPossibleTime] = useState("0");
-  const [possibleFromTime, setPossibleFromTime] = useState("오전");
-  const [possibleUntilTime, setPossibleUntilTime] = useState("오후");
-  const [possibleLastTime, setPossibleLastTime] = useState("0");
+  const [name, setName] = useState("");
+
+  const [price, setPrice] = useState(gosu ? gosu.price : "");
+  const [area, setArea] = useState(gosu ? gosu.area : "");
+  const [firstPossibleTime, setFirstPossibleTime] = useState("");
+  const [possibleFromTime, setPossibleFromTime] = useState("");
+  const [possibleUntilTime, setPossibleUntilTime] = useState("");
+  const [possibleLastTime, setPossibleLastTime] = useState("");
   const [fileName, setFileName] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
-  const [schoolName, setSchoolName] = useState("");
-  const [schoolTime, setSchoolTime] = useState("");
-  const [questions, setQuestions] = useState({
-    question1: "",
-    question2: "",
-    question3: "",
-    question4: "",
-    question5: "",
-  });
-
-  const profileSubmit = async (e) => {
+  const profileSubmit = async (e, schoolCareer, schoolName, schoolTime) => {
     e.preventDefault();
 
-    const possibleTimeString = `${possibleFromTime} ${firstPossible}시부터 ~ ${possibleUntilTime} ${possibleLastTime}시까지`;
+    const possibleTimeString = `${possibleFromTime} ${firstPossibleTime} 시부터 ~ ${possibleUntilTime} ${possibleLastTime} 시까지`;
     const career = `${careerYear}`;
-    const school = `${schoolCareer}/${schoolName}/${schoolTime}`;
+    const school = schoolCareer + "/" + schoolName + "/" + schoolTime;
+    gosu.graduation = school;
+    gosu.possibleTime = possibleTimeString;
     const data = {
-      gosuId: gosuId,
-      name: name,
-      graduation: school,
+      gosuId: gosu.gosuId,
+      name: gosu.name,
+      graduation: gosu.graduation,
       career: career,
-      serviceDetail: DetailExplain,
-      price: price,
-      area: area,
-      possibleTime: possibleTimeString,
-      profilePicture: profilePicture,
-      gosuQuestion: questions,
+      serviceDetail: gosu.serviceDetail,
+      price: gosu.price,
+      area: gosu.area,
+      possibleTime: gosu.possibleTime,
+      profilePicture: gosu.profilePicture,
+      gosuQuestion: gosuQuestion,
     };
+
     try {
       const response = await axios.put(
-        `http://localhost:8080/gosu/update/${gosuId}`,
+        `http://localhost:8080/gosu/update/`,
         data
       );
-      if (response.status === 200 || response.status === 303) {
+      if (response.status === 202 || response.status === 303) {
         alert("수정 완료");
       }
     } catch (error) {
@@ -107,16 +154,6 @@ function ProfileUpdate() {
     }
   };
 
-  const handleSchoolCareerChange = (e) => {
-    setSchoolCareer(e.target.value);
-  };
-  const handlePossibleFromChange = (e) => {
-    setPossibleFromTime(e.target.value);
-  };
-
-  const handlePossibleUntilChange = (e) => {
-    setPossibleUntilTime(e.target.value);
-  };
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -132,7 +169,7 @@ function ProfileUpdate() {
   };
 
   const handleQuestionChange = (index) => (e) => {
-    setQuestions((prev) => ({
+    setGosuQuestion((prev) => ({
       ...prev,
       [`question${index}`]: e.target.value,
     }));
@@ -142,18 +179,19 @@ function ProfileUpdate() {
     setCareerYear(e.target.value);
   };
   const careerYearOptions = Array.from({ length: 5 }, (_, i) => i + 1);
-  const possibleHourOptions = Array.from({ length: 13 }, (_, i) => i + ":00");
-  const schoolCareerList = ["고졸", "초대졸", "대졸", "석사/박사"];
+  const possibleHourOptions = Array.from({ length: 13 }, (_, i) => {
+    const hour = i === 0 ? "00" : i < 10 ? "0" + i : i;
+    return `${hour}:00`;
+  });
+  const schoolCareerList = ["고졸", "초대졸", "대졸", "석사 ", "박사 "];
   const amPm = ["오전", "오후"];
-  const updateName = async (e) => {
-    e.preventDefault();
+  const updateName = async (userNo) => {
     const data = {
-      gosuId: gosuId,
       name: name,
     };
     try {
       const response = await axios.put(
-        `http://localhost:8080/gosu/updateName/${gosuId}`,
+        `http://localhost:8080/gosu/updateName/${userNo}`,
         data
       );
       if (response.status === 202 || response.status === 303) {
@@ -164,7 +202,6 @@ function ProfileUpdate() {
       window.alert(error);
     }
   };
-
   return (
     <div className="App">
       <Header />
@@ -174,8 +211,10 @@ function ProfileUpdate() {
             <div className="name_picture">
               <div className="gosu_profile_picture"></div>
               <div className="gosuInfo">
-                {gosu ? (
-                  <span className="gosu_name">{gosu.user.name}</span>
+                {gosu && user && gosu.userNo === user.userNo ? (
+                  <span className="gosu_name">
+                    {user.name}
+                  </span>
                 ) : (
                   <span></span>
                 )}
@@ -201,10 +240,10 @@ function ProfileUpdate() {
                 name="gosu_name"
                 className="gosu_active_name"
                 onChange={(e) => {
-                  setGosu({ ...gosu, name: e.target.value })
-                  setName(e.target.value)
+                  setGosu({ ...gosu, name: e.target.value });
+                  setName(e.target.value);
                 }}
-                value={gosu ? gosu.name : ""}
+                value={gosu && gosu.name ? gosu.name : ""}
               />
             </div>
             <div className="gosu_picture_upload">
@@ -231,8 +270,8 @@ function ProfileUpdate() {
                 name="update"
                 className="gosu_active_area_name"
                 onChange={(e) => {
-                  setGosu({...gosu, area:e.target.value})
-                  setArea(e.target.value)
+                  setArea(e.target.value);
+                  setGosu({ ...gosu, area: e.target.value });
                 }}
                 value={gosu ? gosu.area : ""}
               />
@@ -247,89 +286,69 @@ function ProfileUpdate() {
               <h3>연락 가능 시간</h3>
             </div>
             <div className="area_insert">
-              <select
-                value={possibleFromTime}
-                onChange={handlePossibleFromChange}
-              >
-                {gosu ? (
-                  <>
-                    <option>선택 - {gosu.possibleTime.slice(0, 2)}</option>
-                    {amPm.map((list) => (
-                      <OptionField key={list} value={list}></OptionField>
-                    ))}
-                  </>
-                ) : (
-                  <OptionField value={amPm}></OptionField>
-                )}
-              </select>
-              <select
-                value={firstPossible}
-                onChange={(e) => {
-                  setFirstPossibleTime(e.target.value);
-                }}
-              >
-                {gosu ? (
-                  <>
-                    <option>선택 - {gosu.possibleTime.slice(3, 7)}</option>
-                    {possibleHourOptions.map((time) => (
-                      <OptionField key={time} value={time}>
-                        {time === gosu.possibleTime.slice(3, 7)
-                          ? "선택 - "
-                          : ""}
-                        {time}
-                      </OptionField>
-                    ))}
-                  </>
-                ) : (
-                  possibleHourOptions.map((time) => (
-                    <option key={time} value={time}>
-                      {time}
-                    </option>
-                  ))
-                )}
-              </select>
-              부터&nbsp;&nbsp;&nbsp;
-              <select
-                value={possibleUntilTime}
-                onChange={handlePossibleUntilChange}
-              >
-                {gosu ? (
-                  <>
-                    <option>선택 - {gosu.possibleTime.slice(13, 15)}</option>
-                    {amPm.map((list) => (
-                      <OptionField key={list} value={list}></OptionField>
-                    ))}
-                  </>
-                ) : (
-                  <OptionField value={amPm}></OptionField>
-                )}
-              </select>
-              <select
-                value={possibleLastTime}
-                onChange={(e) => {
-                  setPossibleLastTime(e.target.value);
-                }}
-              >
               {gosu ? (
                 <>
-                  <option>선택 - {gosu.possibleTime.slice(16, 20)}</option>
-                  {possibleHourOptions.map((time) => (
-                    <OptionField key={time} value={time}>
-                      {time === gosu.possibleTime.slice(16, 20)
-                        ? "선택 - "
-                        : ""}
-                      {time}
-                    </OptionField>
-                  ))}
+                  <select
+                    value={
+                      possibleFromTime || gosu.possibleTime?.slice(0, 2) || ""
+                    }
+                    onChange={(e) => {
+                      setGosu({ ...gosu, possibleTime: e.target.value });
+                      setFirstPossibleTime(e.target.value);
+                    }}
+                  >
+                    {amPm.map((list) => (
+                      <OptionField value={list} />
+                    ))}
+                  </select>
+
+                  <select
+                    value={
+                      firstPossibleTime || gosu.possibleTime?.slice(3, 7) || ""
+                    }
+                    onChange={(e) => {
+                      setGosu({ ...gosu, possibleTime: e.target.value });
+                      setFirstPossibleTime(e.target.value);
+                    }}
+                  >
+                    {possibleHourOptions.map((time) => (
+                      <OptionField value={time} />
+                    ))}
+                  </select>
+
+                  <select
+                    value={
+                      possibleUntilTime ||
+                      gosu.possibleTime?.slice(13, 15) ||
+                      ""
+                    }
+                    onChange={(e) => {
+                      setGosu({ ...gosu, possibleTime: e.target.value });
+                      setPossibleUntilTime(e.target.value);
+                    }}
+                  >
+                    {amPm.map((list) => (
+                      <OptionField value={list} />
+                    ))}
+                  </select>
+
+                  <select
+                    value={
+                      possibleLastTime || gosu.possibleTime?.slice(16, 20) || ""
+                    }
+                    onChange={(e) => {
+                      setGosu({ ...gosu, possibleTime: e.target.value });
+                      setPossibleLastTime(e.target.value);
+                    }}
+                  >
+                    {possibleHourOptions.map((time) => (
+                      <OptionField value={time} />
+                    ))}
+                  </select>
                 </>
               ) : (
-                possibleHourOptions.map((time) => (
-                  <option key={time} value={time}>
-                    {time}
-                  </option>
-                ))
+                <p>Loading...</p>
               )}
-            </select>
               까지
             </div>
             <div className="gosu_price">
@@ -344,10 +363,11 @@ function ProfileUpdate() {
                 type="text"
                 name="price"
                 className="price"
-                defaultValue={gosu ? gosu.price : ""}
                 onChange={(e) => {
+                  setGosu({ ...gosu, price: e.target.value });
                   setPrice(e.target.value);
                 }}
+                value={gosu ? gosu.price : ""}
               />
             </div>
             <div className="area_insert">
@@ -361,7 +381,13 @@ function ProfileUpdate() {
               >
                 <OptionField value="1년 이하"></OptionField>
                 {careerYearOptions.map((year) => (
-                  <OptionField value={year + "년 이상"}></OptionField>
+                  <OptionField
+                    onChange={(e) => {
+                      setCareerYear(e.target.value);
+                      setGosu({ ...gosu, career: e.target.value });
+                    }}
+                    value={year + "년 이상"}
+                  ></OptionField>
                 ))}
               </select>
             </div>
@@ -382,39 +408,54 @@ function ProfileUpdate() {
                 <h3>학력</h3>
                 <div className="schoolCareer_area">
                   <div className="school_graduation">
-                    <select
-                      value={schoolCareer}
-                      style={{ width: "300px" }}
-                      onChange={handleSchoolCareerChange}
-                    >
-                      {schoolCareerList.map((school) => (
-                        <OptionField value={school}></OptionField>
-                      ))}
-                    </select>
+                    {gosu && gosu.graduation ? (
+                      <>
+                        <select
+                          value={schoolCareer}
+                          style={{ width: "300px" }}
+                          onChange={(e) => {
+                            console.log("schoolcareer : ", e.target.value);
+                            setSchoolCareer(e.target.value);
+                          }}
+                        >
+                          {schoolCareerList.map((school) => (
+                            <OptionField value={school}></OptionField>
+                          ))}
+                        </select>
+                      </>
+                    ) : (
+                      <select>
+                        {schoolCareerList.map((school) => (
+                          <OptionField value={school}></OptionField>
+                        ))}
+                      </select>
+                    )}
                   </div>
                   <div className="schoolInfo">
                     <InputField
                       type="text"
                       name="schoolName"
                       className="schoolName"
-                      defaultValue={gosu ? gosu.graduation : ""}
                       onChange={(e) => {
+                        console.log("schoolName : ", e.target.value);
                         setSchoolName(e.target.value);
                       }}
+                      value={schoolName}
                     />
                     <InputField
                       type="text"
                       name="schoolTime"
                       className="schoolTime"
-                      defaultValue={"ex) 2013년 3월 - 2017년 2월"}
                       onChange={(e) => {
                         setSchoolTime(e.target.value);
                       }}
+                      value={schoolTime}
                     />
                   </div>
                 </div>
               </div>
             </div>
+
             <div className="gosu_question">
               <h3>질문답변</h3>
             </div>
@@ -422,22 +463,27 @@ function ProfileUpdate() {
               <QuestionInput
                 question="Q. 서비스가 시작되기 전 어떤 절차로 진행하나요?"
                 onChange={handleQuestionChange(1)}
+                value={gosuQuestion.question1 || ""}
               />
               <QuestionInput
                 question="Q. 어떤 서비스를 전문적으로 제공하나요?"
                 onChange={handleQuestionChange(2)}
+                value={gosuQuestion.question2 || ""}
               />
               <QuestionInput
                 question="Q. 서비스의 견적은 어떤 방식으로 산정 되나요?"
                 onChange={handleQuestionChange(3)}
+                value={gosuQuestion.question3 || ""}
               />
               <QuestionInput
                 question="Q. 완료한 서비스 중 대표적인 서비스는 무엇인가요? 소요 시간은 얼마나 소요 되었나요?"
                 onChange={handleQuestionChange(4)}
+                value={gosuQuestion.question4 || ""}
               />
               <QuestionInput
                 question="Q. A/S 또는 환불 규정은 어떻게 되나요?"
                 onChange={handleQuestionChange(5)}
+                value={gosuQuestion.question5 || ""}
               />
             </div>
             <div className="portfolio_move">
@@ -449,25 +495,25 @@ function ProfileUpdate() {
                   <br />
                   등록할 경우 고수님을 선택할 확률이 높아집니다.
                 </h3>
-                <div style={{ marginTop: "-15px" }}>
-                  <button className="portfolio_button1" onClick={""}>
-                    포트폴리오 등록하기
-                  </button>
-                </div>
+                <Link to={`/PortfolioInput`}>
+                  <button>포트폴리오 등록하기</button>
+                </Link>
               </div>
             </div>
-            <footer className="portfolio_footer">
-              <button onClick={profileSubmit} className="profile_update_Button">
-                수정
-              </button>
-              <button
-                className="profile_move_main_button"
-                onClick={() => {
-                  window.location.href = "/";
-                }}
-              >
-                취소하기
-              </button>
+            <footer className="profile_footer">
+              <Link to="/gosuMain">
+                <button
+                  onClick={(e) =>
+                    profileSubmit(e, schoolCareer, schoolName, schoolTime)
+                  }
+                  className="profile_update_Button"
+                >
+                  수정
+                </button>
+              </Link>
+              <Link to="/gosuMain">
+                <button className="profile_move_main_button">돌아가기</button>
+              </Link>
             </footer>
           </div>
         </div>

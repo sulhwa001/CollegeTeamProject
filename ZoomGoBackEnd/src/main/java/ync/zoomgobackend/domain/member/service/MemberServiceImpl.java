@@ -9,8 +9,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder; // 추�
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
-
 @Transactional
 @Service
 @RequiredArgsConstructor
@@ -19,8 +17,11 @@ public class MemberServiceImpl implements MemberService {
     private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder passwordEncoder; // PasswordEncoder 추가
 
-    public Optional<MemberEntity> getMemberByUserNo(Long userNo) {
-        return memberRepository.findByUserNo(userNo);
+    public MemberDTO getMemberByUserNo(String email) {
+        MemberEntity memberEntity = memberRepository.findByEmail(email).orElseThrow();
+        MemberDTO memberDTO = EntitytoDTO(memberEntity);
+        System.out.println(memberDTO.getUserNo());
+        return memberDTO;
     }
 
     @Override
@@ -34,9 +35,11 @@ public class MemberServiceImpl implements MemberService {
         memberRepository.save(memberEntity); // DB에 저장
     }
 
+
     // DTO를 Entity로 변환하는 메서드
-    private MemberEntity dtoToEntity(MemberDTO memberDTO) {
+    public MemberEntity dtoToEntity(MemberDTO memberDTO) {
         return MemberEntity.builder()
+                .userNo(memberDTO.getUserNo())
                 .email(memberDTO.getEmail())
                 .nickName(memberDTO.getNickName())
                 .name(memberDTO.getName())
@@ -50,4 +53,21 @@ public class MemberServiceImpl implements MemberService {
                 .admin(MemberRole.USER) // 기본 역할 설정
                 .build();
     }
+    public MemberDTO EntitytoDTO(MemberEntity member) {
+        return MemberDTO.builder()
+                .userNo(member.getUserNo())
+                .email(member.getEmail())
+                .nickName(member.getNickName())
+                .name(member.getName())
+                .phone(member.getPhone())
+                .password(member.getPassword())
+                .address(member.getAddress())
+                .manner(member.getManner())
+                .gender(member.getGender())
+                .birthDate(member.getBirthDate())
+                .profileImage(member.getProfileImage())
+                .build();
+    }
+
+
 }
