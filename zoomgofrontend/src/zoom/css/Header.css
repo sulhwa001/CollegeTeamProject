@@ -1,4 +1,10 @@
-.zoongo_header {
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff; /* 배경색을 흰색으로 변경 */
+    margin: 0;
+    padding: 0;
+}
+.zoomheader {
     background-color: #ffffff;
     padding: 30px 30px;
     margin-top: 30px;
@@ -14,7 +20,10 @@
     position: relative;
     left: 16.5% /* 값을 조정하여 로고를 오른쪽으로 이동 */;
     cursor: pointer;
+
 }
+
+
 .nav {
     display: flex;
     align-items: center;

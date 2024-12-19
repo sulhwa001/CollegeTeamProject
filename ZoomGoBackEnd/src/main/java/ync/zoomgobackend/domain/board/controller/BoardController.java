@@ -1,6 +1,10 @@
 package ync.zoomgobackend.domain.board.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -8,24 +12,28 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ync.zoomgobackend.domain.board.dto.BoardDTO;
+import ync.zoomgobackend.domain.board.dto.BoardListDTO;
+import ync.zoomgobackend.domain.board.service.BoardListService;
 import ync.zoomgobackend.domain.board.service.BoardService;
 import ync.zoomgobackend.global.dto.ResponseDTO;
 
 import java.io.File;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
-@RequestMapping("/zoomgo/products")
+@RequestMapping("/api/products")
 @RequiredArgsConstructor
 public class BoardController {
+
+    @Autowired
+    private BoardListService boardListService;
 
     @Qualifier("boardService")
     private final BoardService boardService;
 
-//    @Value("${upload.path}") // 파일 저장 경로
+    @Value("${upload.path}") // 파일 저장 경로
     private String uploadDir;
 
     @PostMapping //글쓰기
@@ -151,5 +159,16 @@ public class BoardController {
         }
     }
 
+    //최신순
+    @GetMapping("/latest")
+    public Page<BoardListDTO> getLatestBoards(Pageable pageable) {
+        return boardListService.getLatestBoards(pageable);
+    }
+
+    // 조회수
+    @GetMapping("/most")
+    public Page<BoardListDTO> getMostViewedBoards(Pageable pageable) {
+        return boardListService.getMostViewedBoards(pageable);
+    }
 }
 

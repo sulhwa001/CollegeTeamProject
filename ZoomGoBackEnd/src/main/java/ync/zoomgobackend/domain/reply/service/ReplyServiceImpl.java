@@ -6,36 +6,32 @@ import org.springframework.transaction.annotation.Transactional;
 import ync.zoomgobackend.domain.board.entity.BoardEntity;
 import ync.zoomgobackend.domain.board.repository.BoardRepository;
 import ync.zoomgobackend.domain.member.entity.MemberEntity;
-import ync.zoomgobackend.domain.reply.entity.ReplyEntity;
+import ync.zoomgobackend.domain.reply.dto.ReplyDTO;
+import ync.zoomgobackend.domain.reply.eneity.ReplyEntity;
 import ync.zoomgobackend.domain.reply.repository.ReplyRepository;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ReplyServiceImpl implements ReplyService {
 
     private final ReplyRepository replyRepository;
     private final BoardRepository boardRepository;
 
     @Override
-    @Transactional
     public ReplyEntity createReply(Long postId, MemberEntity member, String contents) {
-        BoardEntity boardEntity = boardRepository.findById(postId)
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시글입니다."));
+        // 게시글 확인
+        BoardEntity board = boardRepository.findById(postId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
 
-        ReplyEntity reply = ReplyEntity.builder()
-                .board(boardEntity)
-                .member(member)
+        // 댓글 생성
+        ReplyEntity replyEntity = ReplyEntity.builder()
                 .contents(contents)
+                .board(board)
+                .member(member)
                 .build();
-    return null;
-    }
 
-    @Override
-    @Transactional(readOnly = true)
-    public List<ReplyEntity> getRepliesByPostId(Long postId) {
-        return null; //임시로 잠시 null 반환
+        // 댓글 저장
+        return replyRepository.save(replyEntity);
     }
 }

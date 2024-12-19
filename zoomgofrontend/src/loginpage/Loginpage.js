@@ -14,26 +14,25 @@ function LoginPage() {
         },
         body: JSON.stringify({ email, password }),
       });
-  
 
       if (response.ok) {
         const data = await response.json();
         window.localStorage.setItem('zoomgo-token', data.accessToken);
-        alert("로그인완료!!");
-
-        window.location.href="/"
-        
+        alert("로그인 완료!");
+        window.location.href = "/";
       } else {
-        alert("Login failed!");
+        alert("로그인 실패!");
       }
     } catch (error) {
-      alert("Error:", error);
+      alert("오류 발생:", error);
     }
   };
 
   return (
     <div className="login">
       <h1 className='mainlogo'>ZOOMGO</h1>
+
+      {/* 이메일 입력 */}
       <form className="loginpage-form" onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="email">Email:</label>
         <div className="login-input">
@@ -47,6 +46,8 @@ function LoginPage() {
           />
         </div>
       </form>
+
+      {/* 비밀번호 입력 */}
       <form className="loginpage-form" onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="password">Password:</label>
         <div className="password-input">
@@ -54,6 +55,7 @@ function LoginPage() {
             className='password-main'
             type="password"
             id="password"
+            placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -62,9 +64,13 @@ function LoginPage() {
           <a href="/forgotpassword" className="forgot-password">Forgot Password?</a>
         </div>
       </form>
+
+      {/* 로그인 버튼 */}
       <button type="button" className="loginpage-button" onClick={handleLogin}>
         Login
       </button>
+
+      {/* 회원가입 링크 */}
       <div className="registgogo">
         <label>Don’t have an account?</label>
         <a href="/regist" className="forgot-password"> Sign Up</a>

@@ -1,8 +1,8 @@
 package ync.zoomgobackend.domain.member.entity;
 
 import jakarta.persistence.*;
-import ync.zoomgobackend.domain.member.entity.enums.MemberRole;
 import lombok.*;
+import ync.zoomgobackend.domain.member.entity.enums.MemberRole;
 
 import java.util.Date;
 

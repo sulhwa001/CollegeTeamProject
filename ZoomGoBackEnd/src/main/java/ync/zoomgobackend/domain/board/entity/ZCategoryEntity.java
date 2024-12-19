@@ -4,7 +4,7 @@ import lombok.*;
 
 import java.util.List;
 
-@Entity(name = "tradeCategoryEntity")
+@Entity(name = "ZCategoryEntity")
 @Table(name = "USED_Categories")
 @Builder
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class CategoryEntity {
+public class ZCategoryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

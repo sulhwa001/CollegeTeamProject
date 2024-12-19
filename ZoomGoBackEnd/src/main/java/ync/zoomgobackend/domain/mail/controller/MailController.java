@@ -1,5 +1,4 @@
 package ync.zoomgobackend.domain.mail.controller;
-
 import jakarta.mail.MessagingException;
 import ync.zoomgobackend.domain.mail.dto.MailDto;
 import ync.zoomgobackend.domain.mail.service.MailService;

@@ -1,50 +1,166 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import { useNavigate , useParams } from 'react-router-dom';
 import './css/detailpage.css'; // CSS 파일을 불러옴
 import dibs from './icon/dibs.png';
-import Header from './Header';
+import deleteIcon from './icon/delete.png';
+import axios from 'axios';
+import Header from './Header'; 
+
+
 
 const ProductPage = () => {
+    const [product, setProduct] = useState(null); // 상품 정보를 저장
+    const [loading, setLoading] = useState(true); // 로딩 상태
+    const currentUserId = 2; // 하드코딩된 현재 사용자 ID
+    const navigate = useNavigate(); // useNavigate 훅 사용
+    const { id } = useParams(); // URL에서 동적 매개변수 가져오기
+    const isFirstRender = useRef(true); // 첫 번째 렌더링 여부 추적
+
+    useEffect(() => {
+    
+        const fetchProduct = async () => {
+            try {
+                const response = await axios.get(`http://localhost:8080/api/products/${id}?incrementView=true`);
+                setProduct(response.data); // API에서 받은 데이터 저장
+            } catch (error) {
+                console.error('Error fetching product data:', error);
+            } finally {
+                setLoading(false); // 로딩 상태 해제
+            }
+        };
+    
+        if (isFirstRender.current) {
+            isFirstRender.current = false; // 첫 번째 실행 이후로는 false 설정
+            fetchProduct();
+        }
+    }, [id]); // id가 변경될 때만 호출
+    
+
+    const handleDelete = async () => {
+        try {
+            await axios.delete(`http://localhost:8080/api/products/${product.postId}`);
+            alert('게시글이 삭제되었습니다.');
+        } catch (error) {
+            console.error('Error deleting product:', error);
+            alert('게시글 삭제에 실패했습니다.');
+        }
+    };
+
+    const handleUpdate = () => {
+        navigate(`/updatepage/${product.postId}`); // 상대 경로를 사용
+    };
+    
+
+    if (loading) {
+        return <div>Loading...</div>; // 로딩 중 표시
+    }
+
+    if (!product) {
+        return <div>Product not found</div>; // 데이터가 없을 때 표시
+    }
+
     return (
         <div>
-            <Header  className="zoom-header" />
+            <Header className="zoom-header" />
+            <Header className="zoom-header" />
             <main className="main-content">
                 <section className="product">
-                    <div className="product-image"></div> {/* 상품 이미지 */}
+                    <div className="product-image">
+                        {/* 상품 이미지 표시 */}
+                        {product.file ? (
+                          <img
+                          src={product.file}
+                          alt={product.title}
+                          className="product-image"
+
+                                />
+                      
+                        ) : (
+                            <p>No Image</p>
+                        )}
+                    </div>
+                    <div className="product-image">
+                        {/* 상품 이미지 표시 */}
+                        {product.file ? (
+                          <img
+                          src={product.file}
+                          alt={product.title}
+                          className="product-image"
+
+                                />
+                      
+                        ) : (
+                            <p>No Image</p>
+                        )}
+                    </div>
                     <div className="product-details">
                         <div className="product-channel">
-                            <p>홈 &gt; 패션의류</p> {/* 경로 정보 */}
-                            <div className="transaction-status">
-                                <div>거래중</div> {/* 거래 상태 */}
-                            </div>
+                            <p>홈 &gt; {product.category?.categoryName || '카테고리 없음'}</p>
+
+                            <p>홈 &gt; {product.category?.categoryName || '카테고리 없음'}</p>
+
                         </div>
                         <div className="product-name">
-                            <h1>아디다스 반팔 티</h1> {/* 상품명 */}
+                            <h1>{product.title || '상품명 없음'}</h1>
+                            <h1>{product.title || '상품명 없음'}</h1>
                         </div>
                         <div className="product-price">
-                            <h2>15,000원</h2> {/* 가격 정보 */}
+                            <h2>
+                                {product.price
+                                    ? `${product.price.toLocaleString()}원`
+                                    : '가격 없음'}
+                            </h2>
+                            <h2>
+                                {product.price
+                                    ? `${product.price.toLocaleString()}원`
+                                    : '가격 없음'}
+                            </h2>
                         </div>
                         <div className="product-info-extra">
-                            <p>3시간 전</p> {/* 추가 정보 (조회수 등) */}
-                            <p>조회수 300</p>
+                            <p>
+                                {product.createdAt
+                                    ? new Date(product.createdAt).toLocaleString()
+                                    : '등록 시간 없음'}
+                            </p>
+                            <p>조회수 {product.view || 0}</p>
+                            <p>
+                                {product.createdAt
+                                    ? new Date(product.creatㅊedAt).toLocaleString()
+                                    : '등록 시간 없음'}
+                            </p>
+                            <p>조회수 {product.view || 0}</p>
                         </div>
                         <div className="product-location">
-                            <p>거래 희망 지역 대구광역시 남구 대명동</p> {/* 거래 위치 */}
+                            <p>거래 희망 지역: {product.address || '주소 없음'}</p>
+                            <p>거래 희망 지역: {product.address || '주소 없음'}</p>
                         </div>
 
                         <section className="product-details-info">
                             <div className="info-item">
-                                <p>제품상태</p>
-                                <p>중고</p> {/* 제품 상태 */}
+                                <p>거래상태</p>
+                                <p>{product.transStatus || '상태 없음'}</p>
+                                <p>거래상태</p>
+                                <p>{product.transStatus || '상태 없음'}</p>
                             </div>
                             <div className="divider"></div>
                             <div className="info-item">
                                 <p>거래방식</p>
-                                <p>택배거래</p> {/* 거래 방식 */}
+                                <p>{product.transType || '방식 없음'}</p>
+                                <p>{product.transType || '방식 없음'}</p>
                             </div>
                             <div className="divider"></div>
                             <div className="info-item">
                                 <p>배송비</p>
-                                <p>별도</p> {/* 배송비 */}
+                                <p>
+                                    {product.cost
+                                        ? `${product.cost.toLocaleString()}원`
+                                        : '배송비 없음'}
+                                </p>
+                                <p>
+                                    {product.cost
+                                        ? `${product.cost.toLocaleString()}원`
+                                        : '배송비 없음'}
+                                </p>
                             </div>
                         </section>
 
@@ -52,25 +168,56 @@ const ProductPage = () => {
                             <div className="dibs">
                                 <img src={dibs} alt="dibs" />
                             </div>
-                            <button>채팅하기</button> {/* 채팅하기 버튼 */}
+                            {/* 조건부 렌더링: 작성자인 경우 "수정하기", 작성자가 아닌 경우 "채팅하기" */}
+                            {currentUserId === product.memberId ? (
+                                <>
+                                    <button onClick={handleUpdate} className="update-button">
+                                        수정하기
+                                    </button>
+                                    <button onClick={handleDelete} className="delete-button">
+                                        <img src={deleteIcon} alt="Delete" />
+                                    </button>
+                                </>
+                            ) : (
+                                <button>채팅하기</button>
+                            )}
+                            {/* 조건부 렌더링: 작성자인 경우 "수정하기", 작성자가 아닌 경우 "채팅하기" */}
+                            {currentUserId === product.memberId ? (
+                                <>
+                                    <button onClick={handleUpdate} className="update-button">
+                                        수정하기
+                                    </button>
+                                    <button onClick={handleDelete} className="delete-button">
+                                        <img src={deleteIcon} alt="Delete" />
+                                    </button>
+                                </>
+                            ) : (
+                                <button>채팅하기</button>
+                            )}
                         </div>
                     </div>
                 </section>
 
+                {/* 임시 정보 유지 */}
+                {/* 임시 정보 유지 */}
                 <section className="info">
                     <div className="info-block">
                         <h3>상품 정보</h3>
-                        <p>대명동 전동민 앞에서 직거래 가능<br />입금 후 택배 발송합니다.</p> {/* 상품 정보 */}
+                        <p>{product.contents}</p>
+                        <p>{product.contents}</p>
                     </div>
                     <div className="info-block">
                         <h3>가게 정보</h3>
                         <div className="store-info">
                             <div className="store-image"></div>
-                            <div className="store-rating"></div> {/* 가게 정보 */}
+                            <div className="store-rating"></div>
+                            <div className="store-rating"></div>
                         </div>
                     </div>
                 </section>
 
+                {/* 댓글 임시 정보 유지 */}
+                {/* 댓글 임시 정보 유지 */}
                 <section className="comments">
                     <h3>댓글</h3>
                     <div className="comment">
@@ -80,32 +227,16 @@ const ProductPage = () => {
                             <p>저희 동네랑 위치가 가까워요!</p>
                         </div>
                     </div>
-                    <div className="comment">
-                        <div className="comment-image"></div>
-                        <div className="comment-text">
-                            <p>댓글2</p>
-                            <p>관심있습니다!</p>
-                        </div>
-                    </div>
                 </section>
 
+                {/* 추천 상품 임시 정보 유지 */}
+                {/* 추천 상품 임시 정보 유지 */}
                 <section className="similar-products">
                     <h3>이런 상품은 어떠세요?</h3>
                     <div className="similar-product">
                         <div className="similar-product-image"></div>
-                        <p>상품1 <br /> 10,000원</p> {/* 추천 상품 */}
-                    </div>
-                    <div className="similar-product">
-                        <div className="similar-product-image"></div>
-                        <p>상품2 <br /> 10,000원</p>
-                    </div>
-                    <div className="similar-product">
-                        <div className="similar-product-image"></div>
-                        <p>상품3 <br /> 10,000원</p>
-                    </div>
-                    <div className="similar-product">
-                        <div className="similar-product-image"></div>
-                        <p>상품4 <br /> 10,000원</p>
+                        <p>상품1 <br /> 10,000원</p>
+                        <p>상품1 <br /> 10,000원</p>
                     </div>
                 </section>
             </main>

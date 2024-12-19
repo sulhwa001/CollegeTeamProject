@@ -35,7 +35,7 @@ public class SecurityConfig {
     private  final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
     private final JwtExceptionFilter jwtExceptionFilter;
-    @Bean
+    @Bean(name = "customSecurityFilterChain")
     public SecurityFilterChain securityFilterChain(HttpSecurity http)
             throws Exception{
         http.
@@ -49,7 +49,7 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(
                         authorize->
-                                authorize.requestMatchers("/api/members/**","/api/auth/**", "/api/upload", "/api/display", "/gosu/**").permitAll().
+                                authorize.requestMatchers("/api/members/**","/api/auth/**", "/api/upload", "/api/display", "/gosu/**","/api/products/**","/files/**").permitAll().
                                         requestMatchers("/admin/**")
                                         .hasAnyRole("ADMIN")
                                         .anyRequest()

@@ -1,42 +1,32 @@
-#spring.application.name=ZoomGoBackEnd
-
-server:
-  port: 8080
+#spring.application.name=zoomgobackend
 spring:
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: "qhdrhaos258@gmail.com"
-    password: "xiey umph zcuq akia"
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
-            required: true
-          connectiontimeout: 5000
-          timeout: 5000
-          writetimeout: 5000
-    auth-code-expiration-millis: 1800000  # 30 * 60 * 1000 == 30?
   datasource:
-    url: jdbc:mysql://localhost:3306/bootex
-    username: bootuser
-    password: Bootuser123!@#
     diverClassName: com.mysql.cj.jdbc.Driver
-  jpa:
+    url: jdbc:mysql://localhost:3306/zoomgo1
+    username: root
+    password: 1234
+
+jpa:
+  hibernate:
+    ddl-auto: update
+
+  properties:
     hibernate:
-      ddl-auto: update
-      properties:
-        hibernate:
-          format_sql: true
-    properties:
-      hibernate:
-        show_sql: true
-        format_sql: true
-    logging:
-      level:
-        org:
-          hibernate:
-            SQL: debug
-            type: trace
+      format_sql: true
+  show-sql: true
+
+
+servlet:
+  multipart:
+    enabled: true #파일 업로드 가능여부
+    locationg: C://upload #업로드 파일 임시 저장 경로
+    max-file-size: 10MB # 파일 최대사이즈
+    max-request-size: 30MB #전체 파일 사이즈
+
+upload:
+  path: C:/upload/
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql: TRACE
