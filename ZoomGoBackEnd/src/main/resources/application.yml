@@ -1,7 +1,6 @@
 #spring.application.name=zoomgobackend
 spring:
   datasource:
-<<<<<<< HEAD
     diverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/zoomgo1
     username: root
@@ -10,18 +9,8 @@ spring:
 jpa:
   hibernate:
     ddl-auto: update
-<<<<<<< HEAD
-=======
 
->>>>>>> main
   properties:
-=======
-    url: jdbc:mysql://localhost:3306/bootex
-    username: bootuser
-    password: Bootuser123!@#
-    diverClassName: com.mysql.cj.jdbc.Driver
-  jpa:
->>>>>>> 8bcfd98a7de83d3a4c31988eaf985df2ec9832ed
     hibernate:
       format_sql: true
   show-sql: true
@@ -37,10 +26,7 @@ servlet:
 upload:
   path: C:/upload/
 
-<<<<<<< HEAD
-=======
 logging:
   level:
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql: TRACE
->>>>>>> main

@@ -1,69 +1,39 @@
 package ync.zoomgobackend.domain.board.controller;
 
 import lombok.RequiredArgsConstructor;
-<<<<<<< HEAD
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-<<<<<<< HEAD
-=======
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
->>>>>>> main
-=======
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
->>>>>>> 8bcfd98a7de83d3a4c31988eaf985df2ec9832ed
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ync.zoomgobackend.domain.board.dto.BoardDTO;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 import ync.zoomgobackend.domain.board.dto.BoardListDTO;
 import ync.zoomgobackend.domain.board.service.BoardListService;
->>>>>>> main
-=======
->>>>>>> 8bcfd98a7de83d3a4c31988eaf985df2ec9832ed
 import ync.zoomgobackend.domain.board.service.BoardService;
 import ync.zoomgobackend.global.dto.ResponseDTO;
 
 import java.io.File;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-import java.util.List;
->>>>>>> main
-=======
->>>>>>> 8bcfd98a7de83d3a4c31988eaf985df2ec9832ed
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
-<<<<<<< HEAD
 @RequestMapping("/api/products")
 @RequiredArgsConstructor
 public class BoardController {
 
-    private final BoardService boardService;
-<<<<<<< HEAD
-=======
-    private final BoardListService boardListService;
->>>>>>> main
-
-    @Value("${upload.path}") // 파일 저장 경로
-=======
-@RequestMapping("/zoomgo/products")
-@RequiredArgsConstructor
-public class BoardController {
+    @Autowired
+    private BoardListService boardListService;
 
     @Qualifier("boardService")
     private final BoardService boardService;
 
-//    @Value("${upload.path}") // 파일 저장 경로
->>>>>>> 8bcfd98a7de83d3a4c31988eaf985df2ec9832ed
+    @Value("${upload.path}") // 파일 저장 경로
     private String uploadDir;
 
     @PostMapping //글쓰기
@@ -189,10 +159,6 @@ public class BoardController {
         }
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
     //최신순
     @GetMapping("/latest")
     public Page<BoardListDTO> getLatestBoards(Pageable pageable) {
@@ -204,9 +170,5 @@ public class BoardController {
     public Page<BoardListDTO> getMostViewedBoards(Pageable pageable) {
         return boardListService.getMostViewedBoards(pageable);
     }
-
->>>>>>> main
-=======
->>>>>>> 8bcfd98a7de83d3a4c31988eaf985df2ec9832ed
 }
 

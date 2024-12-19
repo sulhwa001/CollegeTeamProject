@@ -1,7 +1,7 @@
 package ync.zoomgobackend.domain.estimate.entity;
 
 import jakarta.persistence.*;
-import ync.zoomgobackend.domain.category.entity.CategoryEntity;
+import ync.zoomgobackend.domain.board.entity.ZCategoryEntity;
 import ync.zoomgobackend.domain.gosu.entity.GosuEntity;
 import ync.zoomgobackend.domain.member.entity.MemberEntity;
 import lombok.*;
@@ -26,7 +26,7 @@ public class EstimateEntity {
 
     @ManyToOne
     @JoinColumn(name = "CategoryId")
-    private CategoryEntity categoryId;
+    private ZCategoryEntity zcategoryId;
 
     @ManyToOne
     @JoinColumn(name = "userNo")

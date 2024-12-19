@@ -29,7 +29,7 @@ public class BoardListServiceImpl implements BoardListService {
 
     private BoardListDTO convertToDTO(BoardEntity entity) {
         return BoardListDTO.builder()
-                .id(entity.getPostId())
+                .postNo(entity.getPostId())
                 .title(entity.getTitle())
                 .price(entity.getPrice())
                 .file(entity.getFile())

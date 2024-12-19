@@ -22,25 +22,15 @@ public class QBoardEntity extends EntityPathBase<BoardEntity> {
 
     public static final QBoardEntity boardEntity = new QBoardEntity("boardEntity");
 
-<<<<<<< HEAD
-    public final ync.zoomgobackend.global.common.QBaseEntity _super = new ync.zoomgobackend.global.common.QBaseEntity(this);
-
-=======
->>>>>>> main
     public final StringPath address = createString("address");
 
-    public final QCategoryEntity category;
+    public final QZCategoryEntity category;
 
     public final StringPath contents = createString("contents");
 
     public final NumberPath<Integer> cost = createNumber("cost", Integer.class);
 
-<<<<<<< HEAD
-    //inherited
-    public final DateTimePath<java.time.LocalDateTime> createdDate = _super.createdDate;
-=======
     public final DateTimePath<java.time.LocalDateTime> createdDate = createDateTime("createdDate", java.time.LocalDateTime.class);
->>>>>>> main
 
     public final StringPath file = createString("file");
 
@@ -76,7 +66,7 @@ public class QBoardEntity extends EntityPathBase<BoardEntity> {
 
     public QBoardEntity(Class<? extends BoardEntity> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.category = inits.isInitialized("category") ? new QCategoryEntity(forProperty("category")) : null;
+        this.category = inits.isInitialized("category") ? new QZCategoryEntity(forProperty("category")) : null;
         this.member = inits.isInitialized("member") ? new ync.zoomgobackend.domain.member.entity.QMemberEntity(forProperty("member")) : null;
     }
 

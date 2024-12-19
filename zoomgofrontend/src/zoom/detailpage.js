@@ -1,14 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate , useParams } from 'react-router-dom';
-import React, { useEffect, useState, useRef } from 'react';
-import { useNavigate , useParams } from 'react-router-dom';
 import './css/detailpage.css'; // CSS 파일을 불러옴
 import dibs from './icon/dibs.png';
-import deleteIcon from './icon/delete.png';
-import axios from 'axios';
-import Header from './Header'; 
-
-
 import deleteIcon from './icon/delete.png';
 import axios from 'axios';
 import Header from './Header'; 

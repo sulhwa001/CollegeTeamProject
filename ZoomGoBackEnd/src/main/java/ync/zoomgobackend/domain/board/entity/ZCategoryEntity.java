@@ -4,7 +4,7 @@ import lombok.*;
 
 import java.util.List;
 
-@Entity
+@Entity(name = "ZCategoryEntity")
 @Table(name = "USED_Categories")
 @Builder
 @AllArgsConstructor(access = AccessLevel.PROTECTED)

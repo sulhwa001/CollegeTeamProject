@@ -1,7 +1,7 @@
 package ync.zoomgobackend.domain.reply.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ync.zoomgobackend.domain.reply.entity.ReplyEntity;
+import ync.zoomgobackend.domain.reply.eneity.ReplyEntity;
 
 import java.util.List;
 

@@ -14,7 +14,7 @@ import com.querydsl.core.types.dsl.PathInits;
  * QCategoryEntity is a Querydsl query type for CategoryEntity
  */
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
-public class QCategoryEntity extends EntityPathBase<CategoryEntity> {
+public class QCategoryEntity extends EntityPathBase<ZCategoryEntity> {
 
     private static final long serialVersionUID = -1281178961L;
 
@@ -27,15 +27,15 @@ public class QCategoryEntity extends EntityPathBase<CategoryEntity> {
     public final StringPath categoryName = createString("categoryName");
 
     public QCategoryEntity(String variable) {
-        super(CategoryEntity.class, forVariable(variable));
+        super(ZCategoryEntity.class, forVariable(variable));
     }
 
-    public QCategoryEntity(Path<? extends CategoryEntity> path) {
+    public QCategoryEntity(Path<? extends ZCategoryEntity> path) {
         super(path.getType(), path.getMetadata());
     }
 
     public QCategoryEntity(PathMetadata metadata) {
-        super(CategoryEntity.class, metadata);
+        super(ZCategoryEntity.class, metadata);
     }
 
 }

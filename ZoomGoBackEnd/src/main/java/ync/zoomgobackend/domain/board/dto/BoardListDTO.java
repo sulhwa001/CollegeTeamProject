@@ -10,11 +10,12 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
+@Builder
 public class BoardListDTO {
     private Long postNo;
     private String title;
-    private int replyCnt;
-    private LocalDateTime createdDate;
-    private int views;
-    private int recommands;
+    private LocalDateTime createdAt; // 등록 시간
+    private int view;
+    private int price;
+    private String file;
 }

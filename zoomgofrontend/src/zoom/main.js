@@ -4,7 +4,6 @@ import icon1 from './icon/icon1.png';
 import list from './icon/listicon.png';
 import Header from './Header';
 import axios from 'axios'; // axios 설치 필요: npm install axios
-import Header from './Header';
 import './css/main.css';
 
 function MainPage() {

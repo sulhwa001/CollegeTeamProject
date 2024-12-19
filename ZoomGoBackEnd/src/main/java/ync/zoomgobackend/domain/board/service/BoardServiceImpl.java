@@ -10,7 +10,6 @@ import ync.zoomgobackend.domain.board.dto.BoardDTO;
 import ync.zoomgobackend.domain.board.entity.BoardEntity;
 import ync.zoomgobackend.domain.board.entity.ZCategoryEntity;
 import ync.zoomgobackend.domain.board.repository.BoardRepository;
-import ync.zoomgobackend.domain.board.repository.CategoryRepository;
 import ync.zoomgobackend.domain.board.repository.ZCategoryRepository;
 import ync.zoomgobackend.domain.member.entity.MemberEntity;
 import ync.zoomgobackend.domain.member.repository.MemberRepository;
@@ -33,7 +32,7 @@ public class BoardServiceImpl implements BoardService {
     @Transactional
     public Long register(BoardDTO dto) {
         // MemberEntity 조회
-        MemberEntity memberEntity = memberRepository.findById(dto.getMemberId())
+        MemberEntity memberEntity = memberRepository.findById(String.valueOf(dto.getMemberId()))
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 사용자입니다."));
         // DTO를 BoardEntity로 변환 (중복된 카테고리는 dtoToEntity에서 처리)
         BoardEntity boardEntity = dtoToEntity(dto, memberEntity, zcategoryRepository);

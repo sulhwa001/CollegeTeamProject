@@ -6,11 +6,8 @@ import ync.zoomgobackend.domain.board.dto.ZCategoryDTO;
 import ync.zoomgobackend.domain.board.entity.BoardEntity;
 import ync.zoomgobackend.domain.board.entity.ZCategoryEntity;
 import ync.zoomgobackend.domain.board.repository.ZCategoryRepository;
-import ync.zoomgobackend.domain.category.dto.CategoryDTO;
 import ync.zoomgobackend.domain.member.entity.MemberEntity;
 import ync.zoomgobackend.domain.member.repository.MemberRepository;
-
-import static ync.zoomgobackend.domain.board.entity.QCategoryEntity.categoryEntity;
 
 public interface BoardService {
 
