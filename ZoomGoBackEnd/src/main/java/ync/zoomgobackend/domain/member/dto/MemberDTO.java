@@ -1,18 +1,18 @@
 package ync.zoomgobackend.domain.member.dto;
 
 import jakarta.persistence.*;
+import lombok.*;
 import ync.zoomgobackend.domain.member.entity.enums.MemberRole;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.Date;
 
 @Builder
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class MemberDTO {
+    private Long userNo;
     private String email;
     private String nickName;
     private String name;
