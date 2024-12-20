@@ -16,13 +16,6 @@ import UpdatePage from './zoom/updatepage.js';
 //로그인 & 회원 가입 임프토
 // import Header from './header/Header.js';
 import Registpage from './registpage/Registpage.js';
-<<<<<<< HEAD
-import Userinfo from './userinfo/userinfo.js';
-=======
-import Loginpage from './loginpage/Loginpage.js';
-import Forgotpassword from './forgotpassword/forgotpassword.js';
-
->>>>>>> 8fa1800e2d8abbf905e90485a6cddb1552ec7294
 //마이페이지 임포트
 import Userinfo from './userinfo/userinfo.js';
 import Agreement from './agreement/agreement.js';
@@ -54,8 +47,8 @@ import Portfolio from './gosu/portfolio';
 import InputPortfolio from './gosu/portfolio_input';
 
 //막아놓은 은준씨 기능 임포트
-import Login from './gosu/login';
-import Regist from './gosu/regist';
+// import Login from './gosu/login';
+// import Regist from './gosu/regist';
 
 
 function App() {
@@ -102,10 +95,7 @@ function App() {
             <Route path='/ExportEstimate' element={<ExportEstimate />} />
             <Route path="/ProfileInput" element={<ProfileInput />} />
             <Route path="/Profile" element={<Profile />} />
-<<<<<<< HEAD
             <Route path="/ProfileUpdate" element={<ProfileUpdate />} />
-=======
->>>>>>> 8fa1800e2d8abbf905e90485a6cddb1552ec7294
             <Route path="/Portfolio" element={<Portfolio />} />
             <Route path="/PortfolioInput" element={<InputPortfolio />} />
             <Route path="/categoryPorfolio" element={<CategoryPortfolio />} />
