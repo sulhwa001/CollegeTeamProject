@@ -3,6 +3,7 @@ HELP.md
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
+!**/src/main/generated/
 !**/src/test/**/build/
 
 ### STS ###
@@ -18,7 +19,7 @@ bin/
 !**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -36,5 +37,9 @@ out/
 ### VS Code ###
 .vscode/
 /src/main/generated/
+/src/main/generated
 
-.idea
+!**/build/
+!**/.idea/
+/.idea/
+/build/
