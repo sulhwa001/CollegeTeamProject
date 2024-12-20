@@ -26,13 +26,7 @@ public class QAskEstimateEntity extends EntityPathBase<AskEstimateEntity> {
 
     public final NumberPath<Long> askEstimateId = createNumber("askEstimateId", Long.class);
 
-<<<<<<< HEAD
-    public final ync.zoomgobackend.domain.category.entity.QCategoryEntity categoryEntity;
-
     public final StringPath date = createString("date");
-=======
-    public final DateTimePath<java.util.Date> date = createDateTime("date", java.util.Date.class);
->>>>>>> 8fa1800e2d8abbf905e90485a6cddb1552ec7294
 
     public final QEstimateEntity estimateId;
 

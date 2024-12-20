@@ -56,7 +56,6 @@ public class MemberServiceImpl implements MemberService {
     public MemberDTO EntitytoDTO(MemberEntity member) {
         return MemberDTO.builder()
                 .userNo(member.getUserNo())
-<<<<<<< HEAD
                 .email(member.getEmail())
                 .nickName(member.getNickName())
                 .name(member.getName())
@@ -68,19 +67,7 @@ public class MemberServiceImpl implements MemberService {
                 .birthDate(member.getBirthDate())
                 .profileImage(member.getProfileImage())
                 .build();
-=======
-               .email(member.getEmail())
-               .nickName(member.getNickName())
-               .name(member.getName())
-               .phone(member.getPhone())
-               .password(member.getPassword())
-               .address(member.getAddress())
-               .manner(member.getManner())
-               .gender(member.getGender())
-               .birthDate(member.getBirthDate())
-               .profileImage(member.getProfileImage())
-               .build();
->>>>>>> 8fa1800e2d8abbf905e90485a6cddb1552ec7294
+
     }
 
 

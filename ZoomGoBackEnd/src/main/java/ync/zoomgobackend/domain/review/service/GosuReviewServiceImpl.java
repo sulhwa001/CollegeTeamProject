@@ -4,7 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ync.zoomgobackend.domain.gosu.entity.GosuEntity;
-import ync.zoomgobackend.domain.gosuportfolio.GosuPortfolioEntity;
+
+import ync.zoomgobackend.domain.gosuportfolio.entity.GosuPortfolioEntity;
 import ync.zoomgobackend.domain.member.entity.MemberEntity;
 import ync.zoomgobackend.domain.review.dto.GosuReviewDTO;
 import ync.zoomgobackend.domain.review.entity.GosuReviewEntity;
