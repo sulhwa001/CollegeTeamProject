@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class GosuDTO {
     private String name;
     private Long userNo;
+    private Long categoryId;
     private String possibleTime;
     private int price;
     private String career;

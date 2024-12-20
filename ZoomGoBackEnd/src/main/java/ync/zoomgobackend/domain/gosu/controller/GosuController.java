@@ -32,11 +32,11 @@ public class GosuController {
         return ResponseEntity.ok(gosuId);
     }
 
-    @PutMapping("update/{gosuId}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public ResponseEntity<Long> updateGosu(@PathVariable("gosuId") Long gosuId, @RequestBody GosuUpdateDTO gosuUpdateDTO) {
-        gosuService.updateGosu(gosuId, gosuUpdateDTO);
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(gosuId);
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Long> updateGosu(@RequestBody GosuUpdateDTO gosuUpdateDTO) {
+        Long gosuId = gosuService.updateGosu(gosuUpdateDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(gosuId);
     }
 
 

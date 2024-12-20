@@ -3,12 +3,6 @@ package ync.zoomgobackend.global.config;
 
 
 
-import ync.zoomgobackend.global.jwt.filter.JwtAuthenticationFilter;
-import ync.zoomgobackend.global.jwt.filter.JwtExceptionFilter;
-import ync.zoomgobackend.global.security.CustomUserDetailsService;
-import ync.zoomgobackend.global.security.handler.JwtAccessDeniedHandler;
-import ync.zoomgobackend.global.security.handler.JwtAuthenticationEntryPoint;
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,6 +17,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import lombok.RequiredArgsConstructor;
+import ync.zoomgobackend.global.jwt.filter.JwtAuthenticationFilter;
+import ync.zoomgobackend.global.jwt.filter.JwtExceptionFilter;
+import ync.zoomgobackend.global.security.CustomUserDetailsService;
+import ync.zoomgobackend.global.security.handler.JwtAccessDeniedHandler;
+import ync.zoomgobackend.global.security.handler.JwtAuthenticationEntryPoint;
 
 @Configuration
 @EnableWebSecurity
@@ -49,8 +50,11 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(
                         authorize->
-                                authorize.requestMatchers("/api/members/**","/auth/**","/emailCheck","/numberCheck", "/api/upload", "/api/display", "/gosu/**").permitAll().
-                                        requestMatchers("/admin/**")
+                                authorize.requestMatchers("/portfolio/**","/api/members/**","/auth/**","/numberCheck","/resetpassword"
+                                                ,"/api/mypage","emailCheck",
+                                                "/api/upload", "/api/display",
+                                                "/gosu/**").permitAll().
+                                       requestMatchers("/admin/**")
                                         .hasAnyRole("ADMIN")
                                         .anyRequest()
                                         .authenticated())

@@ -21,7 +21,7 @@ public class GosuPortfolioImageEntity {
     @JoinColumn(name = "gosuPortfolioId")
     private GosuPortfolioEntity gosuPortfolio;
 
-    @JoinColumn(name = "gosuId")
+    @JoinColumn(name = "gosu_Id")
     @ManyToOne(fetch = FetchType.LAZY)
     private GosuEntity gosuId;
 
@@ -29,7 +29,7 @@ public class GosuPortfolioImageEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private CategoryEntity categoryId;
 
-    @JoinColumn(name = "userNo")
+    @JoinColumn(name = "user_no")
     @ManyToOne(fetch = FetchType.LAZY)
     private MemberEntity userNo;
 

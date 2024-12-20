@@ -1,10 +1,10 @@
 package ync.zoomgobackend.domain.member.dto;
 
+import java.util.Date;
+
 import jakarta.persistence.*;
 import lombok.*;
 import ync.zoomgobackend.domain.member.entity.enums.MemberRole;
-
-import java.util.Date;
 
 @Builder
 @Getter

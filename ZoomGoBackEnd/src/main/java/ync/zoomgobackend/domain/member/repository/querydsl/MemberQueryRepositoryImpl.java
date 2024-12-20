@@ -1,11 +1,14 @@
 package ync.zoomgobackend.domain.member.repository.querydsl;
 
+
+
+
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import lombok.RequiredArgsConstructor;
 import ync.zoomgobackend.domain.member.dto.MemberListDTO;
 import ync.zoomgobackend.domain.member.exception.NotFoundMemberException;
-import lombok.RequiredArgsConstructor;
 
 import java.util.Optional;
 
@@ -15,8 +18,6 @@ import static ync.zoomgobackend.domain.member.entity.QMemberEntity.memberEntity;
 public class MemberQueryRepositoryImpl implements MemberQueryRepository {
 
     private final JPAQueryFactory jpaQueryFactory;
-
-
 
     public ConstructorExpression<MemberListDTO> memberProjection() {
         return Projections.constructor(
@@ -31,7 +32,8 @@ public class MemberQueryRepositoryImpl implements MemberQueryRepository {
     public MemberListDTO findMemberByUserNo(Long userNo) {
         return Optional
                 .ofNullable(
-                        jpaQueryFactory.select(memberProjection())
+                        jpaQueryFactory
+                                .select(memberProjection())
                                 .from(memberEntity)
                                 .where(memberEntity.userNo.eq(userNo))
                                 .groupBy(memberEntity)

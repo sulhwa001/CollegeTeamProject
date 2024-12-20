@@ -1,15 +1,16 @@
 package ync.zoomgobackend.domain.member.service;
 
-import ync.zoomgobackend.domain.member.dto.MemberDTO;
-import ync.zoomgobackend.domain.member.entity.MemberEntity;
-import ync.zoomgobackend.domain.member.entity.enums.MemberRole;
-import ync.zoomgobackend.domain.member.repository.MemberRepository;
-import lombok.RequiredArgsConstructor;
+import java.util.Optional;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder; // 추가
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
+import lombok.RequiredArgsConstructor;
+import ync.zoomgobackend.domain.member.dto.MemberDTO;
+import ync.zoomgobackend.domain.member.entity.MemberEntity;
+import ync.zoomgobackend.domain.member.entity.enums.MemberRole;
+import ync.zoomgobackend.domain.member.repository.MemberRepository;
 
 @Transactional
 @Service
@@ -51,6 +52,7 @@ public class MemberServiceImpl implements MemberService {
                 .admin(MemberRole.USER) // 기본 역할 설정
                 .build();
     }
+    
     public MemberDTO EntitytoDTO(MemberEntity member) {
         return MemberDTO.builder()
                 .userNo(member.getUserNo())
