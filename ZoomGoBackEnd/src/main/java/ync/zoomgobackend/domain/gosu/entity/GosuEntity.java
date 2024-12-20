@@ -1,7 +1,7 @@
 package ync.zoomgobackend.domain.gosu.entity;
 
 import jakarta.persistence.*;
-import ync.zoomgobackend.domain.gosuportfolio.entity.GosuPortfolioEntity;
+import ync.zoomgobackend.domain.gosuportfolio.GosuPortfolioEntity;
 import ync.zoomgobackend.domain.member.entity.MemberEntity;
 import lombok.*;
 
@@ -43,33 +43,28 @@ public class GosuEntity {
     public void updateName(String name) {
         this.name = name;
     }
-
     public void updatePrice(int price) {
         this.price = price;
     }
-
     public void updateCareer(String career) {
         this.career = career;
     }
-
     public void updateServiceDetail(String serviceDetail) {
         this.serviceDetail = serviceDetail;
     }
-
     public void updatePossibleTime(String possibleTime) {
         this.possibleTime = possibleTime;
     }
-
     public void updateProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
     }
-
     public void updateArea(String area) {
         this.area = area;
     }
-
     public void updateGraduation(String graduation) {
         this.graduation = graduation;
     }
 
+    @OneToMany(mappedBy = "gosuId", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<GosuPortfolioEntity> portfolios; // 일대다 관계 설정
 }

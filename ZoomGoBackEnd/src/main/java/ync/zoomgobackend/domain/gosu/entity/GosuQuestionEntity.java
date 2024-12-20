@@ -16,9 +16,9 @@ public class GosuQuestionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long questionId;
 
-    @JoinColumn(name = "gosu_id")
+    @JoinColumn(name = "gosuId")
     @OneToOne
-    private GosuEntity gosu;
+    private GosuEntity gosuId;
 
     @Column
     private String question1;

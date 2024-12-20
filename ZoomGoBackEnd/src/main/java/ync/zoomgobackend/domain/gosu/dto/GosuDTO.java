@@ -14,7 +14,6 @@ import java.util.ArrayList;
 @Getter
 @Setter
 public class GosuDTO {
-    private Long gosuId;
     private String name;
     private Long userNo;
     private String possibleTime;

@@ -9,9 +9,8 @@ import java.util.Date;
 @Builder
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-
+@AllArgsConstructor
 public class MemberDTO {
     private Long userNo;
     private String email;
