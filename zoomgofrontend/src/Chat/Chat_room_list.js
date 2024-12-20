@@ -87,7 +87,7 @@ const Chat_room_list = ({user, userNo, onRoomSelect}) => {
                 </div>
             </div>
                 {chatRooms.map((room,index) => (
-                    <div key={index} className={style.items} onDoubleClick={onRoomSelect(room.id,(room.User1 === userNo ? room.User2Nickname : room.User1Nickname),room.LastMessages)}>
+                    <div key={index} className={style.items} onDoubleClick={() => onRoomSelect(room.id,(room.User1 === userNo ? room.User2Nickname : room.User1Nickname),room.LastMessages)}>
                         <img src={room.User1 === userNo 
                             ? (room.User2Profile !== "" ? room.User2Profile : avatar) 
                             : (room.User1Profile !== "" ? room.User1Profile : avatar)} alt=""/>
