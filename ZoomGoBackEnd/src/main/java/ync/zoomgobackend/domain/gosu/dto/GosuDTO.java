@@ -17,6 +17,7 @@ public class GosuDTO {
     private Long gosuId;
     private String name;
     private Long userNo;
+    private Long categoryId;
     private String possibleTime;
     private int price;
     private String career;

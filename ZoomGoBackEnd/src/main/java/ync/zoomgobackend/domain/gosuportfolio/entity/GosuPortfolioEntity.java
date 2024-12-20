@@ -20,10 +20,10 @@ public class GosuPortfolioEntity {
     private Long gosuPortfolioId;
     @ManyToOne
     @JoinColumn(name = "gosu_id")
-    private GosuEntity gosu;
-//    @ManyToOne
-//    @JoinColumn(name = "categoryId")
-//    private CategoryEntity categoryId;
+    private GosuEntity gosuId;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private CategoryEntity categoryId;
     @ManyToOne
     @JoinColumn(name = "user_no")
     private MemberEntity userNo;
@@ -39,5 +39,31 @@ public class GosuPortfolioEntity {
     private String workTime;
     @Column
     private String workArticle;
+
+    public void updateTitle(String title) {
+        this.title = title;
+    }
+
+    public void updatePrice(Integer price) {
+        this.price = price;
+    }
+    public void updateCategoryId(CategoryEntity categoryId)  {
+        this.categoryId = categoryId;
+    }
+
+
+    public void updateWorkYear(Integer workYear) {
+        this.workYear = workYear;
+    }
+
+    public void updateArea(String area) {
+        this.area = area;
+    }
+    public void updateWorkArticle(String workArticle) {
+        this.workArticle = workArticle;
+    }
+    public void updateWorkTime(String time) {
+        this.workTime = time;
+    }
 }
 

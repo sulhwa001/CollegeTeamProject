@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import ync.zoomgobackend.domain.estimate.entity.EstimateEntity;
 import ync.zoomgobackend.domain.gosu.entity.GosuEntity;
-import ync.zoomgobackend.domain.gosuportfolio.GosuPortfolioEntity;
+import ync.zoomgobackend.domain.gosuportfolio.entity.GosuPortfolioEntity;
 import ync.zoomgobackend.domain.member.entity.MemberEntity;
 import ync.zoomgobackend.global.common.entity.BaseEntity;
 

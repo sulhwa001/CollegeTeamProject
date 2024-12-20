@@ -19,19 +19,22 @@ public interface GosuPortfolioService {
 
     GosuPortfolioDTO getPortfolioIdByGosuId(Long gosuId);
 
+    Long updatePortfolio(GosuPortfolioDTO gosuPortfolioDTO);
     default GosuPortfolioEntity insertDtoToEntity(GosuPortfolioDTO gosuDTO) {
         GosuEntity gosu = GosuEntity.builder().gosuId(gosuDTO.getGosuId()).build();
         MemberEntity member = MemberEntity.builder().userNo(gosuDTO.getUserNo()).build();
+        CategoryEntity categoryEntity = CategoryEntity.builder().categoryId(gosuDTO.getCategoryId()).build();
         return GosuPortfolioEntity
                 .builder()
                 .gosu(gosu)
+                .categoryId(categoryEntity)
                 .userNo(member)
                 .area(gosuDTO.getArea())
                 .price(gosuDTO.getPrice())
                 .title(gosuDTO.getTitle())
                 .workArticle(gosuDTO.getWorkArticle())
                .workTime(gosuDTO.getWorkTime())
-                .workYear(gosuDTO.getYear())
+                .workYear(gosuDTO.getWorkYear())
                 .build();
     }
     default GosuPortfolioDTO portfolioEntityToDTO(Optional<GosuPortfolioEntity> gosuPortfolioEntityOptional) {
@@ -41,6 +44,7 @@ public interface GosuPortfolioService {
 
         return GosuPortfolioDTO
                 .builder()
+                .categoryId(gosuEntity.getCategoryId().getCategoryId())
                 .gosuId(gosuEntity.getGosu().getGosuId())
                 .userNo(gosuEntity.getGosu().getUser().getUserNo())
                 .area(gosuEntity.getArea())
@@ -48,7 +52,7 @@ public interface GosuPortfolioService {
                 .title(gosuEntity.getTitle())
                 .workArticle(gosuEntity.getWorkArticle())
                 .workTime(gosuEntity.getWorkTime())
-                .year(gosuEntity.getWorkYear())
+                .workYear(gosuEntity.getWorkYear())
                 .build();
     }
 }

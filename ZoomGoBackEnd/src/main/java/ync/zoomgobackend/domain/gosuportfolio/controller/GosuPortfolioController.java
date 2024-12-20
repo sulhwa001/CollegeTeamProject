@@ -39,4 +39,11 @@ public class GosuPortfolioController {
         GosuDTO gosuDTO = gosuService.getProfileByUserNo(memberEntity.getUserNo());
         return gosuPortfolioService.getPortfolioIdByGosuId(gosuDTO.getGosuId());
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping("/update")
+    public ResponseEntity<Long> updatePortfolio(@RequestBody GosuPortfolioDTO gosuPortfolioDTO) {
+        System.out.println(gosuPortfolioDTO.getWorkYear());
+        return ResponseEntity.ok(gosuPortfolioService.updatePortfolio(gosuPortfolioDTO));
+    }
 }

@@ -1,6 +1,7 @@
 package ync.zoomgobackend.domain.gosu.service;
 
 import jakarta.persistence.EntityNotFoundException;
+import ync.zoomgobackend.domain.category.entity.CategoryEntity;
 import ync.zoomgobackend.domain.gosu.dto.GosuChangeDTO;
 import ync.zoomgobackend.domain.gosu.dto.GosuDTO;
 import ync.zoomgobackend.domain.gosu.dto.GosuUpdateDTO;
@@ -22,7 +23,7 @@ public interface GosuService {
 
     Optional<GosuQuestionEntity> getQuestionByUserNo(Long userNo);
 
-    Long updateGosu(Long gosuId, GosuUpdateDTO gosuUpdateDTO);
+    Long updateGosu(GosuUpdateDTO gosuUpdateDTO);
 
     default GosuEntity pictureToEntity(GosuChangeDTO gosuChangeDTO) {
         return GosuEntity.builder()
@@ -31,7 +32,9 @@ public interface GosuService {
 
     default GosuEntity insertDtoToEntity(GosuDTO gosuDTO) {
         MemberEntity user = MemberEntity.builder().userNo(gosuDTO.getUserNo()).build();
+        CategoryEntity categoryEntity = CategoryEntity.builder().categoryId(gosuDTO.getCategoryId()).build();
         return GosuEntity.builder()
+                .categoryId(categoryEntity)
                 .gosuId(gosuDTO.getGosuId())
                 .price(gosuDTO.getPrice())
                 .area(gosuDTO.getArea())
@@ -50,9 +53,11 @@ public interface GosuService {
                 .orElseThrow(() -> new EntityNotFoundException("GosuEntity not found"));
 
         return GosuDTO.builder()
+                .categoryId(gosuEntity.getCategoryId().getCategoryId())
                 .gosuId(gosuEntity.getGosuId())
                 .graduation(gosuEntity.getGraduation())
                 .possibleTime(gosuEntity.getPossibleTime())
+                .price(gosuEntity.getPrice())
                 .profilePicture(gosuEntity.getProfilePicture())
                 .userNo(gosuEntity.getUser().getUserNo())
                 .name(gosuEntity.getName())
@@ -64,9 +69,12 @@ public interface GosuService {
 
     default GosuEntity GosuDTOToEntity(GosuDTO gosuDTO) {
         MemberEntity user = MemberEntity.builder().userNo(gosuDTO.getUserNo()).build();
+        CategoryEntity categoryEntity = CategoryEntity.builder().categoryId(gosuDTO.getCategoryId()).build();
         // Optional이 비어있을 경우 예외를 던지거나 기본값을 반환하도록 처리
         return GosuEntity.builder()
                 .user(user)
+                .categoryId(categoryEntity)
+                .price(gosuDTO.getPrice())
                 .graduation(gosuDTO.getGraduation())
                 .possibleTime(gosuDTO.getPossibleTime())
                 .profilePicture(gosuDTO.getProfilePicture())

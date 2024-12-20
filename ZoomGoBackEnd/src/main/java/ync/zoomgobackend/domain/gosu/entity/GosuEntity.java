@@ -1,6 +1,7 @@
 package ync.zoomgobackend.domain.gosu.entity;
 
 import jakarta.persistence.*;
+import ync.zoomgobackend.domain.category.entity.CategoryEntity;
 import ync.zoomgobackend.domain.gosuportfolio.entity.GosuPortfolioEntity;
 import ync.zoomgobackend.domain.member.entity.MemberEntity;
 import lombok.*;
@@ -23,6 +24,8 @@ public class GosuEntity {
     @JoinColumn(name = "user_no") // 원하는 컬럼 이름 지정
     private MemberEntity user; // userNo에서 user로 변경
 
+    @Column
+    private CategoryEntity categoryId;
     @Column
     private String name;
     @Column

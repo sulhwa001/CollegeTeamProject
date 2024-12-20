@@ -1,6 +1,5 @@
 package ync.zoomgobackend.domain.gosu.service;
 
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import ync.zoomgobackend.domain.gosu.dto.GosuChangeDTO;
 import ync.zoomgobackend.domain.gosu.dto.GosuDTO;
@@ -12,11 +11,7 @@ import ync.zoomgobackend.domain.gosu.repository.GosuRepository;
 import ync.zoomgobackend.domain.gosu.repository.querydsl.GosuQueryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ync.zoomgobackend.domain.member.entity.MemberEntity;
 import ync.zoomgobackend.domain.member.repository.MemberRepository;
-
-import java.lang.reflect.Member;
-import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
@@ -64,8 +59,8 @@ public class GosuServiceImpl implements GosuService {
     }
 
     @Override
-    public Long updateGosu(Long gosuId, GosuUpdateDTO gosuUpdateDTO) {
-        GosuEntity gosuEntity = gosuRepository.findById(gosuId).orElse(null);
+    public Long updateGosu(GosuUpdateDTO gosuUpdateDTO) {
+        GosuEntity gosuEntity = gosuRepository.findById(gosuUpdateDTO.getGosuId()).orElse(null);
         gosuEntity.updateName(gosuUpdateDTO.getName());
         gosuEntity.updateArea(gosuUpdateDTO.getArea());
         gosuEntity.updateServiceDetail(gosuUpdateDTO.getServiceDetail());

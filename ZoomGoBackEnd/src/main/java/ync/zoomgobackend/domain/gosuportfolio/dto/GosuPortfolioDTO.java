@@ -15,12 +15,12 @@ import java.util.ArrayList;
 @Setter
 public class GosuPortfolioDTO {
     private Long gosuId;
-//    private Long categoryId
+    private Long categoryId;
     private Long userNo;
     private String title;
     private String area;
     private Integer price;
-    private Integer year;
+    private Integer workYear;
     private String workTime;
     private String workArticle;
 
