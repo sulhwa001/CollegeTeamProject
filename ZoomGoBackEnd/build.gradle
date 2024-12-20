@@ -19,10 +19,6 @@ configurations {
 	}
 }
 
-jar {
-	enabled = false
-}
-
 repositories {
 	mavenCentral()
 }
@@ -46,14 +42,7 @@ dependencies {
 	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
 	implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
 	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
-<<<<<<< HEAD
-
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
-
-
-=======
-	implementation 'org.springframework.boot:spring-boot-starter-mail'
->>>>>>> 8fa1800e2d8abbf905e90485a6cddb1552ec7294
 }
 
 tasks.named('test') {
