@@ -19,7 +19,7 @@ public class GosuPortfolioServiceImpl implements GosuPortfolioService{
     @Override
     public Long insertPortfolio(GosuPortfolioDTO gosuPortfolioDTO) {
         GosuPortfolioEntity gosuPortfolioEntity = insertDtoToEntity(gosuPortfolioDTO);
-        Long id1 = gosuPortfolioRepository.save(gosuPortfolioEntity).getGosu().getGosuId();
+        Long id1 = gosuPortfolioRepository.save(gosuPortfolioEntity).getGosuId().getGosuId();
        return id1;
     }
 

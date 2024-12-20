@@ -26,7 +26,7 @@ public interface GosuPortfolioService {
         CategoryEntity categoryEntity = CategoryEntity.builder().categoryId(gosuDTO.getCategoryId()).build();
         return GosuPortfolioEntity
                 .builder()
-                .gosu(gosu)
+                .gosuId(gosu)
                 .categoryId(categoryEntity)
                 .userNo(member)
                 .area(gosuDTO.getArea())
@@ -45,8 +45,8 @@ public interface GosuPortfolioService {
         return GosuPortfolioDTO
                 .builder()
                 .categoryId(gosuEntity.getCategoryId().getCategoryId())
-                .gosuId(gosuEntity.getGosu().getGosuId())
-                .userNo(gosuEntity.getGosu().getUser().getUserNo())
+                .gosuId(gosuEntity.getGosuId().getGosuId())
+                .userNo(gosuEntity.getGosuId().getUser().getUserNo())
                 .area(gosuEntity.getArea())
                 .price(gosuEntity.getPrice())
                 .title(gosuEntity.getTitle())
